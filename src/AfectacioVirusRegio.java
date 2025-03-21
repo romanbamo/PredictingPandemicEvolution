@@ -36,7 +36,7 @@ public class AfectacioVirusRegio {
     /**
      * Que fa ? Si avancem la simulació un dia, llavors s'actualitza l’estat de la infecció en aquesta la regió.
      */
-    public void avançarUnDia(){
+    public void avan´çarUnDia(){
         // Pre: La simulació s'ha d'estar executant
         // Post: S'actualitza l'estat, calculant de nou els nous contagis, morts, persones immunes, segons
         // les característiques de la regió i del virus que està afectant.
