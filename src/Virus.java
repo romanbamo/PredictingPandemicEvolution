@@ -155,49 +155,37 @@ public abstract class Virus {
     }
 
 
-
-    // PER SABER QUIN TIPUS DE VIRUS ÉS, podem fer --> guardar a nivell de virus, un array que fos de ADN i de ARN.
-
-    // BONA MANERAA --> OVERRIDE (pero el POST ha de ser MES FORTT !! el que garantia el primer POST, ha de
-    // cumplir-se 100%)
-
-    // Pots fer metode mutar com a abstracte aqui, llavors fas un OVERRIDE i depen del que et retorni, pots
-    // determinar si es tracta d'un virus ARN o ADN.
-
 /** Explicació: He afegit dos metodes abstractes a la classe Virus que son de mutar.
  Aquests, hem fet una sobrecarrega, de manera que si passem per paràmetre un atribut,
  llavors es fa una, i si en passem dos, es fa un altre. L'hem escrit aquí, ja que com se'ns ha dit
  a classe, aquest mètode el podrem fer servir també per saber si el virus és ARN o ADN. Per fer-ho,
  haurem de fer un OVERRIDE posterior dins de cada subclasse, on s'implementaran. En el cas dels
  VirusARN, no passarà res perquè aquest virus SI que muten, mentres que en el cas dels ADN,
- haurem de fer saltar un error, de manera que també ens farà saber que es tracta d'un VirusADN.*/
-
+ haurem de fer saltar un error, o alguna cosa per saber que es tracta d'un VirusADN.*/
 
 
     /**
      * Fem ús d'aquest mètode quan hi ha una mutació per error de còpia a un virus .
-     * @param virus El virus ARN que muta.
-     * @return El nou virus ARN amb les seves característiques modificades.
+     * @return un virus de la mateixa família que l'original
      */
-    public abstract Virus mutacio (Virus virus);
-    // Pre: El virus ha d'existir)
-    // Post: Es genera un nou virus  de la mateixa família que l’original, amb els paràmetres modificats.
-    // El nom d'aques virus serà el nom del virus que muta però amb un número correlatiu que indiqui el número
-    // de vegades que ha mutat.
+    public abstract Virus mutacio ();
+    // Pre: El virus ha d'existir (no pot ser null).
+    // Post: Retorna un virus de la mateixa família que l'original. Pot ser un nou virus mutat o el mateix virus
+    // si no hi ha mutació. En el cas que sigui un nou virus mutat, aquest tindrà els paràmetres modificats, i el
+    // seu nom serà el nom de "virus" però amb un número correlatiu que indiqui el número de vegades que ha mutat.
 
     /**
      * Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família.
-     * @param A Persona ja està infectada d'aquest virus.
+     * El virus de la classe és un virus A, i la persona ja està infectada d'aquest virus.
      * @param B Persona infectada de A, s'infecta també d'aquest virus.
-     * @return C Un nou virus resultant de la combinació de A i de B, que agafarà característiques dels dos i formarà
-     * part de la mateixa familia
+     * @return C virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d'ambdós,
+     * o un dels dos virus si no es produeix mutació.
      */
-    public abstract Virus mutacio (Virus A,Virus B);
-    // Pre: A i B han de pertànyer a la mateixa família de virus, i els dos han d'estar presents en la mateixa
+    public abstract Virus mutacio (Virus B);
+    // Pre: A i B han d'existir, pertànyer a la mateixa família de virus, i els dos han d'estar presents en la mateixa
     // persona infectada al mateix moment.
-    // Post: Retorna un Virus C, que pertany a la mateixa classe de A i de B. Aquest, tindrà característiques tant
-    // de A com de B, i els seus paràmetres quedaran canviats. A més, la persona infectada passarà a tenir aquest
-    // nou virus en comptes de A i de B. El nom d'aquest serà la concatenació dels noms de A i de B
+    // Post: Retorna un virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d'ambdós,
+    // o un dels dos virus si no es produeix mutació.
 
 
 // METODES PRIVATS:

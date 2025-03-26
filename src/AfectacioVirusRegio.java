@@ -16,11 +16,36 @@
  *
  *  La simulació treballa en mode text i permet consultar l’estat actual i l’evolució històrica.
  *
- * @author Romà Barrera, Mireia Ferrer i Iria Auladell
+ * @author Iria Auladell
  * @version 2025.3.13
  */
 
 public class AfectacioVirusRegio {
+
+    // ATRIBUTS (idea principal, falta canviar moltes coses segurament)
+
+    // Virus i regió que han estat afectats
+    private Virus virus;         // Virus que afecta la regió
+    private Regio regio;         // Regió infectada
+
+    // Estadístiques que hem de tenir del dia actual (a nivell de grup)
+    private int infectats;       // Total de persones infectades
+    private int contagiosos;     // Persones que poden transmetre el virus
+    private int malalts;         // Persones que han desenvolupat símptomes
+    private int nousInfectats;   // Persones contagiades
+    private int novesDefuncions; // Persones que han mort des del dia anterior
+    private int immunes;     // Persones que ja s'han curat i són immunes
+
+    // Estadístiques que hem d'anar acumulant
+    private int totalMalalts;     // Total de persones que han estat malaltes
+    private int totalMorts;       // Total de persones mortes
+    private int totalContagis;    // Total de contagis que s'han fet
+    private int totalInfectats;   // Total de persones que s'han infectat
+
+    // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
+    //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
+
+    // MÈTODES
 
     /**
      * Constructor de la classe AfectacioVirusRegio.
@@ -36,7 +61,7 @@ public class AfectacioVirusRegio {
     /**
      * Que fa ? Si avancem la simulació un dia, llavors s'actualitza l’estat de la infecció en aquesta la regió.
      */
-    public void avan´çarUnDia(){
+    public void avançarUnDia(){
         // Pre: La simulació s'ha d'estar executant
         // Post: S'actualitza l'estat, calculant de nou els nous contagis, morts, persones immunes, segons
         // les característiques de la regió i del virus que està afectant.

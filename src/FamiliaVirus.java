@@ -5,7 +5,7 @@
  * però o tots els que hi ha son NO MUTABLES, o tots son MUTABLES, però no hi ha barreja dels dos grups en les families.
  *
  *
- * @author Romà Barrera, Mireia Ferrer i Iria Auladell
+ * @author Iria Auladell
  * @version 2025.2.18
  */
 public class FamiliaVirus {
