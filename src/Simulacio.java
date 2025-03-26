@@ -24,4 +24,13 @@ public class Simulacio{
     */
     public void mostrarGrafic(char territori, char tipusDada){    
     }
+
+    /** @brief Permet a l'usuari aturar la simulacio.
+    @pre --
+    @post Simulacio aturada i resetejada
+    */
+    public static aturarSimulacio(){
+            //metode presionar boto, si boto true executa
+        bool botoAturar = false 
+        }
 }
