@@ -35,7 +35,7 @@ public class VirusADN extends Virus {
     @Override
     public VirusADN mutacio() {
     // Pre: El virus ha d'existir (no pot ser null).
-    // Post: Retorna el mateix virus, sense cap modificació, perquè els virus de tipus ADN no poden mutar.
+    // Post: Retorna el mateix virus "this", sense cap modificació, perquè els virus de tipus ADN no poden mutar.
         return this;
     }
 

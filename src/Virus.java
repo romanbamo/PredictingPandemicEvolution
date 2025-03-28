@@ -170,7 +170,7 @@ public abstract class Virus {
      */
     public abstract Virus mutacio ();
     // Pre: El virus ha d'existir (no pot ser null).
-    // Post: Retorna un virus de la mateixa família que l'original. Pot ser un nou virus mutat o el mateix virus
+    // Post: Retorna un virus de la mateixa família que l'original. Pot ser un nou virus mutat o el mateix virus "this"
     // si no hi ha mutació. En el cas que sigui un nou virus mutat, aquest tindrà els paràmetres modificats, i el
     // seu nom serà el nom de "virus" però amb un número correlatiu que indiqui el número de vegades que ha mutat.
 
@@ -185,7 +185,8 @@ public abstract class Virus {
     // Pre: A i B han d'existir, pertànyer a la mateixa família de virus, i els dos han d'estar presents en la mateixa
     // persona infectada al mateix moment.
     // Post: Retorna un virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d'ambdós,
-    // o un dels dos virus si no es produeix mutació.
+    // o "this" si no es produeix mutació.
+
 
 
 // METODES PRIVATS:

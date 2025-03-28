@@ -28,13 +28,20 @@ public class AfectacioVirusRegio {
     private Virus virus;         // Virus que afecta la regió
     private Regio regio;         // Regió infectada
 
-    // Estadístiques que hem de tenir del dia actual (a nivell de grup)
-    private int infectats;       // Total de persones infectades
-    private int contagiosos;     // Persones que poden transmetre el virus
-    private int malalts;         // Persones que han desenvolupat símptomes
+    // Estat actual (atrbibuts que requereixen un histograma, és a dir, hem de saber la distribució per dies de cada fase)
+    private List<Integer> _infectats; // nombre d'infectats a cada dia de la infecció
+    private List<Integer> _malalts;     // nombre de malalts a cada dia de la infecció
+    private List<Integer> _immunes;     // nombre d'inmunes a cada dia de la infecció
+    private List<Integer> _contagiosos; // nombre de contagiosos a cada dia de la infecció
+
+    // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
+    //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
+
+    // Altres estadístiques que hem de tenir del dia actual (a nivell de grup)
+    private int contagiosos;     // Persones que poden transmetre el virus (calculat a partir del temps de latència)
+    /** ns si contagiosos seria una llista o no*/
     private int nousInfectats;   // Persones contagiades
     private int novesDefuncions; // Persones que han mort des del dia anterior
-    private int immunes;     // Persones que ja s'han curat i són immunes
 
     // Estadístiques que hem d'anar acumulant
     private int totalMalalts;     // Total de persones que han estat malaltes
@@ -42,8 +49,7 @@ public class AfectacioVirusRegio {
     private int totalContagis;    // Total de contagis que s'han fet
     private int totalInfectats;   // Total de persones que s'han infectat
 
-    // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
-    //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
+
 
     // MÈTODES
 
@@ -79,6 +85,7 @@ public class AfectacioVirusRegio {
         // Pre: -
         // Post: Mostrem per pantalla el total de malalts, morts i contagis acumulats.
     }
+
 
     // afegircasosvirus a la regio (metode d'afegir-lo)
     // dos metodes dif (confinament dur i tou) i per desconfinament igual

@@ -14,7 +14,7 @@ public class FamiliaVirus {
 
     private String nom;
     private double pMut2E;  // Probabilitat de mutació per coincidència (0-1)
-    private double tpcMax;  // Tant per cent màxim de variació en mutacions per error de còpia
+    private int tpcMax;  // Tant per cent màxim de variació en mutacions per error de còpia
 
 // MÈTODES PÚBLICS
 
@@ -26,7 +26,7 @@ public class FamiliaVirus {
      * @param tpc_max Tant per cent màxim de variació en mutacions per error de còpia.
 
      */
-    public FamiliaVirus(String nom_fam, double P_mut2E, double tpc_max) {
+    public FamiliaVirus(String nom_fam, double P_mut2E, int tpc_max) {
         // Pre: El nom no pot ser buit i la taxa de mutació ha d'estar entre 0 i 1.
         // Post:  Es crea una nova família de virus amb el nom, la taxa de mutació i el tpcMax que ens han passat.
 
@@ -66,4 +66,3 @@ public class FamiliaVirus {
         if (famvirusB == null) return false;  // Evitem errors amb famílies nul·les
         return this.nom.equals(famvirusB.nom);  // Comparem els noms de les dues famílies
     }
-}

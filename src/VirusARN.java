@@ -24,7 +24,7 @@ public class VirusARN extends Virus {
         // Post: Es crea un virus de tipus ARN que pot mutar. A part de tenir totes les
         // característiques del Virus, tindrà també una certa probabilitat de mutació per error de còpia.
 
-        super(nom_virus, familia_virus, p_mal, t_inc, t_lat, p_mor, t_con, p_con, t_imm, "ARN"); // això ho fem per
+        super(nom_virus, familia_virus, p_mal, t_inc, t_lat, p_mor, t_con, p_con, t_imm); // això ho fem per
         // cridar al constructor de la classe abstracta Virus
 
         pMutEC = p_mutEC;
@@ -58,9 +58,42 @@ public class VirusARN extends Virus {
     public VirusARN mutacio() {
         // Pre: El virus ha de ser ARN (els unics que poden mutar) i ha de tenir la seva probabilitat de mutació
         // per error de còpia.
-        // Post: Es genera un nou virus ARN de la mateixa família que l’original, amb els paràmetres modificats.
-        // El nom d'aquest virus serà el nom del virus que muta però amb un número correlatiu que indiqui el número
+        // Post: Retorna "this" si no hi ha mutació. Si hi ha, es genera un nou virus ARN de la mateixa família que
+        // l’original, amb els paràmetres modificats. Per tant, retornarà una mutació per error de còpia de "this"
+        // El nom d'aquest nou virus serà el nom del virus que muta però amb un número correlatiu que indiqui el número
         // de vegades que ha mutat.
+
+        int maximVariacio = this.familia().tpcMax();  // Primer de tot, hem de saber el tant per cent màxim (tpc_max)
+        // de variació, el qual és una característica de la família del virus (cridem el seu mètode).
+
+        // Calculo els % aleatoris entre -tpcMax i +tpcMax per als 4 paràmetres que em diu la pràctica. Cada un tindrà
+        // una variació percentual diferent
+
+        int variacioPMal = fem_tpc_de_variació(maximVariacio);
+        int variacioPMor = fem_tpc_de_variació(maximVariacio);
+        int variacioTCon = fem_tpc_de_variació(maximVariacio);
+        int variacioPCon = fem_tpc_de_variació(maximVariacio);
+
+        // Modifiquem els valors d'aquests 4 paràmetres
+        double pMal_mut = aplicar_tcp_variació_prob(this.probDesenvoluparMalaltia(), variacioPMal);
+        double pMor_mut = aplicar_tcp_variació_prob(this.taxaMortalitat(), variacioPMor);
+        int tCon_mut = Math.round(aplicar_tcp_variació_temps(this.tempsContagi(), variacioTCon));
+        double pCon_mut = aplicar_tcp_variació_prob(this.taxaContagi(), variacioPCon);
+
+        // Heretem del Virus original (el de la classe), la resta de valors tal qual són, sense modificar.
+        int tInc_mut = this.tempsIncubacio();
+        int tLat_mut = this.tempsLatencia();
+        int tImm_mut = this.tempsImmunitat();
+        double pMutEC_mut = this.probabilitatMutacioErrorCopia();
+        FamiliaVirus fam_mut =  this.familia();
+
+        // Hem de crear un nou nom amb sufix (ex: grip_1).
+        String nouNom = this.nom() + "no ser si fer-ho amb un contador per exemple";
+
+        // Retornem el nou virus ARN mutat
+        return new VirusARN(nouNom, fam_mut , pMal_mut, tInc_mut, tLat_mut, pMor_mut,
+                tCon_mut, pCon_mut, tImm_mut, pMutEC_mut);
+
     }
 
 
@@ -77,9 +110,72 @@ public class VirusARN extends Virus {
     public VirusARN mutacio(Virus B) {
         // Pre: A i B han de pertànyer a la mateixa família de virus, i els dos han d'estar presents en la mateixa
         // persona infectada al mateix moment.
-        // Post: Retorna un Virus C, que pertany a la mateixa classe de A i de B. Aquest, tindrà característiques tant
+        // Post: Retorna "this" si no muta. Altrament, si muta, retorna una mutació per coincidència de "this" i B.
+        // Aquest nou Virus C, pertany a la mateixa classe de A i de B, i tindrà característiques tant
         // de A com de B, i els seus paràmetres quedaran canviats. A més, la persona infectada passarà a tenir aquest
         // nou virus en comptes de A i de B. El nom d'aquest serà la concatenació dels noms de A i de B
+    }
+
+
+
+    // MÈTODES PRIVATS
+
+    /**
+     * Genera una variació percentual aleatòria entre -tpcMax i +tpcMax. Aquest representa la variació percentual
+     *  que haurem d'aplicar després a un dels 4 paràmetres afectats per la mutació per error de còpia (pMal, pMor, pCon, tCon).
+     */
+    private int fem_tpc_de_variació(int tpcMax) {
+    // Pre: tpcMax és el tant per cent màxim de variació permesa segons la família del virus. Ha de ser un
+    // enter positiu, que vagi de 0 a 100 (per exemple, 20 indica un màxim de ±20%).
+    // Post: retorna un valor enter dins l’interval [-tpcMax, +tpcMax]
+
+        int total_valors = 2 * tpcMax + 1;  // Nombre total de valors possibles (-tpcMax fins a +tpcMax)
+        double num_aleatori = Math.random();  // Calculem un num aleatori entre 0 i 1
+        int num_aleatori_dins_possibilitats = (int) num_aleatori * total_valors;  // Valor entre 0 i (2*tpcMax + 1)
+        int tpc_final = num_aleatori_dins_possibilitats - tpcMax;  // Movem el tpc perquè ha d'anar d'entre
+        // -tpcMax fins a +tpcMax, i teniem de 0 a (2*tpcMax + 1)
+
+        return tpc_final;
+    }
+
+    /**
+     * Recalculem paràmetres de probabilitat aplicant una variació percentual.
+     */
+    private double aplicar_tcp_variació_prob(double valorInicial, int tcpVariació) {
+
+    //Pre: El valor inicial ha de ser una probabilitat vàlida, és a dir, un valor entre 0 i 1. La tcpVariació és
+    // un enter que representa el tant per cent de variació que es vol aplicar (pot ser positiu o negatiu).
+
+    //Post: Retorna la nova probabilitat obtinguda després d’aplicar la variació percentual, però ens assegurem que
+    // segueixi sent un valor vàlid entre 0 i 1.
+
+        double multiplicador = (1 + (tcpVariació / 100.0));// Passem de tenir el tcp de variació, ha saber per quan
+        // hem de multiplicar le nostre valor original. Per exemple, si tenim inicialment una tcpVarició de +10%,
+        //haurem de multiplicar llavors per 1.10. En canvi, si tenim una tcpVarició de -20%, haurem de multiplicar per 0.80
+        double prob_final = valorInicial * multiplicador;
+
+                //CUIDADO PQ AIXO NO CAL PER EL DEL TEMPS !!
+
+        // Com que és una probabilitat, ens hem d'assegurar de que vagi de 0 a 1.
+        prob_final = Math.max(0.0, Math.min(1.0, prob_final));
+
+        return prob_final;
+    }
+
+    /**
+     * Recalculem paràmetres referents a períodes de temps aplicant una variació percentual.
+     */
+    private int aplicar_tcp_variació_temps(int valorInicial, int tcpVariació) {
+
+        //Pre: El valor inicial representa un temps (en dies) que ha de ser ≥ 1. La tcpVariació és
+        //un enter que representa el tant per cent de variació que es vol aplicar (pot ser positiu o negatiu)
+        //Post:Retorna el valor modificat del paràmetre de temps, després d’aplicar la variació percentual indicada.
+
+        double multiplicador = (1 + (tcpVariació / 100.0));
+        int temps_final = (int) Math.round (valorInicial * multiplicador);
+
+        return Math.max(1, temps_final); // Ens assegurem que el temps mínim sigui d'1 dia, ja que no te sentit que
+        // un període de temps duri 0 o dies negatius.
     }
 
 }
