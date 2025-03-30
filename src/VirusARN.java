@@ -9,6 +9,8 @@ public class VirusARN extends Virus {
 // ATRIBUTS
 
     private double pMutEC;  // Probabilitat de mutació per error de còpia
+    private int numMutacions; // He afegit aquest contador per poder tenir constància dels cops que un virus muta,
+    // ja que a la hora de crear el nom del nou virus, és necessari tenir constància dels cops que ha mutat.
 
 // METODES PÚBLICS
 
@@ -28,6 +30,7 @@ public class VirusARN extends Virus {
         // cridar al constructor de la classe abstracta Virus
 
         pMutEC = p_mutEC;
+        this.numMutacions = 0;  // Quan el virus és nou, doncs encara no ha mutat cap cop
 
     }
 
@@ -87,11 +90,15 @@ public class VirusARN extends Virus {
         double pMutEC_mut = this.probabilitatMutacioErrorCopia();
         FamiliaVirus fam_mut =  this.familia();
 
-        // Hem de crear un nou nom amb sufix (ex: grip_1).
-        String nouNom = this.nom() + "no ser si fer-ho amb un contador per exemple";
+        // Incrementem el comptador de mutacions per aquest virus
+        this.numMutacions++; // modifiquem el atribut (crec que per això es recomana posar el this davant)
+
+        // Creem el nom del nou virus mutat
+        String nom_original = this.nom();  // Nom del virus original
+        String nom_nou = nom_original + "_" + numMutacions;  // Nou nom del virus mutat (grip --> grip_1, grip_2...)
 
         // Retornem el nou virus ARN mutat
-        return new VirusARN(nouNom, fam_mut , pMal_mut, tInc_mut, tLat_mut, pMor_mut,
+        return new VirusARN(nom_nou, fam_mut , pMal_mut, tInc_mut, tLat_mut, pMor_mut,
                 tCon_mut, pCon_mut, tImm_mut, pMutEC_mut);
 
     }

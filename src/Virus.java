@@ -155,6 +155,27 @@ public abstract class Virus {
     }
 
 
+    /** mètode que calcula el nombre esperat de nous contagis, basant-se en el nombre actual d'infectats i la taxa
+     * d'infecció. */
+    public int nousContagis (int infectats_actuals){
+    // Pre: El nombre d'infectats ha de ser un enter positiu, i la taxa de contagi ha d'estar entre 0 i 1.
+    // Post: Retorna un enter que representa el nombre esperat de nous contagis,
+    // arrodonit al valor enter més proper.
+
+    // Calculo el nombre esperat de nous contagis, segons s'ha dit a classe: nombre actual d'infectats * la taxa
+    // d'infecció
+
+        double nous_contagis_sense_arrodonir = infectats_actuals * pCon;
+
+    // Crec que és necessàri passar-ho a enter, ja que no pot haver-hi dos persones i quart per exemple.
+    // He decidit arrodonir cap al nombre més proper.
+        int nous_contagis = (int) Math.round(nous_contagis_sense_arrodonir);
+
+        return nous_contagis;
+    }
+
+
+
 /** Explicació: He afegit dos metodes abstractes a la classe Virus que son de mutar.
  Aquests, hem fet una sobrecarrega, de manera que si passem per paràmetre un atribut,
  llavors es fa una, i si en passem dos, es fa un altre. L'hem escrit aquí, ja que com se'ns ha dit
@@ -188,8 +209,7 @@ public abstract class Virus {
     // o "this" si no es produeix mutació.
 
 
-
-// METODES PRIVATS:
+     // METODES PRIVATS:
 
 
 }
