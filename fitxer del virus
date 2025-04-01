@@ -1,0 +1,18 @@
+import java.io.*;
+import java.util.*;
+
+public abstract class FitxerVirus {
+    public static List<Virus> llegir_virus(File fitxer) throws IOException {
+        List<Virus> virusList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(","); // Suponent CSV format
+                if (data.length >= 2) {
+                    virusList.add(new Virus(data[0], Double.parseDouble(data[1])));
+                }
+            }
+        }
+        return virusList;
+    }
+}
