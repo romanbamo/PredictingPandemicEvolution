@@ -174,6 +174,19 @@ public abstract class Virus {
         return nous_contagis;
     }
 
+    /** mètode que calcula el nombre esperat de nous malalts, basant-se en el nombre actual de contaiosos i la prob
+     * de desenvolupar la malaltia. */
+    public int nousMalalts (int contagiosos_actuals){
+        // Pre: El nombre de contagiosos ha de ser un enter positiu, i la prob de desenvolupar la malaltia ha d'estar entre 0 i 1.
+        // Post: Retorna un enter que representa el nombre esperat de nous malalts,
+        // arrodonit al valor enter més proper.
+
+        double nous_malalts_sense_arrodonir = contagiosos_actuals * pMal;
+        int nous_malalts = (int) Math.round(nous_malalts_sense_arrodonir);
+
+        return nous_malalts;
+    }
+
 
 
 /** Explicació: He afegit dos metodes abstractes a la classe Virus que son de mutar.
