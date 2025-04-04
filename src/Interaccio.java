@@ -5,6 +5,7 @@
 import java.util.Scanner;
 //@class Interaccio enllac entre aplicatiu i usuari.
 public class Interaccio{
+    // FRANCESC --> CAL PENSAR BÉ SI CONVÉ QUE SIGUI UN MÒDUL FUNCIONAL... POTSER CONVINDRIA UNA REFERÈNCIA A LA SIMULACIÓ
     private static String llegirText(string indicacio){
         /* @brief Permet a introduir un text.
             @pre --
@@ -17,6 +18,9 @@ public class Interaccio{
     }
 
     public static Regio fitxerRegio(){
+        // FRANCESC: SI ES POGUÉS EVITAR LA DEPENDÈNCIA DIRECTA DE REGIÓ ...
+        // EN QUALSEVOL CAS, NO HAURIA DE RETORNAR UNA ÚNICA REGIÓ
+        // A MÉS, AQUEST MÈTODE EL VEIG MÉS AL MAIN ...
         /* @brief Demana a l'usuari la ruta del fitxer de regions i el guarda a un Map de regions.
         @pre --
         @post Dades de fitxer de regions guardades en un Map de regions.
@@ -39,11 +43,14 @@ public class Interaccio{
         @post Estat de simulacio actual modificat
         */
         //metode presionar boto
+        // FRANCESC: CALDRIA DEMANAR PRIMER SI ES VOL FER ALGUN CONFINAMENT O DESC. , O BÉ DONAR OPCIÓ A NO FER RES
         String confinament = llegirText("Introdueix el tipus de confinament(D=dur/T=tou/X=treure confinament): ");
-        afegirConfinament(confinament);
+        afegirConfinament(confinament); // FRANCESC: ENTENC Q AQUEST MÈTODE ÉS UN PRIVAT D'AQUESTA CLASSE (?)
     }
 
     public static void incrementarDia(){
+        // FRANCESC: NO VEIG GENS CLAR AQUEST MÈTODE. EL PLANTEJAMENT HAURIA DE SER UN ALTRE, EN TOT CAS (AQUÍ NO HI HA 
+        //           CAP INTERACCIÓ)
         /* @brief Permet a l'usuari avancar la simulacio una unitat de
         temps (dia)
         @pre --
