@@ -11,7 +11,7 @@ public class LecturaFitxerRegio {
         this.regions = new HashMap<>();
     }
 
-    public void llegirArxiu(String path) throws IOException {
+    public void llegirArxiuRegio(String path) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
         boolean enSeccioLimits = false;
