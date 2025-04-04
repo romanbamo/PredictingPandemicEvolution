@@ -3,7 +3,7 @@ public class Regio {
 
 
     /* La classe Regio
-     * representa una àrea geogràfica on es poden estudiar els efectes d’un virus.
+  * representa una àrea geogràfica on es poden estudiar els efectes d’un virus.
      * Aquesta classe serveix per emmagatzemar informació sobre la població d’una regió
      * i els contactes que tenen les persones entre elles, un factor important en la propagació d’un virus.
      */
