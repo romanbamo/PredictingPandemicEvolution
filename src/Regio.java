@@ -14,7 +14,7 @@ public class Regio {
     private int casosActuals;
     // Nombre de casos actius a la regió
 
-    public class Regio (string nom_regio, int poblacio_reg, boolean enConfinament, int casosActuals){
+    public Regio(String nom_regio, int poblacio_reg, boolean enConfinament, int casosActuals){
         this.nom = nom_regio;
         this.poblacio = poblacio_reg;
         this.enConfinament = false;
