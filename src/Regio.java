@@ -1,4 +1,5 @@
 public class Regio {
+// F -> MIREIA, VAIG COMENTANT ENMIG DEL TEU CODI !
 
 
 
@@ -11,10 +12,12 @@ public class Regio {
     private String nom;
     private int poblacio;
     private boolean enConfinament;
-    private int casosActuals;
+    private int casosActuals; // F-> AQUEST ATRIBUT NO ÉS NECESSARI, NO CAL AJUNTAR ELS CASOS DE TOTS ELS VIRUS
     // Nombre de casos actius a la regió
+    // F-> ET FALTA LA TAXA DE INTERNA DE CONTACTES I TOT EL QUE FA REFERÈNCIA A REGIONS VEÏNES !
 
-    public Regio(String nom_regio, int poblacio_reg, boolean enConfinament, int casosActuals){
+    public Regio(String nom_regio, int poblacio_reg, boolean enConfinament, int casosActuals){ 
+    // F-> REVISAR EN FUNCIÓ DELS ATRIBUTS
         this.nom = nom_regio;
         this.poblacio = poblacio_reg;
         this.enConfinament = false;
@@ -40,11 +43,12 @@ public class Regio {
         return poblacio;
     }
 
-    public int casosActuals() {
+    public int casosActuals() { // F-> NO !
         return casosActuals;
     }
 
-    public void mostrarConfinament() {
+    public void mostrarConfinament() {  
+    // F-> IMPORTANT: CENTREU TOTES LES ENTRADES I SORTIDES (println) A LA CLASSE D'INTERACCIÓ. AQUEST MÈTODE NO TOCA AQUÍ 
         //Pre:-----
         //Post:Mostra en pantalla les regions en confinament
         if (enConfinament) {
@@ -57,7 +61,7 @@ public class Regio {
 
 
     // Operacions
-    public void afegirCasos(Virus virus, int nousInfectats) {
+    public void afegirCasos(Virus virus, int nousInfectats) { // F-> AIXÒ MILLOR GESTIONAR-HO A NIVELL D'AFECTACIÓ (VIRUS-REGIÓ)
         // Afegeix nous casos d'un virus a la regió
         // Verifiquem que el nombre de nous infectats sigui vàlid
         if (nousInfectats < 0) {
@@ -72,7 +76,9 @@ public class Regio {
     }
 
 
-    public void afegirConfinament(String confinament) {
+    public void afegirConfinament(String confinament) { 
+    // F-> NO VEIG CLAR AQUEST PARÀMETRE. JO FARIA UN MÈTODE public void confinamentDur SENSE PARÀMETRE O COM A MOLT AMB UN 
+    //     BOOLEAN QUE INDIQUI SI ES VOL CONFINAR O DESCONFINAR 
         //Pre:
         //Post:Aplica un confinament a la regió
         // Marquem la regió com a confinada
@@ -83,7 +89,7 @@ public class Regio {
     }
 
 
-    public void aixecarConfinament() {
+    public void aixecarConfinament() { // F-> AQUEST JA EL VEIG MILLOR (SENSE EL PRINTLN I SUPOSANT Q ÉS CONF. DUR)
         //Pre:
         //Post:Elimina el confinament a una regió
         // Eliminem el confinament
