@@ -40,11 +40,6 @@ public class AfectacioVirusRegio {
     // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
     //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
 
-    // Altres estadístiques que hem de tenir del dia actual (a nivell de grup)
-    private int contagiosos;     // Persones que poden transmetre el virus (calculat a partir del temps de latència)
-    /** ns si contagiosos seria una llista o no*/
-    private int nousInfectats;   // Persones contagiades
-
 
     // Estadístiques que hem d'anar acumulant
     private int totalMalalts;     // Total de persones que han estat malaltes al llarg de la malaltia
@@ -128,30 +123,23 @@ public class AfectacioVirusRegio {
         // -------------- Calculem nous infectats a partir dels contagiosos -------------------------------------------
         actualitzar_infectats_no_contagiosos();
 
-
-
-
-        // IDEA DE COSES QUE FALTEN PER FER:
-
-        // Per ara, només hem implementat les parts que controlen infectats, malalts i immunes.
-        // Encara falta:
-        // - Mirar com tenir constància dels contagiosos (si m'aclaro i tinc idea de com poder-los mantenir com a llista. Tot i que segurament els acabi fent com a acomulats).
-        // - Fer el càlcul de morts i de la seva distribució.
-
     }
 
-    // Hem fet aquest mètode per poder mostrar l'estat en que es troba la regió infactada
-    public void mostrarEstatActual(){
-        // Pre: -
-        // Post: Mostrem per pantalla, com ens diu la pràctica, en mode text, el nombre d’infectats, contagiosos,
-        // malalts, nous infectats, immunitzats i morts.
+    // Mètodes per gestionar el tema de les mutacions (FALTAA implementar-los)
+
+    /**
+     * Aquesta funció el que fa és mirar si en el dia d'avui, es produeix una mutació del virus que afecta la regió.
+     * Això ho fem a partir dels paràmetres actuals i de l'estat de la simulació. Si es fa una
+     * mutació, llavors trobem el nou virus (utilitzant els mètodes que he fet de la classe Virus)
+     * i llavors actualitzarem l'estat de la regió amb els nous paràmetres del virus mutat.
+     */
+    public void comprovarMutacio() {
+        // Pre:
+        // Post:
     }
 
 
-    public void mostrarEvolucio(){
-        // Pre: -
-        // Post: Mostrem per pantalla el total de malalts, morts i contagis acumulats.
-    }
+
 
 // ----------------------------------------------- MÈTODES PRIVATS ---------------------------------------------------------
 
@@ -338,21 +326,41 @@ private void actualitzar_morts() {
         int malalts = _malalts.get(i);
         int contagiosos = _contagiosos.get(i);
 
-        // Apliquem les morts als malalts i contagiosos. Si mor més gent de la que hi ha, posem 0 (per seguretat)
+        // Apliquem les morts als malalts i contagiosos.
         _malalts.set(i, malalts - morts);
         _contagiosos.set(i, contagiosos - morts);
 
         // Actualitzem el total de morts acumulat
         total_morts_avui = total_morts_avui + morts;
 
+        // Actualitzem les persones que queden vives en la regio
+        regio.persones_moren(morts);
+
     }
 
     totalMorts = totalMorts + total_morts_avui;
 
 }
+
+// PER EL MÈTODE DE LES MUTACIONS
+
+    /**
+     * Aquest és molt important ja que serà el mètode que farem servir per a actualitzar l'estat de la regió
+     * després de que es produis una mutació (ja que el nou virus tindrà uns paràmetres diferents).
+     *
+     * IMPORTANT LLEGIR EL Q DIU LA PRÀCTICA, DE Q SEGONS EL T QUE PORTI, CONSIDEREM UNES COSES O UNES ALTRES
+     *
+     * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.*/
+    private void actualitzar_estat_despres_de_mutacio(Virus virus_mutat) {
+    // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
+    // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.
+
+        // A implementar: HAURÉ d'justar els càlculs dels nous contagis, malalts, morts, etc., tenint en compte els valors
+        // actualitzats del nou virus mutat.
+    }
 }
 
 
-// FALTA FER: Quan tenim mutacio, com varien aquestes probabilitats i tot. I com canvien el temps de lactancia...
+
 
 
