@@ -154,6 +154,13 @@ public abstract class Virus {
         return tImm;
     }
 
+    public boolean haMutat (Virus x){
+        // Pre: El Virus x ha de ser vàlis i ha d'existir
+        // Post: Retorna cert si el virus de la classe "this" és una mutació del virus x. Altrament, retorna false.
+        // Si no ha mutat, el nom del virus serà igual.
+        return !nom.equals(x.nom());
+    }
+
 
     /** mètode que calcula el nombre esperat de nous contagis, basant-se en el nombre actual d'infectats i la taxa
      * d'infecció. */

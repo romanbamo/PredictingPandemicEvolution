@@ -136,7 +136,16 @@ public class AfectacioVirusRegio {
     public void comprovarMutacio() {
         // Pre:
         // Post:
+
+        Virus virus_mutat = virus.mutacio(); // pot ser el mateix (si no hi ha mutació) o un de nou
+
+        // Si el virus ha mutat, cal actualitzar-lo a la regió
+        if (virus_mutat.haMutat(virus)) {
+                (virus_mutat);
+                actualitzar_estat_despres_de_mutacio(virus_mutat)
+        }
     }
+
 
 
 
@@ -351,6 +360,7 @@ private void actualitzar_morts() {
      * IMPORTANT LLEGIR EL Q DIU LA PRÀCTICA, DE Q SEGONS EL T QUE PORTI, CONSIDEREM UNES COSES O UNES ALTRES
      *
      * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.*/
+
     private void actualitzar_estat_despres_de_mutacio(Virus virus_mutat) {
     // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
     // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.

@@ -8,7 +8,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class VirusARN extends Virus {
+public class VirusARN extends Virus implements Comparable<VirusARN> {
 
 // ATRIBUTS
 
@@ -160,12 +160,23 @@ public class VirusARN extends Virus {
         // major que la probabilitat, llavors no es produeix i retornem this. Això és perquè, si la prob és baixa
         //, la prob de que sigui un num menor serà molt petita. En canvi, si la prob és alta, abarca una gran quantitat
         // de nombres que són menors, i per tant, la prob tb augmenta.
-        if ((num_aleatori > prob_Mut2E) || !(B instanceof VirusARN)) {
-            return this;
+
+        if !(B instanceof VirusARN){
+            throw new IllegalArgumentException("Hi ha un virus que no és ARN, problema");
         }
 
         // ara que sabem que és un VirusARN, podem fer un casting per canviar el tipus aparent
         VirusARN B_ARN = (VirusARN) B; // càsting
+
+        if ((num_aleatori > prob_Mut2E) ) { // si no en produeix la mutació
+            //NONO, HE DE RETORNAR EL MES FORT !! CRIDO FUNCIO PRIVADA
+            if (this.compareTo(B_ARN) >= 0){
+                return this;
+            }
+            else {
+                return B_ARN;
+            }
+        }
 
         // Primer m'asseguro de que els dos virus pertanyen a la mateixa família
         if (!this.pertanyenMateixaFamilia(B_ARN)) {
@@ -203,6 +214,49 @@ public class VirusARN extends Virus {
 
     }
 
+    /**
+     * Aquí el que fem és fer ús del CompareTo, però el personalitzem per comparar dos virus segons la seva força.
+     * Com ens diu el document, la força dels virus es calcula com (en ordre de prioritat):
+     * 1. Taxa de contagi (pCon) - com més alta, millor.
+     * 2. Probabilitat de desenvolupar la malaltia (pMal) - com més alta, millor.
+     * 3. Taxa de mortalitat (pMor) - com més alta, millor.
+     * 4. Nom del virus (ordre alfabètic).
+     *
+     * @param altreVirus El virus ARN amb el qual compararé el de la classe aquest.
+     * @return Un valor negatiu si this < altreVirus, 0 si són iguals, positiu si this > altreVirus
+     */
+    @Override
+    public int compareTo(VirusARN altreVirus) {
+    // Pre: El Virus altreVirus ha d'existir i ser de tipus VirusARN
+    // Post: Retorna quin dels dos virus és més fort segons uns certs criteris definits
+
+        // Primer de tot comparem per taxa de contagi (pCon)
+        int comparacio = Double.compare(this.taxaContagi(), altreVirus.taxaContagi());
+        if (comparacio != 0) {
+            return comparacio; //si no són iguals em retorna un int (depenent de si és positiu o negatiu,
+            // llavors sabrem quin dels dos és més fort. Si és positiu, this és més fort, sino, altreVirus és més fort
+        }
+
+        // Si pCon són iguals, mirem la probabilitat de desenvolupar la malaltia (pMal)
+        comparacio = Double.compare(this.probDesenvoluparMalaltia(), altreVirus.probDesenvoluparMalaltia());
+        if (comparacio != 0) {
+            return comparacio;
+        }
+
+        // Si pCon són iguals i pMal també, llavors passem a mirar la taxa de mortalitat (pMor)
+        comparacio = Double.compare(this.taxaMortalitat(), altreVirus.taxaMortalitat());
+        if (comparacio != 0) {
+            return comparacio;
+        }
+
+        // Finalment, si totes les altres són iguals, mirem per ordre alfabètic (si tot l'anterior empata), ja que
+        // mai hi haurà dos virus amb el mateix nom
+        return this.nom().compareTo(altreVirus.nom());
+        // PETIT CONCEPTE DE TEORIA:
+        // Els Strings ja implementen la interfície Comparable<String> i ja tenen el seu propi mètode compareTo()
+        // Aquest ja ve fet dins la classe String de Java.
+        // public final class String implements Comparable<String> { ... }
+    }
 
 // -------------------------------------------------------------------------------------------------------------------------------
 
@@ -273,6 +327,10 @@ public class VirusARN extends Virus {
     // les mutacions que s'han creat a partir d'aquest virus, tant per error de còpia com per coincidència.
         mutacions.add(nou_virus); // Afegim la nova mutació a la llista de mutacions.
     }
+
+
+
+
 
 
 
@@ -369,6 +427,5 @@ public class VirusARN extends Virus {
         }
         return true;  // No existeix aquest nom, i per tant és el primer cop que passa aquesta mutació
     }
-
 
 }
