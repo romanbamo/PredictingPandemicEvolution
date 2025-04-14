@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class LecturaFitxerVirus {
+    private Map<String, Virus> virusMap; /
+
+    public LecturaFitxerVirus() { //Constructor de la classe. Inicialitza virusMap com un nou HashMap.
+        this.virusMap = new HashMap<>();
+    }
+
+    public void llegirArxiuVirus(String path) //Aquesta funció rep la ruta d'un fitxer com a paràmetre (path) {
+        BufferedReader br = new BufferedReader(new FileReader(path));//Obre el fitxer especificat per a lectura línia per línia.
+
+
+        String line;
+
+        while ((line = br.readLine()) != null) {
+            line = line.trim();
+            if (line.isEmpty() || line.startsWith("#")) {
+                continue;
+            }
+            processarDadesVirus(line, br);
+        }
+        br.close();
+    }
