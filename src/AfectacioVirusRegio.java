@@ -194,6 +194,23 @@ public class AfectacioVirusRegio {
         regio.afegirNovaAfectacio(Vnou, nousContagisMutats);
     }
 
+    /**
+     * Aquesta funció fa la suma total dels valors d'una llista. L'he fet per a calcular el total de les llistes
+     * que tenim. Per exemple, com que necessitem el total de contagiosos de les regions veines per calcular el total
+     * de nous infectats, doncs l'he fet publica. A més, com que tenim altres llistes de enters, potser en altres
+     * ocasions també voldrem calcular el total d'aquestes.
+     */
+    public int calcular_total(List<Integer> llista) {
+    // PRE:
+    // POST:
+        int suma = 0;
+        for (int valor : llista) {
+            suma += valor;
+        }
+        return suma;
+    }
+
+
 
 
 
@@ -277,22 +294,27 @@ public class AfectacioVirusRegio {
     }
 
     /**
-     * Aquest mètode el que fa és actualitzar la llista d'infectats no contagiosos.
-     * Cada dia, s'ha d'actualitzar els infectats no contagiosos a partir de la llista de contagiosos.
-     * Pel que he entés, el que he fet és que calculo els nous infectats a partir dels contagiosos segons la probabilitat de contagi.
-     * Per cada element de la llista _contagiosos, calculo els nous infectats d'aquest grup i els sumo tots per calcular
-     * els contagis totals d'aquell dia, i els afegeixo a __infectats_no_contagiosos.
+     * Hem fet aquest mètode per a poder calcular el nombre de nous contagis (infectats no contagiosos) seguint les
+     * fórmules que ens han donat a la pràctica. Segons aquestes, per a poder calcular-los, hem de
+     * considerar els contagis interns i els contagis externs (de regions veïnes).
+     * Després agafem els valors reals (no poden ser més que el nombre de sans) i els guarda a la posició 0 (indicant que són d'aquest dia).
      */
     private void actualitzar_infectats_no_contagiosos() {
-    // Pre: la llista _contagiosos ha d'estas inicialitzada i amb valors vàlids.
+    // Pre: les llistes internes i la regió han d'estar inicialitzades i correctes.
     // Post: La llista _infectats_no_contagiosos té un nou element a la posició 0 que representa els nous infectats del dia.
     // El total d'infectats acumulat (totalInfectats) s'actualitza amb aquests nous infectats.
-        int total_infectats_avui = 0;
-        for (int i = 0; i < _contagiosos.size(); i++) {
-            total_infectats_avui = total_infectats_avui + virus.nousContagis(_contagiosos.get(i));
-        }
-        _infectats_no_contagiosos.add(0, total_infectats_avui);
-        totalInfectats = totalInfectats + total_infectats_avui;
+        int contagisInterns = calcular_contagis_interns();
+        int contagisExterns = calcular_contagis_externs();
+
+        int nous_contagis = contagisInterns + contagisExterns;
+
+        // Com que no pot haver-hi més contagis que persones sanes:
+        int sans = regio.nombreSans(virus);  // Cridem aquest mètode de la classe regió.
+        int nous_contagis_reals = Math.min(nous_contagis, sans); // si nous_contagis és superior, ens quedem amb el
+        // mínim que serà per tant el nombre de sans. Si no, ens quedem amb el nombre de contagis que ja teniem.
+
+        _infectats_no_contagiosos.add(0, nous_contagis_reals);
+        totalInfectats += nous_contagis_reals;
     }
 
 
@@ -400,6 +422,61 @@ private void actualitzar_morts() {
 
 }
 
+// MÈTODES PER A PODER CALCULAR ELS NOUS INFECTATS DEL DIA, SEGUINT ELS CONTAGIS EXTERNS I INTERNS
+
+    /**
+     * He fet aquest mètode per a calcular el nombre de contagis interns segons la fórmula que ens ha donat el profe:
+     * Contagis_int(R,V,D) = R.sans(V,D-1) * R.taxaInt() * (R.cont(V,D-1) / R.poblacio(D-1)) * V.probContagi()
+     */
+    private int calcular_contagis_interns() {
+    // PRE:
+    // POST:
+        int sans = regio.nombreSans(virus);  // Ha de tornar el nombre de persones sanes
+        double taxaInt = regio.taxaInternaContacte();
+        int contagiosos = calcular_total(_contagiosos);
+        int poblacio = regio.poblacio();
+        double probContagi = virus.taxaContagi();
+
+        double resultat_contagis_interns = sans * taxaInt * ((double) contagiosos / poblacio) * probContagi;
+
+        return (int) Math.round(resultat_contagis_interns);
+    }
+
+    /**
+     * Aquest mètode l'he fet per calcular la suma dels contagis que venen de totes les regions veïnes, les quals
+     * també poden contagiar.
+     */
+    private int calcular_contagis_externs() {
+    // PRE:
+    // POST:
+
+        int contagis_ext = 0;
+        int sans = regio.nombreSans(virus);  // Aquí tindrem el nombre de sans d'aquesta regió.
+        double probContagi = virus.taxaContagi(); // Aquí tenim la probabilitat de contagi del virus
+
+        List<Regio> veines = regio.regionsVeines(); // Així rebem una llista de totes les regions veines que
+        // podrem contagiar amb el virus present d'aquesta regio. Ara bé, hem de mirar primer que no tinguen
+        // confinament en aquetes regions, ja que sinó, no podrem contagiar-la.
+
+        for (Regio veina : veines) { // per cada una de les regions veïnes, calculo els contagiosos que tenen
+            if (!regio.hiHaConfinamentAmb(veina)) {
+                double taxaExt = regio.taxaExternaContacte(veina);
+                int contagiosos_veina = veina.nombreContagiosos(virus);
+                int poblacio_veina = veina.poblacio();
+
+                double contagis_ext_per_regio_veina = 0;
+                if (poblacio_veina != 0){
+                    contagis_ext_per_regio_veina = sans * taxaExt * ((double) contagiosos_veina / poblacio_veina) * probContagi;
+                }
+
+                contagis_ext += Math.round(contagis_ext_per_regio_veina);
+            }
+        }
+
+        return contagis_ext;
+    }
+
+
 // PER EL MÈTODE DE LES MUTACIONS
 
     /**
@@ -417,6 +494,7 @@ private void actualitzar_morts() {
         // A implementar: HAURÉ d'justar els càlculs dels nous contagis, malalts, morts, etc., tenint en compte els valors
         // actualitzats del nou virus mutat.
     }
+}
 
 
 
