@@ -129,22 +129,71 @@ public class AfectacioVirusRegio {
 
     /**
      * Aquesta funció el que fa és mirar si en el dia d'avui, es produeix una mutació del virus que afecta la regió.
-     * Això ho fem a partir dels paràmetres actuals i de l'estat de la simulació. Si es fa una
-     * mutació, llavors trobem el nou virus (utilitzant els mètodes que he fet de la classe Virus)
-     * i llavors actualitzarem l'estat de la regió amb els nous paràmetres del virus mutat.
+     * Ho fem a partir de la fórmula que ens han donat a l'annex. En cas que sí que hi hagi mutació, es calcula el
+     * nou virus mutat, i s'actualitza l'afectació de la regió per aquest nou virus.
      */
-    public void comprovarMutacio() {
-        // Pre:
-        // Post:
+    public void comprovarMutacioErrorCopia() {
+        // Pre: virus ha de ser un objecte vàlid. El sistema ha d'estar en el moment d'avançar un dia (estat actual).
+        // Post: Si hi ha mutació, es crea un nou virus i es passa a afectar la regió amb aquest nou virus.
+        // Si no hi ha mutació, no es fa res i el virus continua sent el mateix.
 
-        Virus virus_mutat = virus.mutacio(); // pot ser el mateix (si no hi ha mutació) o un de nou
+        // Els virus que no són ARN no poden mutar per error de còpia
+        if (!(virus instanceof VirusARN)) return;
 
-        // Si el virus ha mutat, cal actualitzar-lo a la regió
-        if (virus_mutat.haMutat(virus)) {
-                (virus_mutat);
-                actualitzar_estat_despres_de_mutacio(virus_mutat)
+        VirusARN virusARN = (VirusARN) virus;
+
+        // --------------------------- Primer calculem el nombre de nous contagis d’avui ----------------------------
+
+        // Ens basem en els nous infectats afegits avui a la posició 0 del vector d’infectats
+
+        int nousContagis  = 0;
+
+        if (!_infectats_no_contagiosos.isEmpty()){
+            nousContagis = _infectats_no_contagiosos.get(0);
         }
+
+        // Si no hi ha hagut contagis, no pot haver-hi mutació per error de còpia
+        if (nousContagis == 0) {
+            return;
+        }
+
+        // --------------------------- Calculem la probabilitat de mutació  --------------------
+
+        double tm = virusARN.probabilitatMutacioErrorCopia();
+        double pm = tm * nousContagis;
+
+        // Si és major a 1, doncs llavors le fixem a 1 (ja que els nums aleatoris que generarem van de 0 a 1)
+        if (pm > 1.0) {
+            pm = 1.0;
+        }
+
+        // --------------------------- Generarem un nombre aleatori entre 0 i 1. ---------------------------
+
+        double aleatori = Math.random();  // num aleatori entre 0 i 1
+        if (aleatori > pm) {
+            return;
+        }
+
+        // Si es produeix la mutació, llavors ara creem el nou virus. Anomenem Vnou a aquest nou virus.
+        VirusARN Vnou = virusARN.mutacio();
+
+        // --------------------------- Calculem quantes infeccions passen al nou virus -----------------------
+
+        // Aquest nou virus Vnou substituirà a V en un pm(V,D)*100 % dels nous contagis de V
+
+        int nousContagisMutats = (int) Math.round(pm * nousContagis); // nombre de contagis que muten
+        int nousContagisRestants = nousContagis - nousContagisMutats; // perquè clar, els nous contagis
+        // del nou virus substitueixen els del virus que hi havia, per tant, hem de restar-los al que hi havien
+
+        // --------------------------- Canviem ara les dades de la regió -------------------------------------
+
+        // Reduim els contagis del virus original que hi havia a la regió.
+        _infectats_no_contagiosos.set(0, nousContagisRestants);  // reduïm els que corresponen al virus original
+
+        // Ara, ve el pas en que hem de crear una nova afectació per aquest nou virus.
+        regio.afegirNovaAfectacio(Vnou, nousContagisMutats);
     }
+
 
 
 
@@ -368,7 +417,7 @@ private void actualitzar_morts() {
         // A implementar: HAURÉ d'justar els càlculs dels nous contagis, malalts, morts, etc., tenint en compte els valors
         // actualitzats del nou virus mutat.
     }
-}
+
 
 
 
