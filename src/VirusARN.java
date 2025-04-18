@@ -80,16 +80,6 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
         // El nom d'aquest nou virus serà el nom del virus que muta però amb un número correlatiu que indiqui el número
         // de vegades que ha mutat.
 
-        // Generem un número aleatori entre 0 i 1 per decidir si es produeix la mutació
-        double num_aleatori = Math.random();
-
-        // Sortejo un número entre 0 i 1 i, si és menor a la probabilitat, es produeix la mutació. Ara bé, si és
-        // major que la probabilitat, llavors no es produeix i retornem this. Això és perquè, si la prob és baixa
-        // la probabilitat que el número aleatori sigui menor també serà baixa. En canvi, si la prob és alta,
-        // la probabilitat de ser menor també augmenta.
-        if (num_aleatori > pMutEC) {
-            return this; // No hi ha mutació, retornem el mateix virus.
-        }
 
         int maximVariacio = this.familia().tpcMax();  // Primer de tot, hem de saber el tant per cent màxim (tpc_max)
         // de variació, el qual és una característica de la família del virus (cridem el seu mètode).
