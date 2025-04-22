@@ -36,20 +36,26 @@ public class AfectacioVirusRegio {
     private List<Integer> _malalts;     // nombre de malalts a cada dia de la infecció
     private List<Integer> _immunes;     // nombre d'inmunes a cada dia de la infecció
     private List<Integer> _contagiosos; // nombre de contagiosos a cada dia de la infecció
-
+    // ANOTACIÓ 1 -> JA ESTÀ BÉ AIXÍ, NOMÉS FAIG NOTAR Q AMB UNA ÚNICA LLISTA D'INFECTATS EN FARIES PROU, JA QUE ES POT 
+    //               DEDUIR QUINS SÓN ELS DIES EN QUÈ HI HA ELS CONTAGIOSOS !
     // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
     //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
-
+    // ANOTACIÓ 2 -> EFECTIVAMENT, HI PODRIA HAVER UNA LLISTA TAN LLARGA COM LA DURADA DE LA MALALTIA, QUE INDIQUÉS,
+    //               A LA POSICIÓ k, EL NOMBRE DE MORTS QUE ES PRODUEIXEN "AVUI" ENTRE ELS QUE ES TROBEN 
+    //               AL DIA k+1-ÈSSIM DE MALALTIA (A LA POS. 0, ELS Q MOREN ENTRE ELS DEL 1R DIA DE MALALTIA, ETC.)
 
     // Estadístiques que hem d'anar acumulant
     private int totalMalalts;     // Total de persones que han estat malaltes al llarg de la malaltia
     private int totalMorts;       // Total de persones mortes al llarg de la malaltia
-    private int totalContagis;    // Total de contagis que s'han fet al llarg de la malaltia
+    private int totalContagis;    // Total de contagis que s'han fet al llarg de la malaltia 
+    // ANOTACIÓ 3 -> TOTAL CONTAGIS NO CAL, ÉS EL MATEIX QUE TOTAL INFECTATS !
     private int totalInfectats;   // Total de persones que s'han infectat al llarg de la malaltia
 
     // Altres coses que he de controlar
     private List<Integer> mortsDiaries;  // Aquest vector l'he fet per saber les morts que s'espera tenir cada
     // dia
+    // ANOTACIÓ 4 -> AIXÒ ÉS EL DE L'ANOTACIÓ 2, APROX. 
+    
 
 // ---------------------------------------------- MÈTODES PÚBLICS ------------------------------------------------------------------
 
@@ -77,7 +83,7 @@ public class AfectacioVirusRegio {
         // Inicialitzem les estadístiques acumulades
         totalMalalts = 0;
         totalMorts = 0;
-        totalContagis = 0;
+        totalContagis = 0; // ANOTACIÓ 5 -> POTS ELIMINAR AQUEST ATRIBUT, NO ÉS RELLEVANT
         totalInfectats = numero_infectats;
 
         // Inicialitzem els infectats actuals a partir del número d'infectats que es passa com a paràmetre
@@ -109,7 +115,9 @@ public class AfectacioVirusRegio {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
             _contagiosos.add(0, nous_contagiosos);
-            totalContagis = totalContagis + nous_contagiosos;
+            totalContagis = totalContagis + nous_contagiosos; // NO CALDRIA
+
+        // 
 
         // -------------------- Actualitzo els malalts --------------------
         actualitzar_malalts();  // He decidit fer-ho també amb un mètode privat perquè així tingui menys codi la funció i s'entengui més.
@@ -122,6 +130,7 @@ public class AfectacioVirusRegio {
 
         // -------------- Calculem nous infectats a partir dels contagiosos -------------------------------------------
         actualitzar_infectats_no_contagiosos();
+        // ANOTACIÓ 5 -> PENSA SI S'HAURIA DE COMENÇAR PER AIXÒ. HO FAS TOT RESPECTE L'ESTAT DEL DIA ANTERIOR ?
 
     }
 
@@ -139,13 +148,15 @@ public class AfectacioVirusRegio {
 
         // Els virus que no són ARN no poden mutar per error de còpia
         if (!(virus instanceof VirusARN)) return;
+        // ANOTACIÓ 6 -> SI POGUESSIS EVITAR L'ÚS D'instanceof...
 
         VirusARN virusARN = (VirusARN) virus;
 
         // --------------------------- Primer calculem el nombre de nous contagis d’avui ----------------------------
 
         // Ens basem en els nous infectats afegits avui a la posició 0 del vector d’infectats
-
+        // ANOTACIÓ 7 --> ATENCIÓ AQUÍ: A LA MUTACIÓ PER EC, COMPTEN ELS NOUS INFECTATS, PERÒ NO NOMÉS D'UNA REGIÓ, SINÓ
+        //                LA SUMA DE TOTES !
         int nousContagis  = 0;
 
         if (!_infectats_no_contagiosos.isEmpty()){
@@ -232,6 +243,9 @@ public class AfectacioVirusRegio {
 
         if (!_contagiosos.isEmpty() & _contagiosos.get(0) > 0) {
             int malalts_avui = virus.nousMalalts(_contagiosos.get(0));
+            // ANOTACIÓ 8 -> ÍRIA, D'UNA BANDA, JO NO CALCULARIA ELS NOUS MALALTS A LA CLASSE VIRUS. HO FARIA EN AQUESTA CLASSE,
+            //               DEMANANT A VIRUS LA PROB. D'EMMALALTIR. D'ALTRA BANDA, NO ENTENC PQ HO FAS A PARTIR DELS CONTAGIOSOS DE 
+            //               PRIMER DIA... AIXÒ NO TÉ RES A VEURE !
             _malalts.add(0, malalts_avui);
             totalMalalts = totalMalalts + malalts_avui;
         } else {
@@ -269,7 +283,10 @@ public class AfectacioVirusRegio {
         // Si la llista de _immunes te més dies registrats que el temps de immunitat, llavors vol dir
         // que els immunes del primer dia registrat ja han passat suficient temps, i ja deixen de ser inmunes. Per tant
         // s'eliminen de la llista _immunes.
-
+        // ANOTACIÓ 9 --> JO CREC QUE , SUPOSANT QUE CADA DIA VAS DESPLAÇANT A DRETA ELS INFECTATS, I HI VAS RESTANT ELS MORTS DE CADA FASE
+        //                DE LA INFECCIÓ, SI DEIXES PER AL FINAL EL TEMA IMMUNES, TOT ES REDUIRÀ A GUARDAR EN UNA VARIABLE EL NOMBRE 
+        //                D'INFECTATS QUE PASSEN A CURATS (MIRA ELS EXEMPLES DEL FULL DE FÓRMULES). AQUEST NOMBRE SERAN ELS Q ENTRARAN 
+        //                A LA POS.0 D'IMMUNES, DESPLAÇANT TOTS CAP A LA DRETA, SIMPLEMENT (I ELIMINANT-NE ELS DARRERS)
         int temps_contagi = virus.tempsContagi();
 
         if (_contagiosos.size() == temps_contagi & _malalts.size() == temps_contagi & mortsDiaries.size() == temps_contagi) {
@@ -353,6 +370,7 @@ public class AfectacioVirusRegio {
 
         // Calculem quantes morts haurien d'afegir-se cada dia durant el període de contagi
         int morts_cada_dia = mort_en_tot_periode / temps_contagi;
+        // ANOTACIÓ 10 -> COMPTE: S'HAURIA DE DIVIDIR PEL TEMPS DE MALALTIA, NO PEL DE CONTAGI !!!! 
         // int falten_repartir = mort_en_tot_periode % temps_contagi; (no ser com implementar-ho)
 
         // Omplim el vector mortsDiaries amb els nous morts d'aquest grup
@@ -409,6 +427,7 @@ private void actualitzar_morts() {
         // Apliquem les morts als malalts i contagiosos.
         _malalts.set(i, malalts - morts);
         _contagiosos.set(i, contagiosos - morts);
+        // ANOTACIÓ 11 -> FAS COM SI AQUESTS DOS VECTORS TINGUESSIN LA MATEIXA LLARGADA, I NO TÉ PQ 
 
         // Actualitzem el total de morts acumulat
         total_morts_avui = total_morts_avui + morts;
