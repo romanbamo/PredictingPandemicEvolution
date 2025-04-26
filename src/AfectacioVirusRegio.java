@@ -50,7 +50,7 @@ public class AfectacioVirusRegio {
     private List<Integer> mortsDiaries;  // Aquest vector l'he fet per saber les morts que s'espera tenir cada
     // dia
 
-// ---------------------------------------------- MÈTODES PÚBLICS ------------------------------------------------------------------
+// ----------------------------------------------- MÈTODES PÚBLICS ------------------------------------------------------------------
 
     /**
      * Constructor de la classe AfectacioVirusRegio.
