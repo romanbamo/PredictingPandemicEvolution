@@ -44,7 +44,6 @@ public class AfectacioVirusRegio {
     // Estadístiques que hem d'anar acumulant
     private int totalMalalts;     // Total de persones que han estat malaltes al llarg de la malaltia
     private int totalMorts;       // Total de persones mortes al llarg de la malaltia
-    private int totalContagis;    // Total de contagis que s'han fet al llarg de la malaltia
     private int totalInfectats;   // Total de persones que s'han infectat al llarg de la malaltia
 
     // Altres coses que he de controlar
@@ -77,7 +76,6 @@ public class AfectacioVirusRegio {
         // Inicialitzem les estadístiques acumulades
         totalMalalts = 0;
         totalMorts = 0;
-        totalContagis = 0;
         totalInfectats = numero_infectats;
 
         // Inicialitzem els infectats actuals a partir del número d'infectats que es passa com a paràmetre
@@ -102,14 +100,13 @@ public class AfectacioVirusRegio {
         // i els elements que ja estaven es desplacen una posició cap a la dreta.
         // Posició 0: Avui (els nous contagiosos que acabem de calcular), Posició 1: Ahir, Posició 2: Abans d'ahir (i així successivament...).
 
-        int temps_no_pot_cotagiar = virus.tempsLatencia();
+        int temps_no_pot_contagiar = virus.tempsLatencia();
         int nous_contagiosos = 0;
         // Perquè un infectat pugui començar a contagiar, ha hagut de passar el temps de latència
-        if (_infectats_no_contagiosos.size() == temps_no_pot_cotagiar) {
+        if (_infectats_no_contagiosos.size() == temps_no_pot_contagiar) {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
             _contagiosos.add(0, nous_contagiosos);
-            totalContagis = totalContagis + nous_contagiosos;
 
         // -------------------- Actualitzo els malalts --------------------
         actualitzar_malalts();  // He decidit fer-ho també amb un mètode privat perquè així tingui menys codi la funció i s'entengui més.
@@ -223,7 +220,9 @@ public class AfectacioVirusRegio {
 
     /**
      * Actualitza la llista de malalts segons la probabilitat que una persona infectada amb el virus desenvolupi la malaltia.
-     * Dels nous contagiosos, una certa part, passarà a estar malalta.
+     * Segons la fòrmula: Nous_malalts(R,V,D) = R.inf(V,D-1)[V.I()] * V.probMalalt()
+     * Això vol dir que mirem el grup d'infectats que es troben al final del període d’incubació,
+     * i calculem quants d’ells es posen malalts segons la probabilitat de desenvolupar la malaltia.
      */
     private void actualitzar_malalts() {
     // Pre: La llista _contagiosos ha d'estar inicialitzada i tenir almenys un element.
@@ -231,7 +230,10 @@ public class AfectacioVirusRegio {
     // El total de malalts acumulats s'actualitza amb la suma d'aquests nous malalts
 
         if (!_contagiosos.isEmpty() & _contagiosos.get(0) > 0) {
-            int malalts_avui = virus.nousMalalts(_contagiosos.get(0));
+            // Calculem els nous malalts, i necessitem demanar a virus la prob. d'emmalaltir.
+            double prob_emmalaltir = virus.probDesenvoluparMalaltia();
+            double nous_malalts_sense_arrodonir = _contagiosos.get(0) * prob_emmalaltir;
+            int malalts_avui = (int) Math.round(nous_malalts_sense_arrodonir);
             _malalts.add(0, malalts_avui);
             totalMalalts = totalMalalts + malalts_avui;
         } else {
@@ -351,7 +353,7 @@ public class AfectacioVirusRegio {
         // Calculem el nombre total de morts esperades
         int mort_en_tot_periode = morts_totals(nous_malalts);
 
-        // Calculem quantes morts haurien d'afegir-se cada dia durant el període de contagi
+        // Calculem quantes morts haurien d'afegir-se cada dia durant el període de la malaltia
         int morts_cada_dia = mort_en_tot_periode / temps_contagi;
         // int falten_repartir = mort_en_tot_periode % temps_contagi; (no ser com implementar-ho)
 
@@ -437,9 +439,13 @@ private void actualitzar_morts() {
         int poblacio = regio.poblacio();
         double probContagi = virus.taxaContagi();
 
-        double resultat_contagis_interns = sans * taxaInt * ((double) contagiosos / poblacio) * probContagi;
-
-        return (int) Math.round(resultat_contagis_interns);
+        if (poblacio == 0){ // bàsicament he fet això per evitar errors, perquè no dividim per 0
+            return 0;
+        }
+        else {
+            double resultat_contagis_interns = sans * taxaInt * ((double) contagiosos / poblacio) * probContagi;
+            return (int) Math.round(resultat_contagis_interns);
+        }
     }
 
     /**
@@ -491,13 +497,4 @@ private void actualitzar_morts() {
     // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
     // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.
 
-        // A implementar: HAURÉ d'justar els càlculs dels nous contagis, malalts, morts, etc., tenint en compte els valors
-        // actualitzats del nou virus mutat.
-    }
-}
-
-
-
-
-
-
+        // A implementar: 
