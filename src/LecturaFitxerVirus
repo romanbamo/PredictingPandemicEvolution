@@ -16,3 +16,24 @@ public class lecturaFitxerVirus extends Lectura {
     
         Map<String, Familia> families = new HashMap<>();
         List<String> linies = llegirLinies();
+
+        for (String liniaOriginal : linies) {
+            String linia = liniaOriginal.trim();
+        
+            if (linia.equals("virus")) {
+                break;
+            }
+        
+            if (linia.startsWith("nom")) {
+                String[] parts = linia.split("\\s+"); // Separem per espais
+        
+                if (parts.length >= 4) {
+                    String nom = parts[1];
+                    double tpc = Double.parseDouble(parts[2]);
+                    double prob = Double.parseDouble(parts[3]);
+        
+                    families.put(nom, new Familia(nom, prob, tpc));
+                }
+            }
+        }
+        return families;
