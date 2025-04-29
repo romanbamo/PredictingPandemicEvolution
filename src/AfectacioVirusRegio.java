@@ -229,10 +229,14 @@ public class AfectacioVirusRegio {
     // Post: El nombre de nous malalts calculats per avui s'afegeix a la llista _malalts en la posició 0.
     // El total de malalts acumulats s'actualitza amb la suma d'aquests nous malalts
 
-        if (!_contagiosos.isEmpty() & _contagiosos.get(0) > 0) {
+        int dies_per_emmalaltir = virus.tempsContagiSenseSintomes();  // T_inc - T_lat
+        int nous_malalts = 0;
+
+        if (_contagiosos.size() > dies_per_emmalaltir) {
             // Calculem els nous malalts, i necessitem demanar a virus la prob. d'emmalaltir.
             double prob_emmalaltir = virus.probDesenvoluparMalaltia();
-            double nous_malalts_sense_arrodonir = _contagiosos.get(0) * prob_emmalaltir;
+            int contagiosos_final_t_incubacio = _contagiosos.get(dies_per_emmalaltir);
+            double nous_malalts_sense_arrodonir = contagiosos_final_t_incubacio * prob_emmalaltir;
             int malalts_avui = (int) Math.round(nous_malalts_sense_arrodonir);
             _malalts.add(0, malalts_avui);
             totalMalalts = totalMalalts + malalts_avui;
@@ -273,8 +277,9 @@ public class AfectacioVirusRegio {
         // s'eliminen de la llista _immunes.
 
         int temps_contagi = virus.tempsContagi();
+        int temps_malaltia = virus.tempsMalaltia();
 
-        if (_contagiosos.size() == temps_contagi & _malalts.size() == temps_contagi & mortsDiaries.size() == temps_contagi) {
+        if (_contagiosos.size() == temps_contagi & _malalts.size() == temps_malaltia & mortsDiaries.size() == temps_malaltia) {
             int nous_immunes = _contagiosos.get(_contagiosos.size() - 1); // Aquests són els contagiosos que haurien de passar a immunes.
 
             _malalts.remove(_malalts.size() - 1); // Eliminem aquest grup de la llista de malalts perquè ja han passat a ser immunes (els que no han mort).
@@ -348,14 +353,19 @@ public class AfectacioVirusRegio {
         // Pre: El nombre de nous malalts ha de ser positiu, i la taxa de mortalitat del virus ha d'estar entre 0 i 1.
         // Post: Es calcula el nombre de morts esperades per aquests nous malalts i s'afegeixen al vector `mortsDiaries`.
 
-        int temps_contagi = virus.tempsContagi();
+        if (nous_malalts == 0) {
+            mortsDiaries.add(0, 0);
+            return;
+        }
+
+        int temps_malaltia = virus.tempsMalaltia();
 
         // Calculem el nombre total de morts esperades
         int mort_en_tot_periode = morts_totals(nous_malalts);
 
         // Calculem quantes morts haurien d'afegir-se cada dia durant el període de la malaltia
-        int morts_cada_dia = mort_en_tot_periode / temps_contagi;
-        // int falten_repartir = mort_en_tot_periode % temps_contagi; (no ser com implementar-ho)
+        int morts_cada_dia = mort_en_tot_periode / temps_malaltia;
+        // int falten_repartir = mort_en_tot_periode % temps_malaltia; (no ser com implementar-ho)
 
         // Omplim el vector mortsDiaries amb els nous morts d'aquest grup
         mortsDiaries.add(0, morts_cada_dia);
@@ -406,11 +416,13 @@ private void actualitzar_morts() {
 
         // Restem aquestes morts dels malalts i dels contagiosos del mateix dia (posició 0)
         int malalts = _malalts.get(i);
-        int contagiosos = _contagiosos.get(i);
+        int temps_contagi_sense_sintomes = virus.tempsContagiSenseSintomes();
+        int posicio_contagiosos = i + temps_contagi_sense_sintomes;
+        int contagiosos = _contagiosos.get(posicio_contagiosos);
 
         // Apliquem les morts als malalts i contagiosos.
         _malalts.set(i, malalts - morts);
-        _contagiosos.set(i, contagiosos - morts);
+        _contagiosos.set(posicio_contagiosos, contagiosos - morts);
 
         // Actualitzem el total de morts acumulat
         total_morts_avui = total_morts_avui + morts;

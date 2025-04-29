@@ -196,6 +196,36 @@ public abstract class Virus {
 
 
 
+
+    /**
+     * He fet aquest mètode per a calcular el temps de la malaltia com a:
+     * T_malaltia = T_lat + T_contagi - T_incubacio
+     * Això representa el temps entre que la persona es posa malalta fins que deixa d'estar malalta (es cura o mor).
+     * Perquè jo m'entengui, basicament és el temps en que està malalta la persona, és a dir, el contagi dura X temps
+     * però clar, d'aquest temps hi pot haver uns dies on la persona si que contagia però NO te sintomes, ja que ens
+     * trobem en una situació on el temps d'incubació (temps fins q aparèixen sintomes) és major al temps de latència (temps que passa fins que comença a contagiar).
+     *
+     */
+    public int tempsMalaltia() {
+        // Pre: Els temps de latència, contagi i incubació han d'estar ben definits (≥ 0).
+        // Post: Retornem la durada del període de malaltia.
+        int durada = tLat + tCon - tInc;a:
+        return durada;
+    }
+
+    /**
+     * He fet aquest mètode per a calcular el temps en que és contagios però encara no te sintomas:
+     * T_contagi_sense_sintomes = T_incubacio - T_lat
+     */
+    public int tempsContagiSenseSintomes() {
+        // Pre: Els temps de latència i incubació han d'estar ben definits (≥ 0).
+        // Post: Retornem el temps que és contagios però encara no té sintomes.
+        int durada = tInc - tLat;
+        return durada;
+    }
+
+
+
 /** Explicació: He afegit dos metodes abstractes a la classe Virus que son de mutar.
  Aquests, hem fet una sobrecarrega, de manera que si passem per paràmetre un atribut,
  llavors es fa una, i si en passem dos, es fa un altre. L'hem escrit aquí, ja que com se'ns ha dit
