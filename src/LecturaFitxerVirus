@@ -37,3 +37,22 @@ public class lecturaFitxerVirus extends Lectura {
             }
         }
         return families;
+
+        public Map<String, Virus> carregarVirus(Map<String, Familia> families) {
+            /**
+     * Precondició: El fitxer que es llegeix està ben format.
+     * Postcondició: Retorna un mapa on la clau és el nom del virus i el valor és un objecte Virus,
+     * que pot ser una instància de Virus_ADN o Virus_ARN, segons les dades del fitxer.
+     * Com a resultat, es generen correctament tots els virus definits al fitxer.
+     */
+            Map<String, Virus> virusMap = new HashMap<>();
+            List<String> linies = llegirLinies();
+        
+            boolean processant = false;
+            String nom = null, tipus = null, nomFamilia = null;
+            double p_malaltia = 0, p_mortalitat = 0, p_Contagi = 0, t_Contagi = 0, p_Mutacio = 0;
+            int t_incubacio = 0, t_latencia = 0, t_immunitat = 0;
+        
+        
+    
+        
