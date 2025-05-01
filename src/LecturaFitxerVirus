@@ -50,7 +50,7 @@ public class lecturaFitxerVirus extends Lectura {
         
             boolean processant = false;
             String nom = null, tipus = null, nomFamilia = null;
-            double p_malaltia = 0, p_mortalitat = 0, p_Contagi = 0, t_Contagi = 0, p_Mutacio = 0;
+            double p_malaltia = 0, p_mortalitat = 0, p_contagi = 0, t_contagi = 0, p_mutacio = 0;
             int t_incubacio = 0, t_latencia = 0, t_immunitat = 0;
             for(int i = 0; i < linies.size(); i++) {
                 String linia = linies.get(i).trim();
@@ -59,9 +59,22 @@ public class lecturaFitxerVirus extends Lectura {
                     continue;
                 } 
                 if(llegintVirus || linia.isEmpty() || linia.startsWith("#")) continue;
-                if(linia.startsWith("Nom ")) nom = linia.substring(4).trim();
-                else if(linia.startsWith("Tipus ")) tipus = linia.substring(6).trim();
-                else if(linia.startsWith("Familia ")) nomFamilia = linia.substring(8).trim();
+                if(linia.startsWith("NOM ")) nom = linia.substring(4).trim();
+                else if(linia.startsWith("TIPUS ")) tipus = linia.substring(6).trim();
+                else if(linia.startsWith("FAMILIA ")) nomFamilia = linia.substring(8).trim();
+                else if(linia.startsWith("MORTALITAT ")) p_mortalitat = Double.parseDouble(linia.substring(11).trim());
+                else if(linia.startsWith("PROBABILITAT MALALTIA")) p_malaltia = Double.parseDouble(linia.substring(14).trim());
+                else if(linia.startsWith("INCUBACIO ")) t_incubacio = Integer.parseInt(linia.substring(10).trim());
+                else if(linia.startsWith("LATENCIA ")) t_latencia = Integer.parseInt(linia.substring(9).trim());
+                else if(linia.startsWith("DURACIO CONTAGI ")) t_contagi = Double.parseDouble(linia.substring(15).trim());
+                else if(linia.startsWith("DURACIO IMMUNITAT")) t_immunitat = Integer.parseInt(linia.substring(17).trim());
+                
+                else if(linia.startsWith("TAXA CONTAGI ")) p_contagi = Double.parseDouble(linia.substring(13).trim());
+                else if(linia.startsWith("PROBABILITAT DE MUTACIO ")) p_mutacio = Double.parseDouble(linia.substring(19).trim());
+                else if(linia.equals("*")) {
+                    Familia f = families.get(nomFamilia);
+                    Virus v;
+    
         
         
     
