@@ -52,6 +52,16 @@ public class lecturaFitxerVirus extends Lectura {
             String nom = null, tipus = null, nomFamilia = null;
             double p_malaltia = 0, p_mortalitat = 0, p_Contagi = 0, t_Contagi = 0, p_Mutacio = 0;
             int t_incubacio = 0, t_latencia = 0, t_immunitat = 0;
+            for(int i = 0; i < linies.size(); i++) {
+                String linia = linies.get(i).trim();
+                if(linia.equals("virus")) {
+                    llegintVirus = true;
+                    continue;
+                } 
+                if(llegintVirus || linia.isEmpty() || linia.startsWith("#")) continue;
+                if(linia.startsWith("Nom ")) nom = linia.substring(4).trim();
+                else if(linia.startsWith("Tipus ")) tipus = linia.substring(6).trim();
+                else if(linia.startsWith("Familia ")) nomFamilia = linia.substring(8).trim();
         
         
     
