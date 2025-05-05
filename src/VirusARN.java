@@ -146,12 +146,7 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
         double prob_Mut2E = this.familia().probMutacioCoincidencia();
         double num_aleatori = Math.random();
 
-        // Sortejo un número entre 0 i 1 i, si és menor a la probabilitat, es produeix la mutació. Ara bé, si és
-        // major que la probabilitat, llavors no es produeix i retornem this. Això és perquè, si la prob és baixa
-        //, la prob de que sigui un num menor serà molt petita. En canvi, si la prob és alta, abarca una gran quantitat
-        // de nombres que són menors, i per tant, la prob tb augmenta.
-
-        if !(B instanceof VirusARN){
+        if (!(B instanceof VirusARN)){
             throw new IllegalArgumentException("Hi ha un virus que no és ARN, problema");
         }
 
@@ -265,7 +260,7 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
 
         int total_valors = 2 * tpcMax + 1;  // Nombre total de valors possibles (-tpcMax fins a +tpcMax)
         double num_aleatori = Math.random();  // Calculem un num aleatori entre 0 i 1
-        int num_aleatori_dins_possibilitats = (int) num_aleatori * total_valors;  // Valor entre 0 i (2*tpcMax + 1)
+        int num_aleatori_dins_possibilitats = (int) (num_aleatori * total_valors);  // Valor entre 0 i (2*tpcMax + 1)
         int tpc_final = num_aleatori_dins_possibilitats - tpcMax;  // Movem el tpc perquè ha d'anar d'entre
         // -tpcMax fins a +tpcMax, i teniem de 0 a (2*tpcMax + 1)
 

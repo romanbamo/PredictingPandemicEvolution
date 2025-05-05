@@ -122,7 +122,9 @@ public class AfectacioVirusRegio {
 
     }
 
-    // Mètodes per gestionar el tema de les mutacions (FALTAA implementar-los)
+    // MÈTODES PER FER TOT LO DE LES MUTACIONS
+
+    // mutacio per error de còpia
 
     /**
      * Aquesta funció el que fa és mirar si en el dia d'avui, es produeix una mutació del virus que afecta la regió.
@@ -191,22 +193,58 @@ public class AfectacioVirusRegio {
         regio.afegirNovaAfectacio(Vnou, nousContagisMutats);
     }
 
+    // mutacio per coincidència
+
+// De tots els virus que es troben en una mateixa regió, primer cal fer parelles dos a dos. Ara bé, perquè
+// es pugui donar aquest tipus de mutació, és molt important veure que realment formen part de la mateixa família.
+
     /**
-     * Aquesta funció fa la suma total dels valors d'una llista. L'he fet per a calcular el total de les llistes
-     * que tenim. Per exemple, com que necessitem el total de contagiosos de les regions veines per calcular el total
-     * de nous infectats, doncs l'he fet publica. A més, com que tenim altres llistes de enters, potser en altres
-     * ocasions també voldrem calcular el total d'aquestes.
+     * Aquest mètode l'he fet basicament per poder, després d’actualitzar l’estat del virus en aquesta regió, comprovar
+     * si es pot produir una mutació per coincidència. Ara bé, aquest càlcul no depèn només d’aquest virus,
+     * sinó de totes les afectacions d’aquesta regió. Per això, cridem una funció implementada en
+     * la classe Regio.
      */
-    public int calcular_total(List<Integer> llista) {
-    // PRE:
-    // POST:
-        int suma = 0;
-        for (int valor : llista) {
-            suma += valor;
-        }
-        return suma;
+
+    public void HihaMutacioCoincidencia() {
+        // Pre:
+        // Post: es comprova si hi ha mutacions per coincidència dins de la regió
+        regio.comprovarMutacionsPerCoincidencia();
     }
 
+
+    // ALTRES MÈTODES QUE NECESSITEM (Que ens els crida la classe regió)
+
+
+    /**
+     * Aquesta funció l'he fet per poder saber el nombre total de persones que hi ha a la regió i que són contagioses
+     * per aquest virus concret. És a dir, com que tenim un histograma de contagiosos (una llista que ens diu quants contagiosos
+     * nous hi ha a cada dia de la infecció), el que faig és sumar tots aquests per saber el total de contagiosos actuals.
+     *
+     * Aquesta funció es cridarà des de la classe Regio, i l'he necessitat per poder fer servir
+     * les fórmules de contagis interns i externs que hi ha en el formulari. Si és d'aquest virus, no cal cridar-la,
+     * però si per exemple volem els contagiosos d'un altre virus de la regió, doncs clar, només la classe regió
+     * sap totes les afectacions que hi ha en ella, per tant hem de mirar primer quina afectacio és la que correspon
+     * a aquest virus, i després ja determinar a partir d'aquesta afectació, el nombre de contagiosos.
+     */
+    public int nombreContagiosos(){
+    // PRE: La llista _contagiosos ha d'estar inicialitzada correctament.
+    // POST: Retorna la suma total de contagiosos que hi ha en un dia concret (és la suma dels valors de la llista _contagiosos).
+        return calcular_total(_contagiosos);
+    }
+
+
+    /**
+     * Aquesta funció simplement l'hem fet perquè, en una regió, sabem totes les afectacions que té, però
+     * en molts casos necessitem saber quin virus està associat a aquesta afectació (la regió ja la sabrem perquè
+     * seràn afectacions propies d'aquesta). Per tant, necessitem doncs un mètode que ens retorni el Virus associat,
+     * i així doncs podrem veure quins virus estan presents, quins no, podem fer les fòrmules de la mutació per
+     * coincidència...
+     */
+    public Virus quinVirusHiHa(){
+    // PRE: L’atribut virus ha d’haver estat inicialitzat en el constructor (no pot ser que sigui null).
+    // POST: Retornem el virus propi d'aquesta afectació.
+        return virus;
+    }
 
 
 
@@ -232,7 +270,7 @@ public class AfectacioVirusRegio {
         int dies_per_emmalaltir = virus.tempsContagiSenseSintomes();  // T_inc - T_lat
         int nous_malalts = 0;
 
-        if (_contagiosos.size() > dies_per_emmalaltir) {
+        if (_contagiosos.size() >= dies_per_emmalaltir) {
             // Calculem els nous malalts, i necessitem demanar a virus la prob. d'emmalaltir.
             double prob_emmalaltir = virus.probDesenvoluparMalaltia();
             int contagiosos_final_t_incubacio = _contagiosos.get(dies_per_emmalaltir);
@@ -463,10 +501,13 @@ private void actualitzar_morts() {
     /**
      * Aquest mètode l'he fet per calcular la suma dels contagis que venen de totes les regions veïnes, les quals
      * també poden contagiar.
+     *
+     * Quan una regió veïna ja té el virus: Sí, sumem nous contagis externs (a la teva regió). Aquests sí que compten al contagis_ext.
+     * Quan una regió veïna encara NO té el virus: NO sumem res al teu contagis_ext. El que fem és crear una nova afectació a aquella regió. Però no afecta el nombre de nous infectats de la teva regió avui.
      */
     private int calcular_contagis_externs() {
-    // PRE:
-    // POST:
+        // PRE:
+        // POST:
 
         int contagis_ext = 0;
         int sans = regio.nombreSans(virus);  // Aquí tindrem el nombre de sans d'aquesta regió.
@@ -479,19 +520,40 @@ private void actualitzar_morts() {
         for (Regio veina : veines) { // per cada una de les regions veïnes, calculo els contagiosos que tenen
             if (!regio.hiHaConfinamentAmb(veina)) {
                 double taxaExt = regio.taxaExternaContacte(veina);
-                int contagiosos_veina = veina.nombreContagiosos(virus);
                 int poblacio_veina = veina.poblacio();
 
-                double contagis_ext_per_regio_veina = 0;
-                if (poblacio_veina != 0){
-                    contagis_ext_per_regio_veina = sans * taxaExt * ((double) contagiosos_veina / poblacio_veina) * probContagi;
-                }
+                if (poblacio_veina == 0) continue;
 
-                contagis_ext += Math.round(contagis_ext_per_regio_veina);
+                if (veina.teAfectacio(virus)) {
+                    // Si la regió veïna ja té el virus, sumem normal
+                    int contagiosos_veina = veina.nombreContagiosos(virus);
+
+                    double contagis_ext_per_regio = sans * taxaExt * ((double) contagiosos_veina / poblacio_veina) * probContagi;
+                    contagis_ext = contagis_ext + Math.round(contagis_ext_per_regio);
+
+                } else {
+                    // Si la regió veïna NO té aquest virus, segons la fòrmula podem seguir contagiant i llavors
+                    // és necessari crear una nova afectació
+                    int contagiosos_en_aquesta = calcular_total(_contagiosos);
+                    double nous_contagis_externs = veina.poblacio() * taxaExt * ((double) contagiosos_en_aquesta / regio.poblacio()) * probContagi;
+                    int nous_contagis_redondejat = (int) Math.round(nous_contagis_externs);
+
+                    if (nous_contagis_redondejat > 0) {
+                        veina.afegirNovaAfectacio(virus, nous_contagis_redondejat);
+                    }
+
+                }
             }
         }
 
         return contagis_ext;
+    }
+
+
+// MÈTODES PRIVATS PER SABER SI ES PRODUEIX O NO MUTACIÓ PER COINCIDÈNCIA:
+
+    private void esProdueixMutacioPerCoincidencia(VirusARN A, VirusARN B) {
+
     }
 
 
@@ -506,7 +568,31 @@ private void actualitzar_morts() {
      * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.*/
 
     private void actualitzar_estat_despres_de_mutacio(Virus virus_mutat) {
-    // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
-    // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.
+        // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
+        // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.
 
-        // A implementar: 
+        // A implementar:
+
+    }
+
+
+
+// ALTRES MÈTODES PRIVATS:
+
+    /**
+     * Aquesta funció fa la suma total dels valors d'una llista. L'he fet per a calcular el total de les llistes
+     * que tenim. Per exemple, com que necessitem el total de contagiosos de les regions veines per calcular el total
+     * de nous infectats, doncs l'he fet publica. A més, com que tenim altres llistes de enters, potser en altres
+     * ocasions també voldrem calcular el total d'aquestes.
+     */
+    private int calcular_total(List<Integer> llista) {
+        // PRE:
+        // POST:
+        int suma = 0;
+        for (int valor : llista) {
+            suma += valor;
+        }
+        return suma;
+    }
+}
+
