@@ -8,7 +8,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos; // Import añadido
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,19 +22,18 @@ import javafx.stage.Stage;
 public final class SeleccionadorArxius extends Application {
 
     //private Desktop desktop = Desktop.getDesktop();
-    private Label tickLabelVirus; // Mover a variables de clase
+    private Label tickLabelVirus;
     private Label tickLabelRegio;
     private Label tickLabelEstat;
 
     @Override
     public void start(final Stage stage) {
         stage.setTitle("Arxius per la simulació");
-
+        //Variables
         final FileChooser fileChooser = new FileChooser();
 
         Label windowsTitle = new Label("Escull els arxius corresponents per la simulació");
-        
-        // Crear ticks separados para cada botón
+    
         tickLabelVirus = new Label("✓");
         tickLabelRegio = new Label("✓");
         tickLabelEstat = new Label("✓");
@@ -43,7 +42,7 @@ public final class SeleccionadorArxius extends Application {
         final Button regioButton = new Button("Buscar arxiu Regió");
         final Button estatInicialButton = new Button("Buscar arxiu E.Inicial");
 
-        // Estilos
+        //Estils
         windowsTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
         
         tickLabelVirus.setStyle("-fx-text-fill: #4CAF50; -fx-font-size: 16px;");
@@ -56,7 +55,7 @@ public final class SeleccionadorArxius extends Application {
         
         virusButton.setStyle("-fx-background-color: red; -fx-text-fill: white;");
 
-        // Crear HBox separados para cada botón + tick
+        // Posicions
         HBox virusBox = new HBox(5, virusButton, tickLabelVirus);
         HBox regioBox = new HBox(5, regioButton, tickLabelRegio);
         HBox estatBox = new HBox(5, estatInicialButton, tickLabelEstat);
@@ -91,7 +90,6 @@ public final class SeleccionadorArxius extends Application {
 
         final GridPane inputGridPane = new GridPane();
         
-        // Usar los HBox en lugar de los botones directamente
         GridPane.setConstraints(virusBox, 0, 0);
         GridPane.setConstraints(regioBox, 0, 1);
         GridPane.setConstraints(estatBox, 0, 2);
@@ -116,7 +114,6 @@ public final class SeleccionadorArxius extends Application {
         try {
             Process p = new ProcessBuilder("xdg-open", file.getAbsolutePath()).start();
 
-            // Captura errores del proceso
             new Thread(() -> {
                 try (var reader = new java.io.BufferedReader(
                         new java.io.InputStreamReader(p.getErrorStream()))) {
@@ -133,5 +130,4 @@ public final class SeleccionadorArxius extends Application {
             Logger.getLogger(SeleccionadorArxius.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
