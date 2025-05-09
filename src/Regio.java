@@ -80,6 +80,11 @@ public class Regio {
         return veina.taxaContacteIntern;
 
     }
+    public regionsVeines(){
+        // Pre: La regió ha de tenir una llista de regions veïnes vàlida.
+        // Post: Retorna una llista de regions veïnes.
+        return regionsVeines;
+    }   
 
     /**
      * Aquest mètode l'he fet per poder indicar amb quines regions veïnes té contacte aquesta regió.
