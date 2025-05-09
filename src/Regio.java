@@ -195,4 +195,10 @@ public class Regio {
 
     }
 }
-
+public int persones_moren(int poblacio, int morts) {
+    int nova_poblacio = poblacio - morts;
+    if (novaPoblacio < 0) {
+        novaPoblacio = 0;
+    }
+    return novaPoblacio;
+}
