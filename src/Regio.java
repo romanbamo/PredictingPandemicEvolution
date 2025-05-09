@@ -68,23 +68,33 @@ public class Regio {
         // Post: Retorna un enter que és el nombre d'habitants.
         return poblacio;
     }
-    public taxaInternaContacte(){
-        // Pre: La regió ha de tenir una taxa de contacte interna vàlida.
-        // Post: Retorna un double que és la taxa de contacte interna.
-        return taxaContacteIntern;
 
-    } 
+    public regionsVeines(){
+        // Pre: La regió ha de tenir una llista de regions veïnes vàlida.
+        // Post: Retorna una llista de regions veïnes.
+        return regionsVeines;
+    }   
+
+    /**
+     * Aquí el que fem és tornar la taxa de contacte interna d’aquesta regió.
+     * És a dir, la probabilitat que dues persones d’aquesta mateixa regió entrin en contacte. Aquesta és pròpia de la
+     * regió.
+     */
+    public double taxaInternaContacte() {
+        // Pre: la regió ha d’estar inicialitzada i tenir una taxa interna vàlida (entre 0 i 1)
+        // Post: Retornem la taxa de contacte interna de la regió.
+
+        return taxaContacteIntern;
+    }
+
+    // mire
     public taxaExternaContacte(veina){
         // Pre: La regió ha de tenir una taxa de contacte externa vàlida.
         // Post: Retorna un double que és la taxa de contacte externa.
         return veina.taxaContacteIntern;
 
     }
-    public regionsVeines(){
-        // Pre: La regió ha de tenir una llista de regions veïnes vàlida.
-        // Post: Retorna una llista de regions veïnes.
-        return regionsVeines;
-    }   
+
 
     /**
      * Aquest mètode l'he fet per poder indicar amb quines regions veïnes té contacte aquesta regió.
@@ -110,6 +120,19 @@ public class Regio {
         }
     }
 
+    /**
+     * Ara el que necessitem és passar-li a AfectacioVirusRegió la llista de regions veïnes per a poder
+     * fer les fòrmules que ens ha donat el professor per a poder calcular com evoluciona el virus
+     * en la regió. Per exemple, la útilitzem per a poder calcular els contagis externs (necessitem mirar una a una
+     * si aquestes regions tenen el virus i quants contagiosos tenen).
+     */
+    public List<Regio> regionsVeines() {
+        // Pre: La regió ha de tenir inicialitzada la llista de regions veïnes.
+        // Post: Retornem la llista de regions veïnes amb les quals hi ha contacte.
+
+        return regionsVeines;
+    }
+
 
     /**
      * Aquesta funció serveix per afegir una nova afectació a la regió.
@@ -131,6 +154,69 @@ public class Regio {
         afectacions.add(novaAfectacio);
     }
 // PREGUNTA MEVA: QUAN UN VIRUS ACABA, TIPO JA DEIXA D'INFECTAR (Q AIXO NS COM ES TE CONSTÀNCIA), L'ELIMINEM DE LA LLISTA ?
+
+
+
+    /**
+     * Aquesta funció l'he fet perquè sabent un virus que afecta a la regió, poguem obtenir el seu objecte
+     * corresponent VirusAfectacióRegió.
+     * És a dir, bàsicament el que fem és buscar dins la llista d’afectacions quin objecte relaciona aquest virus amb la regió,
+     * i si el trobem, el retornem. Ara bé, si no està, retornem null i així sabrem que aquest virus encara
+     * no està en la regió.
+     */
+    public AfectacioVirusRegio trobarAfectacio(Virus virus_a_buscar) {
+        // Pre: virus_a_buscar ha de ser vàlid.
+        // Post: Retornem l’afectació d’aquest virus dins d'aquesta regió si existeix. Si no existeix, tornem null.
+
+        for (AfectacioVirusRegio avr : afectacions) {
+            if (avr.quinVirusHiHa().equals(virus_a_buscar)) {
+                return avr;
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * Aquesta funció l'he fet perquè necessitem saber quantes persones estan sanes
+     * respecte a un virus concret en aquesta regió. És a dir, hem de saber quanta
+     * gent no te el virus i es pot contegiar (ni infectats, ni contagiosos,
+     * ni immunitzats (ja que aquests estan sans però no els tenim en compte ja que no es poden contagiar).
+     *
+     * Això és super important perquè ho utilitzarem a les fórmules de contagi intern
+     * i també quan calgui saber quanta gent es pot contagiar.
+     *
+     * Per tant, el que fem és agafar l'afectació que té aquesta regió amb el virus
+     * i li restem a la població total de la regió totes les persones que ja han passat
+     * per alguna fase de la infecció.
+     */
+    public int nombreSans(Virus virus) {
+        // Pre: virus ha de ser vàlid, i pot ser que encara no hi hagi afectació d'aquest virus a la regió
+        // Post: Retorna quantes persones de la regió estan sanes i es poden contegiar
+        AfectacioVirusRegio avr = trobarAfectacio(virus);
+
+        if (avr == null) {
+            // Si encara no hi ha afectació d’aquest virus en aquesta regió, tothom està sa.
+            return poblacio;
+        }
+
+        int totalContagiosos = avr.nombreContagiosos();  // Total de contagiosos
+        int totalImmunes = avr.nombreImmunes(); // Total de persones que han passat la malaltia i són immunes durant um temps
+        int totalInfectatsNoContagiosos = avr.nombreInfectatsNoContagiosos(); // Els que s’han infectat però encara no poden contagiar
+
+        int persones_amb_virus = totalContagiosos + totalImmunes + totalInfectatsNoContagiosos;
+
+        // Llavors, els sanes és tota la població menys totes les persones que han tingut contacte amb aquest virus
+        int sans = poblacio - persones_amb_virus;
+
+        // Ens assegurem que no retorni valors negatius, per si de cas
+        return Math.max(sans, 0);
+    }
+
+
+
+
+
 
 
 

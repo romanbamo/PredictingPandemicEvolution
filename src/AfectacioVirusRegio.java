@@ -233,6 +233,19 @@ public class AfectacioVirusRegio {
     }
 
 
+    public int nombreImmunes(){
+        // PRE: La llista _immunes ha d'estar inicialitzada correctament.
+        // POST: Retorna la suma total de immunes que hi ha en un dia concret (és la suma dels valors de la llista _immunes).
+        return calcular_total(_immunes);
+    }
+
+    public int nombreInfectatsNoContagiosos(){
+        // PRE: La llista _infectats_no_contagiosos ha d'estar inicialitzada correctament.
+        // POST: Retorna la suma total de infectats però que encara no poden contegiar que hi ha en un dia concret (és la suma dels valors de la llista _infectats_no_contagiosos).
+        return calcular_total(_infectats_no_contagiosos);
+    }
+
+
     /**
      * Aquesta funció simplement l'hem fet perquè, en una regió, sabem totes les afectacions que té, però
      * en molts casos necessitem saber quin virus està associat a aquesta afectació (la regió ja la sabrem perquè
