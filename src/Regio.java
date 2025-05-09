@@ -68,6 +68,18 @@ public class Regio {
         // Post: Retorna un enter que és el nombre d'habitants.
         return poblacio;
     }
+    public taxaInternaContacte(){
+        // Pre: La regió ha de tenir una taxa de contacte interna vàlida.
+        // Post: Retorna un double que és la taxa de contacte interna.
+        return taxaContacteIntern;
+
+    } 
+    public taxaExternaContacte(veina){
+        // Pre: La regió ha de tenir una taxa de contacte externa vàlida.
+        // Post: Retorna un double que és la taxa de contacte externa.
+        return veina.taxaContacteIntern;
+
+    }
 
     /**
      * Aquest mètode l'he fet per poder indicar amb quines regions veïnes té contacte aquesta regió.
