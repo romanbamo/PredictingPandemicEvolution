@@ -537,12 +537,12 @@ private void actualitzar_morts() {
 
                 if (poblacio_veina == 0) continue;
 
-                if (veina.teAfectacio(virus)) {
+                if (veina.VirusJaEstaAfectant(virus)) {
                     // Si la regió veïna ja té el virus, sumem normal
                     int contagiosos_veina = veina.nombreContagiosos(virus);
 
                     double contagis_ext_per_regio = sans * taxaExt * ((double) contagiosos_veina / poblacio_veina) * probContagi;
-                    contagis_ext = contagis_ext + Math.round(contagis_ext_per_regio);
+                    contagis_ext = contagis_ext + (int)Math.round(contagis_ext_per_regio);
 
                 } else {
                     // Si la regió veïna NO té aquest virus, segons la fòrmula podem seguir contagiant i llavors

@@ -69,12 +69,6 @@ public class Regio {
         return poblacio;
     }
 
-    public regionsVeines(){
-        // Pre: La regió ha de tenir una llista de regions veïnes vàlida.
-        // Post: Retorna una llista de regions veïnes.
-        return regionsVeines;
-    }   
-
     /**
      * Aquí el que fem és tornar la taxa de contacte interna d’aquesta regió.
      * És a dir, la probabilitat que dues persones d’aquesta mateixa regió entrin en contacte. Aquesta és pròpia de la
@@ -88,7 +82,7 @@ public class Regio {
     }
 
     // mire
-    public taxaExternaContacte(veina){
+    public double taxaExternaContacte(Regio veina){
         // Pre: La regió ha de tenir una taxa de contacte externa vàlida.
         // Post: Retorna un double que és la taxa de contacte externa.
         return veina.taxaContacteIntern;
@@ -116,7 +110,7 @@ public class Regio {
         // Això també és important per assegurar-nos de que no repetim, ja que si ja hem dit que una regió és veiïna,
         // doncs no podem tornar-la a afegir a la llista.
         if (!regionsVeines.contains(veina)) {
-            regionsVeines.add(veina)
+            regionsVeines.add(veina);
         }
     }
 
@@ -153,28 +147,6 @@ public class Regio {
         AfectacioVirusRegio novaAfectacio = new AfectacioVirusRegio(virus, this, infectats_inicials);
         afectacions.add(novaAfectacio);
     }
-// PREGUNTA MEVA: QUAN UN VIRUS ACABA, TIPO JA DEIXA D'INFECTAR (Q AIXO NS COM ES TE CONSTÀNCIA), L'ELIMINEM DE LA LLISTA ?
-
-
-
-    /**
-     * Aquesta funció l'he fet perquè sabent un virus que afecta a la regió, poguem obtenir el seu objecte
-     * corresponent VirusAfectacióRegió.
-     * És a dir, bàsicament el que fem és buscar dins la llista d’afectacions quin objecte relaciona aquest virus amb la regió,
-     * i si el trobem, el retornem. Ara bé, si no està, retornem null i així sabrem que aquest virus encara
-     * no està en la regió.
-     */
-    public AfectacioVirusRegio trobarAfectacio(Virus virus_a_buscar) {
-        // Pre: virus_a_buscar ha de ser vàlid.
-        // Post: Retornem l’afectació d’aquest virus dins d'aquesta regió si existeix. Si no existeix, tornem null.
-
-        for (AfectacioVirusRegio avr : afectacions) {
-            if (avr.quinVirusHiHa().equals(virus_a_buscar)) {
-                return avr;
-            }
-        }
-        return null;
-    }
 
 
     /**
@@ -193,7 +165,7 @@ public class Regio {
     public int nombreSans(Virus virus) {
         // Pre: virus ha de ser vàlid, i pot ser que encara no hi hagi afectació d'aquest virus a la regió
         // Post: Retorna quantes persones de la regió estan sanes i es poden contegiar
-        AfectacioVirusRegio avr = trobarAfectacio(virus);
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
 
         if (avr == null) {
             // Si encara no hi ha afectació d’aquest virus en aquesta regió, tothom està sa.
@@ -214,6 +186,74 @@ public class Regio {
     }
 
 
+    public boolean estaEnConfinament() {
+        // Pre: L’atribut enConfinament ha d’estar inicialitzat.
+        // Post: Retornem true si la regió està en confinament, i si no ho està, tornem false.
+
+        return enConfinament;
+    }
+
+
+    /**
+     * Bàsicament amb aquesta funció podem saber des d'una classe, si entre aquesta regió concreta
+     * i una regió veïna, hi ha o no confinament. És important mirar les dos regions, perquè pot ser
+     * que la propi regió no tingui confinament, però si la regió veïna si que en te, serà impossible que
+     * la contagi. Per tant, només en el cas de que les dues regions NO tinguin confinament, podrem contagiar o ens
+     * podran contagiar. Si una de les dos esta confinada, podem dir que no hi ha contacte.
+     */
+    public boolean hiHaConfinamentAmb(Regio veina) {
+        // Pre: veina ha de ser una regió vàlida.
+        // Post: Retornem true si alguna de les dues regions està en confinament (i per tant, no poden contagiar-se).
+        return this.enConfinament || veina.enConfinament;
+    }
+
+    /**
+     * Per poder fer les fòrmules, ja que necessitem el nombre de persones contagioses que poden transmetre un virus concret de la
+     * regió.
+     */
+    public int nombreContagiosos(Virus virus) {
+    // Pre: virus ha de ser un objecte vàlid.
+    // Post: Retorna el nombre de persones contagioses per aquest virus en aquesta regió.
+
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+
+        if (avr == null) {
+            // Si no està aquest virus, ningú pot estar contagiant-lo.
+            return 0;
+        }
+
+        return avr.nombreContagiosos();
+    }
+
+
+    /**
+     * L'utilitzem per a saber si un cert virus ja està contegiant una regió o si encara no i hem de crear una
+     * nova afectació.
+     */
+    public boolean VirusJaEstaAfectant(Virus virus) {
+        // Pre: virus ha de ser vàlid
+        // Post: Retornem true si el virus ja està afectant la regió, altrament tornem false.
+
+        return esta_present_virus_a_la_regio(virus) != null;
+    }
+
+    /**
+     * Aquesta funció és molt important ja que quan moren persones per culpa d'algun virus, la població
+     * disminueix, per tant hem de canviar aquest número. És a dir, per cada morts que es produeixen en un dia de cada
+     * un dels virus que estan afectant a la regió, hem de restar-les al nombre total de persones que té la regió
+     * A més, m'he assegurat de que la població mai baixi de 0, perquè no ser si és possible, però per evitar que per alguna rao,
+     * morin més persones de les que viuen en la regió.
+     */
+    public void persones_moren(int morts) {
+        // Pre: El nombre de morts ha de ser un nombre positiu.
+        // Post: Restem les morts al número de persones que te la regió.
+
+        poblacio = poblacio - morts;
+
+        if (poblacio < 0) {
+            poblacio = 0;
+        }
+    }
 
 
 
@@ -221,15 +261,10 @@ public class Regio {
 
 
 
+// Mireia
 
-
-
-
-
-
-
-    public void mostrarConfinament() {  
-    // F-> IMPORTANT: CENTREU TOTES LES ENTRADES I SORTIDES (println) A LA CLASSE D'INTERACCIÓ. AQUEST MÈTODE NO TOCA AQUÍ 
+    public void mostrarConfinament() {
+        // F-> IMPORTANT: CENTREU TOTES LES ENTRADES I SORTIDES (println) A LA CLASSE D'INTERACCIÓ. AQUEST MÈTODE NO TOCA AQUÍ
         //Pre:-----
         //Post:Mostra en pantalla les regions en confinament
         if (enConfinament) {
@@ -257,9 +292,9 @@ public class Regio {
     }
 
 
-    public void afegirConfinament(String confinament) { 
-    // F-> NO VEIG CLAR AQUEST PARÀMETRE. JO FARIA UN MÈTODE public void confinamentDur SENSE PARÀMETRE O COM A MOLT AMB UN 
-    //     BOOLEAN QUE INDIQUI SI ES VOL CONFINAR O DESCONFINAR 
+    public void afegirConfinament(String confinament) {
+        // F-> NO VEIG CLAR AQUEST PARÀMETRE. JO FARIA UN MÈTODE public void confinamentDur SENSE PARÀMETRE O COM A MOLT AMB UN
+        //     BOOLEAN QUE INDIQUI SI ES VOL CONFINAR O DESCONFINAR
         //Pre:
         //Post:Aplica un confinament a la regió
         // Marquem la regió com a confinada
@@ -280,11 +315,34 @@ public class Regio {
         System.out.println("S'ha aixecat el confinament de la regió " + nom );
 
     }
-}
-public int persones_moren(int poblacio, int morts) {
-    int nova_poblacio = poblacio - morts;
-    if (novaPoblacio < 0) {
-        novaPoblacio = 0;
+
+
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// -------------------------------------- METODES PRIVATS --------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Aquesta funció l'he fet perquè sabent un virus que afecta a la regió, poguem obtenir el seu objecte
+     * corresponent VirusAfectacióRegió.
+     * És a dir, bàsicament el que fem és buscar dins la llista d’afectacions quin objecte relaciona aquest virus amb la regió,
+     * i si el trobem, el retornem. Ara bé, si no està, retornem null i així sabrem que aquest virus encara
+     * no està en la regió.
+     */
+    private AfectacioVirusRegio esta_present_virus_a_la_regio(Virus virus_a_buscar) {
+        // Pre: virus_a_buscar ha de ser vàlid.
+        // Post: Retornem l’afectació d’aquest virus dins d'aquesta regió si existeix. Si no existeix, tornem null.
+
+        for (AfectacioVirusRegio avr : afectacions) {
+            if (avr.quinVirusHiHa().equals(virus_a_buscar)) {
+                return avr;
+            }
+        }
+        return null;
     }
-    return novaPoblacio;
+
+
 }
