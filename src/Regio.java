@@ -1,6 +1,8 @@
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Regio {
 // F -> MIREIA, VAIG COMENTANT ENMIG DEL TEU CODI !
@@ -24,11 +26,13 @@ public class Regio {
     private double taxaContacteIntern;  // Probabilitat de contacte entre persones dins de la mateixa regió
     private List<Regio> regionsVeines;  // Llista de regions amb les quals aquesta regió té contacte
 
-    private List<AfectacioVirusRegio> afectacions;
+    private Map<String, AfectacioVirusRegio> afectacions;
     // Crec que aquest atribut és un dels més importants, perquè és regió la que ha de coneixer les seves propies
     // afectacions. Perquè una regió pot estar infectada per varis virus, i de cada un nosaltres hem de tenir constància
     // de com està la població durant cada dia.
-    // Per tant, per cada virus que està present a la regió, tindrem un objecte AfectacioVirusRegio que controla l’evolució.
+    // NOVA IDEA: Fer-ho amb un MAP --> per a cada virus guardem la seva afectació directament amb una clau que és
+    // el seu nom (virus.nom()), en comptes d'haver de mirar en tota la llista, quina afectacio correspon a un
+    // cert virus. Així evitem bucles innecessaris.
 
     /**
      * Creem el constructor de la classe Regio.
@@ -51,7 +55,7 @@ public class Regio {
 
         // Inicialitzem les llistes buides (encara no sabem amb quines regions fa contacte ni quins virus té afectant-la)
         regionsVeines = new ArrayList<>();
-        afectacions = new ArrayList<>();
+        afectacions = new HashMap<>();
     }
 
 
@@ -145,7 +149,7 @@ public class Regio {
         // Post: S’afegeix una nova afectació a la llista d’afectacions d’aquesta regió per controlar aquest virus.
 
         AfectacioVirusRegio novaAfectacio = new AfectacioVirusRegio(virus, this, infectats_inicials);
-        afectacions.add(novaAfectacio);
+        afectacions.put(virus.nom(),novaAfectacio);
     }
 
 
@@ -336,12 +340,7 @@ public class Regio {
         // Pre: virus_a_buscar ha de ser vàlid.
         // Post: Retornem l’afectació d’aquest virus dins d'aquesta regió si existeix. Si no existeix, tornem null.
 
-        for (AfectacioVirusRegio avr : afectacions) {
-            if (avr.quinVirusHiHa().equals(virus_a_buscar)) {
-                return avr;
-            }
-        }
-        return null;
+        return afectacions.get(virus_a_buscar.nom());
     }
 
 
