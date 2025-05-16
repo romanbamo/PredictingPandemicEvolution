@@ -259,7 +259,13 @@ public class AfectacioVirusRegio {
         return virus;
     }
 
+    public void afegir_infectats(int n) {
+        _infectats_no_contagiosos.set(0, _infectats_no_contagiosos.get(0) + n);
+    }
 
+    // PREGUNTA MEVA: CAL RECALCULAR MORTS O QUE ??
+    // PERQUÈ LO DE MUTACIÓ, QUAN S'HA DE CRIDAR, A ON ??
+    // PERQUÈ CLAR, AIXÒ AFECTA ALS CALCULS
 
 
 
@@ -563,11 +569,7 @@ private void actualitzar_morts() {
     }
 
 
-// MÈTODES PRIVATS PER SABER SI ES PRODUEIX O NO MUTACIÓ PER COINCIDÈNCIA:
 
-    private void esProdueixMutacioPerCoincidencia(VirusARN A, VirusARN B) {
-
-    }
 
 
 // PER EL MÈTODE DE LES MUTACIONS

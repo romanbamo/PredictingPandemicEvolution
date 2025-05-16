@@ -259,6 +259,97 @@ public class Regio {
         }
     }
 
+    /**
+     * Afegeixo informació de que fer aquest mètode per tenir una idea molt més clara. M'he basat totalment
+     * en el pseudocodi donat, que estava súper bé. Basicament el que fem és mirar si en aquesta regió es pot produir
+     * una mutació per coincidència. Primer de tot agrupem tots els virus ARN per famílies. Un cop tenim agrupats els virus per família,
+     * només ens interessen les famílies que tenen dos o més virus en aquesta regió, ja que només en aquests casos
+     * es pot produir una mutació per coincidència.
+     *
+     * Un cop tenim la família, fem totes les combinacions possibles de parelles (V, V') de virus d’aquesta família.
+     * Per a cada parella, calculem si es produeix mutació amb la probabilitat PMC (segons la fórmula).
+     * En cas que hi hagi mutació, es crea un nou virus a partir de V i V’, i aquest substitueix un percentatge dels infectats comuns.
+     */
+    public void comprovarMutacionsPerCoincidencia() {
+        // Pre: -
+        // Post: Si es produeix una mutació per coincidència entre dos virus d'una mateixa família ARN, es crea el nou virus i s'afegeix la seva afectació.
+
+        // PRIMER: el que fem és agrupar tots els virus ARN de la regió per famílies
+
+        Map<FamiliaVirus, List<VirusARN>> virus_per_cada_familia = agrupem_virus_segons_familia();
+
+        // SEGON: Per cada família que tingui més d’un virus, fem totes les parelles
+
+        /**
+         * Res teoria per entendre-ho
+         * Map.Entry<K, V> --> Cada element del mapa és una parella clau-valor
+         * entrySet() retorna totes les parelles clau-valor del mapa (com si fos una llista de tuples).
+         * I llavors per veure totes i analitzar-les, doncs ho fem amb un for.
+         */
+
+        for (Map.Entry<FamiliaVirus, List<VirusARN>> entry : virus_per_cada_familia.entrySet()) {
+            List<VirusARN> virusFam = entry.getValue();
+            if (virusFam.size() > 1) { // Mirem només les families que tenen dos o mes virus presents en aquesta regió
+
+                // Si te més de dos, hem de fer parelles dos a dos
+                for (int i = 0; i < virusFam.size(); i++) {
+                    for (int j = i + 1; j < virusFam.size(); j++) { // fem que j comenci a i+1 i així evitem repetir parelles, i amb si mateix
+                        VirusARN Virus_A = virusFam.get(i);
+                        VirusARN Virus_B = virusFam.get(j);
+
+                        AfectacioVirusRegio afectacio_A = afectacions.get(Virus_A.nom()); // (V) en el pseudocodi donat
+                        AfectacioVirusRegio afectacio_B = afectacions.get(Virus_B.nom()); // (V') en el pseudocodi donat
+
+                        int Contagiosos_A = afectacio_A.nombreContagiosos(); // (NCD(V,R,D)) en el pseudocodi donat
+                        int Contagiosos_B = afectacio_B.nombreContagiosos(); // (NCD(V',R,D)) en el pseudocodi donat
+
+                        double poblacio_actual_regio = poblacio; // R.poblacio(D) en el pseudocodi donat
+                        if (poblacio_actual_regio == 0) continue;
+
+                        // Calculem el nombre d’infectats comuns
+                        // Inf_comuns(V,V’,R,D) = (NCD(V,R,D)/R.poblacio(D)) * (NCD(V,R,D)/R.poblacio(D))
+                        double Inf_comuns = ((double) Contagiosos_A / poblacio_actual_regio) * ((double) Contagiosos_B / poblacio_actual_regio);
+
+                        // Calculem la probabilitat de mutació per coincidència
+                        // PMC(V,V’,R,D) = prob(mutCoinc(V,V’,R,D)) = Inf_comuns(V,V’,R,D) * F.probMutCoinc()
+                        double PMC = Inf_comuns * entry.getKey().probMutacioCoincidencia();
+
+                        // Generem un valor aleatori a l’interval [0,1)
+                        double aleatori = Math.random();
+
+                        VirusARN V_mes_fort = Virus_A.VirusMesFort(Virus_B); // (W) en el pseudocodi donat
+
+                        if (aleatori < PMC) { // Es produeix mutació, i per tant, es crea nou virus i nova afectació
+                            VirusARN V_mut = Virus_A.mutacio(Virus_B);
+
+                            // V_nou substituirà V,V’ en un PMC*100 % dels infectats comuns de V i V’, és a dir
+                            // Nous_contagis(V_mut,R,D) = Inf_comuns(V,V’,R,D) * PMC(V,V’,R,D)
+                            int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC * poblacio_actual_regio);
+                            // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D) * (1-PMC(V,V’,R,D))
+                            int Nous_contagis_V_mes_fort = (int) Math.round(Inf_comuns * (1 - PMC) * poblacio_actual_regio);
+
+                            if (Nous_contagis_V_mut > 0) {
+                                this.afegirNovaAfectacio(V_mut, Nous_contagis_V_mut);
+                            }
+                            if (Nous_contagis_V_mes_fort > 0) {
+                                AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
+                                afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
+                            }
+
+                        } else { // Si no hi ha mutació, tots els infectats comuns van al virus més fort
+                            // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D)
+                            int Nous_contagis_V_mes_fort = (int) Math.round(Inf_comuns * poblacio_actual_regio);
+                            if (Nous_contagis_V_mes_fort > 0) {
+                                AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
+                                afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
 
 
@@ -342,6 +433,36 @@ public class Regio {
 
         return afectacions.get(virus_a_buscar.nom());
     }
+
+
+    /**
+     * Agrupem tots els virus ARN presents en aquesta regió segons la seva família. He decidit fer-ho amb un mapa on
+     * la clau és l’objecte FamiliaVirus i el valor és la llista de tots els virus ARN d'aquella família que estan a la regió.
+     */
+    private Map<FamiliaVirus, List<VirusARN>> agrupem_virus_segons_familia() {
+        // Pre: Les afectacions han d’estar inicialitzades i poden contenir diversos virus ARN.
+        // Post: Retornem un mapa on agrupem per família els virus ARN que hi ha en aquesta regió.
+
+        Map<FamiliaVirus, List<VirusARN>> virusPerFamilia = new HashMap<>();
+
+        for (AfectacioVirusRegio a : afectacions.values()) {
+            Virus v = a.quinVirusHiHa();
+            if (v instanceof VirusARN) {
+                VirusARN virus_ARN = (VirusARN) v;
+                FamiliaVirus fam = virus_ARN.familia();
+
+                // hem de mirar si existeix o no aquesta familia, i si no existeix l'afegim en el map posant com a
+                // clau aquesta nova familia i com a valor de moment una clau buida que anirem afegint amb els virus
+                // que tinguem d'aquesta familia.
+                virusPerFamilia.putIfAbsent(fam, new ArrayList<>());
+                virusPerFamilia.get(fam).add(virus_ARN);
+            }
+        }
+
+        return virusPerFamilia;
+    }
+
+    
 
 
 }

@@ -136,15 +136,11 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
     public VirusARN mutacio(Virus B) {
     // Pre: A i B han de pertànyer a la mateixa família de virus, i els dos han d'estar presents en la mateixa
     // persona infectada al mateix moment.
-    // Post: Retorna "this" si no muta. Altrament, si muta, retorna una mutació per coincidència de "this" i B.
+    // Post: Retorna una mutació per coincidència de "this" i B.
     // Aquest nou Virus C, pertany a la mateixa classe de A i de B, i tindrà característiques tant
     // de A com de B, i els seus paràmetres quedaran canviats. A més, la persona infectada passarà a tenir aquest
     // nou virus en comptes de A i de B. El nom d'aquest serà la concatenació dels noms de A i de B
 
-
-        // Generem un número aleatori entre 0 i 1 per decidir si es produeix la mutació
-        double prob_Mut2E = this.familia().probMutacioCoincidencia();
-        double num_aleatori = Math.random();
 
         if (!(B instanceof VirusARN)){
             throw new IllegalArgumentException("Hi ha un virus que no és ARN, problema");
@@ -153,20 +149,6 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
         // ara que sabem que és un VirusARN, podem fer un casting per canviar el tipus aparent
         VirusARN B_ARN = (VirusARN) B; // càsting
 
-        if ((num_aleatori > prob_Mut2E) ) { // si no en produeix la mutació
-            //NONO, HE DE RETORNAR EL MES FORT !! CRIDO FUNCIO PRIVADA
-            if (this.compareTo(B_ARN) >= 0){
-                return this;
-            }
-            else {
-                return B_ARN;
-            }
-        }
-
-        // Primer m'asseguro de que els dos virus pertanyen a la mateixa família
-        if (!this.pertanyenMateixaFamilia(B_ARN)) {
-            throw new IllegalArgumentException("Els dos virus no pertanyen a la mateixa família.");
-        }
 
         double tCon_num_aleatori = Math.random();
 
@@ -241,6 +223,18 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
         // Els Strings ja implementen la interfície Comparable<String> i ja tenen el seu propi mètode compareTo()
         // Aquest ja ve fet dins la classe String de Java.
         // public final class String implements Comparable<String> { ... }
+    }
+
+    public VirusARN VirusMesFort (VirusARN B){
+        // Pre: Virus de la classe i Virus B han de ser ARN i han d'estar inicialitzats correctament
+        // Post: Retornem el virus més fort dels dos seguint els criteris explicats en el compareTo
+
+        if (this.compareTo(B) >= 0){
+            return this;
+        }
+        else {
+            return B;
+        }
     }
 
 // -------------------------------------------------------------------------------------------------------------------------------
