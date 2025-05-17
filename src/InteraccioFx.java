@@ -1,10 +1,13 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.*;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -13,12 +16,21 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+//Dies de la gràfica depenen del dies de latencia i dels dies de comtagi' que son la durada de la infeccio de cada viruws
+//Acumulats amb un flow segons virus i regio Malalts infectats i morts
+//Confinament tou s'ha d'escollir una regio'
+//confinament duur s'ha d'introduir taxa de contacte'
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class InteraccioFx extends Application {
+
+    //Variable de confinament
+    private int codiConfinament = 0;
+    private float taxaConfinament = 0;
+    private String valorRegioConfinament;
 
     // Etiquetes de confirmació (✓)
     private Label etiquetaConfirmacioVirus;
@@ -29,6 +41,29 @@ public class InteraccioFx extends Application {
     private String rutaFitxerVirus;
     private String rutaFitxerRegio;
     private String rutaFitxerEstat;
+
+    public enum NivellConfinament {
+        SENSE("Sense confinament", 0),
+        TOU("Tou", 1),
+        DUR("Dur", 2);
+        
+        private final String text;
+        private final int codi;
+        
+        NivellConfinament(String text, int codi) {
+            this.text = text;
+            this.codi = codi;
+        }
+        
+        @Override
+        public String toString() {
+            return text;
+        }
+        
+        public int codi() {
+            return codi;
+        }
+    }
 
     @Override
     public void start(Stage finestraFitxers) {
@@ -196,6 +231,8 @@ public class InteraccioFx extends Application {
         dadesText.add(resNovesDefun, 1, 6);
         dadesText.add(resInmunes, 1, 7);
 
+        int[] dadesHistograma = {2560, 1980, 3240, 1500, 2800};
+
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Dia");
 
@@ -207,10 +244,9 @@ public class InteraccioFx extends Application {
         grafic.setPrefSize(600, 400);
 
         XYChart.Series<String, Number> serie1 = new XYChart.Series<>();
-        serie1.setName("2023");
-        serie1.getData().add(new XYChart.Data<>("1", 2560));
-        serie1.getData().add(new XYChart.Data<>("2", 1980));
-        serie1.getData().add(new XYChart.Data<>("3", 3240));
+        for (int i = 0; i < dadesHistograma.length; i++) {
+            serie1.getData().add(new XYChart.Data<>(String.valueOf(i+1), dadesHistograma[i]));
+        }
         
         grafic.getData().add(serie1);
 
@@ -225,9 +261,84 @@ public class InteraccioFx extends Application {
         representacioDades.add(subtitolText, 1, 0);
         representacioDades.add(dadesText, 1, 1);
 
-        VBox contenidorPrincipal = new VBox(30, titolPrincipal, representacioDades);
+        Label textConfinament = new Label("Escollir confinament");
+        Label textConfinamentRegio = new Label("Escollir regió per confinament");
+        Label textConfinamentTaxa = new Label("Taxa de confinament a aplicar");
+        Label escollirVirusText = new Label("Consultar dades del virus:");
+        Label escollirRegioText = new Label("Consultar dades de la regió:");
+        Label tantPerCent = new Label("%");
+
+        String[] regions = {"Regio1", "Regio2", "Regio3", "Regio4", "Regio5", "Regio6", "Regio7", "Regio8", "Regio9"};
+        String[] virus = {"Virus1", "Virus2", "Virus3", "Virus4", "Virus5", "Virus6", "Virus7", "Virus8", "Virus9"};
+
+        ObservableList<String> items = FXCollections.observableArrayList(regions);
+        FXCollections.sort(items);
+
+        ComboBox<NivellConfinament> confinamentChoice =
+	    new ComboBox<>(FXCollections.observableArrayList(NivellConfinament.values()));
+        confinamentChoice.setPromptText("Escull tipus confinament");
+
+        ComboBox<String> regioConfinament = new ComboBox<>(FXCollections.observableArrayList(items));
+        confinamentChoice.setPromptText("Escull regió veina");
+
+        TextField fieldTaxaConfinament = new TextField();
+        fieldTaxaConfinament.setPromptText("Ingressa taxa");
+
+        HBox contenidorConfinament = new HBox(10, textConfinament, confinamentChoice);
+        HBox contenidorConfinamentRegio = new HBox(10, textConfinamentRegio, regioConfinament);
+        HBox contenidorConfinamentTaxa = new HBox(10, textConfinamentTaxa, fieldTaxaConfinament, tantPerCent);
+    
+        contenidorConfinamentRegio.setVisible(false);
+        contenidorConfinamentTaxa.setVisible(false);
+
+        confinamentChoice.setValue(NivellConfinament.SENSE);
+        confinamentChoice.getSelectionModel().selectedItemProperty().addListener(
+            (obs, oldVal, newVal) -> { codiConfinament = newVal.codi; 
+                                        contenidorConfinamentRegio.setVisible(codiConfinament == NivellConfinament.TOU.codi());
+                                        contenidorConfinamentTaxa.setVisible(codiConfinament == NivellConfinament.DUR.codi());
+        });
+
+        regioConfinament.getSelectionModel().selectedItemProperty().addListener(
+            (obs, oldVal, newVal) -> { valorRegioConfinament = newVal;
+                                        System.out.println("Regió seleccionada: " + valorRegioConfinament);
+        });
+
+    fieldTaxaConfinament.textProperty().addListener((obs, oldVal, newVal) -> {
+        try {
+            if (!newVal.isEmpty()) {
+                taxaConfinament = Float.parseFloat(newVal);
+                System.out.println("Taxa actualitzada: " + taxaConfinament);
+            } else {
+                taxaConfinament = 0;
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Entrada no válida. Introdueix un número.");
+            fieldTaxaConfinament.setText(oldVal);
+        }
+    });
+
+        ComboBox<String> simulacioRegioChoice = new ComboBox<>(FXCollections.observableArrayList(regions));
+        simulacioRegioChoice.setPromptText("Escull regió per simulació");
+
+        ComboBox<String> simulacioVirusChoice = new ComboBox<>(FXCollections.observableArrayList(virus));
+        simulacioVirusChoice.setPromptText("Escull virus per simulació");
+
+        Button avancarDia = new Button("Avançar un dia");
+
+        HBox contenidorEscollirRegio = new HBox(10, escollirRegioText, simulacioRegioChoice);
+        HBox contenidorEscollirVirus = new HBox(10, escollirVirusText, simulacioVirusChoice);
+
+        VBox contenidorSelecSimul = new VBox(10, contenidorEscollirRegio, contenidorEscollirVirus);
+        
+        VBox contenidorFullConfinament = new VBox(10, contenidorConfinament, contenidorConfinamentRegio, contenidorConfinamentTaxa);
+
+        VBox contenidorDesplegables = new VBox(30, contenidorSelecSimul, contenidorFullConfinament);
+        
+        HBox contenidorSimulacio = new HBox(20, contenidorDesplegables, representacioDades);
+
+        VBox contenidorPrincipal = new VBox(30, titolPrincipal, contenidorSimulacio, avancarDia);
         contenidorPrincipal.setAlignment(Pos.CENTER);
-        contenidorPrincipal.setPadding(new Insets(100));
+        contenidorPrincipal.setPadding(new Insets(10));
 
         Scene escenaPrincipal = new Scene(contenidorPrincipal, 500, 400);
         escenariPrincipal.setScene(escenaPrincipal);
@@ -245,3 +356,4 @@ public class InteraccioFx extends Application {
         launch(args);
     }
 }
+
