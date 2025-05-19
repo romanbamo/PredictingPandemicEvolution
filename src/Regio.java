@@ -317,7 +317,17 @@ public class Regio {
                         // Generem un valor aleatori a l’interval [0,1)
                         double aleatori = Math.random();
 
+                        VirusARN V_mes_feble;
+
                         VirusARN V_mes_fort = Virus_A.VirusMesFort(Virus_B); // (W) en el pseudocodi donat
+                        if (V_mes_fort == Virus_A){
+                            V_mes_feble = Virus_B;
+                        }
+                        else {
+                            V_mes_feble = Virus_A;
+                        }
+
+                        AfectacioVirusRegio afectacio_feble = afectacions.get(V_mes_feble.nom());
 
                         if (aleatori < PMC) { // Es produeix mutació, i per tant, es crea nou virus i nova afectació
                             VirusARN V_mut = Virus_A.mutacio(Virus_B);
@@ -325,16 +335,18 @@ public class Regio {
                             // V_nou substituirà V,V’ en un PMC*100 % dels infectats comuns de V i V’, és a dir
                             // Nous_contagis(V_mut,R,D) = Inf_comuns(V,V’,R,D) * PMC(V,V’,R,D)
                             int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC * poblacio_actual_regio);
-                            // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D) * (1-PMC(V,V’,R,D))
-                            int Nous_contagis_V_mes_fort = (int) Math.round(Inf_comuns * (1 - PMC) * poblacio_actual_regio);
 
-                            if (Nous_contagis_V_mut > 0) {
+                            // Reduïm infectats del més feble
+                            afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mut);
+
+                            // Afegim nova afectació o sumem infectats si ja existeix
+                            if (afectacions.containsKey(V_mut.nom())) {
+                                AfectacioVirusRegio afectacio_v_mut = afectacions.get(V_mut.nom());
+                                afectacio_v_mut.afegir_infectats(Nous_contagis_V_mut);
+                            } else {
                                 this.afegirNovaAfectacio(V_mut, Nous_contagis_V_mut);
                             }
-                            if (Nous_contagis_V_mes_fort > 0) {
-                                AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
-                                afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
-                            }
+
 
                         } else { // Si no hi ha mutació, tots els infectats comuns van al virus més fort
                             // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D)
@@ -342,6 +354,7 @@ public class Regio {
                             if (Nous_contagis_V_mes_fort > 0) {
                                 AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
                                 afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
+                                afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mes_fort);
                             }
                         }
                     }
@@ -349,7 +362,6 @@ public class Regio {
             }
         }
     }
-
 
 
 
@@ -427,7 +439,7 @@ public class Regio {
      * i si el trobem, el retornem. Ara bé, si no està, retornem null i així sabrem que aquest virus encara
      * no està en la regió.
      */
-    private AfectacioVirusRegio esta_present_virus_a_la_regio(Virus virus_a_buscar) {
+    private AfectacioVirusRegio esta_present_virus_a_la_regio (Virus virus_a_buscar) {
         // Pre: virus_a_buscar ha de ser vàlid.
         // Post: Retornem l’afectació d’aquest virus dins d'aquesta regió si existeix. Si no existeix, tornem null.
 
@@ -440,29 +452,27 @@ public class Regio {
      * la clau és l’objecte FamiliaVirus i el valor és la llista de tots els virus ARN d'aquella família que estan a la regió.
      */
     private Map<FamiliaVirus, List<VirusARN>> agrupem_virus_segons_familia() {
-        // Pre: Les afectacions han d’estar inicialitzades i poden contenir diversos virus ARN.
-        // Post: Retornem un mapa on agrupem per família els virus ARN que hi ha en aquesta regió.
+            // Pre: Les afectacions han d’estar inicialitzades i poden contenir diversos virus ARN.
+            // Post: Retornem un mapa on agrupem per família els virus ARN que hi ha en aquesta regió.
 
-        Map<FamiliaVirus, List<VirusARN>> virusPerFamilia = new HashMap<>();
+            Map<FamiliaVirus, List<VirusARN>> virusPerFamilia = new HashMap<>();
 
-        for (AfectacioVirusRegio a : afectacions.values()) {
-            Virus v = a.quinVirusHiHa();
-            if (v instanceof VirusARN) {
-                VirusARN virus_ARN = (VirusARN) v;
-                FamiliaVirus fam = virus_ARN.familia();
+            for (AfectacioVirusRegio a : afectacions.values()) {
+                Virus v = a.quinVirusHiHa();
+                if (v instanceof VirusARN) {
+                    VirusARN virus_ARN = (VirusARN) v;
+                    FamiliaVirus fam = virus_ARN.familia();
 
-                // hem de mirar si existeix o no aquesta familia, i si no existeix l'afegim en el map posant com a
-                // clau aquesta nova familia i com a valor de moment una clau buida que anirem afegint amb els virus
-                // que tinguem d'aquesta familia.
-                virusPerFamilia.putIfAbsent(fam, new ArrayList<>());
-                virusPerFamilia.get(fam).add(virus_ARN);
+                    // hem de mirar si existeix o no aquesta familia, i si no existeix l'afegim en el map posant com a
+                    // clau aquesta nova familia i com a valor de moment una clau buida que anirem afegint amb els virus
+                    // que tinguem d'aquesta familia.
+
+                    virusPerFamilia.putIfAbsent(fam, new ArrayList<>());
+                    virusPerFamilia.get(fam).add(virus_ARN);
+
+                }
             }
-        }
 
-        return virusPerFamilia;
+            return virusPerFamilia;
     }
-
-    
-
-
 }

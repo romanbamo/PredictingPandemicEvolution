@@ -245,6 +245,21 @@ public class AfectacioVirusRegio {
         return calcular_total(_infectats_no_contagiosos);
     }
 
+    /**
+     * Resta un nombre de nous infectats d'avui i actualitza el total acumulat.
+     * Ens assegurem que no quedi negatiu.
+     */
+    public void restarNousInfectatsAvui(int n) {
+        if (_infectats_no_contagiosos.isEmpty()) return;
+
+        int actuals = _infectats_no_contagiosos.get(0);
+        int nous = Math.max(0, actuals - n);
+        _infectats_no_contagiosos.set(0, nous);
+
+        // També restem del total
+        totalInfectats = totalInfectats - n;
+    }
+
 
     /**
      * Aquesta funció simplement l'hem fet perquè, en una regió, sabem totes les afectacions que té, però
@@ -262,6 +277,7 @@ public class AfectacioVirusRegio {
     public void afegir_infectats(int n) {
         _infectats_no_contagiosos.set(0, _infectats_no_contagiosos.get(0) + n);
     }
+    // NO CAL PERQUÈ JA ELS HEM CANVIAT !!
 
     // PREGUNTA MEVA: CAL RECALCULAR MORTS O QUE ??
     // PERQUÈ LO DE MUTACIÓ, QUAN S'HA DE CRIDAR, A ON ??
@@ -605,9 +621,4 @@ private void actualitzar_morts() {
         // POST:
         int suma = 0;
         for (int valor : llista) {
-            suma += valor;
-        }
-        return suma;
-    }
-}
-
+            suma += 
