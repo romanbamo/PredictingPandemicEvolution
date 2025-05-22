@@ -39,7 +39,7 @@ public class AfectacioVirusRegio {
 
     // SEGUR QUE FALTEN --> hem de decidir quines categories requereixen aquest
     //“repartiment” temporal del nombre d’afectats (infectats, contagiosos, immunes,...). Potser Morts ?
-
+    
 
     // Estadístiques que hem d'anar acumulant
     private int totalMalalts;     // Total de persones que han estat malaltes al llarg de la malaltia
@@ -49,7 +49,9 @@ public class AfectacioVirusRegio {
     // Altres coses que he de controlar
     private List<Integer> mortsDiaries;  // Aquest vector l'he fet per saber les morts que s'espera tenir cada
     // dia
-
+    // F-> COMENTARI SOBRE ELS ATRIBUTS:
+    // - ES PODRIEN UNIFICAR ELS INF. NO CONTAGIOSOS I ELS CONTAGIOSOS
+    
 // ----------------------------------------------- MÈTODES PÚBLICS ------------------------------------------------------------------
 
     /**
@@ -89,6 +91,12 @@ public class AfectacioVirusRegio {
         // Pre: La simulació s'ha d'estar executant
         // Post: S'actualitza l'estat, calculant de nou els nous contagis, morts, persones immunes, segons
         // les característiques de la regió i del virus que està afectant.
+        //
+        // F-> EN GENERAL HO FAS BÉ, PERÒ DIRIA QUE HI HA UN PETIT PROBLEMA: ELS CÀLCULS DELS VALORS DEL DIA ACTUAL 
+        // (AVUI) S'HAURIEN DE FER A PARTIR DELS VALORS DEL DIA ANTERIOR (AHIR). AMB ACTUALITZAR IMMUNES JA FAS CANVIS, 
+        // P.EX. EN EL NOMBRE D'IMMUNES (NO CONTAGIABLES), I AIXÒ IMPLICA QUE FARÀS CÀLCULS A PARTIR DE VALORS JA D'AVUI
+        // POSSIBLE SOLUCIÓ FÀCIL: FER UNA CÒPIA DE L'AFECTACIÓ, I MODIFICAR L'ORIGINAL (AVUI) A PARTIR DELS VALORS DE 
+        // LA CÒPIA (AHIR)
 
         // -------------------- Actualitzem els immunes ---------------------------------------------------------------
         actualitzar_immunes();  // Ho he passat a un mètode privat perquè quedi tot més clar.
@@ -106,8 +114,10 @@ public class AfectacioVirusRegio {
         if (_infectats_no_contagiosos.size() == temps_no_pot_contagiar) {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
-            _contagiosos.add(0, nous_contagiosos);
-
+        _contagiosos.add(0, nous_contagiosos);
+        // AIXÒ QUE ACABES DE FER (CORRECTE) XOCA AMB EL QUE HE DIT A DALT (SUPOSO Q JA HO VEUS)!
+        // I JO ARA SERIA QUAN PASSARIA ELS CONTAGIOSOS DE DARRER DIA A IMMUNES I ACTUALITZARIA ELS IMMUNES (NO ABANS)
+        
         // -------------------- Actualitzo els malalts --------------------
         actualitzar_malalts();  // He decidit fer-ho també amb un mètode privat perquè així tingui menys codi la funció i s'entengui més.
 
@@ -118,7 +128,10 @@ public class AfectacioVirusRegio {
         actualitzar_morts();
 
         // -------------- Calculem nous infectats a partir dels contagiosos -------------------------------------------
-        actualitzar_infectats_no_contagiosos();
+        actualitzar_infectats_no_contagiosos(); 
+        // JO AQUEST CÀLCUL L'HAGUÉS FET POTSER EL PRIMER, PERÒ SI HO FAS AMB UNA CÒPIA (DIA ANTERIOR), NO IMPORTARÀ 
+        // L'ORDRE 
+        
 
     }
 
@@ -137,9 +150,10 @@ public class AfectacioVirusRegio {
         // Si no hi ha mutació, no es fa res i el virus continua sent el mateix.
 
         // Els virus que no són ARN no poden mutar per error de còpia
-        if (!(virus instanceof VirusARN)) return;
+        if (!(virus instanceof VirusARN)) return;  // INTENTEM EVITAR ELS instanceof, AIXÍ COM ELS return SENSE RETORNAR RES
 
-        VirusARN virusARN = (VirusARN) virus;
+        VirusARN virusARN = (VirusARN) virus; // POTS FER UN MÈTODE boolean muta() a Virus (abstracte) i fer Override a cada tipus de virus
+        // LLAVORS, L'IF DE DALT QUEDARIA if (virus.muta()) VirusARN vARN = (VirusARN) virus;
 
         // --------------------------- Primer calculem el nombre de nous contagis d’avui ----------------------------
 
@@ -158,6 +172,8 @@ public class AfectacioVirusRegio {
 
         // --------------------------- Calculem la probabilitat de mutació  --------------------
 
+        // DE TOTA MANERA, AQUÍ HI HA UN ERROR IMPORTANT: PER DETERMINAR LA MUTACIÓ PER ERROR DE CÒPIA CAL 
+        // SUMAR TOTS ELS NOUS INFECTATS DE TOTES LES REGIONS, PER TANT S'HA DE FER A NIVELL DE SIMULACIÓ !
         double tm = virusARN.probabilitatMutacioErrorCopia();
         double pm = tm * nousContagis;
 
@@ -249,8 +265,11 @@ public class AfectacioVirusRegio {
      * Resta un nombre de nous infectats d'avui i actualitza el total acumulat.
      * Ens assegurem que no quedi negatiu.
      */
+    // UN PARELL DE RECOMANACIONS GENERALS:
+    // 1- MOLTS MÈTODES NOMÉS SERAN USATS DES DE DINS D'AQUESTA CLASSE, FES-LOS PRIVATE
+    // 2- INTENTA EXPLICAR QUÈ REPRESENTEN ELS PARÀMETRES
     public void restarNousInfectatsAvui(int n) {
-        if (_infectats_no_contagiosos.isEmpty()) return;
+        if (_infectats_no_contagiosos.isEmpty()) return; // ULL AMB TANT DE RETURN !
 
         int actuals = _infectats_no_contagiosos.get(0);
         int nous = Math.max(0, actuals - n);
@@ -283,7 +302,8 @@ public class AfectacioVirusRegio {
     // PERQUÈ LO DE MUTACIÓ, QUAN S'HA DE CRIDAR, A ON ??
     // PERQUÈ CLAR, AIXÒ AFECTA ALS CALCULS
 
-
+    // F -> CREC QUE AIXÒ DELS INFECTATS QUE CANVIAVEN EL SEU VIRUS PER UNA MUTACIÓ PER COINCIDÈNCIA JA HO VAM COMENTAR
+    //      AMB UN EXEMPLE :). NO CAL RECALCULAR MORTS 
 
 
 // ----------------------------------------------- MÈTODES PRIVATS ---------------------------------------------------------
@@ -301,7 +321,7 @@ public class AfectacioVirusRegio {
     // Pre: La llista _contagiosos ha d'estar inicialitzada i tenir almenys un element.
     // Post: El nombre de nous malalts calculats per avui s'afegeix a la llista _malalts en la posició 0.
     // El total de malalts acumulats s'actualitza amb la suma d'aquests nous malalts
-
+      // POTSER AQUÍ CALDRIA TREURE ELS MALALTS DEL DARRER DIA ?
         int dies_per_emmalaltir = virus.tempsContagiSenseSintomes();  // T_inc - T_lat
         int nous_malalts = 0;
 
@@ -352,6 +372,8 @@ public class AfectacioVirusRegio {
         int temps_contagi = virus.tempsContagi();
         int temps_malaltia = virus.tempsMalaltia();
 
+        // AMB LA PRIMERA CONDICIÓ DE L'IF JA SERIA SUFICIENT
+        // QUAN FACIS SERVIR AND, FES &&, I PER A OR, FES || (PER FER CURTCIRCUIT)
         if (_contagiosos.size() == temps_contagi & _malalts.size() == temps_malaltia & mortsDiaries.size() == temps_malaltia) {
             int nous_immunes = _contagiosos.get(_contagiosos.size() - 1); // Aquests són els contagiosos que haurien de passar a immunes.
 
@@ -412,6 +434,8 @@ public class AfectacioVirusRegio {
      * Per exemple, si avui tenim 100 nous malalts, i la probabilitat de mortalitat és 0.2 (20%),
      * esperem que morin 20 persones. Si el temps de contagi és de 5 dies, llavors esperem que hi hagi 4 morts per dia (d'aquest grup).
      *
+     * *** ATENCIÓ: S'HA DE DIVIDIR PEL TEMPS DE MALALTIA, NO PEL DE CONTAGI !!!!
+     *
      * Pero clar, no només moriran 4, sinó que hi ha altres grups de malalts. Per tant, cada dia s'hauran d'anar afegint noves morts
      * al vector mortsDiaries.
      *
@@ -437,11 +461,12 @@ public class AfectacioVirusRegio {
         int mort_en_tot_periode = morts_totals(nous_malalts);
 
         // Calculem quantes morts haurien d'afegir-se cada dia durant el període de la malaltia
-        int morts_cada_dia = mort_en_tot_periode / temps_malaltia;
+        int morts_cada_dia = mort_en_tot_periode / temps_malaltia; // PERÒ AQUÍ JA HO CALCULES BÉ !
         // int falten_repartir = mort_en_tot_periode % temps_malaltia; (no ser com implementar-ho)
 
         // Omplim el vector mortsDiaries amb els nous morts d'aquest grup
         mortsDiaries.add(0, morts_cada_dia);
+        // JO SERIA AQUÍ ON ELIMINARIA ELS QUE JA HAN DE SORTIR DE LA LLISTA
     }
 
 
@@ -501,7 +526,7 @@ private void actualitzar_morts() {
         total_morts_avui = total_morts_avui + morts;
 
         // Actualitzem les persones que queden vives en la regio
-        regio.persones_moren(morts);
+        regio.persones_moren(morts);  // AIXÒ ES POT FER FORA DEL BUCLE, SENSE PROBLEMA
 
     }
 
