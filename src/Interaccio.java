@@ -89,8 +89,8 @@ public class Interaccio{
         @post Estat de simulacio incrementat en unitat de temps
         */
         //metode presionar boto, si boto true executa
-        bool botoPasarDia = true
-        if(botoPasarDia) avançarUnDia()
+        bool botoPasarDia = true;
+        if(botoPasarDia) avançarUnDia();
     }
 
     

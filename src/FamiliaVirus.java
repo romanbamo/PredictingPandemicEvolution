@@ -20,11 +20,11 @@ public class FamiliaVirus {
 
     /**
      * Constructor de la classe FamiliaVirus.
+     *
      * @param nom_fam Nom de la família de virus.
      * @param P_mut2E és la probabilitat de mutació per coincidència (si és una família de virus ADN,
-     * valdrà 0)
+     *                valdrà 0)
      * @param tpc_max Tant per cent màxim de variació en mutacions per error de còpia.
-
      */
     public FamiliaVirus(String nom_fam, double P_mut2E, int tpc_max) {
         // Pre: El nom no pot ser buit i la taxa de mutació ha d'estar entre 0 i 1.
@@ -58,7 +58,7 @@ public class FamiliaVirus {
         return tpcMax;
     }
 
-    public boolean esLaMateixaFamilia (FamiliaVirus famvirusB) {
+    public boolean esLaMateixaFamilia(FamiliaVirus famvirusB) {
         //Pre: Passem dos virus que han de pertanyer a una família existent
         // Post: Retorna true si el virus de la classe, i el virusB, son de la matèixa familia. Altrament,
         // retorna false
@@ -66,3 +66,5 @@ public class FamiliaVirus {
         if (famvirusB == null) return false;  // Evitem errors amb famílies nul·les
         return this.nom.equals(famvirusB.nom);  // Comparem els noms de les dues famílies
     }
+
+}

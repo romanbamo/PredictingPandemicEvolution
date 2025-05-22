@@ -300,8 +300,8 @@ public class Regio {
                         AfectacioVirusRegio afectacio_A = afectacions.get(Virus_A.nom()); // (V) en el pseudocodi donat
                         AfectacioVirusRegio afectacio_B = afectacions.get(Virus_B.nom()); // (V') en el pseudocodi donat
 
-                        int Contagiosos_A = afectacio_A.nombreContagiosos(); // (NCD(V,R,D)) en el pseudocodi donat
-                        int Contagiosos_B = afectacio_B.nombreContagiosos(); // (NCD(V',R,D)) en el pseudocodi donat
+                        int Contagiosos_A = afectacio_A.nousContagios(); // (NCD(V,R,D)) en el pseudocodi donat
+                        int Contagiosos_B = afectacio_B.nousContagios(); // (NCD(V',R,D)) en el pseudocodi donat
 
                         double poblacio_actual_regio = poblacio; // R.poblacio(D) en el pseudocodi donat
                         if (poblacio_actual_regio == 0) continue;
@@ -334,7 +334,7 @@ public class Regio {
 
                             // V_nou substituirà V,V’ en un PMC*100 % dels infectats comuns de V i V’, és a dir
                             // Nous_contagis(V_mut,R,D) = Inf_comuns(V,V’,R,D) * PMC(V,V’,R,D)
-                            int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC * poblacio_actual_regio);
+                            int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC);
 
                             // Reduïm infectats del més feble
                             afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mut);
