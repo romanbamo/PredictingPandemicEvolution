@@ -36,7 +36,7 @@ import java.io.File;
  * Gestiona dues finestres principals: una per a la simulació diària i una altra per als acumulats.
  * Permet seleccionar fitxers, configurar confinaments i visualitzar dades epidemiològiques.
  */
-public class InteraccioFxAjuda extends Application {
+public class InteraccioFx extends Application {
 
     private Stage escenariPrincipalSimulacio;          ///< Finestra principal de simulació diària
     private Stage escenariPrincipalAcumulats;          ///< Finestra principal de dades acumulades
