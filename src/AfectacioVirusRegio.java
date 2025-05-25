@@ -54,7 +54,6 @@ public class AfectacioVirusRegio {
 
     /**
      * Constructor de la classe AfectacioVirusRegio.
-     *
      * @param v Virus que afecta la regió.
      * @param r Regió que és infectada per el virus.
      */
@@ -86,7 +85,7 @@ public class AfectacioVirusRegio {
     /**
      * Que fa ? Si avancem la simulació un dia, llavors s'actualitza l’estat de la infecció en aquesta la regió.
      */
-    public void avançarUnDia() {
+    public void avançarUnDia(){
         // Pre: La simulació s'ha d'estar executant
         // Post: S'actualitza l'estat, calculant de nou els nous contagis, morts, persones immunes, segons
         // les característiques de la regió i del virus que està afectant.
@@ -107,7 +106,7 @@ public class AfectacioVirusRegio {
         if (_infectats_no_contagiosos.size() == temps_no_pot_contagiar) {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
-        _contagiosos.add(0, nous_contagiosos);
+            _contagiosos.add(0, nous_contagiosos);
 
         // -------------------- Actualitzo els malalts --------------------
         actualitzar_malalts();  // He decidit fer-ho també amb un mètode privat perquè així tingui menys codi la funció i s'entengui més.
@@ -146,9 +145,9 @@ public class AfectacioVirusRegio {
 
         // Ens basem en els nous infectats afegits avui a la posició 0 del vector d’infectats
 
-        int nousContagis = 0;
+        int nousContagis  = 0;
 
-        if (!_infectats_no_contagiosos.isEmpty()) {
+        if (!_infectats_no_contagiosos.isEmpty()){
             nousContagis = _infectats_no_contagiosos.get(0);
         }
 
@@ -220,31 +219,27 @@ public class AfectacioVirusRegio {
      * Aquesta funció l'he fet per poder saber el nombre total de persones que hi ha a la regió i que són contagioses
      * per aquest virus concret. És a dir, com que tenim un histograma de contagiosos (una llista que ens diu quants contagiosos
      * nous hi ha a cada dia de la infecció), el que faig és sumar tots aquests per saber el total de contagiosos actuals.
-     * <p>
+     *
      * Aquesta funció es cridarà des de la classe Regio, i l'he necessitat per poder fer servir
      * les fórmules de contagis interns i externs que hi ha en el formulari. Si és d'aquest virus, no cal cridar-la,
      * però si per exemple volem els contagiosos d'un altre virus de la regió, doncs clar, només la classe regió
      * sap totes les afectacions que hi ha en ella, per tant hem de mirar primer quina afectacio és la que correspon
      * a aquest virus, i després ja determinar a partir d'aquesta afectació, el nombre de contagiosos.
      */
-    public int nombreContagiosos() {
-        // PRE: La llista _contagiosos ha d'estar inicialitzada correctament.
-        // POST: Retorna la suma total de contagiosos que hi ha en un dia concret (és la suma dels valors de la llista _contagiosos).
+    public int nombreContagiosos(){
+    // PRE: La llista _contagiosos ha d'estar inicialitzada correctament.
+    // POST: Retorna la suma total de contagiosos que hi ha en un dia concret (és la suma dels valors de la llista _contagiosos).
         return calcular_total(_contagiosos);
     }
 
-    public int nousContagios(){
-        return _infectats_no_contagiosos.get(0);
-    }
 
-
-    public int nombreImmunes() {
+    public int nombreImmunes(){
         // PRE: La llista _immunes ha d'estar inicialitzada correctament.
         // POST: Retorna la suma total de immunes que hi ha en un dia concret (és la suma dels valors de la llista _immunes).
         return calcular_total(_immunes);
     }
 
-    public int nombreInfectatsNoContagiosos() {
+    public int nombreInfectatsNoContagiosos(){
         // PRE: La llista _infectats_no_contagiosos ha d'estar inicialitzada correctament.
         // POST: Retorna la suma total de infectats però que encara no poden contegiar que hi ha en un dia concret (és la suma dels valors de la llista _infectats_no_contagiosos).
         return calcular_total(_infectats_no_contagiosos);
@@ -273,9 +268,9 @@ public class AfectacioVirusRegio {
      * i així doncs podrem veure quins virus estan presents, quins no, podem fer les fòrmules de la mutació per
      * coincidència...
      */
-    public Virus quinVirusHiHa() {
-        // PRE: L’atribut virus ha d’haver estat inicialitzat en el constructor (no pot ser que sigui null).
-        // POST: Retornem el virus propi d'aquesta afectació.
+    public Virus quinVirusHiHa(){
+    // PRE: L’atribut virus ha d’haver estat inicialitzat en el constructor (no pot ser que sigui null).
+    // POST: Retornem el virus propi d'aquesta afectació.
         return virus;
     }
 
@@ -289,60 +284,6 @@ public class AfectacioVirusRegio {
     // PERQUÈ CLAR, AIXÒ AFECTA ALS CALCULS
 
 
-// ---------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------- MÈTODES PER A FER PROVES ---------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------
-
-    // DINS DE AfectacioVirusRegio
-    public void posar_infectats_prova(List<Integer> valors) {
-        _infectats_no_contagiosos = new ArrayList<>(valors);
-    }
-
-    public void posar_malalts_prova(List<Integer> valors) {
-        _malalts = new ArrayList<>(valors);
-    }
-
-    public void posar_morts_prova(List<Integer> valors) {
-        mortsDiaries = new ArrayList<>(valors);
-    }
-
-    public void posar_contagiosos_prova(List<Integer> valors) {
-        _contagiosos = new ArrayList<>(valors);
-    }
-
-    public void determina_valors_prova (int infectats, int malalts, int morts) {
-        totalInfectats = infectats;
-        totalMalalts = malalts;
-        totalMorts = morts;
-    }
-
-    public List<Integer> dona_infectats_no_contagiosos() {
-        return new ArrayList<>(_infectats_no_contagiosos);
-    }
-
-    public List<Integer> dona_malalts() {
-        return new ArrayList<>(_malalts);
-    }
-
-    public List<Integer> dona_contagiosos() {
-        return new ArrayList<>(_contagiosos);
-    }
-
-    public List<Integer> dona_mortsDiaries() {
-        return new ArrayList<>(mortsDiaries);
-    }
-
-    public int dona_totalMalalts() {
-        return totalMalalts;
-    }
-
-    public int dona_totalMorts() {
-        return totalMorts;
-    }
-
-    public int dona_totalInfectats() {
-        return totalInfectats;
-    }
 
 
 // ----------------------------------------------- MÈTODES PRIVATS ---------------------------------------------------------
@@ -357,9 +298,9 @@ public class AfectacioVirusRegio {
      * i calculem quants d’ells es posen malalts segons la probabilitat de desenvolupar la malaltia.
      */
     private void actualitzar_malalts() {
-        // Pre: La llista _contagiosos ha d'estar inicialitzada i tenir almenys un element.
-        // Post: El nombre de nous malalts calculats per avui s'afegeix a la llista _malalts en la posició 0.
-        // El total de malalts acumulats s'actualitza amb la suma d'aquests nous malalts
+    // Pre: La llista _contagiosos ha d'estar inicialitzada i tenir almenys un element.
+    // Post: El nombre de nous malalts calculats per avui s'afegeix a la llista _malalts en la posició 0.
+    // El total de malalts acumulats s'actualitza amb la suma d'aquests nous malalts
 
         int dies_per_emmalaltir = virus.tempsContagiSenseSintomes();  // T_inc - T_lat
         int nous_malalts = 0;
@@ -380,23 +321,23 @@ public class AfectacioVirusRegio {
     /**
      * Aquest mètode és per actualitzar la llista d'immunes segons el temps d'immunitat del virus.
      * Quan un contagiat ja ha passat el temps de contagi complet, aquest passa a ser considerat immune.
-     * <p>
+     *
      * Aquí, he considerat que el temps de contagi especificat pel virus (per exemple, 10 dies) indica
      * que la persona no serà immune fins que hagi passat completament aquest temps. Per tant, hem de
      * deixar passar aquests dies sencers i, només un cop els hagi completat, la considerarem immune.
-     * <p>
+     *
      * Per tant, jo he assumit que si per exemple tenim un temps de contagi de 10 dies, la persona només serà immune al dia següent,
      * és a dir, al dia 11.
-     * <p>
+     *
      * Molt important: ARA JA TINC EN COMPTE QUE NO PASSEN TOTS ELS CONTAGIATS A IMMUNES. És a dir, quan un grup de contagiosos ha passat
      * el temps de contagi, no podem simplement passar-los tots a immunes perquè durant aquest temps hi ha hagut morts.
      * Llavors, abans de passar-los a immunes, calculo el total de morts que hi ha hagut durant tot aquest període i ho resto
      * del nombre de contagiosos d'aquell grup. Així, només els que han sobreviscut passen a ser immunes.
-     * <p>
+     *
      * El que faig ara és que cada cop que arriba el dia en què els contagiosos es poden considerar immunes, faig servir la funció
      * `morts_totals()` per calcular quants han mort durant aquest període. Després, només afegeixo a la llista d'immunes
      * els que han sobreviscut. Això em permet tenir un control molt més exacte sobre qui passa a ser immune i qui no.
-     * <p>
+     *
      * A més, aquells inmunes que ja han passat el temps de inmunitat, els treiem de la llista
      */
     private void actualitzar_immunes() {
@@ -439,9 +380,9 @@ public class AfectacioVirusRegio {
      * Després agafem els valors reals (no poden ser més que el nombre de sans) i els guarda a la posició 0 (indicant que són d'aquest dia).
      */
     private void actualitzar_infectats_no_contagiosos() {
-        // Pre: les llistes internes i la regió han d'estar inicialitzades i correctes.
-        // Post: La llista _infectats_no_contagiosos té un nou element a la posició 0 que representa els nous infectats del dia.
-        // El total d'infectats acumulat (totalInfectats) s'actualitza amb aquests nous infectats.
+    // Pre: les llistes internes i la regió han d'estar inicialitzades i correctes.
+    // Post: La llista _infectats_no_contagiosos té un nou element a la posició 0 que representa els nous infectats del dia.
+    // El total d'infectats acumulat (totalInfectats) s'actualitza amb aquests nous infectats.
         int contagisInterns = calcular_contagis_interns();
         int contagisExterns = calcular_contagis_externs();
 
@@ -461,19 +402,19 @@ public class AfectacioVirusRegio {
      * He fet aquest mètode per a saber quantes morts haurien d'afegir-se cada dia al vector mortsDiaries.
      * La idea és que cada cop que tenim nous malalts, calculem quants d'aquests moriran durant el període de contagi,
      * i aquests els dividim de manera igual durant tots els dies de la malaltia.
-     * <p>
+     *
      * A diferència del que havia fet inicialment, he decidit al final que aquesta funció només faci el càlcul i
      * afegeixi aquestes morts al vector, sense restar-les de la llista de malalts, ni res. Això ja ho farà un altre
      * mètode.
-     * <p>
+     *
      * Com funciona:
      * Cada dia que hi hagi nous malalts, s'afegiran noves morts al vector mortsDiaries (i aquí ho calculem).
      * Per exemple, si avui tenim 100 nous malalts, i la probabilitat de mortalitat és 0.2 (20%),
      * esperem que morin 20 persones. Si el temps de contagi és de 5 dies, llavors esperem que hi hagi 4 morts per dia (d'aquest grup).
-     * <p>
+     *
      * Pero clar, no només moriran 4, sinó que hi ha altres grups de malalts. Per tant, cada dia s'hauran d'anar afegint noves morts
      * al vector mortsDiaries.
-     * <p>
+     *
      * ex: el dia k, el vector seria (considerant només els 100 emmalaltits aquest dia) [4,0,0,0,0], i el dia k+1 seria
      * [0,4,0,0,0]. Ara bé, si incorporem els 125 del dia següent, llavors el dia k+1 tindrem [5, 4, 0, 0 , 0 ], i
      * el k+2 [0, 5, 4, 0, 0 ] (suposant que el dia k+2 no ha emmalaltit ningú o tan pocs que no dona ni per a 1 mort)
@@ -504,69 +445,69 @@ public class AfectacioVirusRegio {
     }
 
 
-    /**
-     * He fet aquest mètode privat per poder calcular el nombre total de morts d'un grup de malalts
-     * durant el període que dura la seva malaltia fins que poden passar a ser immunes.
-     * Com que anem sumant nous malalts cada dia, aquest càlcul l'he fet per cada grup per separat.
-     * <p>
-     * He utilitzat la fòrmula que posa a l'enunciat de la pràctica: Multiplico el nombre inicial de malalts pel
-     * percentatge de mortalitat del virus.
-     *
-     * @param nous_malalts Nombre de malalts d'un grup concret.
-     * @return Quanta gent esperem que mori d'aquest grup.
-     */
-    private int morts_totals(int nous_malalts) {
-        // Pre: El nombre de malalts ha de ser un enter positiu, i la taxa de mortalitat del virus ha d'estar entre 0 i 1.
-        // Post: Retorna quantes morts esperem que hi hagi d'aquest grup de malalts
+/**
+ * He fet aquest mètode privat per poder calcular el nombre total de morts d'un grup de malalts
+ * durant el període que dura la seva malaltia fins que poden passar a ser immunes.
+ * Com que anem sumant nous malalts cada dia, aquest càlcul l'he fet per cada grup per separat.
+ *
+ * He utilitzat la fòrmula que posa a l'enunciat de la pràctica: Multiplico el nombre inicial de malalts pel
+ * percentatge de mortalitat del virus.
+ *
+ * @param nous_malalts Nombre de malalts d'un grup concret.
+ * @return Quanta gent esperem que mori d'aquest grup.
+ */
+private int morts_totals(int nous_malalts) {
+    // Pre: El nombre de malalts ha de ser un enter positiu, i la taxa de mortalitat del virus ha d'estar entre 0 i 1.
+    // Post: Retorna quantes morts esperem que hi hagi d'aquest grup de malalts
 
-        double prob_mor = virus.taxaMortalitat(); // Probabilitat de mortalitat del virus
+    double prob_mor = virus.taxaMortalitat(); // Probabilitat de mortalitat del virus
 
-        int total_morts = (int) Math.round(nous_malalts * prob_mor); // Total de morts que esperem
+    int total_morts = (int) Math.round(nous_malalts * prob_mor); // Total de morts que esperem
 
-        return total_morts;
-    }
+    return total_morts;
+}
 
-    /**
-     * He fet aquesta funció que el que fa és actualitzar les persones que moren en el dia d'avui. És a dir,
-     * mirem quantes moren de cada grup i això ho afegim al total de morts i també cal restar-ho al
-     * total de malalts i contagiosos, pq ja no és gent malalta i contagiosa.
-     */
+/**
+* He fet aquesta funció que el que fa és actualitzar les persones que moren en el dia d'avui. És a dir,
+* mirem quantes moren de cada grup i això ho afegim al total de morts i també cal restar-ho al
+* total de malalts i contagiosos, pq ja no és gent malalta i contagiosa.
+*/
 
-    private void actualitzar_morts() {
-        // Pre: Les llistes _malalts, _contagiosos i mortsDiaries han d'estar inicialitzades i tenir la mateixa mida
-        // Aquestes llistes no poden estar buides.
-        // Post: Les morts d'avui es resten del nombre de malalts i contagiosos corresponents.
-        // El total de morts acumulat (totalMorts) s'actualitza sumant les morts d'avui.
+private void actualitzar_morts() {
+   // Pre: Les llistes _malalts, _contagiosos i mortsDiaries han d'estar inicialitzades i tenir la mateixa mida
+   // Aquestes llistes no poden estar buides.
+   // Post: Les morts d'avui es resten del nombre de malalts i contagiosos corresponents.
+   // El total de morts acumulat (totalMorts) s'actualitza sumant les morts d'avui.
 
-        int mida = mortsDiaries.size();
-        int total_morts_avui = 0;
+    int mida = mortsDiaries.size();
+    int total_morts_avui = 0;
 
-        for (int i = 0; i < mida; i++) {
+    for (int i = 0; i < mida; i++) {
 
-            // Calculem quantes morts hi ha avui (és a dir, el primer element del vector mortsDiaries)
-            int morts = mortsDiaries.get(i);
+        // Calculem quantes morts hi ha avui (és a dir, el primer element del vector mortsDiaries)
+        int morts = mortsDiaries.get(i);
 
-            // Restem aquestes morts dels malalts i dels contagiosos del mateix dia (posició 0)
-            int malalts = _malalts.get(i);
-            int temps_contagi_sense_sintomes = virus.tempsContagiSenseSintomes();
-            int posicio_contagiosos = i + temps_contagi_sense_sintomes;
-            int contagiosos = _contagiosos.get(posicio_contagiosos);
+        // Restem aquestes morts dels malalts i dels contagiosos del mateix dia (posició 0)
+        int malalts = _malalts.get(i);
+        int temps_contagi_sense_sintomes = virus.tempsContagiSenseSintomes();
+        int posicio_contagiosos = i + temps_contagi_sense_sintomes;
+        int contagiosos = _contagiosos.get(posicio_contagiosos);
 
-            // Apliquem les morts als malalts i contagiosos.
-            _malalts.set(i, malalts - morts);
-            _contagiosos.set(posicio_contagiosos, contagiosos - morts);
+        // Apliquem les morts als malalts i contagiosos.
+        _malalts.set(i, malalts - morts);
+        _contagiosos.set(posicio_contagiosos, contagiosos - morts);
 
-            // Actualitzem el total de morts acumulat
-            total_morts_avui = total_morts_avui + morts;
+        // Actualitzem el total de morts acumulat
+        total_morts_avui = total_morts_avui + morts;
 
-            // Actualitzem les persones que queden vives en la regio
-            regio.persones_moren(morts);
-
-        }
-
-        totalMorts = totalMorts + total_morts_avui;
+        // Actualitzem les persones que queden vives en la regio
+        regio.persones_moren(morts);
 
     }
+
+    totalMorts = totalMorts + total_morts_avui;
+
+}
 
 // MÈTODES PER A PODER CALCULAR ELS NOUS INFECTATS DEL DIA, SEGUINT ELS CONTAGIS EXTERNS I INTERNS
 
@@ -575,17 +516,18 @@ public class AfectacioVirusRegio {
      * Contagis_int(R,V,D) = R.sans(V,D-1) * R.taxaInt() * (R.cont(V,D-1) / R.poblacio(D-1)) * V.probContagi()
      */
     private int calcular_contagis_interns() {
-        // PRE:
-        // POST:
+    // PRE:
+    // POST:
         int sans = regio.nombreSans(virus);  // Ha de tornar el nombre de persones sanes
         double taxaInt = regio.taxaInternaContacte();
         int contagiosos = calcular_total(_contagiosos);
         int poblacio = regio.poblacio();
         double probContagi = virus.taxaContagi();
 
-        if (poblacio == 0) { // bàsicament he fet això per evitar errors, perquè no dividim per 0
+        if (poblacio == 0){ // bàsicament he fet això per evitar errors, perquè no dividim per 0
             return 0;
-        } else {
+        }
+        else {
             double resultat_contagis_interns = sans * taxaInt * ((double) contagiosos / poblacio) * probContagi;
             return (int) Math.round(resultat_contagis_interns);
         }
@@ -594,7 +536,7 @@ public class AfectacioVirusRegio {
     /**
      * Aquest mètode l'he fet per calcular la suma dels contagis que venen de totes les regions veïnes, les quals
      * també poden contagiar.
-     * <p>
+     *
      * Quan una regió veïna ja té el virus: Sí, sumem nous contagis externs (a la teva regió). Aquests sí que compten al contagis_ext.
      * Quan una regió veïna encara NO té el virus: NO sumem res al teu contagis_ext. El que fem és crear una nova afectació a aquella regió. Però no afecta el nombre de nous infectats de la teva regió avui.
      */
@@ -622,7 +564,7 @@ public class AfectacioVirusRegio {
                     int contagiosos_veina = veina.nombreContagiosos(virus);
 
                     double contagis_ext_per_regio = sans * taxaExt * ((double) contagiosos_veina / poblacio_veina) * probContagi;
-                    contagis_ext = contagis_ext + (int) Math.round(contagis_ext_per_regio);
+                    contagis_ext = contagis_ext + (int)Math.round(contagis_ext_per_regio);
 
                 } else {
                     // Si la regió veïna NO té aquest virus, segons la fòrmula podem seguir contagiant i llavors
@@ -643,16 +585,18 @@ public class AfectacioVirusRegio {
     }
 
 
+
+
+
 // PER EL MÈTODE DE LES MUTACIONS
 
     /**
      * Aquest és molt important ja que serà el mètode que farem servir per a actualitzar l'estat de la regió
      * després de que es produis una mutació (ja que el nou virus tindrà uns paràmetres diferents).
-     * <p>
+     *
      * IMPORTANT LLEGIR EL Q DIU LA PRÀCTICA, DE Q SEGONS EL T QUE PORTI, CONSIDEREM UNES COSES O UNES ALTRES
      *
-     * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.
-     */
+     * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.*/
 
     private void actualitzar_estat_despres_de_mutacio(Virus virus_mutat) {
         // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
@@ -661,6 +605,7 @@ public class AfectacioVirusRegio {
         // A implementar:
 
     }
+
 
 
 // ALTRES MÈTODES PRIVATS:
@@ -676,9 +621,4 @@ public class AfectacioVirusRegio {
         // POST:
         int suma = 0;
         for (int valor : llista) {
-            suma += valor;
-        }
-        return suma;
-    }
-
-}
+            suma += 
