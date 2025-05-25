@@ -46,6 +46,13 @@ public class VirusADN extends Virus {
         return this;
     }
 
+    @Override
+    public boolean muta() {
+    // Pre: El virus ha d’estar inicialitzat correctament.
+    // Post: Retorno fals, ja que els virus ADN no poden mutar.
+        return false;
+    }
+
 
 }
 

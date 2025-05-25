@@ -258,6 +258,13 @@ public abstract class Virus {
     // Post: Retorna un virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d'ambdós,
     // o "this" si no es produeix mutació.
 
+    /**
+     * Indica si el virus pot mutar per error de còpia.
+     * @return Cert si és un virus de tipus ARN (mutable). Fals en cas contrari.
+     */
+    public abstract boolean muta();
+    // Pre: El virus ha d’estar inicialitzat correctament.
+    // Post: Retorna cert si el virus és de tipus ARN, fals si és de tipus ADN.
 
      // METODES PRIVATS:
 

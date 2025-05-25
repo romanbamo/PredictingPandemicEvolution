@@ -407,4 +407,11 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
         return true;  // No existeix aquest nom, i per tant és el primer cop que passa aquesta mutació
     }
 
+    @Override
+    public boolean muta() {
+    // Pre: El virus ha d’estar inicialitzat correctament.
+    // Post: Retorno cert, ja que els virus ARN poden mutar.
+        return true;
+    }
+
 }
