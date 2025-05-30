@@ -240,6 +240,26 @@ public class Regio {
 
         return esta_present_virus_a_la_regio(virus) != null;
     }
+    /**
+     * @brief Retorna una llista ordenada amb els noms dels virus presents en aquesta regió.
+     * 
+     * Aquest mètode recorre totes les afectacions virals que hi ha a la regió i extreu
+     * el nom del virus corresponent, afegint-lo a una llista que retorna.
+     * 
+     * @pre L'atribut 'afectacions' ha d'estar inicialitzat i no ser null.
+     * @post Retorna una llista amb el nom de tots els virus associats a les afectacions actuals de la regió.
+     * 
+     * @return List<String> Una llista amb els noms dels virus que afecten la regió.
+     */
+    public List<String> virusPresentsARegio(){
+        List<String> llistaVirus = new ArrayList<>();
+        for(Map.Entry<String, AfectacioVirusRegio> afectacio : afectacions.entrySet()){
+            Virus v = afectacio.getValue().quinVirusHiHa();
+            llistaVirus.add(v.nom);
+        }
+        Collections.sort(llistaVirus);
+        return llistaVirus;
+    }
 
     /**
      * Aquesta funció és molt important ja que quan moren persones per culpa d'algun virus, la població
