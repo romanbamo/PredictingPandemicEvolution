@@ -194,23 +194,6 @@ public class AfectacioVirusRegio {
         regio.afegirNovaAfectacio(Vnou, nousContagisMutats);
     }
 
-    // mutacio per coincidència
-
-// De tots els virus que es troben en una mateixa regió, primer cal fer parelles dos a dos. Ara bé, perquè
-// es pugui donar aquest tipus de mutació, és molt important veure que realment formen part de la mateixa família.
-
-    /**
-     * Aquest mètode l'he fet basicament per poder, després d’actualitzar l’estat del virus en aquesta regió, comprovar
-     * si es pot produir una mutació per coincidència. Ara bé, aquest càlcul no depèn només d’aquest virus,
-     * sinó de totes les afectacions d’aquesta regió. Per això, cridem una funció implementada en
-     * la classe Regio.
-     */
-
-    public void HihaMutacioCoincidencia() {
-        // Pre:
-        // Post: es comprova si hi ha mutacions per coincidència dins de la regió
-        regio.comprovarMutacionsPerCoincidencia();
-    }
 
 
     // ALTRES MÈTODES QUE NECESSITEM (Que ens els crida la classe regió)

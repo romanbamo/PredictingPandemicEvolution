@@ -26,6 +26,14 @@ public class Regio {
     private double taxaContacteIntern;  // Probabilitat de contacte entre persones dins de la mateixa regió
     private List<Regio> regionsVeines;  // Llista de regions amb les quals aquesta regió té contacte
 
+
+    private Map<Regio, Double> taxesExternesContacte;
+    // He tingut la idea de fer aquest atribut amb un map també. Aquest mapa ens serveix per a guardar,
+    // per cada regió veïna, quina és la taxa de contacte externa
+    // que tenim amb ella. És a dir, com de probable és que una persona de la nostra regió
+    // es posi en contacte amb una persona d'aquella regió concreta.
+
+
     private Map<String, AfectacioVirusRegio> afectacions;
     // Crec que aquest atribut és un dels més importants, perquè és regió la que ha de coneixer les seves propies
     // afectacions. Perquè una regió pot estar infectada per varis virus, i de cada un nosaltres hem de tenir constància
@@ -33,6 +41,12 @@ public class Regio {
     // NOVA IDEA: Fer-ho amb un MAP --> per a cada virus guardem la seva afectació directament amb una clau que és
     // el seu nom (virus.nom()), en comptes d'haver de mirar en tota la llista, quina afectacio correspon a un
     // cert virus. Així evitem bucles innecessaris.
+
+    // He decidit afegir una millora, i és que quan m'he adonat de que quan feiem confinament canviavem la taxa de
+    // contagia externa i interna a 0, doncs hem de tenir una manera de poder guardar les inicials, perquè així,
+    // quan desconfinem, poguem recuperar-les.
+    private Double taxaContacteInternOriginal; // per guardar la taxa interna original abans de confinar
+    private Map<Regio, Double> taxesExternesOriginals = new HashMap<>(); // per guardar la taxa externa original amb cada veïna abans de confinar
 
     /**
      * Creem el constructor de la classe Regio.
@@ -49,6 +63,7 @@ public class Regio {
         nom = nom_regio;
         poblacio = poblacio_reg;
         taxaContacteIntern = taxa_contacte_interna;
+        taxesExternesContacte = new HashMap<>();
 
         enConfinament = false;  // Crec que quan la creem, la definim sense confinament i després ja se li
         // assigna si en algun moment se li aplica un confinament.
@@ -85,11 +100,16 @@ public class Regio {
         return taxaContacteIntern;
     }
 
-    // mire
+
     public double taxaExternaContacte(Regio veina){
-        // Pre: La regió ha de tenir una taxa de contacte externa vàlida.
-        // Post: Retorna un double que és la taxa de contacte externa.
-        return veina.taxaContacteIntern;
+        // Pre: La regió veïna ha de ser una regió veina que estigui guardada en aquesta regió.
+        // Post: Retorna la taxa de contacte externa amb aquesta regió veïna.
+
+        if (!taxesExternesContacte.containsKey(veina)) {
+            throw new IllegalArgumentException("No hi ha taxa externa guardada per aquesta regió veïna.");
+        }
+
+        return taxesExternesContacte.get(veina);
 
     }
 
@@ -108,13 +128,14 @@ public class Regio {
 
         // He fet això per assegurar-me de que no poguem dir-li a una regió que és veïna d'ella mateixa.
         if (veina == this) {
-            throw new IllegalArgumentException("Una regió no pot ser veïna d’ella");
+            throw new IllegalArgumentException("Una regió no pot ser veïna d’ella"); // tirem excepció tal i com hem vist a classe
         }
 
         // Això també és important per assegurar-nos de que no repetim, ja que si ja hem dit que una regió és veiïna,
         // doncs no podem tornar-la a afegir a la llista.
         if (!regionsVeines.contains(veina)) {
             regionsVeines.add(veina);
+            taxesExternesContacte.put(veina, taxaExternaContacte); // afegim al map, per aquesta regió veina, la seva corresponent taxa
         }
     }
 
@@ -256,7 +277,7 @@ public class Regio {
         List<String> llistaVirus = new ArrayList<>();
         for(Map.Entry<String, AfectacioVirusRegio> afectacio : afectacions.entrySet()){
             Virus v = afectacio.getValue().quinVirusHiHa();
-            llistaVirus.add(v.nom);
+            llistaVirus.add(v.nom());
         }
         Collections.sort(llistaVirus);
         return llistaVirus;
@@ -391,17 +412,6 @@ public class Regio {
 
 // Mireia
 
-    public void mostrarConfinament() {
-        // F-> IMPORTANT: CENTREU TOTES LES ENTRADES I SORTIDES (println) A LA CLASSE D'INTERACCIÓ. AQUEST MÈTODE NO TOCA AQUÍ
-        //Pre:-----
-        //Post:Mostra en pantalla les regions en confinament
-        if (enConfinament) {
-            System.out.println("La regió " + nom + " està en confinament.");
-        } else {
-            System.out.println("La regió " + nom + " no està en confinament.");
-        }
-    }
-
 
 
     // Operacions
@@ -416,35 +426,80 @@ public class Regio {
         int nousCasosReals = Math.min(nousInfectats, poblacio - casosActuals);
         casosActuals += nousCasosReals;
 
-        System.out.println("S'han afegit " + nousCasosReals + " nous casos de " + virus.nom() + " a la regió " + nom + ".");
     }
 
 
-    public void afegirConfinament(String confinament) {
-        // F-> NO VEIG CLAR AQUEST PARÀMETRE. JO FARIA UN MÈTODE public void confinamentDur SENSE PARÀMETRE O COM A MOLT AMB UN
-        //     BOOLEAN QUE INDIQUI SI ES VOL CONFINAR O DESCONFINAR
-        //Pre:
-        //Post:Aplica un confinament a la regió
-        // Marquem la regió com a confinada
+// ---------------------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------- CONFINAMENT ----------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Aquesta funció l'he fet per aplicar un confinament a la regió.
+     * Com be està explicat a la pràctica, hi ha dos tipus, un que és el confinament dur, i l'altre que és el confinament suau.
+     * Si és dur, es redueix la taxa de contacte interna i evitem qualsevol connexio amb les veïnes.
+     * Si és suau, només evitem les connexions externes, però la taxa interna la deixem igual.
+     * Ara bé, és molt important que, abans de fer canvis, guardem les taxes originals per poder-les recuperar després quan desconfinem.
+     */
+    public void aplicarConfinament(boolean dur, double nova_taxa_interna) {
+        // Pre: Si dur és true, la nova_taxa_interna ha de ser entre 0 i 1.
+        // Post: Modifiquem les taxes segons el tipus de confinament, i indiquem que la regió està confinada.
+
+        // Primer de tot, molt important que guardem les taxes originals per quan desconfinem. (ho he fet amb un
+        // mètode privat de la classe)
+        guardem_les_taxes_originals();
+
+        // Si és confinament dur, canviem també la taxa interna.
+        if (dur) {
+            taxaContacteIntern = nova_taxa_interna;
+        }
+
+        // Ara, independentment de si és dur o no, sempre evitem les connexions externes (amb totes les veïnes)
+        for (Regio veina : regionsVeines) {
+            // Tallem les connexions de les regions veines amb aquesta regio
+            taxesExternesContacte.put(veina, 0.0);
+            // Tallem les connexions de les veines amb aquesta regio
+            veina.taxesExternesContacte.put(this, 0.0);
+        }
+
+        // Ara, canviem el nostre boolea i indiquem que aquesta regió ESTÀ en confinament
         enConfinament = true;
-
-        // Mostrem un missatge informant del confinament aplicat
-        System.out.println("S'ha afegit confinament: " + confinament + " a la regió " + nom + ".");
     }
 
 
-    public void aixecarConfinament() { // F-> AQUEST JA EL VEIG MILLOR (SENSE EL PRINTLN I SUPOSANT Q ÉS CONF. DUR)
-        //Pre:
-        //Post:Elimina el confinament a una regió
-        // Eliminem el confinament
+    /**
+     * He fet aquesta funció perquè, quan volguem acabar amb el confinament, doncs fem aixecarConfinament, és a dir,
+     * tornem a posar les taxes que hi havia abans (que com ja he dit les hem guardat).
+     * Per tant aquí, doncs bàsicament hem de tornar a com estava la regió abans del confinament.
+     */
+    public void aixecarConfinament() {
+        // Pre: La regió estava confinada (boolea enConfinament ha de ser true)
+        // Post: Recuperem totes les taxes que hi havia abans del confinament.
+
+        // Si no tenim la taxa original guardada, no podem desconfinar
+        // bueno, el null només ho he fet per assegurar, però en teoria,
+        // mai hauria de ser null ja que ens assegurem de que abans de fer confinament, guardem l¡original.
+        // Ara be, sempre pot haver falles i així, tal i com hem vist a teoria, amb les excepcions podem saber que
+        // l'error ha estat aquí.
+        if (taxaContacteInternOriginal == null) {
+            throw new IllegalStateException("No es pot aixecar el confinament perquè no s’han guardat les taxes originals.");
+        }
+
+
+        taxaContacteIntern = taxaContacteInternOriginal;
+
+
+        // Recuperem totes les taxes externes
+        for (Regio veina : regionsVeines) {
+            if (taxesExternesOriginals.containsKey(veina)) {
+                double taxaOriginal = taxesExternesOriginals.get(veina);
+                taxesExternesContacte.put(veina, taxaOriginal);
+                veina.taxesExternesContacte.put(this, taxaOriginal);
+            }
+        }
+
+        // Ja no estem en confinament, per tant, canviem el boolea
         enConfinament = false;
-
-        // Mostrem un missatge informatiu
-        System.out.println("S'ha aixecat el confinament de la regió " + nom );
-
     }
-
-
 
 
 
@@ -496,4 +551,33 @@ public class Regio {
 
             return virusPerFamilia;
     }
+
+
+    /**
+     * Aquesta funció privada l'he fet perquè quan confinem, abans de canviar res,
+     * guardem les taxes originals internes i externes. Així després les podem restaurar si cal.
+     * He decidit separar-ho per claredat i reutilització.
+     */
+    private void guardem_les_taxes_originals() {
+        // Guardem la taxa interna només si encara no l’hem guardat (és a dir, només el primer cop que fem el confinament,
+        // després ja està guardada i no cal anar guardant-la més. A més això provocaria problemes perquè faria que
+        // guardessim el valor 0 per exemple i això NO pot ser
+        if (taxaContacteInternOriginal == null) {
+            taxaContacteInternOriginal = taxaContacteIntern;
+        }
+
+        // Guardem cada una de les taxes externes amb les veïnes (ho hem de fer amb el for perquè sino, estariem copiant
+        // la referència i modificar-la, faria modificar la original cosa que ho hem d'evitar)
+        for (Regio veina : regionsVeines) {
+            if (!taxesExternesOriginals.containsKey(veina)) {
+                Double taxaActual = taxesExternesContacte.get(veina);
+                taxesExternesOriginals.put(veina, taxaActual);
+            }
+        }
+    }
+
+
 }
+
+
+
