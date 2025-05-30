@@ -566,26 +566,6 @@ public class AfectacioVirusRegio {
     }
 
 
-// PER EL MÈTODE DE LES MUTACIONS
-
-    /**
-     * Aquest és molt important ja que serà el mètode que farem servir per a actualitzar l'estat de la regió
-     * després de que es produis una mutació (ja que el nou virus tindrà uns paràmetres diferents).
-     * <p>
-     * IMPORTANT LLEGIR EL Q DIU LA PRÀCTICA, DE Q SEGONS EL T QUE PORTI, CONSIDEREM UNES COSES O UNES ALTRES
-     *
-     * @param virus_mutat El nou virus mutat que ha de passar a afectar la regió.
-     */
-
-    private void actualitzar_estat_despres_de_mutacio(Virus virus_mutat) {
-        // PRE: virus_mutat ha de ser un objecte vàlid de la classe Virus.
-        // POST: Les estadístiques i els vectors d'estat de la regió s'actualitzen segons els nous paràmetres del virus.
-
-        // A implementar:
-
-    }
-
-
 // ALTRES MÈTODES PRIVATS:
 
     /**

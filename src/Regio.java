@@ -229,7 +229,7 @@ public class Regio {
     public boolean hiHaConfinamentAmb(Regio veina) {
         // Pre: veina ha de ser una regió vàlida.
         // Post: Retornem true si alguna de les dues regions està en confinament (i per tant, no poden contagiar-se).
-        return this.enConfinament || veina.enConfinament;
+        return this.taxaExternaContacte(veina) == 0.0 || veina.taxaExternaContacte(this) == 0.0;
     }
 
     /**
@@ -261,6 +261,9 @@ public class Regio {
 
         return esta_present_virus_a_la_regio(virus) != null;
     }
+
+
+
     /**
      * @brief Retorna una llista ordenada amb els noms dels virus presents en aquesta regió.
      * 
@@ -440,29 +443,39 @@ public class Regio {
      * Si és suau, només evitem les connexions externes, però la taxa interna la deixem igual.
      * Ara bé, és molt important que, abans de fer canvis, guardem les taxes originals per poder-les recuperar després quan desconfinem.
      */
-    public void aplicarConfinament(boolean dur, double nova_taxa_interna) {
+    public void aplicarConfinamentDur(double nova_taxa_interna) {
         // Pre: Si dur és true, la nova_taxa_interna ha de ser entre 0 i 1.
-        // Post: Modifiquem les taxes segons el tipus de confinament, i indiquem que la regió està confinada.
+        // Post: Modifiquem les taxes i indiquem que la regió està confinada.
 
         // Primer de tot, molt important que guardem les taxes originals per quan desconfinem. (ho he fet amb un
         // mètode privat de la classe)
         guardem_les_taxes_originals();
 
-        // Si és confinament dur, canviem també la taxa interna.
-        if (dur) {
-            taxaContacteIntern = nova_taxa_interna;
-        }
+        taxaContacteIntern = nova_taxa_interna;
 
-        // Ara, independentment de si és dur o no, sempre evitem les connexions externes (amb totes les veïnes)
+        // Ara, evitem les connexions externes (amb totes les veïnes)
         for (Regio veina : regionsVeines) {
-            // Tallem les connexions de les regions veines amb aquesta regio
-            taxesExternesContacte.put(veina, 0.0);
-            // Tallem les connexions de les veines amb aquesta regio
-            veina.taxesExternesContacte.put(this, 0.0);
+                // Tallem les connexions de les regions veines amb aquesta regio
+                taxesExternesContacte.put(veina, 0.0);
+                // Tallem les connexions de les veines amb aquesta regio
+                veina.taxesExternesContacte.put(this, 0.0);
         }
 
         // Ara, canviem el nostre boolea i indiquem que aquesta regió ESTÀ en confinament
-        enConfinament = true;
+        enConfinament = true; // NO SER si cal fer aquest només quan és confinament dur o en general
+    }
+
+    /**
+     * Aquesta funció serveix per fer un confinament tou (només amb una veïna concreta).
+     * Tallem la connexió amb aquesta regió veïna, però no modifiquem la taxa interna ni la resta de connexions.
+     */
+    public void aplicarConfinamentTouAmb(Regio veina) {
+        // Guardem la taxa original si no l’hem guardat encara
+        if (!taxesExternesOriginals.containsKey(veina)) {
+            taxesExternesOriginals.put(veina, taxesExternesContacte.get(veina));
+        }
+        taxesExternesContacte.put(veina, 0.0);
+        veina.taxesExternesContacte.put(this, 0.0);
     }
 
 

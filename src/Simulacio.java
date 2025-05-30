@@ -141,13 +141,20 @@ public class Simulacio1{
 
     public afegirConfinamentDur(String nomRegio, Float taxa){
         Regio r = mapaRegions.get(nomRegio);
-        r.afegirConfinamentDur(taxa);
+        if (r != null) {
+            r.aplicarConfinamentDur(taxa);  //confinament dur
+        }
     }
 
     public afegirConfinamentTou(String nomRegio, String nomRegioVeina){
         Regio r = mapaRegions.get(nomRegio);
         Regio v = mapaRegions.get(nomRegioVeina);
-        r.afegirConfinamentTou(v);
+        if (r != null) {
+            r.aplicarConfinamentTouAmb(v);
+            v.aplicarConfinamentTouAmb(r); // molt important, el confinament ha de ser simètric. Això és necessari
+            // sobretot per poder guardar les taxes externes originals en abdues regions, sino, només podriem
+            // tornar a l'original a una d'elles
+        }
     }
  
     
