@@ -12,10 +12,10 @@ import java.util.HashMap;
  * - Connexions amb regions veïnes
  */
 public class RegioLlegida {
-    String nom;             ///< Nom de la regió
-    int nHab;               ///< Nombre d'habitants de la regió
-    double taxaMobInt;      ///< Taxa de mobilitat interna de la regió
-    Map<String, Double> veins; ///< Mapa de regions veïnes amb les seves taxes de mobilitat
+    public String nom;             ///< Nom de la regió
+    public int nHab;               ///< Nombre d'habitants de la regió
+    public double taxaMobInt;      ///< Taxa de mobilitat interna de la regió
+    public Map<String, Double> veins; ///< Mapa de regions veïnes amb les seves taxes de mobilitat
 
     /**
      * @brief Constructor de la classe RegioLlegida
@@ -24,10 +24,10 @@ public class RegioLlegida {
      * @param taxa Taxa de mobilitat interna
      */
     RegioLlegida(String n, int nhab, double taxa) {
-        nom = n; 
-        nHab = nhab; 
-        taxaMobInt = taxa; 
-        veins = new HashMap<>();
+        this.nom = n; 
+        this.nHab = nhab; 
+        this.taxaMobInt = taxa; 
+        this.veins = new HashMap<>();
     }
 
     /**
