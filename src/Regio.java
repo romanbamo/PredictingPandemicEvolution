@@ -243,6 +243,7 @@ public class Regio {
     /**
      * @brief Retorna una llista ordenada amb els noms dels virus presents en aquesta regió.
      * 
+     * @author Romà Barrera
      * Aquest mètode recorre totes les afectacions virals que hi ha a la regió i extreu
      * el nom del virus corresponent, afegint-lo a una llista que retorna.
      * 
