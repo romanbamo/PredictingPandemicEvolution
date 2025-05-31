@@ -83,12 +83,14 @@ public class Simulacio{
             Map<String, VirusLlegit> virusLlegits = lector.virusLlegits();
 
             for (VirusLlegit v : virusLlegits.values()) {
-                FamiliaVirusLlegit familia = familiesLlegides.get(v.familia);
-                if (familia == null) {
+                FamiliaVirusLlegit familiaLlegida = familiesLlegides.get(v.familia);
+                if (familiaLlegida == null) {
                     System.err.println("Advertència: No s'ha trobat la família '" + v.familia + 
                                      "' per al virus '" + v.nom + "'");
                     continue;
                 }
+
+                FamiliaVirus familia = new FamiliaVirus(familiaLlegida.nom, familiaLlegida.probMutCoincidencia, familiaLlegida.tpcMaximVariacio);
 
                 Virus nouVirus;
                 if (v.tipus.equals("ARN")) {
@@ -140,7 +142,7 @@ public class Simulacio{
             for (EstatInicialLlegit e : dades) {
                 Regio r = mapaRegions.get(e.nomRegio);
                 for(Map.Entry<String, Integer> virusInicial : e.virusInicials.entrySet()){
-                    Virus actualActual = buscarVirusPerNom(virusInicial.getKey());
+                    Virus virusActual = buscarVirusPerNom(virusInicial.getKey());
                     r.afegirNovaAfectacio(virusActual, virusInicial.getValue());
                 }
             }
@@ -180,7 +182,7 @@ public class Simulacio{
      */
     public List<String> mostrarVirusRegio(String nomRegio){
         Regio r = mapaRegions.get(nomRegio);
-        return r.virusPresentARegio();
+        return r.virusPresentsARegio();
     }
 
     /**
@@ -388,7 +390,7 @@ public class Simulacio{
      */
     private Virus buscarVirusPerNom(String nomVirus) {
         for (Virus v : llistaVirus) {
-            if (v.nom.equals(nomVirus)) {
+            if (v.nom().equals(nomVirus)) {
                 return v;
             }
         }
