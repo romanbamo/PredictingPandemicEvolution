@@ -340,7 +340,7 @@ public class Regio {
      */
     public List<Integer> evolucioMalalts(Virus virus) {
         AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
-        if (avr == null) return new ArrayList<>;
+        if (avr == null) return new ArrayList<>();
         return avr.evolucioMalalts();
     }
 
@@ -354,7 +354,7 @@ public class Regio {
      */
     public List<Integer> evolucioImmunes(Virus virus) {
         AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
-        if (avr == null) return new ArrayList<>;
+        if (avr == null) return new ArrayList<>();
         return avr.evolucioImmunes();
     }
 
@@ -368,7 +368,7 @@ public class Regio {
      */
     public List<Integer> evolucioContagiosos(Virus virus) {
         AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
-        if (avr == null) return new ArrayList<>;
+        if (avr == null) return new ArrayList<>();
         return avr.evolucioContgiosos();
     }
 
@@ -382,7 +382,7 @@ public class Regio {
      */
     public List<Integer> evolucioMorts(Virus virus) {
         AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
-        if (avr == null) return new ArrayList<>;
+        if (avr == null) return new ArrayList<>();
         return avr.mortsDiaries();
     }
 

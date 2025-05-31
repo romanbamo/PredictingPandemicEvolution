@@ -1,17 +1,30 @@
-/** @file Simulacio.java
-    @brief Classe Simulacio
-    @author Roman Barrera
-*/
+/** 
+ * @file Simulacio.java
+ * @brief Classe que representa una simulació d'epidèmies a diverses regions
+ * @author Roman Barrera
+ */
 
-//@class Simulacio mostra per pantalla les dades de l evolucio.
+/**
+ * @class Simulacio
+ * @brief Classe que gestiona la simulació de l'evolució de virus en diferents regions
+ * 
+ * Aquesta classe permet carregar dades de regions, virus i estats inicials,
+ * gestionar confinaments, i obtenir informació sobre l'estat i evolució de les epidèmies.
+ */
 
-public class Simulacio1{
-    private Map<String, Regio> mapaRegions = new HashMap<>();
-    private List<Virus> llistaVirus = new ArrayList<>();
-    private List<String> nomsRegions = new ArrayList<>();
-    private List<String> nomsVirus = new ArrayList<>();
-    private int diaSimulacio = new Integer(0);
+public class Simulacio{
+    private Map<String, Regio> mapaRegions = new HashMap<>();   ///< Mapa que associa noms de regions amb objectes Regio
+    private List<Virus> llistaVirus = new ArrayList<>();        ///< Llista de virus presents a la simulació
+    private List<String> nomsRegions = new ArrayList<>();       ///< Llista de noms de regions
+    private List<String> nomsVirus = new ArrayList<>();         ///< Llista de noms de virus
+    private int diaSimulacio = new Integer(0);                  ///< Dia actual de la simulació
 
+    /**
+     * @brief Carrega les dades de regions des d'un fitxer
+     * @param path Ruta del fitxer a carregar
+     * @pre El fitxer ha de tenir el format correcte i existir
+     * @post El mapa mapaRegions contindrà totes les regions llegides del fitxer
+     */
     public void carregarRegions(String path) {
         LlegirFitxerRegionsR lector = new LlegirFitxerRegionsR();
         try {
@@ -106,7 +119,12 @@ public class Simulacio1{
             System.err.println("Error llegint el fitxer de virus: " + e.getMessage());
         }
     }
-
+    /**
+     * @brief Carrega l'estat inicial d'infeccions des d'un fitxer
+     * @param path Ruta del fitxer a carregar
+     * @pre El fitxer ha de tenir el format correcte i existir
+     * @post Les regions indicades al fitxer tindran els infectats inicials configurats
+     */
     public void carregarEstatInicial(String path){
         LlegirFitxerInfectatsInicialsR lector = new LlegirFitxerInfectatsInicialsR();
         try {
@@ -125,6 +143,10 @@ public class Simulacio1{
         }
     }
 
+    /**
+     * @brief Retorna una llista ordenada de totes les regions carregades
+     * @return Llista de noms de regions ordenats alfabèticament
+     */
     public List<String> mostrarRegionsActuals(){
         List<String> regions = new ArrayList<>();
         for(Map.Entry<String, Regio> r : mapaRegions.entrySet()){
@@ -134,24 +156,44 @@ public class Simulacio1{
         return regions;
     }
 
+    /**
+     * @brief Retorna una llista de regions veïnes d'una regió donada
+     * @param nomRegio Nom de la regió a consultar
+     * @return Llista de noms de regions veïnes
+     */
     public List<String> mostrarRegionsVeines(String nomRegio){
         Regio r = mapaRegions.get(nomRegio);
         return r.nomRegionsVeines();
     }
 
+    /**
+     * @brief Retorna una llista de virus presents en una regió
+     * @param nomRegio Nom de la regió a consultar
+     * @return Llista de noms de virus presents a la regió
+     */
     public List<String> mostrarVirusRegio(String nomRegio){
         Regio r = mapaRegions.get(nomRegio);
         return r.virusPresentARegio();
     }
 
-    public afegirConfinament(String nomRegio, Float taxa){
+    /**
+     * @brief Aplica un confinament dur a una regió
+     * @param nomRegio Nom de la regió a confinar
+     * @param taxa Taxa de mobilitat durant el confinament
+     */
+    public void afegirConfinament(String nomRegio, Float taxa){
         Regio r = mapaRegions.get(nomRegio);
         if (r != null) {
             r.aplicarConfinamentDur(taxa);  //confinament dur
         }
     }
 
-    public afegirConfinament(String nomRegio, String nomRegioVeina){
+    /**
+     * @brief Aplica un confinament tou entre dues regions veïnes
+     * @param nomRegio Nom de la primera regió
+     * @param nomRegioVeina Nom de la regió veïna
+     */
+    public void afegirConfinament(String nomRegio, String nomRegioVeina){
         Regio r = mapaRegions.get(nomRegio);
         Regio v = mapaRegions.get(nomRegioVeina);
         if (r != null) {
@@ -160,6 +202,15 @@ public class Simulacio1{
             // sobretot per poder guardar les taxes externes originals en abdues regions, sino, només podriem
             // tornar a l'original a una d'elles
         }
+    }
+
+    /**
+     * @brief Aixeca el confinament d'una regió
+     * @param nomRegio Nom de la regió a desconfinar
+     */
+    public void desconfinar(String nomRegio){
+        Regio r = mapaRegions.get(nomRegio);
+        r.aixecarConfinament();
     }
 
     /**
@@ -321,6 +372,13 @@ public class Simulacio1{
     
 
     //-----------------------PRIVATS--------------------//
+
+    /**
+     * @brief Busca un virus pel seu nom
+     * @param nomVirus Nom del virus a buscar
+     * @return L'objecte Virus corresponent o null si no es troba
+     * @private
+     */
     private Virus buscarVirusPerNom(String nomVirus) {
         for (Virus v : llistaVirus) {
             if (v.nom.equals(nomVirus)) {

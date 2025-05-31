@@ -10,8 +10,8 @@ import java.util.HashMap;
  * - Un mapa amb els noms dels virus i el nombre d'infectats inicials
  */
 public class EstatInicialLlegit {
-    String nomRegio;                ///< Nom de la regió
-    Map<String, Integer> virusInicials; ///< Mapa de virus amb el nombre d'infectats inicials
+    public String nomRegio;                ///< Nom de la regió
+    public Map<String, Integer> virusInicials; ///< Mapa de virus amb el nombre d'infectats inicials
 
     /**
      * @brief Constructor de la classe EstatInicial
