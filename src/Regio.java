@@ -250,6 +250,86 @@ public class Regio {
         return avr.nombreContagiosos();
     }
 
+    /**
+     * @brief Retorna el nombre total de persones infectades per un virus (contagioses o no).
+     * @param virus Virus del qual volem saber els infectats totals dins la regió.
+     * @return Nombre total d’infectats (contagiosos + no contagiosos) dins la regió.
+     * 
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Si el virus està present a la regió, es retorna el total d'infectats. Altrament, retorna 0.
+     * 
+     * @author Romà Barrera
+     */
+    public int nombreInfectats(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return 0;
+        return avr.nombreContagiosos() + avr.nombreInfectatsNoContagiosos();
+    }
+
+    /**
+     * @brief Retorna el nombre de persones malaltes per un virus en aquesta regió.
+     * @param virus Virus del qual volem saber el nombre de malalts dins la regió.
+     * @return Nombre de persones malaltes per aquest virus dins la regió.
+     * 
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna el nombre de persones malaltes per aquest virus, o 0 si no hi ha afectació.
+     * 
+     * @author Romà Barrera
+     */
+    public int nombreMalalts(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return 0;
+        return avr.nombreMalalts();
+    }
+
+    /**
+     * @brief Retorna el nombre de nous contagis produïts per un virus en aquesta regió.
+     * @param virus Virus del qual volem saber els nous contagis dins la regió.
+     * @return Nombre de nous contagis per aquest virus dins la regió.
+     * 
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna el nombre de nous contagis per aquest virus, o 0 si no hi ha afectació.
+     * 
+     * @author Romà Barrera
+     */
+    public int nousInfectats(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return 0;
+        return avr.nousContagios();
+    }
+
+    /**
+     * @brief Retorna el nombre de noves defuncions causades per un virus en aquesta regió.
+     * @param virus Virus del qual volem saber les noves defuncions dins la regió.
+     * @return Nombre de noves defuncions per aquest virus dins la regió.
+     * 
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna el nombre de noves defuncions per aquest virus, o 0 si no hi ha afectació.
+     * 
+     * @author Romà Barrera
+     */
+    public int novesDefuncions(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return 0;
+        return avr.novesDefuncions();
+    }
+
+    /**
+     * @brief Retorna el nombre de persones immunitzades contra un virus en aquesta regió.
+     * @param virus Virus del qual volem saber els immunes dins la regió.
+     * @return Nombre de persones immunes a aquest virus dins la regió.
+     * 
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna el nombre de persones immunitzades per aquest virus, o 0 si no hi ha afectació.
+     * 
+     * @author Romà Barrera
+     */
+    public int nombreImmunes(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return 0;
+        return avr.nombreImmunes();
+    }
+
 
     /**
      * L'utilitzem per a saber si un cert virus ja està contegiant una regió o si encara no i hem de crear una
