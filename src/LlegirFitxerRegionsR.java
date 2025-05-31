@@ -31,7 +31,8 @@ public class LlegirFitxerRegionsR {
 
         while ((line = br.readLine()) != null) {
             line = line.trim();
-            RegioLlegida regio = procesarLinea(line, br);
+            if (line.isEmpty()) continue;            
+            RegioLlegida regio = procesarLinea(line, br);            
             if (regio != null) {
                 resultat.add(regio);
             }
@@ -77,26 +78,54 @@ public class LlegirFitxerRegionsR {
      * @throws IOException En cas d'error de format
      */
     private RegioLlegida processarDadesRegio(String line, BufferedReader br) throws IOException {
+        line = netejarLinia(line);
         if (!line.startsWith("nom ")) {
-            throw new IOException("Format d'arxiu incorrecte. S'esperava 'nom'.");
+            return null;
         }
         String nom = line.substring(4).trim();
-        
-        line = br.readLine().trim();
+
+        line = netejarLinia(br.readLine());
         if (!line.startsWith("habitants ")) {
             throw new IOException("Format d'arxiu incorrecte. S'esperava 'habitants'.");
         }
-        int habitants = Integer.parseInt(line.substring(10).trim());
-        
-        line = br.readLine().trim();
+        int habitants = Integer.parseInt(extreuValorNumeric(line.substring(10)));
+
+        line = netejarLinia(br.readLine());
         if (!line.startsWith("mob_interna ")) {
             throw new IOException("Format d'arxiu incorrecte. S'esperava 'mob_interna'.");
         }
-        double mobInterna = Double.parseDouble(line.substring(12).trim());
+        double mobInterna = Double.parseDouble(extreuValorNumeric(line.substring(12)));
+
+        line = netejarLinia(br.readLine());
+        if (!line.equals("*")) {
+            throw new IOException("Format d'arxiu incorrecte. S'esperava '*' després de les dades de regió.");
+        }
 
         RegioLlegida regio = new RegioLlegida(nom, habitants, mobInterna);
         regions.put(nom, regio);
         return regio;
+    }
+
+    /**
+     * @brief Neteja una línia eliminant comentaris i espais innecessaris
+     * @param line Línia a netejar
+     * @return Línia netejada
+     * @throws IOException Si la línia és null
+     */
+    private String netejarLinia(String line) throws IOException {
+        if (line == null) {
+            return "";
+        }
+        return line.trim().split("#")[0].trim();
+    }
+
+    /**
+     * @brief Extreu el valor numèric d'una cadena, eliminant possibles unitats o comentaris
+     * @param s Cadena d'on extreure el valor
+     * @return Valor numèric en format String
+     */
+    private String extreuValorNumeric(String s) {
+        return s.replaceAll("[^0-9.]", "");
     }
 
     /**
@@ -116,12 +145,12 @@ public class LlegirFitxerRegionsR {
         String linea;
         
         while ((linea = br.readLine()) != null) {
-            linea = linea.trim();
+            linea = netejarLinia(linea);
             if (linea.equals("*")) {
                 break;
             }
             
-            String[] parts = linea.split(" ");
+            String[] parts = linea.split("\\s+");
             if (parts.length != 2) {
                 throw new IOException("Format incorrecte en linea de secció de limits: " + linea);
             }

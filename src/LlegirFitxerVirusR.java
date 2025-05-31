@@ -93,19 +93,19 @@ public class LlegirFitxerVirusR {
         if (!line.startsWith("nom ")) {
             throw new IOException("Format incorrecte. S'esperava 'nom' per a família.");
         }
-        String nomFamilia = line.substring(4).trim();
+        String nomFamilia = line.substring(4).trim().split("#")[0].trim();
 
         line = br.readLine().trim();
         if (!line.startsWith("prob_mut_coincidencia ")) {
             throw new IOException("Format incorrecte. S'esperava 'prob_mut_coincidencia'.");
         }
-        double probMut = Double.parseDouble(line.substring(21).trim());
+        double probMut = Double.parseDouble(line.substring(21).trim().split("#")[0].trim());
 
         line = br.readLine().trim();
         if (!line.startsWith("tpc_maxim_variacio ")) {
             throw new IOException("Format incorrecte. S'esperava 'tpc_maxim_variacio'.");
         }
-        int tpcVariacio = Integer.parseInt(line.substring(18).trim());
+        int tpcVariacio = Integer.parseInt(line.substring(18).trim().split("#")[0].trim());
 
         br.readLine();
 
@@ -123,19 +123,19 @@ public class LlegirFitxerVirusR {
         if (!line.startsWith("nom ")) {
             throw new IOException("Format incorrecte. S'esperava 'nom' per a virus.");
         }
-        String nomVirus = line.substring(4).trim();
+        String nomVirus = line.substring(4).trim().split("#")[0].trim();
 
         line = br.readLine().trim();
         if (!line.startsWith("tipus ")) {
             throw new IOException("Format incorrecte. S'esperava 'tipus'.");
         }
-        String tipus = line.substring(6).trim();
+        String tipus = line.substring(6).trim().split("#")[0].trim();
 
         line = br.readLine().trim();
         if (!line.startsWith("familia ")) {
             throw new IOException("Format incorrecte. S'esperava 'familia'.");
         }
-        String familia = line.substring(8).trim();
+        String familia = line.substring(8).trim().split("#")[0].trim();
 
         Map<String, String> parametres = new HashMap<>();
         while ((line = br.readLine()) != null) {
