@@ -227,25 +227,107 @@ public class AfectacioVirusRegio {
         return calcular_total(_immunes);
     }
 
-    //Fet per Romà
-    public int nombreMalalts() {
-        // PRE: La llista _malalts ha d'estar inicialitzada correctament.
-        // POST: Retorna la suma total de malalts que hi ha en un dia concret (és la suma dels valors de la llista _malalts).
-        return calcular_total(_malalts);
-    }
-    
-    //Fet per Romà
-    public int novesDefuncions() {
-        // PRE: La llista mortsDiaries ha d'estar inicialitzada correctament.
-        // POST: Retorna el nombre de defuncions del dia actual.
-        return mortsDiaries.get(0);
-    }
-
     public int nombreInfectatsNoContagiosos() {
         // PRE: La llista _infectats_no_contagiosos ha d'estar inicialitzada correctament.
         // POST: Retorna la suma total de infectats però que encara no poden contegiar que hi ha en un dia concret (és la suma dels valors de la llista _infectats_no_contagiosos).
         return calcular_total(_infectats_no_contagiosos);
     }
+
+    //-------------Fets per Romà---------------------
+
+    /**
+     * @brief Retorna el nombre total de malalts en un dia concret.
+     * @pre La llista _malalts ha d'estar inicialitzada correctament.
+     * @post Retorna la suma dels valors de la llista _malalts.
+     * @return Nombre total de malalts.
+     */
+    public int nombreMalalts() {
+        return calcular_total(_malalts);
+    }
+
+    /**
+     * @brief Retorna el nombre de defuncions del dia actual.
+     * @pre La llista mortsDiaries ha d'estar inicialitzada correctament.
+     * @post Retorna el valor de mortsDiaries corresponent al dia actual (posició 0).
+     * @return Nombre de defuncions del dia actual.
+     */
+    public int novesDefuncions() {
+        return mortsDiaries.get(0);
+    }
+
+    /**
+     * @brief Retorna l'evolució diària del nombre de malalts.
+     * @pre La llista _malalts ha d'estar inicialitzada.
+     * @post Retorna la llista sencera d'evolució dels malalts.
+     * @return Llista amb el nombre de malalts per dia.
+     */
+    public List<Integer> evolucioMalalts(){
+        return _malalts;
+    }
+
+    /**
+     * @brief Retorna l'evolució diària del nombre d'immunes.
+     * @pre La llista _immunes ha d'estar inicialitzada.
+     * @post Retorna la llista sencera d'evolució dels immunes.
+     * @return Llista amb el nombre d'immunes per dia.
+     */
+    public List<Integer> evolucioImmunes(){
+        return _immunes;
+    }
+
+    /**
+     * @brief Retorna l'evolució diària del nombre de contagiosos.
+     * @pre La llista _contagiosos ha d'estar inicialitzada.
+     * @post Retorna la llista sencera d'evolució dels contagiosos.
+     * @return Llista amb el nombre de contagiosos per dia.
+     */
+    public List<Integer> evolucioContgiosos(){
+        return _contagiosos;
+    }
+
+    /**
+     * @brief Retorna l'evolució diària de les morts.
+     * @pre La llista mortsDiaries ha d'estar inicialitzada.
+     * @post Retorna la llista sencera de morts diàries.
+     * @return Llista amb el nombre de morts per dia.
+     */
+    public List<Integer> mortsDiaries(){
+        return mortsDiaries;
+    }
+
+    /**
+     * @brief Retorna el nombre total de malalts al llarg de la malaltia.
+     * @pre L'atribut totalMalalts ha d'estar inicialitzat.
+     * @post Retorna el valor acumulat de persones que han estat malaltes.
+     * @return Total de malalts.
+     */
+    public int totalMalalts() {
+        return totalMalalts;
+    }
+
+    /**
+     * @brief Retorna el nombre total de morts al llarg de la malaltia.
+     * @pre L'atribut totalMorts ha d'estar inicialitzat.
+     * @post Retorna el valor acumulat de persones mortes.
+     * @return Total de morts.
+     */
+    public int totalMorts() {
+        return totalMorts;
+    }
+
+    /**
+     * @brief Retorna el nombre total d'infectats al llarg de la malaltia.
+     * @pre L'atribut totalInfectats ha d'estar inicialitzat.
+     * @post Retorna el valor acumulat de persones infectades.
+     * @return Total d'infectats.
+     */
+    public int totalInfectats() {
+        return totalInfectats;
+    }
+
+
+    //----------------------------------------------------//
+
 
     /**
      * Resta un nombre de nous infectats d'avui i actualitza el total acumulat.
