@@ -99,13 +99,13 @@ public class LlegirFitxerVirusR {
         if (!line.startsWith("prob_mut_coincidencia ")) {
             throw new IOException("Format incorrecte. S'esperava 'prob_mut_coincidencia'.");
         }
-        double probMut = Double.parseDouble(line.substring(21).trim().split("#")[0].trim());
+        double probMut = Double.parseDouble(netejarLinia(line.substring(21).trim().split("#")[0].trim()));
 
         line = br.readLine().trim();
         if (!line.startsWith("tpc_maxim_variacio ")) {
             throw new IOException("Format incorrecte. S'esperava 'tpc_maxim_variacio'.");
         }
-        int tpcVariacio = Integer.parseInt(line.substring(18).trim().split("#")[0].trim());
+        int tpcVariacio = Integer.parseInt(netejarLinia(line.substring(18).trim().split("#")[0].trim()));
 
         br.readLine();
 
@@ -155,19 +155,26 @@ public class LlegirFitxerVirusR {
             nomVirus,
             tipus,
             familia,
-            Double.parseDouble(parametres.get("prob_malaltia")),
-            Integer.parseInt(parametres.get("incubacio")),
-            Integer.parseInt(parametres.get("latencia")),
-            Integer.parseInt(parametres.get("durada_contagi")),
-            Integer.parseInt(parametres.get("durada_immunitat")),
-            Double.parseDouble(parametres.get("mortalitat")),
-            Double.parseDouble(parametres.get("taxa_contagi")),
+            Double.parseDouble(netejarLinia(parametres.get("prob_malaltia"))),
+            Integer.parseInt(netejarLinia(parametres.get("incubacio"))),
+            Integer.parseInt(netejarLinia(parametres.get("latencia"))),
+            Integer.parseInt(netejarLinia(parametres.get("durada_contagi"))),
+            Integer.parseInt(netejarLinia(parametres.get("durada_immunitat"))),
+            Double.parseDouble(netejarLinia(parametres.get("mortalitat"))),
+            Double.parseDouble(netejarLinia(parametres.get("taxa_contagi"))),
             parametres.containsKey("prob_mutacio_copia") ? 
-                Double.parseDouble(parametres.get("prob_mutacio_copia")) : 0.0
+                Double.parseDouble(netejarLinia(parametres.get("prob_mutacio_copia"))) : 0.0
         );
 
         virus.put(nomVirus, virusLlegit);
     }
+
+
+    private String netejarLinia(String line) throws IOException {
+        if (line == null) throw new IOException("S'esperaven més línies al fitxer");
+        return line.trim().split("#")[0].trim();
+    }
+
 
     /**
      * @brief Retorna el mapa de famílies de virus llegides.
