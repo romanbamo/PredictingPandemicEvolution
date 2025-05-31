@@ -279,8 +279,7 @@ public class Regio {
     public List<String> virusPresentsARegio(){
         List<String> llistaVirus = new ArrayList<>();
         for(Map.Entry<String, AfectacioVirusRegio> afectacio : afectacions.entrySet()){
-            Virus v = afectacio.getValue().quinVirusHiHa();
-            llistaVirus.add(v.nom());
+            llistaVirus.add(afectacio.getKey());
         }
         Collections.sort(llistaVirus);
         return llistaVirus;
