@@ -606,14 +606,6 @@ public class Regio {
     }
 
 
-
-
-
-
-// Mireia
-
-
-
     // Operacions
     public void afegirCasos(Virus virus, int nousInfectats) { // F-> AIXÒ MILLOR GESTIONAR-HO A NIVELL D'AFECTACIÓ (VIRUS-REGIÓ)
         // Afegeix nous casos d'un virus a la regió

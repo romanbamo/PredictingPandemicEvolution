@@ -329,6 +329,9 @@ public class AfectacioVirusRegio {
     //----------------------------------------------------//
 
 
+    // Fet per Iria
+
+
     /**
      * Resta un nombre de nous infectats d'avui i actualitza el total acumulat.
      * Ens assegurem que no quedi negatiu.
