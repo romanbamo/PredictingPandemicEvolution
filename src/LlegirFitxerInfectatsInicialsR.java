@@ -52,7 +52,7 @@ public class LlegirFitxerInfectatsInicialsR {
         if (linia.isEmpty() || linia.startsWith("#")) return null;
         
         if (linia.startsWith("regio ")) {
-            String nomRegio = linia.substring(6).trim().split("#")[0].trim();
+            String nomRegio = netejarLinia(linia.substring(6).trim());
             EstatInicialLlegit estat = new EstatInicialLlegit(nomRegio);
             
             // Processar els virus i infectats d'aquesta regió
@@ -81,7 +81,7 @@ public class LlegirFitxerInfectatsInicialsR {
             }
             
             if (linia.startsWith("nom_virus ")) {
-                String nomVirus = linia.substring(10).trim().split("#")[0].trim();
+                String nomVirus = netejarLinia(linia.substring(10).trim());
                 
                 // Llegir següent línia que han de ser els infectats
                 linia = br.readLine().trim();
@@ -89,10 +89,15 @@ public class LlegirFitxerInfectatsInicialsR {
                     throw new IOException("Format de fitxer incorrecte. S'esperava 'infectats' després de 'nom_virus'.");
                 }
                 
-                int infectats = Integer.parseInt(linia.substring(9).trim().split("#")[0].trim());
+                int infectats = Integer.parseInt(netejarLinia(linia.substring(9).trim()));
                 estat.afegirVirus(nomVirus, infectats);
             }
         }
+    }
+
+    private String netejarLinia(String line) throws IOException {
+        if (line == null) throw new IOException("S'esperaven més línies al fitxer");
+        return line.trim().split("#")[0].trim();
     }
 
     /**
