@@ -330,6 +330,62 @@ public class Regio {
         return avr.nombreImmunes();
     }
 
+    /**
+     * @brief Retorna l’evolució diària del nombre de malalts per un virus concret en aquesta regió.
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna la llista sencera de malalts per dia per aquest virus.
+     * @author Romà Barrera
+     * @param virus El virus del qual es vol consultar l’evolució de malalts.
+     * @return Llista amb el nombre de malalts per dia.
+     */
+    public List<Integer> evolucioMalalts(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return new ArrayList<>;
+        return avr.evolucioMalalts();
+    }
+
+    /**
+     * @brief Retorna l’evolució diària del nombre d’immunes per un virus concret en aquesta regió.
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna la llista sencera d’immunes per dia per aquest virus.
+     * @author Romà Barrera
+     * @param virus El virus del qual es vol consultar l’evolució d’immunes.
+     * @return Llista amb el nombre d’immunes per dia.
+     */
+    public List<Integer> evolucioImmunes(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return new ArrayList<>;
+        return avr.evolucioImmunes();
+    }
+
+    /**
+     * @brief Retorna l’evolució diària del nombre de contagiosos per un virus concret en aquesta regió.
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna la llista sencera de contagiosos per dia per aquest virus.
+     * @author Romà Barrera
+     * @param virus El virus del qual es vol consultar l’evolució de contagiosos.
+     * @return Llista amb el nombre de contagiosos per dia.
+     */
+    public List<Integer> evolucioContagiosos(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return new ArrayList<>;
+        return avr.evolucioContgiosos();
+    }
+
+    /**
+     * @brief Retorna l’evolució diària del nombre de morts per un virus concret en aquesta regió.
+     * @pre El virus ha de ser un objecte vàlid.
+     * @post Retorna la llista sencera de morts diàries per aquest virus.
+     * @author Romà Barrera
+     * @param virus El virus del qual es vol consultar l’evolució de defuncions.
+     * @return Llista amb el nombre de morts per dia.
+     */
+    public List<Integer> evolucioMorts(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        if (avr == null) return new ArrayList<>;
+        return avr.mortsDiaries();
+    }
+
 
     /**
      * L'utilitzem per a saber si un cert virus ja està contegiant una regió o si encara no i hem de crear una
