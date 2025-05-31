@@ -10,7 +10,7 @@ public class Simulacio1{
     private List<Virus> llistaVirus = new ArrayList<>();
     private List<String> nomsRegions = new ArrayList<>();
     private List<String> nomsVirus = new ArrayList<>();
-    private int diaSimulacio = new Integer();
+    private int diaSimulacio = new Integer(0);
 
     public void carregarRegions(String path) {
         LlegirFitxerRegionsR lector = new LlegirFitxerRegionsR();
@@ -134,6 +134,11 @@ public class Simulacio1{
         return regions;
     }
 
+    public List<String> mostrarRegionsVeines(String nomRegio){
+        Regio r = mapaRegions.get(nomRegio);
+        return r.nomRegionsVeines();
+    }
+
     public List<String> mostrarVirusRegio(String nomRegio){
         Regio r = mapaRegions.get(nomRegio);
         return r.virusPresentARegio();
@@ -156,8 +161,166 @@ public class Simulacio1{
             // tornar a l'original a una d'elles
         }
     }
- 
+
+    /**
+     * @brief Retorna el nombre total d'infectats per un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre d'infectats (contagiosos i no contagiosos) per aquest virus.
+     */
+    public int nombreInfectats(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.nombreInfectats(v);
+    }
+
+    /**
+     * @brief Retorna el nombre de persones malaltes per un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre de malalts per aquest virus a la regió.
+     */
+    public int nombreMalalts(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.nombreMalalts(v);
+    }
+
+    /**
+     * @brief Retorna el nombre de nous contagis per un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre de nous contagis per aquest virus a la regió.
+     */
+    public int nousInfectats(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.nousInfectats(v);
+    }
+
+    /**
+     * @brief Retorna el nombre de noves defuncions per un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre de noves defuncions per aquest virus a la regió.
+     */
+    public int novesDefuncions(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.novesDefuncions(v);
+    }
+
+    /**
+     * @brief Retorna el nombre de persones immunes a un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre de persones immunes a aquest virus a la regió.
+     */
+    public int nombreImmunes(String nomRegio, String nomVirus){
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.nombreImmunes(v);   
+    }
+
+    /**
+     * @brief Retorna el nombre de persones contagioses per un virus en una regió.
+     * @param nomRegio Nom de la regió a consultar.
+     * @param nomVirus Nom del virus a consultar.
+     * @return Nombre de persones que poden contagiar el virus en aquesta regió.
+     */
+    public int nombreContagiosos(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.nombreContagiosos(v);
+    }
+
+    /**
+     * @brief Retorna l’evolució de malalts per un virus concret dins d’una regió.
+     * @pre El nom de la regió i del virus han de ser vàlids.
+     * @post Retorna una llista amb el nombre de malalts per dia.
+     * @param nomRegio Nom de la regió.
+     * @param nomVirus Nom del virus.
+     * @return Llista amb el nombre de malalts per dia.
+     */
+    public List<Integer> evolucioMalalts(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.evolucioMalalts(v);
+    }
+
+    /**
+     * @brief Retorna l’evolució d’immunes per un virus concret dins d’una regió.
+     * @pre El nom de la regió i del virus han de ser vàlids.
+     * @post Retorna una llista amb el nombre d’immunes per dia.
+     * @param nomRegio Nom de la regió.
+     * @param nomVirus Nom del virus.
+     * @return Llista amb el nombre d’immunes per dia.
+     */
+    public List<Integer> evolucioImmunes(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.evolucioImmunes(v);
+    }
+
+    /**
+     * @brief Retorna l’evolució de contagiosos per un virus concret dins d’una regió.
+     * @pre El nom de la regió i del virus han de ser vàlids.
+     * @post Retorna una llista amb el nombre de contagiosos per dia.
+     * @param nomRegio Nom de la regió.
+     * @param nomVirus Nom del virus.
+     * @return Llista amb el nombre de contagiosos per dia.
+     */
+    public List<Integer> evolucioContagiosos(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.evolucioContagiosos(v);
+    }
+
+    /**
+     * @brief Retorna l’evolució de defuncions per un virus concret dins d’una regió.
+     * @pre El nom de la regió i del virus han de ser vàlids.
+     * @post Retorna una llista amb el nombre de morts per dia.
+     * @param nomRegio Nom de la regió.
+     * @param nomVirus Nom del virus.
+     * @return Llista amb el nombre de morts per dia.
+     */
+    public List<Integer> evolucioMorts(String nomRegio, String nomVirus) {
+        Regio r = mapaRegions.get(nomRegio);
+        Virus v = buscarVirusPerNom(nomVirus);
+        return r.evolucioMorts(v);
+    }
+
+    /**
+     * @brief Retorna les estadístiques totals d’afectació d’un virus dins d’una regió.
+     * @pre Els noms de la regió i del virus han de ser vàlids.
+     * @post Retorna una llista amb: [total infectats, total malalts, total morts]
+     * @param nomRegio Nom de la regió.
+     * @param nomVirus Nom del virus.
+     * @return Llista amb les estadístiques totals per a aquesta combinació.
+     */
+    public List<Integer> obtenirAcumulatsTotals(String nomRegio, String nomVirus) {
+        Regio regio = mapaRegions.get(nomRegio);
+        Virus virus = buscarVirusPerNom(nomVirus);
+        return regio.acumulatsTotals(virus);
+    }
+
+    /**
+     * @brief Avança un dia en la simulació per a totes les regions del territori.
+     * @pre El mapa de regions ha d’estar inicialitzat i contenir objectes Regio vàlids.
+     * @post S’ha avançat un dia de simulació per a cada regió, actualitzant les afectacions de cada virus.
+     */
+    public void avancarDia() {
+        for (Regio r : mapaRegions.values()) {
+            r.avancarDia();
+        }
+        diaSimulacio++;
+    }
+
+
+
     
+
+    //-----------------------PRIVATS--------------------//
     private Virus buscarVirusPerNom(String nomVirus) {
         for (Virus v : llistaVirus) {
             if (v.nom.equals(nomVirus)) {
