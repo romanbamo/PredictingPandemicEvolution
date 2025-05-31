@@ -411,6 +411,18 @@ public class Regio {
         return acumulats;
     }
 
+    /**
+     * @brief Avança un dia en la simulació per totes les afectacions de virus dins d’aquesta regió.
+     * @pre L’estructura de dades afectacions ha d’estar inicialitzada amb objectes AfectacioVirusRegio.
+     * @post Actualitza totes les afectacions dins d’aquesta regió fent avançar un dia de simulació.
+     * @author Romà Barrera
+     */
+    public void avancarDia() {
+        for (Map.Entry<String, AfectacioVirusRegio> afectacio : afectacions.entrySet()) {
+            afectacio.getValue().avançarUnDia();
+        }
+    }
+
 
 
     /**
