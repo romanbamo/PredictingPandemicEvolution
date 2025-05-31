@@ -607,19 +607,19 @@ public class Regio {
     }
 
 
-    // Operacions
-    public void afegirCasos(Virus virus, int nousInfectats) { // F-> AIXÒ MILLOR GESTIONAR-HO A NIVELL D'AFECTACIÓ (VIRUS-REGIÓ)
-        // Afegeix nous casos d'un virus a la regió
-        // Verifiquem que el nombre de nous infectats sigui vàlid
-        if (nousInfectats < 0) {
-            System.out.println("Error: Nombre de nous infectats no vàlid.");
-        }
-
-        // Evitem que el total d'infectats superi la població total
-        int nousCasosReals = Math.min(nousInfectats, poblacio - casosActuals);
-        casosActuals += nousCasosReals;
-
-    }
+//    // Operacions
+//    public void afegirCasos(Virus virus, int nousInfectats) { // F-> AIXÒ MILLOR GESTIONAR-HO A NIVELL D'AFECTACIÓ (VIRUS-REGIÓ)
+//        // Afegeix nous casos d'un virus a la regió
+//        // Verifiquem que el nombre de nous infectats sigui vàlid
+//        if (nousInfectats < 0) {
+//            System.out.println("Error: Nombre de nous infectats no vàlid.");
+//        }
+//
+//        // Evitem que el total d'infectats superi la població total
+//        int nousCasosReals = Math.min(nousInfectats, poblacio - casosActuals);
+//        casosActuals += nousCasosReals;
+//
+//    }
 
 
 // ---------------------------------------------------------------------------------------------------------------------
