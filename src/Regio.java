@@ -386,6 +386,32 @@ public class Regio {
         return avr.mortsDiaries();
     }
 
+    /**
+     * @brief Retorna els acumulats totals d’afectació per un virus dins d’aquesta regió.
+     * @pre El virus ha d’estar present a la regió.
+     * @post Retorna una llista amb: [total infectats, total malalts, total morts]
+     * @author Romà Barrera
+     * @param virus Virus del qual es volen les dades.
+     * @return Llista d’acumulats totals: infectats, malalts i morts.
+     */
+    public List<Integer> acumulatsTotals(Virus virus) {
+        AfectacioVirusRegio avr = esta_present_virus_a_la_regio(virus);
+        List<Integer> acumulats = new ArrayList<>();
+
+        if (avr != null) {
+            acumulats.add(avr.getTotalInfectats());
+            acumulats.add(avr.getTotalMalalts());
+            acumulats.add(avr.getTotalMorts());
+        } else {
+            acumulats.add(0);
+            acumulats.add(0);
+            acumulats.add(0);
+        }
+
+        return acumulats;
+    }
+
+
 
     /**
      * L'utilitzem per a saber si un cert virus ja està contegiant una regió o si encara no i hem de crear una
