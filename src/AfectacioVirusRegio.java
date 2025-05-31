@@ -227,6 +227,20 @@ public class AfectacioVirusRegio {
         return calcular_total(_immunes);
     }
 
+    //Fet per Romà
+    public int nombreMalalts() {
+        // PRE: La llista _malalts ha d'estar inicialitzada correctament.
+        // POST: Retorna la suma total de malalts que hi ha en un dia concret (és la suma dels valors de la llista _malalts).
+        return calcular_total(_malalts);
+    }
+    
+    //Fet per Romà
+    public int novesDefuncions() {
+        // PRE: La llista mortsDiaries ha d'estar inicialitzada correctament.
+        // POST: Retorna el nombre de defuncions del dia actual.
+        return mortsDiaries.get(0);
+    }
+
     public int nombreInfectatsNoContagiosos() {
         // PRE: La llista _infectats_no_contagiosos ha d'estar inicialitzada correctament.
         // POST: Retorna la suma total de infectats però que encara no poden contegiar que hi ha en un dia concret (és la suma dels valors de la llista _infectats_no_contagiosos).
