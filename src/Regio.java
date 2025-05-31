@@ -399,9 +399,9 @@ public class Regio {
         List<Integer> acumulats = new ArrayList<>();
 
         if (avr != null) {
-            acumulats.add(avr.getTotalInfectats());
-            acumulats.add(avr.getTotalMalalts());
-            acumulats.add(avr.getTotalMorts());
+            acumulats.add(avr.totalInfectats());
+            acumulats.add(avr.totalMalalts());
+            acumulats.add(avr.totalMorts());
         } else {
             acumulats.add(0);
             acumulats.add(0);

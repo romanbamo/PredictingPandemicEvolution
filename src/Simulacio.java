@@ -1,3 +1,10 @@
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.io.IOException;
+
 /** 
  * @file Simulacio.java
  * @brief Classe que representa una simulació d'epidèmies a diverses regions
@@ -17,7 +24,7 @@ public class Simulacio{
     private List<Virus> llistaVirus = new ArrayList<>();        ///< Llista de virus presents a la simulació
     private List<String> nomsRegions = new ArrayList<>();       ///< Llista de noms de regions
     private List<String> nomsVirus = new ArrayList<>();         ///< Llista de noms de virus
-    private int diaSimulacio = new Integer(0);                  ///< Dia actual de la simulació
+    private int diaSimulacio = 0;                  ///< Dia actual de la simulació
 
     /**
      * @brief Carrega les dades de regions des d'un fitxer
