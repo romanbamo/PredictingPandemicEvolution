@@ -287,6 +287,30 @@ public class Regio {
     }
 
     /**
+     * @brief Retorna una llista ordenada amb els noms de les regions veines d'aquesta regió.
+     * 
+     * @author Romà Barrera
+     *
+     * Tot i existir el mètode regionsVeines(), és més eficaç aquest mètode per coneixer només el nom de les regions
+     * veines. D'aquesta manera evitem recorrer el vector de regions en la classe destí i generar dos estructures de dades.
+     * Aquest mètode recorre totes les regions veines de la regió i extreu
+     * el nom, afegint-lo a una llista que retorna.
+     * 
+     * @pre L'atribut 'regionsVeines' ha d'estar inicialitzat i no ser null.
+     * @post Retorna una llista amb el nom de totes les regions veines la regió.
+     * 
+     * @return List<String> Una llista amb els noms de les regions veines de la regió.
+     */
+    public List<String> nomRegionsVeines(){
+        List<String> llistaRegionsVeines = new ArrayList<>();
+        for(Regio regioVeina : regionsVeines){
+            llistaRegionsVeines.add(regioVeina.nom());
+        }
+        Collections.sort(llistaRegionsVeines);
+        return llistaRegionsVeines;
+    }
+
+    /**
      * Aquesta funció és molt important ja que quan moren persones per culpa d'algun virus, la població
      * disminueix, per tant hem de canviar aquest número. És a dir, per cada morts que es produeixen en un dia de cada
      * un dels virus que estan afectant a la regió, hem de restar-les al nombre total de persones que té la regió
