@@ -144,14 +144,14 @@ public class Simulacio1{
         return r.virusPresentARegio();
     }
 
-    public afegirConfinamentDur(String nomRegio, Float taxa){
+    public afegirConfinament(String nomRegio, Float taxa){
         Regio r = mapaRegions.get(nomRegio);
         if (r != null) {
             r.aplicarConfinamentDur(taxa);  //confinament dur
         }
     }
 
-    public afegirConfinamentTou(String nomRegio, String nomRegioVeina){
+    public afegirConfinament(String nomRegio, String nomRegioVeina){
         Regio r = mapaRegions.get(nomRegio);
         Regio v = mapaRegions.get(nomRegioVeina);
         if (r != null) {
