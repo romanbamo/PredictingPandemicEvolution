@@ -26,7 +26,8 @@ public class Regio {
 
     private double taxaContacteIntern;  // Probabilitat de contacte entre persones dins de la mateixa regió
     private List<Regio> regionsVeines;  // Llista de regions amb les quals aquesta regió té contacte
-
+    private int comptadorConfinamentDur = 0;
+    private int comptadorConfinamentTou = 0;
 
     private Map<Regio, Double> taxesExternesContacte;
     // He tingut la idea de fer aquest atribut amb un map també. Aquest mapa ens serveix per a guardar,
@@ -679,6 +680,7 @@ public class Regio {
         }
         taxesExternesContacte.put(veina, 0.0);
         veina.taxesExternesContacte.put(this, 0.0);
+        comptadorConfinamentTou++;
     }
 
 
@@ -696,7 +698,8 @@ public class Regio {
         // mai hauria de ser null ja que ens assegurem de que abans de fer confinament, guardem l¡original.
         // Ara be, sempre pot haver falles i així, tal i com hem vist a teoria, amb les excepcions podem saber que
         // l'error ha estat aquí.
-        if (taxaContacteInternOriginal == null) {
+
+        if (taxaContacteInternOriginal == null || comptadorConfinamentTou == 0) {//He afegit la condicio del comptador per saber si queden confinaments per resoldre
             throw new IllegalStateException("No es pot aixecar el confinament perquè no s’han guardat les taxes originals.");
         }
 

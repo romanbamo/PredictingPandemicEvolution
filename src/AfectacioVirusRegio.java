@@ -107,7 +107,7 @@ public class AfectacioVirusRegio {
         int temps_no_pot_contagiar = virus.tempsLatencia();
         int nous_contagiosos = 0;
         // Perquè un infectat pugui començar a contagiar, ha hagut de passar el temps de latència
-        if (_infectats_no_contagiosos.size() >= temps_no_pot_contagiar) {
+        if (_infectats_no_contagiosos.size() == temps_no_pot_contagiar) {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
         _contagiosos.add(0, nous_contagiosos);
@@ -121,6 +121,77 @@ public class AfectacioVirusRegio {
         // -------------------- Aplicar les morts calculades --------------------
         actualitzar_morts();
 
+    }
+
+    // MÈTODES PER FER TOT LO DE LES MUTACIONS
+
+    // mutacio per error de còpia
+
+    /**
+     * Aquesta funció el que fa és mirar si en el dia d'avui, es produeix una mutació del virus que afecta la regió.
+     * Ho fem a partir de la fórmula que ens han donat a l'annex. En cas que sí que hi hagi mutació, es calcula el
+     * nou virus mutat, i s'actualitza l'afectació de la regió per aquest nou virus.
+     */
+    public void comprovarMutacioErrorCopia() {
+        // Pre: virus ha de ser un objecte vàlid. El sistema ha d'estar en el moment d'avançar un dia (estat actual).
+        // Post: Si hi ha mutació, es crea un nou virus i es passa a afectar la regió amb aquest nou virus.
+        // Si no hi ha mutació, no es fa res i el virus continua sent el mateix.
+
+        // Els virus que no són ARN no poden mutar per error de còpia
+        if (!virus.muta()) return;
+
+        VirusARN virusARN = (VirusARN) virus;
+
+        // --------------------------- Primer calculem el nombre de nous contagis d’avui ----------------------------
+
+        // Ens basem en els nous infectats afegits avui a la posició 0 del vector d’infectats
+
+        int nousContagis = 0;
+
+        if (!_infectats_no_contagiosos.isEmpty()) {
+            nousContagis = _infectats_no_contagiosos.get(0);
+        }
+
+        // Si no hi ha hagut contagis, no pot haver-hi mutació per error de còpia
+        if (nousContagis == 0) {
+            return;
+        }
+
+        // --------------------------- Calculem la probabilitat de mutació  --------------------
+
+        double tm = virusARN.probabilitatMutacioErrorCopia();
+        double pm = tm * nousContagis;
+
+        // Si és major a 1, doncs llavors le fixem a 1 (ja que els nums aleatoris que generarem van de 0 a 1)
+        if (pm > 1.0) {
+            pm = 1.0;
+        }
+
+        // --------------------------- Generarem un nombre aleatori entre 0 i 1. ---------------------------
+
+        double aleatori = Math.random();  // num aleatori entre 0 i 1
+        if (aleatori > pm) {
+            return;
+        }
+
+        // Si es produeix la mutació, llavors ara creem el nou virus. Anomenem Vnou a aquest nou virus.
+        VirusARN Vnou = virusARN.mutacio();
+
+        // --------------------------- Calculem quantes infeccions passen al nou virus -----------------------
+
+        // Aquest nou virus Vnou substituirà a V en un pm(V,D)*100 % dels nous contagis de V
+
+        int nousContagisMutats = (int) Math.round(pm * nousContagis); // nombre de contagis que muten
+        int nousContagisRestants = nousContagis - nousContagisMutats; // perquè clar, els nous contagis
+        // del nou virus substitueixen els del virus que hi havia, per tant, hem de restar-los al que hi havien
+
+        // --------------------------- Canviem ara les dades de la regió -------------------------------------
+
+        // Reduim els contagis del virus original que hi havia a la regió.
+        _infectats_no_contagiosos.set(0, nousContagisRestants);  // reduïm els que corresponen al virus original
+
+        // Ara, ve el pas en que hem de crear una nova afectació per aquest nou virus.
+        regio.afegirNovaAfectacio(Vnou, nousContagisMutats);
     }
 
 
@@ -315,7 +386,7 @@ public class AfectacioVirusRegio {
 
         int dies_per_emmalaltir = virus.tempsContagiSenseSintomes();  // T_inc - T_lat
 
-        if (_contagiosos.size() >= dies_per_emmalaltir) {
+        if (_contagiosos.size() > dies_per_emmalaltir) {///////////Romà: He tret l'igual. Abans >=, ara > 
             // Calculem els nous malalts, i necessitem demanar a virus la prob. d'emmalaltir.
             double prob_emmalaltir = virus.probDesenvoluparMalaltia();
             int contagiosos_final_t_incubacio = _contagiosos.get(dies_per_emmalaltir);
@@ -493,7 +564,7 @@ public class AfectacioVirusRegio {
         int total_morts_avui = 0;
 
         for (int i = 0; i < mida; i++) {
-
+    
             // Calculem quantes morts hi ha avui (és a dir, el primer element del vector mortsDiaries)
             int morts = mortsDiaries.get(i);
 
@@ -501,14 +572,16 @@ public class AfectacioVirusRegio {
             int malalts = _malalts.get(i);
             int temps_contagi_sense_sintomes = virus.tempsContagiSenseSintomes();
             int posicio_contagiosos = i + temps_contagi_sense_sintomes;
-            int contagiosos = _contagiosos.get(posicio_contagiosos);
+            if (_contagiosos.size() > posicio_contagiosos) {////////////Linia de control posada per Romà
+                int contagiosos = _contagiosos.get(posicio_contagiosos);
 
-            // Apliquem les morts als malalts i contagiosos.
-            _malalts.set(i, malalts - morts);
-            _contagiosos.set(posicio_contagiosos, contagiosos - morts);
+                // Apliquem les morts als malalts i contagiosos.
+                _malalts.set(i, malalts - morts);
+                _contagiosos.set(posicio_contagiosos, contagiosos - morts);
 
-            // Actualitzem el total de morts acumulat
-            total_morts_avui = total_morts_avui + morts;
+                // Actualitzem el total de morts acumulat
+                total_morts_avui = total_morts_avui + morts;
+            }
 
         }
 

@@ -34,41 +34,34 @@ public class Simulacio{
      */
     public void carregarRegions(String path) {
         LlegirFitxerRegionsR lector = new LlegirFitxerRegionsR();
-        try {
-            List<RegioLlegida> dades = lector.llegirFitxer(path);
-            Map<String, Map<String, Double>> regionsVeines = new HashMap<>();
 
-            for (RegioLlegida r : dades) {
+        try {
+            lector.llegirFitxer(path);
+            Map<String, RegioLlegida> dades = lector.vectorRegionsLlegides();
+
+            for (RegioLlegida r : dades.values()) {
                 Regio novaRegio = new Regio(r.nom, r.nHab, r.taxaMobInt);
                 mapaRegions.put(r.nom, novaRegio);
-                regionsVeines.put(r.nom, r.veins);
                 nomsRegions.add(r.nom);
             }
 
-            for (Map.Entry<String, Regio> entry : mapaRegions.entrySet()) {
-                String nomRegio = entry.getKey();
-                Regio regio = entry.getValue();
-                
-                Map<String, Double> veins = regionsVeines.get(nomRegio);
-                if (veins != null) {
-                    for (Map.Entry<String, Double> vei : veins.entrySet()) {
-                        String nomVeina = vei.getKey();
-                        Double taxa = vei.getValue();
-                        
-                        Regio regioVeina = mapaRegions.get(nomVeina);
-                        if (regioVeina != null) {
-                            regio.afegirRegioVeina(regioVeina, taxa);
-                        } else {
-                            System.err.println("Advertència: Regió veïna no trobada - " + nomVeina);
-                        }
+            for (RegioLlegida r : dades.values()) {
+                Regio regioActual = mapaRegions.get(r.nom);
+                for (Map.Entry<String, Double> veina : r.veins.entrySet()) {
+                    Regio regioVeina = mapaRegions.get(veina.getKey());
+                    if (regioVeina != null) {
+                        regioActual.afegirRegioVeina(regioVeina, veina.getValue());
+                    } else {
+                        System.err.println("No s'ha trobat la regió veïna: " + veina.getKey());
                     }
                 }
             }
-            
+
         } catch (IOException e) {
             System.err.println("Error llegint el fitxer de regions: " + e.getMessage());
         }
     }
+
     /**
      * @brief Carrega les dades de virus des d'un fitxer i els afegeix a la llista de virus
      * @param path Ruta del fitxer a carregar
@@ -140,9 +133,12 @@ public class Simulacio{
             List<EstatInicialLlegit> dades = lector.llegirFitxer(path);
 
             for (EstatInicialLlegit e : dades) {
+                System.out.println(e.nomRegio);
                 Regio r = mapaRegions.get(e.nomRegio);
                 for(Map.Entry<String, Integer> virusInicial : e.virusInicials.entrySet()){
+                    System.out.println(virusInicial.getKey());
                     Virus virusActual = buscarVirusPerNom(virusInicial.getKey());
+                    System.out.println("Virus Trobat");
                     r.afegirNovaAfectacio(virusActual, virusInicial.getValue());
                 }
             }
@@ -219,7 +215,11 @@ public class Simulacio{
      */
     public void desconfinar(String nomRegio){
         Regio r = mapaRegions.get(nomRegio);
-        r.aixecarConfinament();
+        if (r == null) {
+            System.err.println("ERROR: La regió '" + nomRegio + "' no existeix i no es pot desconfinar.");
+        } else {
+            r.aixecarConfinament();
+        }
     }
 
     /**
@@ -440,7 +440,7 @@ public class Simulacio{
                     VirusARN virusARN = (VirusARN) virus;
 
                     int nous = afectacio.nousContagios();
-                    contagis_totals.put(virus, contagis_totals.getOrDefault(virus, 0) + nous);
+                    contagis_totals.put(virusARN, contagis_totals.getOrDefault(virus, 0) + nous);
                     // amb aquesta linia, mirem si el virus ja està en el mapa.
                 }
             }
@@ -489,7 +489,19 @@ public class Simulacio{
             }
         }
     }
-
+///////////////////////Simulacio////////////////////////////
+    public List<String> obtenirNomsVirus() {
+        List<String> nomsVirus = new ArrayList<>();
+        
+        for (Virus virus : llistaVirus) {
+            if (virus != null && virus.nom() != null) {
+                nomsVirus.add(virus.nom());
+            }
+        }
+        
+        Collections.sort(nomsVirus);
+        return nomsVirus;
+    }
 
 
 }
