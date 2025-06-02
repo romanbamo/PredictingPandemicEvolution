@@ -75,11 +75,10 @@ public class VirusARN extends Virus implements Comparable<VirusARN> {
     public VirusARN mutacio() {
         // Pre: El virus ha de ser ARN (els unics que poden mutar) i ha de tenir la seva probabilitat de mutació
         // per error de còpia.
-        // Post: Retorna "this" si no hi ha mutació. Si hi ha, es genera un nou virus ARN de la mateixa família que
+        // Post: Es genera un nou virus ARN de la mateixa família que
         // l’original, amb els paràmetres modificats. Per tant, retornarà una mutació per error de còpia de "this"
         // El nom d'aquest nou virus serà el nom del virus que muta però amb un número correlatiu que indiqui el número
         // de vegades que ha mutat.
-
 
         int maximVariacio = this.familia().tpcMax();  // Primer de tot, hem de saber el tant per cent màxim (tpc_max)
         // de variació, el qual és una característica de la família del virus (cridem el seu mètode).

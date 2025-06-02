@@ -372,7 +372,9 @@ public class Simulacio{
     public void avancarDia() {
         for (Regio r : mapaRegions.values()) {
             r.avancarDia();
+            r.comprovarMutacionsPerCoincidencia(); // Mutació per coincidència es fa dins la regió
         }
+        controlar_mutacions_per_error_de_copia(); // Mutació per error de còpia l'he fet global com un mètode privat de simulacio (he hagut de tenir en compte totes les regions)
         diaSimulacio++;
     }
 
@@ -395,6 +397,97 @@ public class Simulacio{
             }
         }
         return null;
+    }
+
+
+    /**
+     * Aquesta funció el que fa és mirar si en el dia d'avui, es produeix una mutació per error de copia d'algun virus.
+     * Ho fem a partir de la fórmula que ens han donat a l'annex. En cas que sí que hi hagi mutació, es calcula el
+     * nou virus mutat, i s'actualitza l'afectació de la regió per aquest nou virus.
+     *
+     * @ autor = IRIA AULADELL
+     */
+    private void controlar_mutacions_per_error_de_copia() {
+    // Pre: Cal haver avançat el dia a totes les regions i tenir actualitzats els nous contagis del dia.
+    // Post: Alguns virus poden haver mutat, apareixent una nova afectació en aquestes regions.
+    // Els nous contagis del virus original es redueixen.
+
+        Map<VirusARN, Integer> contagis_totals = new HashMap<>();
+
+        // Segons el anex de fòrmules, primer de tot, el que hem de fer és calcular els nous contagis totals per
+        // cada virus que pot mutar --> pm(V,D) = tm(V)*nc(V,D) si aquest producte < =1; altrament 1
+        // tm(V) = V.probMutErrorCopia()
+        // nc(V,D) = dAct(D).nousContagis(V)
+
+        // primer de tot, llavors, hem de considerar la suma de nous contagis de cada virus sobre totes les regions
+        // Potser es pot fer de manera més eficient, però la idea que he tingut ha estat recorrer totes les regions,
+        // veure cada una de les afectacions de cada una i després doncs separa per virus. És a dir, mirem la primera
+        // regio amb les seves afectacions i per cada virus doncs posem al mapa els nous contagis. Després, mirem
+        // la següent regoó amb les seves afectacions. Si els virus que hi han no els tenim en el mapa, les afegim amb
+        // els seus nous contagis. Si en canvi ja estan en el mapa (ja afecten una regió que hem mirat), sumem els nous
+        // contagis de la regió que estem mirant, amb els nous contagis de les regions diferents. Al final acabarem
+        // tenint un MAP on per cada virus, tindrem la suma de tots els nous contagis tenint en compte totes les
+        // regions a les quals està afectant
+
+        for (Regio regio : mapaRegions.values()) {
+            for (AfectacioVirusRegio afectacio : regio.AfectacionsDeLaRegio()) {
+                Virus virus = afectacio.quinVirusHiHa();
+                if (virus.muta()) { // aquí fem us del nostre mètode sobreescrit que ens diu si és o no ARN
+                // si torna false, no es ARN ja que no muta, en canvi, si és verdader, vol dir que és ARN ja que
+                // és l'únic que pot mutar
+
+                    // Com ja hem comprovat que virus.muta() == true, sabem que és un VirusARN.
+                    VirusARN virusARN = (VirusARN) virus;
+
+                    int nous = afectacio.nousContagios();
+                    contagis_totals.put(virus, contagis_totals.getOrDefault(virus, 0) + nous);
+                    // amb aquesta linia, mirem si el virus ja està en el mapa.
+                }
+            }
+        }
+
+        // Ara ens cal saber si hi ha o no mutació. Per determinar si es produeix mutació, generarem un nombre
+        // aleatori entre 0 i 1. Si resulta menor que pm(V,D), hi haurà mutació, i no n’hi haurà en cas contrari.
+
+        for (Map.Entry<VirusARN, Integer> entry : contagis_totals.entrySet()) {
+            VirusARN virus_que_pot_mutar = entry.getKey();
+            int nc = entry.getValue();
+
+            double pm = virus_que_pot_mutar.probabilitatMutacioErrorCopia() * nc;
+            if (pm > 1.0) pm = 1.0; // no hauria de passar, pero bueno, ens assegurem que com a max tinguem 1
+
+            double aleatori = Math.random();
+            if (aleatori < pm) {
+                Virus virus_mutat = virus_que_pot_mutar.mutacio(); // aqui cridem el metode que tinc a VirusARN que
+                // gestiona el nou virus mutat per error de copia
+                llistaVirus.add(virus_mutat); // afegim el nou virus a la simulació
+
+                // Aquest nou virus Vnou substituirà a V en un pm(V,D)*100 % dels nous contagis de V, és a dir, Vnou infectarà
+                // La fòrmula que segueixo és la de l'annex --> nc(Vnou,D) = nc(V,D) * pm(V,D)
+                int nous_contagis_mutat = (int) Math.round(pm * nc);
+
+
+                // Caldrà distribuir aquests nous contagiats de Vnou entre les regions afectades per nous contagis de V,
+                // de forma proporcional al nombre de nous contagis de V. Es crearan, doncs, noves afectacions en aquestes regions.
+                for (Regio regio : mapaRegions.values()) {
+                    for (AfectacioVirusRegio afectacio : regio.AfectacionsDeLaRegio()) {
+                        if (afectacio.quinVirusHiHa().equals(virus_que_pot_mutar)) {
+                            int contagis_en_la_regio = afectacio.nousContagios();
+                            if (contagis_en_la_regio > 0) {
+                                double proporcio = (double) contagis_en_la_regio / nc;
+                                int mutats = (int) Math.round(nous_contagis_mutat * proporcio);
+
+                                // Ara, nc(V,D) = nc(V,D) - nc(Vnou,D) (3)
+                                if (mutats > 0) {
+                                    regio.afegirNovaAfectacio(virus_mutat, mutats);
+                                    afectacio.restarNousInfectatsAvui(mutats);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

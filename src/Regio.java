@@ -503,6 +503,18 @@ public class Regio {
     }
 
     /**
+     * He fet aquest mètode per a poder retornar totes les afectacions presents en aquesta regió.
+     * He tingut la necessitat de fer aquest mètode per a poder calcular els nous contagis totals de totes les
+     * afectacions, i així poder aplicar la formula de mutació per coincidència.
+     */
+    public List<AfectacioVirusRegio> AfectacionsDeLaRegio() {
+        // Pre: afectacions ha d'estar inicialitzat
+        // Post: Retornem la llista amb totes les afectacions d'aquesta regio
+        return new ArrayList<>(afectacions.values());
+    }
+
+
+    /**
      * Afegeixo informació de que fer aquest mètode per tenir una idea molt més clara. M'he basat totalment
      * en el pseudocodi donat, que estava súper bé. Basicament el que fem és mirar si en aquesta regió es pot produir
      * una mutació per coincidència. Primer de tot agrupem tots els virus ARN per famílies. Un cop tenim agrupats els virus per família,
