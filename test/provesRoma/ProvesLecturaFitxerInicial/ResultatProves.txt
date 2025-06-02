@@ -1,0 +1,32 @@
+roman@roman-Aspire-V3-571G:~/Documents/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesLecturaFitxerInicial$ java MainProvesInfectatsInicials 
+Llegint fitxer: estatInicial.txt
+
+Regions amb infectats inicials:
+
+Regió: catalunya_central
+Virus i infectats inicials:
+  - HepatitisB: 33 infectats
+  - Grip: 237 infectats
+
+Regió: metropolitana_nord
+Virus i infectats inicials:
+  - Grip: 452 infectats
+  - Covid19: 156 infectats
+
+Regió: metropolitana_sud
+Virus i infectats inicials:
+  - Grip: 365 infectats
+  - Covid19: 76 infectats
+
+Regió: barcelona_ciutat
+Virus i infectats inicials:
+  - Grip: 165 infectats
+  - Covid19: 321 infectats
+  - SARS-CoV: 23 infectats
+
+Mapa complet de regions:
+- metropolitana_sud
+- barcelona_ciutat
+- metropolitana_nord
+- catalunya_central
+

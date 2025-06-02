@@ -1,0 +1,82 @@
+roman@roman-Aspire-V3-571G:~/Documentos/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesLecturaRegio$ java MainProvesLlegirRegions 
+Llegint fitxer: regions.txt
+
+Regions llegides correctament:
+
+Regió: girona
+Habitants: 861753
+Taxa mobilitat interna: 5.8
+Regions veïnes:
+  - metropolitana_nord (taxa: 2.6)
+  - alt_pirineu_i_aran (taxa: 0.7)
+  - catalunya_central (taxa: 1.8)
+
+Regió: metropolitana_sud
+Habitants: 1370709
+Taxa mobilitat interna: 8.1
+Regions veïnes:
+  - barcelona_ciutat (taxa: 3.7)
+  - metropolitana_nord (taxa: 3.0)
+  - catalunya_central (taxa: 2.1)
+  - camp_de_tarragona (taxa: 2.4)
+
+Regió: barcelona_ciutat
+Habitants: 1693449
+Taxa mobilitat interna: 8.3
+Regions veïnes:
+  - metropolitana_sud (taxa: 2.9)
+  - metropolitana_nord (taxa: 3.2)
+
+Regió: metropolitana_nord
+Habitants: 1986032
+Taxa mobilitat interna: 6.1
+Regions veïnes:
+  - girona (taxa: 2.3)
+  - metropolitana_sud (taxa: 2.8)
+  - barcelona_ciutat (taxa: 3.3)
+  - catalunya_central (taxa: 2.5)
+
+Regió: terres_de_lebre
+Habitants: 176817
+Taxa mobilitat interna: 5.5
+Regions veïnes:
+  - camp_de_tarragona (taxa: 2.0)
+  - lleida (taxa: 1.3)
+
+Regió: catalunya_central
+Habitants: 526959
+Taxa mobilitat interna: 5.7
+Regions veïnes:
+  - girona (taxa: 1.2)
+  - metropolitana_sud (taxa: 1.9)
+  - metropolitana_nord (taxa: 2.3)
+  - alt_pirineu_i_aran (taxa: 0.9)
+  - camp_de_tarragona (taxa: 1.3)
+  - lleida (taxa: 1.2)
+
+Regió: alt_pirineu_i_aran
+Habitants: 67277
+Taxa mobilitat interna: 2.8
+Regions veïnes:
+  - girona (taxa: 1.2)
+  - catalunya_central (taxa: 2.2)
+  - lleida (taxa: 2.6)
+
+Regió: camp_de_tarragona
+Habitants: 607999
+Taxa mobilitat interna: 6.3
+Regions veïnes:
+  - metropolitana_sud (taxa: 2.8)
+  - terres_de_lebre (taxa: 1.6)
+  - catalunya_central (taxa: 1.6)
+  - lleida (taxa: 1.4)
+
+Regió: lleida
+Habitants: 362850
+Taxa mobilitat interna: 4.2
+Regions veïnes:
+  - terres_de_lebre (taxa: 0.9)
+  - catalunya_central (taxa: 1.8)
+  - alt_pirineu_i_aran (taxa: 1.0)
+  - camp_de_tarragona (taxa: 1.3)
+

@@ -1,0 +1,91 @@
+nom barcelona_ciutat
+habitants 1693449
+mob_interna 8.3    # contactes mitjans per persona i dia
+*
+nom metropolitana_nord
+habitants 1986032
+mob_interna 6.1
+*
+nom metropolitana_sud
+habitants 1370709
+mob_interna 8.1
+*
+nom lleida
+habitants 362850
+mob_interna 4.2
+*
+nom camp_de_tarragona
+habitants 607999
+mob_interna 6.3
+*
+nom terres_de_lebre
+habitants 176817
+mob_interna 5.5
+*
+nom girona
+habitants 861753
+mob_interna 5.8
+*
+nom catalunya_central
+habitants 526959
+mob_interna 5.7
+*
+nom alt_pirineu_i_aran
+habitants 67277
+mob_interna 2.8
+*
+limits_i_mobilitat    # regions limítrofes i taxa de mobilitat externa (contactes mitjans per persona i dia)
+barcelona_ciutat
+metropolitana_nord 3.2 
+metropolitana_sud 2.9
+*
+metropolitana_nord
+girona 2.3
+catalunya_central 2.5
+barcelona_ciutat 3.3
+metropolitana_sud 2.8
+*
+metropolitana_sud
+barcelona_ciutat 3.7
+metropolitana_nord 3.0
+catalunya_central 2.1
+camp_de_tarragona 2.4
+*
+lleida
+terres_de_lebre 0.9
+camp_de_tarragona 1.3
+catalunya_central 1.8
+alt_pirineu_i_aran 1.0
+* 
+camp_de_tarragona
+metropolitana_sud 2.8
+catalunya_central 1.6
+lleida 1.4
+terres_de_lebre 1.6
+*
+terres_de_lebre
+camp_de_tarragona 2.0
+lleida 1.3
+*
+girona
+alt_pirineu_i_aran 0.7
+catalunya_central 1.8
+metropolitana_nord 2.6
+*
+catalunya_central
+girona 1.2
+alt_pirineu_i_aran 0.9
+lleida 1.2
+camp_de_tarragona 1.3
+metropolitana_sud 1.9
+metropolitana_nord 2.3
+*
+alt_pirineu_i_aran
+lleida 2.6 
+catalunya_central 2.2
+girona 1.2
+*
+
+
+
+

@@ -1,0 +1,62 @@
+families
+nom Orthomyxoviridae
+prob_mut_coincidencia 0.005
+tpc_maxim_variacio 20
+*
+nom Coronaviridae
+prob_mut_coincidencia 0.004
+tpc_maxim_variacio 25
+*
+nom Hepadnaviridae
+prob_mut_coincidencia 0 # dada no aplicable 
+tpc_maxim_variacio 0 # dada no aplicable 
+*
+virus
+nom GripA
+tipus ARN
+familia Orthomyxoviridae
+prob_malaltia 0.8
+incubacio 2
+latencia 1
+durada_contagi 5
+durada_immunitat 30
+mortalitat 0.05
+taxa_contagi 0.3
+prob_mutacio_copia 0.002
+*
+nom Covid19
+tipus ARN
+familia Coronaviridae
+prob_malaltia 0.75
+incubacio 3
+latencia 2
+durada_contagi 6
+durada_immunitat 50
+mortalitat 0.1
+taxa_contagi 0.4
+prob_mutacio_copia 0.001
+*
+nom HepatitisB
+tipus ADN
+familia Hepadnaviridae
+prob_malaltia 0.5
+incubacio 6
+latencia 3
+durada_contagi 2000  # crònica
+durada_immunitat 0   # no procedeix (crònica)
+mortalitat 0.4
+taxa_contagi 0.1
+*
+nom SARS-CoV
+tipus ARN
+familia Coronaviridae
+prob_malaltia 0.9
+incubacio 1
+latencia 1
+durada_contagi 5
+durada_immunitat 40
+mortalitat 0.1
+taxa_contagi 0.3
+prob_mutacio_copia 0.002
+*
+

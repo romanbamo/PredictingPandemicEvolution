@@ -1,0 +1,106 @@
+Intentant executar un test a Simulacio.java, m'he trobat que els virus definits a Virus.txt són: Covid19, GripA, HepatitisB, SARS-CoV.
+En canvi, a EstatInicial.txt són: Covid19, Grip, HepatitisB, SARS-CoV.
+El fet que Grip i GripA siguin diferents, al no estar en la base de dades, ha generat un error que m'ha fet perdre molt de temps, pensant que no llegia bé les dades.
+
+roman@roman-Aspire-V3-571G:~/Documentos/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesSimulacio$ java MainSimulacio 
+=== CARREGANT DADES ===
+Carregant regions...
+Regions carregades: 9
+
+Carregant virus...
+Virus carregats: [Covid19, GripA, HepatitisB, SARS-CoV]
+
+Carregant estat inicial...
+catalunya_central
+HepatitisB
+Virus Trobat
+Grip
+Virus Trobat
+ERROR carregant estat inicial: Cannot invoke "Virus.nom()" because "<parameter1>" is null
+java.lang.NullPointerException: Cannot invoke "Virus.nom()" because "<parameter1>" is null
+	at Regio.afegirNovaAfectacio(Regio.java:174)
+	at Simulacio.carregarEstatInicial(Simulacio.java:142)
+	at MainSimulacio.main(MainSimulacio.java:25)
+//////////////////////////////////////////////////////////////////////////////////
+En executar test de Simulació, es troben els errors de la resta de classes, com per exemple index fora de rang:
+
+roman@roman-Aspire-V3-571G:~/Documentos/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesSimulacio$ java MainSimulacio 
+=== CARREGANT DADES ===
+Carregant regions...
+Regions carregades: 9
+
+Carregant virus...
+Virus carregats: [Covid19, GripA, HepatitisB, SARS-CoV]
+
+Carregant estat inicial...
+catalunya_central
+HepatitisB
+Virus Trobat
+GripA
+Virus Trobat
+metropolitana_nord
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+metropolitana_sud
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+barcelona_ciutat
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+SARS-CoV
+Virus Trobat
+Estat inicial carregat correctament
+
+=== REGIONS DISPONIBLES ===
+- alt_pirineu_i_aran
+  Regions veïnes: catalunya_central, girona, lleida
+- barcelona_ciutat
+  Virus presents: Covid19, GripA, SARS-CoV
+  Regions veïnes: metropolitana_nord, metropolitana_sud
+- camp_de_tarragona
+  Regions veïnes: catalunya_central, lleida, metropolitana_sud, terres_de_lebre
+- catalunya_central
+  Virus presents: GripA, HepatitisB
+  Regions veïnes: alt_pirineu_i_aran, camp_de_tarragona, girona, lleida, metropolitana_nord, metropolitana_sud
+- girona
+  Regions veïnes: alt_pirineu_i_aran, catalunya_central, metropolitana_nord
+- lleida
+  Regions veïnes: alt_pirineu_i_aran, camp_de_tarragona, catalunya_central, terres_de_lebre
+- metropolitana_nord
+  Virus presents: Covid19, GripA
+  Regions veïnes: barcelona_ciutat, catalunya_central, girona, metropolitana_sud
+- metropolitana_sud
+  Virus presents: Covid19, GripA
+  Regions veïnes: barcelona_ciutat, camp_de_tarragona, catalunya_central, metropolitana_nord
+- terres_de_lebre
+  Regions veïnes: camp_de_tarragona, lleida
+
+=== APLICANT CONFINAMENTS ===
+
+=== SIMULANT 30 DIES ===
+Exception in thread "main" java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at AfectacioVirusRegio.actualitzar_malalts(AfectacioVirusRegio.java:392)
+	at AfectacioVirusRegio.avançarUnDia(AfectacioVirusRegio.java:116)
+	at Regio.avancarDia(Regio.java:423)
+	at Simulacio.avancarDia(Simulacio.java:370)
+	at MainSimulacio.main(MainSimulacio.java:58)
+
+o també, altres tipus d'errors:
+=== AIXECANT CONFINAMENTS ===
+Exception in thread "main" java.lang.IllegalStateException: No es pot aixecar el confinament perquè no s’han guardat les taxes originals.
+	at Regio.aixecarConfinament(Regio.java:700)
+	at Simulacio.desconfinar(Simulacio.java:221)
+	at MainSimulacio.main(MainSimulacio.java:87)
+
+

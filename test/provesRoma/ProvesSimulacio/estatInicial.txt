@@ -1,0 +1,31 @@
+# fitxer que permet establir un punt de partida, per a cada regió, a l'instant zero de la simulació
+# les regions que no apareixen no presenten persones infectades
+#
+regio catalunya_central
+nom_virus GripA
+infectats 237
+nom_virus HepatitisB
+infectats 33
+*
+regio metropolitana_nord
+nom_virus GripA
+infectats 452
+nom_virus Covid19
+infectats 156
+* 
+regio metropolitana_sud
+nom_virus GripA
+infectats 365
+nom_virus Covid19
+infectats 76
+* 
+regio barcelona_ciutat
+nom_virus GripA
+infectats 165
+nom_virus SARS-CoV
+infectats 23
+nom_virus Covid19
+infectats 321
+* 
+
+

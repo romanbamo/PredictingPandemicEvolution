@@ -1,0 +1,65 @@
+roman@roman-Aspire-V3-571G:~/Documentos/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesLecturaVirus$ java MainProvesLlegirVirus
+Llegint fitxer: virus.txt
+
+Famílies de virus llegides:
+
+Família: Hepadnaviridae
+Probabilitat mutació coincidència: 0.0
+TPC màxim variació: 0
+
+Família: Orthomyxoviridae
+Probabilitat mutació coincidència: 0.005
+TPC màxim variació: 20
+
+Família: Coronaviridae
+Probabilitat mutació coincidència: 0.004
+TPC màxim variació: 25
+
+Virus llegits:
+
+Virus: HepatitisB
+Tipus: ADN
+Família: Hepadnaviridae
+Probabilitat malaltia: 0.5
+Període incubació: 6 dies
+Període latència: 3 dies
+Durada contagi: 2000 dies
+Durada immunitat: 0 dies
+Mortalitat: 0.4
+Taxa contagi: 0.1
+
+Virus: GripA
+Tipus: ARN
+Família: Orthomyxoviridae
+Probabilitat malaltia: 0.8
+Període incubació: 2 dies
+Període latència: 1 dies
+Durada contagi: 5 dies
+Durada immunitat: 30 dies
+Mortalitat: 0.05
+Taxa contagi: 0.3
+Probabilitat mutació còpia: 0.002
+
+Virus: Covid19
+Tipus: ARN
+Família: Coronaviridae
+Probabilitat malaltia: 0.75
+Període incubació: 3 dies
+Període latència: 2 dies
+Durada contagi: 6 dies
+Durada immunitat: 50 dies
+Mortalitat: 0.1
+Taxa contagi: 0.4
+Probabilitat mutació còpia: 0.001
+
+Virus: SARS-CoV
+Tipus: ARN
+Família: Coronaviridae
+Probabilitat malaltia: 0.9
+Període incubació: 1 dies
+Període latència: 1 dies
+Durada contagi: 5 dies
+Durada immunitat: 40 dies
+Mortalitat: 0.1
+Taxa contagi: 0.3
+Probabilitat mutació còpia: 0.002
