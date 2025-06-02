@@ -107,7 +107,7 @@ public class AfectacioVirusRegio {
         int temps_no_pot_contagiar = virus.tempsLatencia();
         int nous_contagiosos = 0;
         // Perquè un infectat pugui començar a contagiar, ha hagut de passar el temps de latència
-        if (_infectats_no_contagiosos.size() == temps_no_pot_contagiar) {
+        if (_infectats_no_contagiosos.size() >= temps_no_pot_contagiar) {
             nous_contagiosos = _infectats_no_contagiosos.remove(_infectats_no_contagiosos.size() - 1);
         }
         _contagiosos.add(0, nous_contagiosos);

@@ -605,7 +605,7 @@ public class Regio {
 
                         } else { // Si no hi ha mutació, tots els infectats comuns van al virus més fort
                             // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D)
-                            int Nous_contagis_V_mes_fort = (int) Math.round(Inf_comuns * poblacio_actual_regio);
+                            int Nous_contagis_V_mes_fort = Inf_comuns;
                             if (Nous_contagis_V_mes_fort > 0) {
                                 AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
                                 afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
