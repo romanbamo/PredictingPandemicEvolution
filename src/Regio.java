@@ -593,7 +593,7 @@ public class Regio {
                             int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC);
 
                             // Reduïm infectats del més feble
-                            afectacio_feble.restarNousInfectatsAvui(Inf_comuns);
+                            afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mut);
 
                             // Afegim nova afectació o sumem infectats si ja existeix
                             if (afectacions.containsKey(V_mut.nom())) {
