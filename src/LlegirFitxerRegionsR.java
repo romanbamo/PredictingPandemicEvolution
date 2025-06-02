@@ -50,24 +50,21 @@ public class LlegirFitxerRegionsR {
      */
     private RegioLlegida procesarLinea(String line, BufferedReader br) throws IOException {
         if (line.isEmpty() || line.startsWith("#")) return null;
-        
-        switch (line) {
-            case "*":
-                enSeccioLimits = false;
+
+        if (line.startsWith("limits_i_mobilitat")) {
+            enSeccioLimits = true;
+            return null;
+        }else if (line.startsWith("*")) {
+            return null;
+        }else{
+            if (enSeccioLimits) {
+                processarLimitsMobilitat(line, br);
                 return null;
-                
-            case "limits_i_mobilitat":
-                enSeccioLimits = true;
-                return null;
-                
-            default:
-                if (enSeccioLimits) {
-                    processarLimitsMobilitat(line, br);
-                    return null;
-                } else {
-                    return processarDadesRegio(line, br);
-                }
+            } else {
+                return processarDadesRegio(line, br);
+            }
         }
+
     }
 
     /**
