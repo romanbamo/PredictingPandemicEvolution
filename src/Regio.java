@@ -563,7 +563,8 @@ public class Regio {
 
                         // Calculem el nombre d’infectats comuns
                         // Inf_comuns(V,V’,R,D) = (NCD(V,R,D)/R.poblacio(D)) * (NCD(V,R,D)/R.poblacio(D))
-                        double Inf_comuns = ((double) Contagiosos_A / poblacio_actual_regio) * ((double) Contagiosos_B / poblacio_actual_regio);
+                        double Inf_comuns_decimal = ((double) Contagiosos_A / poblacio_actual_regio) * ((double) Contagiosos_B / poblacio_actual_regio);
+                        int Inf_comuns = (int) Math.round(Inf_comuns_decimal);
 
                         // Calculem la probabilitat de mutació per coincidència
                         // PMC(V,V’,R,D) = prob(mutCoinc(V,V’,R,D)) = Inf_comuns(V,V’,R,D) * F.probMutCoinc()
@@ -592,7 +593,7 @@ public class Regio {
                             int Nous_contagis_V_mut = (int) Math.round(Inf_comuns * PMC);
 
                             // Reduïm infectats del més feble
-                            afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mut);
+                            afectacio_feble.restarNousInfectatsAvui(Inf_comuns);
 
                             // Afegim nova afectació o sumem infectats si ja existeix
                             if (afectacions.containsKey(V_mut.nom())) {
@@ -605,7 +606,7 @@ public class Regio {
 
                         } else { // Si no hi ha mutació, tots els infectats comuns van al virus més fort
                             // Nous_contagis(W,R,D) = Inf_comuns(V,V’,R,D)
-                            int Nous_contagis_V_mes_fort = (int) Inf_comuns;
+                            int Nous_contagis_V_mes_fort = Inf_comuns;
                             if (Nous_contagis_V_mes_fort > 0) {
                                 AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
                                 afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
