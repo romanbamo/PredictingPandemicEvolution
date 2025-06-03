@@ -1,0 +1,66 @@
+\doxysection{Referència de la Classe Regio\+Llegida}
+\hypertarget{classRegioLlegida}{}\label{classRegioLlegida}\index{RegioLlegida@{RegioLlegida}}
+
+
+Representa una regió amb les seves dades bàsiques i connexions amb altres regions.  
+
+
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classRegioLlegida_a87f08e3f158ce11522d9f09fb7b4c522}{afegir\+Veina}} (String \mbox{\hyperlink{classRegioLlegida_a78cf012db972098a472b9a59126d3d72}{nom}}, double taxa)
+\begin{DoxyCompactList}\small\item\em Afegeix una regió veïna amb la seva taxa de mobilitat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributs Públics}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRegioLlegida_a78cf012db972098a472b9a59126d3d72}\label{classRegioLlegida_a78cf012db972098a472b9a59126d3d72} 
+String {\bfseries nom}
+\begin{DoxyCompactList}\small\item\em Nom de la regió \end{DoxyCompactList}\item 
+\Hypertarget{classRegioLlegida_a51c232561779d4be3d52c3e9a5c07cc2}\label{classRegioLlegida_a51c232561779d4be3d52c3e9a5c07cc2} 
+int {\bfseries n\+Hab}
+\begin{DoxyCompactList}\small\item\em Nombre d\textquotesingle{}habitants de la regió \end{DoxyCompactList}\item 
+\Hypertarget{classRegioLlegida_a9b246079ba885e4bb65652e2e042ba7d}\label{classRegioLlegida_a9b246079ba885e4bb65652e2e042ba7d} 
+double {\bfseries taxa\+Mob\+Int}
+\begin{DoxyCompactList}\small\item\em Taxa de mobilitat interna de la regió \end{DoxyCompactList}\item 
+\Hypertarget{classRegioLlegida_a440e19896f22f718411281c3fc5a81a0}\label{classRegioLlegida_a440e19896f22f718411281c3fc5a81a0} 
+Map$<$ String, Double $>$ {\bfseries veins}
+\begin{DoxyCompactList}\small\item\em Mapa de regions veïnes amb les seves taxes de mobilitat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Representa una regió amb les seves dades bàsiques i connexions amb altres regions. 
+
+És una estructura temporal. \begin{DoxyAuthor}{Autor}
+Romà Barrera
+\end{DoxyAuthor}
+Aquesta classe actua com una estructura de dades per emmagatzemar\+:
+\begin{DoxyItemize}
+\item Nom de la regió
+\item Nombre d\textquotesingle{}habitants
+\item Taxa de mobilitat interna
+\item Connexions amb regions veïnes 
+\end{DoxyItemize}
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classRegioLlegida_a87f08e3f158ce11522d9f09fb7b4c522}\label{classRegioLlegida_a87f08e3f158ce11522d9f09fb7b4c522} 
+\index{RegioLlegida@{RegioLlegida}!afegirVeina@{afegirVeina}}
+\index{afegirVeina@{afegirVeina}!RegioLlegida@{RegioLlegida}}
+\doxysubsubsection{\texorpdfstring{afegirVeina()}{afegirVeina()}}
+{\footnotesize\ttfamily void Regio\+Llegida.\+afegir\+Veina (\begin{DoxyParamCaption}\item[{String}]{nom,  }\item[{double}]{taxa }\end{DoxyParamCaption})}
+
+
+
+Afegeix una regió veïna amb la seva taxa de mobilitat. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom} & Nom de la regió veïna \\
+\hline
+{\em taxa} & Taxa de mobilitat cap a aquesta regió \\
+\hline
+\end{DoxyParams}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Regio\+Llegida.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,74 @@
+\doxysection{Referència de la Classe Llegir\+Fitxer\+VirusR}
+\hypertarget{classLlegirFitxerVirusR}{}\label{classLlegirFitxerVirusR}\index{LlegirFitxerVirusR@{LlegirFitxerVirusR}}
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+Map$<$ String, Map$<$ String, ?$>$ $>$ \mbox{\hyperlink{classLlegirFitxerVirusR_a6e125cb0ccc9eb2f41eef0fa21b70601}{llegir\+Fitxer}} (String path)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Mètode principal per llegir un fitxer i carregar les dades. \end{DoxyCompactList}\item 
+Map$<$ String, \mbox{\hyperlink{classFamiliaVirusLlegit}{Familia\+Virus\+Llegit}} $>$ \mbox{\hyperlink{classLlegirFitxerVirusR_a9d72703291cb5599a5b3308705679c9f}{families\+Virus\+Llegides}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el mapa de famílies de virus llegides. \end{DoxyCompactList}\item 
+Map$<$ String, \mbox{\hyperlink{classVirusLlegit}{Virus\+Llegit}} $>$ \mbox{\hyperlink{classLlegirFitxerVirusR_af683c9e93745751c10758df6650215bf}{virus\+Llegits}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el mapa de virus llegits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classLlegirFitxerVirusR_a9d72703291cb5599a5b3308705679c9f}\label{classLlegirFitxerVirusR_a9d72703291cb5599a5b3308705679c9f} 
+\index{LlegirFitxerVirusR@{LlegirFitxerVirusR}!familiesVirusLlegides@{familiesVirusLlegides}}
+\index{familiesVirusLlegides@{familiesVirusLlegides}!LlegirFitxerVirusR@{LlegirFitxerVirusR}}
+\doxysubsubsection{\texorpdfstring{familiesVirusLlegides()}{familiesVirusLlegides()}}
+{\footnotesize\ttfamily Map$<$ String, \mbox{\hyperlink{classFamiliaVirusLlegit}{Familia\+Virus\+Llegit}} $>$ Llegir\+Fitxer\+Virus\+R.\+families\+Virus\+Llegides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el mapa de famílies de virus llegides. 
+
+\begin{DoxyReturn}{Retorna}
+Mapa amb les famílies de virus, on la clau és el nom de la família. 
+\end{DoxyReturn}
+\Hypertarget{classLlegirFitxerVirusR_a6e125cb0ccc9eb2f41eef0fa21b70601}\label{classLlegirFitxerVirusR_a6e125cb0ccc9eb2f41eef0fa21b70601} 
+\index{LlegirFitxerVirusR@{LlegirFitxerVirusR}!llegirFitxer@{llegirFitxer}}
+\index{llegirFitxer@{llegirFitxer}!LlegirFitxerVirusR@{LlegirFitxerVirusR}}
+\doxysubsubsection{\texorpdfstring{llegirFitxer()}{llegirFitxer()}}
+{\footnotesize\ttfamily Map$<$ String, Map$<$ String, ?$>$ $>$ Llegir\+Fitxer\+Virus\+R.\+llegir\+Fitxer (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption}) throws IOException}
+
+
+
+Mètode principal per llegir un fitxer i carregar les dades. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em path} & Camí al fitxer que es vol llegir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Map amb dues entrades\+: "{}families"{} (Map$<$\+String, Familia\+Virus\+Llegit$>$) i "{}virus"{} (Map$<$\+String, Virus\+Llegit$>$). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Excepcions}
+{\em IOException} & Si es produeix un error de lectura o el format del fitxer és incorrecte. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyPrecond}{Precondició}
+El fitxer ha d\textquotesingle{}existir i tenir el format correcte. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Les dades del fitxer s\textquotesingle{}han carregat als mapes interns de la classe. 
+\end{DoxyPostcond}
+\Hypertarget{classLlegirFitxerVirusR_af683c9e93745751c10758df6650215bf}\label{classLlegirFitxerVirusR_af683c9e93745751c10758df6650215bf} 
+\index{LlegirFitxerVirusR@{LlegirFitxerVirusR}!virusLlegits@{virusLlegits}}
+\index{virusLlegits@{virusLlegits}!LlegirFitxerVirusR@{LlegirFitxerVirusR}}
+\doxysubsubsection{\texorpdfstring{virusLlegits()}{virusLlegits()}}
+{\footnotesize\ttfamily Map$<$ String, \mbox{\hyperlink{classVirusLlegit}{Virus\+Llegit}} $>$ Llegir\+Fitxer\+Virus\+R.\+virus\+Llegits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el mapa de virus llegits. 
+
+\begin{DoxyReturn}{Retorna}
+Mapa amb els virus individuals, on la clau és el nom del virus. 
+\end{DoxyReturn}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{LlegirFitxerVirusR_8java}{Llegir\+Fitxer\+Virus\+R.\+java}}\end{DoxyCompactItemize}

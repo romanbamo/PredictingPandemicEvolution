@@ -1,0 +1,495 @@
+\doxysection{Referència de la Classe Simulacio}
+\hypertarget{classSimulacio}{}\label{classSimulacio}\index{Simulacio@{Simulacio}}
+
+
+Classe que gestiona la simulació de l\textquotesingle{}evolució de virus en diferents regions.  
+
+
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSimulacio_a70c65690806a0617cd808ed8a2faab72}{carregar\+Regions}} (String path)
+\begin{DoxyCompactList}\small\item\em Carrega les dades de regions des d\textquotesingle{}un fitxer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_a1e3006e6769d0e031ea17f52f0cbbb7b}{carregar\+Virus}} (String path)
+\begin{DoxyCompactList}\small\item\em Carrega les dades de virus des d\textquotesingle{}un fitxer i els afegeix a la llista de virus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_a4bb6997f80bd1a723032465c5d420a36}{carregar\+Estat\+Inicial}} (String path)
+\begin{DoxyCompactList}\small\item\em Carrega l\textquotesingle{}estat inicial d\textquotesingle{}infeccions des d\textquotesingle{}un fitxer. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classSimulacio_a9d9c660ffb42267bd87f435f72a37923}{mostrar\+Regions\+Actuals}} ()
+\begin{DoxyCompactList}\small\item\em Retorna una llista ordenada de totes les regions carregades. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classSimulacio_a4049d8d07d50294b91024e45151560db}{mostrar\+Regions\+Veines}} (String nom\+Regio)
+\begin{DoxyCompactList}\small\item\em Retorna una llista de regions veïnes d\textquotesingle{}una regió donada. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classSimulacio_a48580dc2037a5d70f90c011625306f1b}{mostrar\+Virus\+Regio}} (String nom\+Regio)
+\begin{DoxyCompactList}\small\item\em Retorna una llista de virus presents en una regió \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_a3c7724e4ae6343ef3adb36cfb65885b8}{afegir\+Confinament}} (String nom\+Regio, Float taxa)
+\begin{DoxyCompactList}\small\item\em Aplica un confinament dur a una regió \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_a4f683fcc8c1008fffc45372b9efac0f9}{afegir\+Confinament}} (String nom\+Regio, String nom\+Regio\+Veina)
+\begin{DoxyCompactList}\small\item\em Aplica un confinament tou entre dues regions veïnes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_a0558817ce79991ec8f86797a492a6d29}{desconfinar}} (String nom\+Regio)
+\begin{DoxyCompactList}\small\item\em Aixeca el confinament d\textquotesingle{}una regió \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_af0704f532afc5f9e1a0ec3ef5b8ac500}{nombre\+Infectats}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total d\textquotesingle{}infectats per un virus en una regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_af86f1bb1778942ecd04058f212c6583d}{nombre\+Malalts}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de persones malaltes per un virus en una regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_a3ab0a59c23bdc848c988fa3ed8b73335}{nous\+Infectats}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de nous contagis per un virus en una regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_ac07c7e68be5863b271c289687a4b5bbd}{noves\+Defuncions}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de noves defuncions per un virus en una regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_afa41c4a90fcc96433f368a3613a1a324}{nombre\+Immunes}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de persones immunes a un virus en una regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classSimulacio_aa787d9d5a904bbc1dbc716a321ecd6d6}{nombre\+Contagiosos}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de persones contagioses per un virus en una regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classSimulacio_a60fb93eb4814123d74122afd13511018}{evolucio\+Malalts}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució de malalts per un virus concret dins d’una regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classSimulacio_afa8958d8cef88a8cd20f63ecc5540fd2}{evolucio\+Immunes}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució d’immunes per un virus concret dins d’una regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classSimulacio_ac45f27cae239e41de3ea2e1c7233d931}{evolucio\+Contagiosos}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució de contagiosos per un virus concret dins d’una regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classSimulacio_a1ec2924cfe73faafa143e4b9cf4a8b58}{evolucio\+Morts}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució de defuncions per un virus concret dins d’una regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classSimulacio_ae395ad95774a405022a27ad52b52bdab}{obtenir\+Acumulats\+Totals}} (String nom\+Regio, String nom\+Virus)
+\begin{DoxyCompactList}\small\item\em Retorna les estadístiques totals d’afectació d’un virus dins d’una regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSimulacio_ad4cba3c48dda9299a5ccd16d638c343a}{avancar\+Dia}} ()
+\begin{DoxyCompactList}\small\item\em Avança un dia en la simulació per a totes les regions del territori. \end{DoxyCompactList}\item 
+\Hypertarget{classSimulacio_ab85b42badfbeec2a0615bf4717baf08f}\label{classSimulacio_ab85b42badfbeec2a0615bf4717baf08f} 
+List$<$ String $>$ {\bfseries obtenir\+Noms\+Virus} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Classe que gestiona la simulació de l\textquotesingle{}evolució de virus en diferents regions. 
+
+Aquesta classe permet carregar dades de regions, virus i estats inicials, gestionar confinaments, i obtenir informació sobre l\textquotesingle{}estat i evolució de les epidèmies. 
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classSimulacio_a3c7724e4ae6343ef3adb36cfb65885b8}\label{classSimulacio_a3c7724e4ae6343ef3adb36cfb65885b8} 
+\index{Simulacio@{Simulacio}!afegirConfinament@{afegirConfinament}}
+\index{afegirConfinament@{afegirConfinament}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{afegirConfinament()}{afegirConfinament()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Simulacio.\+afegir\+Confinament (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{Float}]{taxa }\end{DoxyParamCaption})}
+
+
+
+Aplica un confinament dur a una regió 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a confinar \\
+\hline
+{\em taxa} & Taxa de mobilitat durant el confinament \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSimulacio_a4f683fcc8c1008fffc45372b9efac0f9}\label{classSimulacio_a4f683fcc8c1008fffc45372b9efac0f9} 
+\index{Simulacio@{Simulacio}!afegirConfinament@{afegirConfinament}}
+\index{afegirConfinament@{afegirConfinament}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{afegirConfinament()}{afegirConfinament()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Simulacio.\+afegir\+Confinament (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Regio\+Veina }\end{DoxyParamCaption})}
+
+
+
+Aplica un confinament tou entre dues regions veïnes. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la primera regió \\
+\hline
+{\em nom\+Regio\+Veina} & Nom de la regió veïna \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSimulacio_ad4cba3c48dda9299a5ccd16d638c343a}\label{classSimulacio_ad4cba3c48dda9299a5ccd16d638c343a} 
+\index{Simulacio@{Simulacio}!avancarDia@{avancarDia}}
+\index{avancarDia@{avancarDia}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{avancarDia()}{avancarDia()}}
+{\footnotesize\ttfamily void Simulacio.\+avancar\+Dia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Avança un dia en la simulació per a totes les regions del territori. 
+
+\begin{DoxyPrecond}{Precondició}
+El mapa de regions ha d’estar inicialitzat i contenir objectes \doxylink{classRegio}{Regio} vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+S’ha avançat un dia de simulació per a cada regió, actualitzant les afectacions de cada virus. 
+\end{DoxyPostcond}
+\Hypertarget{classSimulacio_a4bb6997f80bd1a723032465c5d420a36}\label{classSimulacio_a4bb6997f80bd1a723032465c5d420a36} 
+\index{Simulacio@{Simulacio}!carregarEstatInicial@{carregarEstatInicial}}
+\index{carregarEstatInicial@{carregarEstatInicial}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{carregarEstatInicial()}{carregarEstatInicial()}}
+{\footnotesize\ttfamily void Simulacio.\+carregar\+Estat\+Inicial (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+
+
+Carrega l\textquotesingle{}estat inicial d\textquotesingle{}infeccions des d\textquotesingle{}un fitxer. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em path} & Ruta del fitxer a carregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondició}
+El fitxer ha de tenir el format correcte i existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Les regions indicades al fitxer tindran els infectats inicials configurats 
+\end{DoxyPostcond}
+\Hypertarget{classSimulacio_a70c65690806a0617cd808ed8a2faab72}\label{classSimulacio_a70c65690806a0617cd808ed8a2faab72} 
+\index{Simulacio@{Simulacio}!carregarRegions@{carregarRegions}}
+\index{carregarRegions@{carregarRegions}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{carregarRegions()}{carregarRegions()}}
+{\footnotesize\ttfamily void Simulacio.\+carregar\+Regions (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+
+
+Carrega les dades de regions des d\textquotesingle{}un fitxer. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em path} & Ruta del fitxer a carregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondició}
+El fitxer ha de tenir el format correcte i existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+El mapa mapa\+Regions contindrà totes les regions llegides del fitxer 
+\end{DoxyPostcond}
+\Hypertarget{classSimulacio_a1e3006e6769d0e031ea17f52f0cbbb7b}\label{classSimulacio_a1e3006e6769d0e031ea17f52f0cbbb7b} 
+\index{Simulacio@{Simulacio}!carregarVirus@{carregarVirus}}
+\index{carregarVirus@{carregarVirus}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{carregarVirus()}{carregarVirus()}}
+{\footnotesize\ttfamily void Simulacio.\+carregar\+Virus (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption})}
+
+
+
+Carrega les dades de virus des d\textquotesingle{}un fitxer i els afegeix a la llista de virus. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em path} & Ruta del fitxer a carregar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondició}
+El fitxer ha de tenir el format correcte i existir 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+La llista llista\+Virus contindrà tots els virus llegits del fitxer 
+\end{DoxyPostcond}
+\Hypertarget{classSimulacio_a0558817ce79991ec8f86797a492a6d29}\label{classSimulacio_a0558817ce79991ec8f86797a492a6d29} 
+\index{Simulacio@{Simulacio}!desconfinar@{desconfinar}}
+\index{desconfinar@{desconfinar}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{desconfinar()}{desconfinar()}}
+{\footnotesize\ttfamily void Simulacio.\+desconfinar (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio }\end{DoxyParamCaption})}
+
+
+
+Aixeca el confinament d\textquotesingle{}una regió 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a desconfinar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSimulacio_ac45f27cae239e41de3ea2e1c7233d931}\label{classSimulacio_ac45f27cae239e41de3ea2e1c7233d931} 
+\index{Simulacio@{Simulacio}!evolucioContagiosos@{evolucioContagiosos}}
+\index{evolucioContagiosos@{evolucioContagiosos}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{evolucioContagiosos()}{evolucioContagiosos()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Simulacio.\+evolucio\+Contagiosos (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució de contagiosos per un virus concret dins d’una regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El nom de la regió i del virus han de ser vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nombre de contagiosos per dia. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió. \\
+\hline
+{\em nom\+Virus} & Nom del virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de contagiosos per dia. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_afa8958d8cef88a8cd20f63ecc5540fd2}\label{classSimulacio_afa8958d8cef88a8cd20f63ecc5540fd2} 
+\index{Simulacio@{Simulacio}!evolucioImmunes@{evolucioImmunes}}
+\index{evolucioImmunes@{evolucioImmunes}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{evolucioImmunes()}{evolucioImmunes()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Simulacio.\+evolucio\+Immunes (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució d’immunes per un virus concret dins d’una regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El nom de la regió i del virus han de ser vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nombre d’immunes per dia. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió. \\
+\hline
+{\em nom\+Virus} & Nom del virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre d’immunes per dia. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a60fb93eb4814123d74122afd13511018}\label{classSimulacio_a60fb93eb4814123d74122afd13511018} 
+\index{Simulacio@{Simulacio}!evolucioMalalts@{evolucioMalalts}}
+\index{evolucioMalalts@{evolucioMalalts}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{evolucioMalalts()}{evolucioMalalts()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Simulacio.\+evolucio\+Malalts (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució de malalts per un virus concret dins d’una regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El nom de la regió i del virus han de ser vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nombre de malalts per dia. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió. \\
+\hline
+{\em nom\+Virus} & Nom del virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de malalts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a1ec2924cfe73faafa143e4b9cf4a8b58}\label{classSimulacio_a1ec2924cfe73faafa143e4b9cf4a8b58} 
+\index{Simulacio@{Simulacio}!evolucioMorts@{evolucioMorts}}
+\index{evolucioMorts@{evolucioMorts}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{evolucioMorts()}{evolucioMorts()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Simulacio.\+evolucio\+Morts (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució de defuncions per un virus concret dins d’una regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El nom de la regió i del virus han de ser vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nombre de morts per dia. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió. \\
+\hline
+{\em nom\+Virus} & Nom del virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de morts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a9d9c660ffb42267bd87f435f72a37923}\label{classSimulacio_a9d9c660ffb42267bd87f435f72a37923} 
+\index{Simulacio@{Simulacio}!mostrarRegionsActuals@{mostrarRegionsActuals}}
+\index{mostrarRegionsActuals@{mostrarRegionsActuals}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{mostrarRegionsActuals()}{mostrarRegionsActuals()}}
+{\footnotesize\ttfamily List$<$ String $>$ Simulacio.\+mostrar\+Regions\+Actuals (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna una llista ordenada de totes les regions carregades. 
+
+\begin{DoxyReturn}{Retorna}
+Llista de noms de regions ordenats alfabèticament 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a4049d8d07d50294b91024e45151560db}\label{classSimulacio_a4049d8d07d50294b91024e45151560db} 
+\index{Simulacio@{Simulacio}!mostrarRegionsVeines@{mostrarRegionsVeines}}
+\index{mostrarRegionsVeines@{mostrarRegionsVeines}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{mostrarRegionsVeines()}{mostrarRegionsVeines()}}
+{\footnotesize\ttfamily List$<$ String $>$ Simulacio.\+mostrar\+Regions\+Veines (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio }\end{DoxyParamCaption})}
+
+
+
+Retorna una llista de regions veïnes d\textquotesingle{}una regió donada. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista de noms de regions veïnes 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a48580dc2037a5d70f90c011625306f1b}\label{classSimulacio_a48580dc2037a5d70f90c011625306f1b} 
+\index{Simulacio@{Simulacio}!mostrarVirusRegio@{mostrarVirusRegio}}
+\index{mostrarVirusRegio@{mostrarVirusRegio}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{mostrarVirusRegio()}{mostrarVirusRegio()}}
+{\footnotesize\ttfamily List$<$ String $>$ Simulacio.\+mostrar\+Virus\+Regio (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio }\end{DoxyParamCaption})}
+
+
+
+Retorna una llista de virus presents en una regió 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista de noms de virus presents a la regió 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_aa787d9d5a904bbc1dbc716a321ecd6d6}\label{classSimulacio_aa787d9d5a904bbc1dbc716a321ecd6d6} 
+\index{Simulacio@{Simulacio}!nombreContagiosos@{nombreContagiosos}}
+\index{nombreContagiosos@{nombreContagiosos}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{nombreContagiosos()}{nombreContagiosos()}}
+{\footnotesize\ttfamily int Simulacio.\+nombre\+Contagiosos (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de persones contagioses per un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de persones que poden contagiar el virus en aquesta regió. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_afa41c4a90fcc96433f368a3613a1a324}\label{classSimulacio_afa41c4a90fcc96433f368a3613a1a324} 
+\index{Simulacio@{Simulacio}!nombreImmunes@{nombreImmunes}}
+\index{nombreImmunes@{nombreImmunes}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{nombreImmunes()}{nombreImmunes()}}
+{\footnotesize\ttfamily int Simulacio.\+nombre\+Immunes (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de persones immunes a un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de persones immunes a aquest virus a la regió. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_af0704f532afc5f9e1a0ec3ef5b8ac500}\label{classSimulacio_af0704f532afc5f9e1a0ec3ef5b8ac500} 
+\index{Simulacio@{Simulacio}!nombreInfectats@{nombreInfectats}}
+\index{nombreInfectats@{nombreInfectats}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{nombreInfectats()}{nombreInfectats()}}
+{\footnotesize\ttfamily int Simulacio.\+nombre\+Infectats (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total d\textquotesingle{}infectats per un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre d\textquotesingle{}infectats (contagiosos i no contagiosos) per aquest virus. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_af86f1bb1778942ecd04058f212c6583d}\label{classSimulacio_af86f1bb1778942ecd04058f212c6583d} 
+\index{Simulacio@{Simulacio}!nombreMalalts@{nombreMalalts}}
+\index{nombreMalalts@{nombreMalalts}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{nombreMalalts()}{nombreMalalts()}}
+{\footnotesize\ttfamily int Simulacio.\+nombre\+Malalts (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de persones malaltes per un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de malalts per aquest virus a la regió. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_a3ab0a59c23bdc848c988fa3ed8b73335}\label{classSimulacio_a3ab0a59c23bdc848c988fa3ed8b73335} 
+\index{Simulacio@{Simulacio}!nousInfectats@{nousInfectats}}
+\index{nousInfectats@{nousInfectats}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{nousInfectats()}{nousInfectats()}}
+{\footnotesize\ttfamily int Simulacio.\+nous\+Infectats (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de nous contagis per un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de nous contagis per aquest virus a la regió. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_ac07c7e68be5863b271c289687a4b5bbd}\label{classSimulacio_ac07c7e68be5863b271c289687a4b5bbd} 
+\index{Simulacio@{Simulacio}!novesDefuncions@{novesDefuncions}}
+\index{novesDefuncions@{novesDefuncions}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{novesDefuncions()}{novesDefuncions()}}
+{\footnotesize\ttfamily int Simulacio.\+noves\+Defuncions (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de noves defuncions per un virus en una regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió a consultar. \\
+\hline
+{\em nom\+Virus} & Nom del virus a consultar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de noves defuncions per aquest virus a la regió. 
+\end{DoxyReturn}
+\Hypertarget{classSimulacio_ae395ad95774a405022a27ad52b52bdab}\label{classSimulacio_ae395ad95774a405022a27ad52b52bdab} 
+\index{Simulacio@{Simulacio}!obtenirAcumulatsTotals@{obtenirAcumulatsTotals}}
+\index{obtenirAcumulatsTotals@{obtenirAcumulatsTotals}!Simulacio@{Simulacio}}
+\doxysubsubsection{\texorpdfstring{obtenirAcumulatsTotals()}{obtenirAcumulatsTotals()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Simulacio.\+obtenir\+Acumulats\+Totals (\begin{DoxyParamCaption}\item[{String}]{nom\+Regio,  }\item[{String}]{nom\+Virus }\end{DoxyParamCaption})}
+
+
+
+Retorna les estadístiques totals d’afectació d’un virus dins d’una regió. 
+
+\begin{DoxyPrecond}{Precondició}
+Els noms de la regió i del virus han de ser vàlids. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb\+: \mbox{[}total infectats, total malalts, total morts\mbox{]} 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+Regio} & Nom de la regió. \\
+\hline
+{\em nom\+Virus} & Nom del virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb les estadístiques totals per a aquesta combinació. 
+\end{DoxyReturn}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Simulacio_8java}{Simulacio.\+java}}\end{DoxyCompactItemize}

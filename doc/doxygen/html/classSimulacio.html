@@ -1,0 +1,871 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Simulador Infektopia: Referència de la Classe Simulacio</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Simulador Infektopia<span id="projectnumber">&#160;1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generat per Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Cerca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregant...</div>
+<div class="SRStatus" id="Searching">Cercant...</div>
+<div class="SRStatus" id="NoMatches">Cap coincidència</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Mètodes públics</a> &#124;
+<a href="classSimulacio-members.html">Llista de tots els membres</a>  </div>
+  <div class="headertitle"><div class="title">Referència de la Classe Simulacio</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Classe que gestiona la simulació de l'evolució de virus en diferents regions.  
+ <a href="classSimulacio.html#details">Més...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Mètodes públics</h2></td></tr>
+<tr class="memitem:a70c65690806a0617cd808ed8a2faab72" id="r_a70c65690806a0617cd808ed8a2faab72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a70c65690806a0617cd808ed8a2faab72">carregarRegions</a> (String path)</td></tr>
+<tr class="memdesc:a70c65690806a0617cd808ed8a2faab72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carrega les dades de regions des d'un fitxer.  <br /></td></tr>
+<tr class="separator:a70c65690806a0617cd808ed8a2faab72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e3006e6769d0e031ea17f52f0cbbb7b" id="r_a1e3006e6769d0e031ea17f52f0cbbb7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a1e3006e6769d0e031ea17f52f0cbbb7b">carregarVirus</a> (String path)</td></tr>
+<tr class="memdesc:a1e3006e6769d0e031ea17f52f0cbbb7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carrega les dades de virus des d'un fitxer i els afegeix a la llista de virus.  <br /></td></tr>
+<tr class="separator:a1e3006e6769d0e031ea17f52f0cbbb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb6997f80bd1a723032465c5d420a36" id="r_a4bb6997f80bd1a723032465c5d420a36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a4bb6997f80bd1a723032465c5d420a36">carregarEstatInicial</a> (String path)</td></tr>
+<tr class="memdesc:a4bb6997f80bd1a723032465c5d420a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carrega l'estat inicial d'infeccions des d'un fitxer.  <br /></td></tr>
+<tr class="separator:a4bb6997f80bd1a723032465c5d420a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9c660ffb42267bd87f435f72a37923" id="r_a9d9c660ffb42267bd87f435f72a37923"><td class="memItemLeft" align="right" valign="top">List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a9d9c660ffb42267bd87f435f72a37923">mostrarRegionsActuals</a> ()</td></tr>
+<tr class="memdesc:a9d9c660ffb42267bd87f435f72a37923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna una llista ordenada de totes les regions carregades.  <br /></td></tr>
+<tr class="separator:a9d9c660ffb42267bd87f435f72a37923"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4049d8d07d50294b91024e45151560db" id="r_a4049d8d07d50294b91024e45151560db"><td class="memItemLeft" align="right" valign="top">List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a4049d8d07d50294b91024e45151560db">mostrarRegionsVeines</a> (String nomRegio)</td></tr>
+<tr class="memdesc:a4049d8d07d50294b91024e45151560db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna una llista de regions veïnes d'una regió donada.  <br /></td></tr>
+<tr class="separator:a4049d8d07d50294b91024e45151560db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48580dc2037a5d70f90c011625306f1b" id="r_a48580dc2037a5d70f90c011625306f1b"><td class="memItemLeft" align="right" valign="top">List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a48580dc2037a5d70f90c011625306f1b">mostrarVirusRegio</a> (String nomRegio)</td></tr>
+<tr class="memdesc:a48580dc2037a5d70f90c011625306f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna una llista de virus presents en una regió  <br /></td></tr>
+<tr class="separator:a48580dc2037a5d70f90c011625306f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c7724e4ae6343ef3adb36cfb65885b8" id="r_a3c7724e4ae6343ef3adb36cfb65885b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a3c7724e4ae6343ef3adb36cfb65885b8">afegirConfinament</a> (String nomRegio, Float taxa)</td></tr>
+<tr class="memdesc:a3c7724e4ae6343ef3adb36cfb65885b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica un confinament dur a una regió  <br /></td></tr>
+<tr class="separator:a3c7724e4ae6343ef3adb36cfb65885b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f683fcc8c1008fffc45372b9efac0f9" id="r_a4f683fcc8c1008fffc45372b9efac0f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a4f683fcc8c1008fffc45372b9efac0f9">afegirConfinament</a> (String nomRegio, String nomRegioVeina)</td></tr>
+<tr class="memdesc:a4f683fcc8c1008fffc45372b9efac0f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica un confinament tou entre dues regions veïnes.  <br /></td></tr>
+<tr class="separator:a4f683fcc8c1008fffc45372b9efac0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0558817ce79991ec8f86797a492a6d29" id="r_a0558817ce79991ec8f86797a492a6d29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a0558817ce79991ec8f86797a492a6d29">desconfinar</a> (String nomRegio)</td></tr>
+<tr class="memdesc:a0558817ce79991ec8f86797a492a6d29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aixeca el confinament d'una regió  <br /></td></tr>
+<tr class="separator:a0558817ce79991ec8f86797a492a6d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0704f532afc5f9e1a0ec3ef5b8ac500" id="r_af0704f532afc5f9e1a0ec3ef5b8ac500"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#af0704f532afc5f9e1a0ec3ef5b8ac500">nombreInfectats</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:af0704f532afc5f9e1a0ec3ef5b8ac500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre total d'infectats per un virus en una regió.  <br /></td></tr>
+<tr class="separator:af0704f532afc5f9e1a0ec3ef5b8ac500"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86f1bb1778942ecd04058f212c6583d" id="r_af86f1bb1778942ecd04058f212c6583d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#af86f1bb1778942ecd04058f212c6583d">nombreMalalts</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:af86f1bb1778942ecd04058f212c6583d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre de persones malaltes per un virus en una regió.  <br /></td></tr>
+<tr class="separator:af86f1bb1778942ecd04058f212c6583d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab0a59c23bdc848c988fa3ed8b73335" id="r_a3ab0a59c23bdc848c988fa3ed8b73335"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a3ab0a59c23bdc848c988fa3ed8b73335">nousInfectats</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:a3ab0a59c23bdc848c988fa3ed8b73335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre de nous contagis per un virus en una regió.  <br /></td></tr>
+<tr class="separator:a3ab0a59c23bdc848c988fa3ed8b73335"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07c7e68be5863b271c289687a4b5bbd" id="r_ac07c7e68be5863b271c289687a4b5bbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#ac07c7e68be5863b271c289687a4b5bbd">novesDefuncions</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:ac07c7e68be5863b271c289687a4b5bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre de noves defuncions per un virus en una regió.  <br /></td></tr>
+<tr class="separator:ac07c7e68be5863b271c289687a4b5bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa41c4a90fcc96433f368a3613a1a324" id="r_afa41c4a90fcc96433f368a3613a1a324"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#afa41c4a90fcc96433f368a3613a1a324">nombreImmunes</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:afa41c4a90fcc96433f368a3613a1a324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre de persones immunes a un virus en una regió.  <br /></td></tr>
+<tr class="separator:afa41c4a90fcc96433f368a3613a1a324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa787d9d5a904bbc1dbc716a321ecd6d6" id="r_aa787d9d5a904bbc1dbc716a321ecd6d6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#aa787d9d5a904bbc1dbc716a321ecd6d6">nombreContagiosos</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:aa787d9d5a904bbc1dbc716a321ecd6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el nombre de persones contagioses per un virus en una regió.  <br /></td></tr>
+<tr class="separator:aa787d9d5a904bbc1dbc716a321ecd6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60fb93eb4814123d74122afd13511018" id="r_a60fb93eb4814123d74122afd13511018"><td class="memItemLeft" align="right" valign="top">List&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a60fb93eb4814123d74122afd13511018">evolucioMalalts</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:a60fb93eb4814123d74122afd13511018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna l’evolució de malalts per un virus concret dins d’una regió.  <br /></td></tr>
+<tr class="separator:a60fb93eb4814123d74122afd13511018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8958d8cef88a8cd20f63ecc5540fd2" id="r_afa8958d8cef88a8cd20f63ecc5540fd2"><td class="memItemLeft" align="right" valign="top">List&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#afa8958d8cef88a8cd20f63ecc5540fd2">evolucioImmunes</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:afa8958d8cef88a8cd20f63ecc5540fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna l’evolució d’immunes per un virus concret dins d’una regió.  <br /></td></tr>
+<tr class="separator:afa8958d8cef88a8cd20f63ecc5540fd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45f27cae239e41de3ea2e1c7233d931" id="r_ac45f27cae239e41de3ea2e1c7233d931"><td class="memItemLeft" align="right" valign="top">List&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#ac45f27cae239e41de3ea2e1c7233d931">evolucioContagiosos</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:ac45f27cae239e41de3ea2e1c7233d931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna l’evolució de contagiosos per un virus concret dins d’una regió.  <br /></td></tr>
+<tr class="separator:ac45f27cae239e41de3ea2e1c7233d931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ec2924cfe73faafa143e4b9cf4a8b58" id="r_a1ec2924cfe73faafa143e4b9cf4a8b58"><td class="memItemLeft" align="right" valign="top">List&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#a1ec2924cfe73faafa143e4b9cf4a8b58">evolucioMorts</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:a1ec2924cfe73faafa143e4b9cf4a8b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna l’evolució de defuncions per un virus concret dins d’una regió.  <br /></td></tr>
+<tr class="separator:a1ec2924cfe73faafa143e4b9cf4a8b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae395ad95774a405022a27ad52b52bdab" id="r_ae395ad95774a405022a27ad52b52bdab"><td class="memItemLeft" align="right" valign="top">List&lt; Integer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#ae395ad95774a405022a27ad52b52bdab">obtenirAcumulatsTotals</a> (String nomRegio, String nomVirus)</td></tr>
+<tr class="memdesc:ae395ad95774a405022a27ad52b52bdab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna les estadístiques totals d’afectació d’un virus dins d’una regió.  <br /></td></tr>
+<tr class="separator:ae395ad95774a405022a27ad52b52bdab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4cba3c48dda9299a5ccd16d638c343a" id="r_ad4cba3c48dda9299a5ccd16d638c343a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulacio.html#ad4cba3c48dda9299a5ccd16d638c343a">avancarDia</a> ()</td></tr>
+<tr class="memdesc:ad4cba3c48dda9299a5ccd16d638c343a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avança un dia en la simulació per a totes les regions del territori.  <br /></td></tr>
+<tr class="separator:ad4cba3c48dda9299a5ccd16d638c343a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab85b42badfbeec2a0615bf4717baf08f" id="r_ab85b42badfbeec2a0615bf4717baf08f"><td class="memItemLeft" align="right" valign="top"><a id="ab85b42badfbeec2a0615bf4717baf08f" name="ab85b42badfbeec2a0615bf4717baf08f"></a>
+List&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>obtenirNomsVirus</b> ()</td></tr>
+<tr class="separator:ab85b42badfbeec2a0615bf4717baf08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripció Detallada</h2>
+<div class="textblock"><p>Classe que gestiona la simulació de l'evolució de virus en diferents regions. </p>
+<p>Aquesta classe permet carregar dades de regions, virus i estats inicials, gestionar confinaments, i obtenir informació sobre l'estat i evolució de les epidèmies. </p>
+</div><h2 class="groupheader">Documentació de les Funcions Membre</h2>
+<a id="a3c7724e4ae6343ef3adb36cfb65885b8" name="a3c7724e4ae6343ef3adb36cfb65885b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c7724e4ae6343ef3adb36cfb65885b8">&#9670;&#160;</a></span>afegirConfinament() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.afegirConfinament </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Float&#160;</td>
+          <td class="paramname"><em>taxa</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aplica un confinament dur a una regió </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a confinar </td></tr>
+    <tr><td class="paramname">taxa</td><td>Taxa de mobilitat durant el confinament </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f683fcc8c1008fffc45372b9efac0f9" name="a4f683fcc8c1008fffc45372b9efac0f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f683fcc8c1008fffc45372b9efac0f9">&#9670;&#160;</a></span>afegirConfinament() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.afegirConfinament </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegioVeina</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aplica un confinament tou entre dues regions veïnes. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la primera regió </td></tr>
+    <tr><td class="paramname">nomRegioVeina</td><td>Nom de la regió veïna </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad4cba3c48dda9299a5ccd16d638c343a" name="ad4cba3c48dda9299a5ccd16d638c343a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4cba3c48dda9299a5ccd16d638c343a">&#9670;&#160;</a></span>avancarDia()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.avancarDia </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Avança un dia en la simulació per a totes les regions del territori. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>El mapa de regions ha d’estar inicialitzat i contenir objectes <a class="el" href="classRegio.html">Regio</a> vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>S’ha avançat un dia de simulació per a cada regió, actualitzant les afectacions de cada virus. </dd></dl>
+
+</div>
+</div>
+<a id="a4bb6997f80bd1a723032465c5d420a36" name="a4bb6997f80bd1a723032465c5d420a36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bb6997f80bd1a723032465c5d420a36">&#9670;&#160;</a></span>carregarEstatInicial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.carregarEstatInicial </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carrega l'estat inicial d'infeccions des d'un fitxer. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Ruta del fitxer a carregar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondició</dt><dd>El fitxer ha de tenir el format correcte i existir </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Les regions indicades al fitxer tindran els infectats inicials configurats </dd></dl>
+
+</div>
+</div>
+<a id="a70c65690806a0617cd808ed8a2faab72" name="a70c65690806a0617cd808ed8a2faab72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c65690806a0617cd808ed8a2faab72">&#9670;&#160;</a></span>carregarRegions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.carregarRegions </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carrega les dades de regions des d'un fitxer. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Ruta del fitxer a carregar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondició</dt><dd>El fitxer ha de tenir el format correcte i existir </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>El mapa mapaRegions contindrà totes les regions llegides del fitxer </dd></dl>
+
+</div>
+</div>
+<a id="a1e3006e6769d0e031ea17f52f0cbbb7b" name="a1e3006e6769d0e031ea17f52f0cbbb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e3006e6769d0e031ea17f52f0cbbb7b">&#9670;&#160;</a></span>carregarVirus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.carregarVirus </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Carrega les dades de virus des d'un fitxer i els afegeix a la llista de virus. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Ruta del fitxer a carregar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Precondició</dt><dd>El fitxer ha de tenir el format correcte i existir </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>La llista llistaVirus contindrà tots els virus llegits del fitxer </dd></dl>
+
+</div>
+</div>
+<a id="a0558817ce79991ec8f86797a492a6d29" name="a0558817ce79991ec8f86797a492a6d29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0558817ce79991ec8f86797a492a6d29">&#9670;&#160;</a></span>desconfinar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulacio.desconfinar </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aixeca el confinament d'una regió </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a desconfinar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac45f27cae239e41de3ea2e1c7233d931" name="ac45f27cae239e41de3ea2e1c7233d931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45f27cae239e41de3ea2e1c7233d931">&#9670;&#160;</a></span>evolucioContagiosos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; Integer &gt; Simulacio.evolucioContagiosos </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna l’evolució de contagiosos per un virus concret dins d’una regió. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>El nom de la regió i del virus han de ser vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Retorna una llista amb el nombre de contagiosos per dia. </dd></dl>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista amb el nombre de contagiosos per dia. </dd></dl>
+
+</div>
+</div>
+<a id="afa8958d8cef88a8cd20f63ecc5540fd2" name="afa8958d8cef88a8cd20f63ecc5540fd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8958d8cef88a8cd20f63ecc5540fd2">&#9670;&#160;</a></span>evolucioImmunes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; Integer &gt; Simulacio.evolucioImmunes </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna l’evolució d’immunes per un virus concret dins d’una regió. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>El nom de la regió i del virus han de ser vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Retorna una llista amb el nombre d’immunes per dia. </dd></dl>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista amb el nombre d’immunes per dia. </dd></dl>
+
+</div>
+</div>
+<a id="a60fb93eb4814123d74122afd13511018" name="a60fb93eb4814123d74122afd13511018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60fb93eb4814123d74122afd13511018">&#9670;&#160;</a></span>evolucioMalalts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; Integer &gt; Simulacio.evolucioMalalts </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna l’evolució de malalts per un virus concret dins d’una regió. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>El nom de la regió i del virus han de ser vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Retorna una llista amb el nombre de malalts per dia. </dd></dl>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista amb el nombre de malalts per dia. </dd></dl>
+
+</div>
+</div>
+<a id="a1ec2924cfe73faafa143e4b9cf4a8b58" name="a1ec2924cfe73faafa143e4b9cf4a8b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec2924cfe73faafa143e4b9cf4a8b58">&#9670;&#160;</a></span>evolucioMorts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; Integer &gt; Simulacio.evolucioMorts </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna l’evolució de defuncions per un virus concret dins d’una regió. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>El nom de la regió i del virus han de ser vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Retorna una llista amb el nombre de morts per dia. </dd></dl>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista amb el nombre de morts per dia. </dd></dl>
+
+</div>
+</div>
+<a id="a9d9c660ffb42267bd87f435f72a37923" name="a9d9c660ffb42267bd87f435f72a37923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9c660ffb42267bd87f435f72a37923">&#9670;&#160;</a></span>mostrarRegionsActuals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; String &gt; Simulacio.mostrarRegionsActuals </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna una llista ordenada de totes les regions carregades. </p>
+<dl class="section return"><dt>Retorna</dt><dd>Llista de noms de regions ordenats alfabèticament </dd></dl>
+
+</div>
+</div>
+<a id="a4049d8d07d50294b91024e45151560db" name="a4049d8d07d50294b91024e45151560db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4049d8d07d50294b91024e45151560db">&#9670;&#160;</a></span>mostrarRegionsVeines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; String &gt; Simulacio.mostrarRegionsVeines </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna una llista de regions veïnes d'una regió donada. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista de noms de regions veïnes </dd></dl>
+
+</div>
+</div>
+<a id="a48580dc2037a5d70f90c011625306f1b" name="a48580dc2037a5d70f90c011625306f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48580dc2037a5d70f90c011625306f1b">&#9670;&#160;</a></span>mostrarVirusRegio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; String &gt; Simulacio.mostrarVirusRegio </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna una llista de virus presents en una regió </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista de noms de virus presents a la regió </dd></dl>
+
+</div>
+</div>
+<a id="aa787d9d5a904bbc1dbc716a321ecd6d6" name="aa787d9d5a904bbc1dbc716a321ecd6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa787d9d5a904bbc1dbc716a321ecd6d6">&#9670;&#160;</a></span>nombreContagiosos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.nombreContagiosos </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre de persones contagioses per un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre de persones que poden contagiar el virus en aquesta regió. </dd></dl>
+
+</div>
+</div>
+<a id="afa41c4a90fcc96433f368a3613a1a324" name="afa41c4a90fcc96433f368a3613a1a324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa41c4a90fcc96433f368a3613a1a324">&#9670;&#160;</a></span>nombreImmunes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.nombreImmunes </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre de persones immunes a un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre de persones immunes a aquest virus a la regió. </dd></dl>
+
+</div>
+</div>
+<a id="af0704f532afc5f9e1a0ec3ef5b8ac500" name="af0704f532afc5f9e1a0ec3ef5b8ac500"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0704f532afc5f9e1a0ec3ef5b8ac500">&#9670;&#160;</a></span>nombreInfectats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.nombreInfectats </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre total d'infectats per un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre d'infectats (contagiosos i no contagiosos) per aquest virus. </dd></dl>
+
+</div>
+</div>
+<a id="af86f1bb1778942ecd04058f212c6583d" name="af86f1bb1778942ecd04058f212c6583d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86f1bb1778942ecd04058f212c6583d">&#9670;&#160;</a></span>nombreMalalts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.nombreMalalts </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre de persones malaltes per un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre de malalts per aquest virus a la regió. </dd></dl>
+
+</div>
+</div>
+<a id="a3ab0a59c23bdc848c988fa3ed8b73335" name="a3ab0a59c23bdc848c988fa3ed8b73335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ab0a59c23bdc848c988fa3ed8b73335">&#9670;&#160;</a></span>nousInfectats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.nousInfectats </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre de nous contagis per un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre de nous contagis per aquest virus a la regió. </dd></dl>
+
+</div>
+</div>
+<a id="ac07c7e68be5863b271c289687a4b5bbd" name="ac07c7e68be5863b271c289687a4b5bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac07c7e68be5863b271c289687a4b5bbd">&#9670;&#160;</a></span>novesDefuncions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Simulacio.novesDefuncions </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna el nombre de noves defuncions per un virus en una regió. </p>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió a consultar. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus a consultar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Nombre de noves defuncions per aquest virus a la regió. </dd></dl>
+
+</div>
+</div>
+<a id="ae395ad95774a405022a27ad52b52bdab" name="ae395ad95774a405022a27ad52b52bdab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae395ad95774a405022a27ad52b52bdab">&#9670;&#160;</a></span>obtenirAcumulatsTotals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt; Integer &gt; Simulacio.obtenirAcumulatsTotals </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomRegio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>nomVirus</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retorna les estadístiques totals d’afectació d’un virus dins d’una regió. </p>
+<dl class="section pre"><dt>Precondició</dt><dd>Els noms de la regió i del virus han de ser vàlids. </dd></dl>
+<dl class="section post"><dt>Postcondició</dt><dd>Retorna una llista amb: [total infectats, total malalts, total morts] </dd></dl>
+<dl class="params"><dt>Paràmetres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nomRegio</td><td>Nom de la regió. </td></tr>
+    <tr><td class="paramname">nomVirus</td><td>Nom del virus. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Llista amb les estadístiques totals per a aquesta combinació. </dd></dl>
+
+</div>
+</div>
+<hr/>La documentació d'aquesta classe es va generar a partir del següent fitxer:<ul>
+<li>src/<a class="el" href="Simulacio_8java.html">Simulacio.java</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generat per&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

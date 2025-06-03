@@ -1,0 +1,9 @@
+<map id="Jerarquia Gràfica de la Classe" name="Jerarquia Gràfica de la Classe">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,107,31"/>
+<area shape="rect" id="Node000001" href="$classVirusARN.html" title="Representa un virus de tipus ARN, que pot mutar." alt="" coords="155,5,238,31"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="120,15,155,15,155,21,120,21"/>
+<area shape="rect" id="Node000002" href="$classVirus.html" title="Implementem una classe abstracta per definir el comportament general dels virus." alt="" coords="29,55,83,80"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="96,51,159,28,160,33,98,56"/>
+<area shape="rect" id="Node000003" href="$classVirusADN.html" title="Representa un virus de tipus ADN, és a dir, virus que muten amb molt poca freqüència (podem considera..." alt="" coords="155,55,239,80"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="97,65,154,65,154,70,97,70"/>
+</map>

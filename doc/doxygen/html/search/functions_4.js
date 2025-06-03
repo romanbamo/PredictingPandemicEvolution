@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['familiavirus_0',['FamiliaVirus',['../classFamiliaVirus.html#a2f5514f207b7fb120db33bf1dea36502',1,'FamiliaVirus']]],
+  ['familiavirusllegit_1',['FamiliaVirusLlegit',['../classFamiliaVirusLlegit.html#abb34f0f2bc4c8f85efbf104ba26819a1',1,'FamiliaVirusLlegit']]],
+  ['familiesvirusllegides_2',['familiesVirusLlegides',['../classLlegirFitxerVirusR.html#a9d72703291cb5599a5b3308705679c9f',1,'LlegirFitxerVirusR']]]
+];
