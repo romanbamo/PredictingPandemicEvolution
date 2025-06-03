@@ -10,8 +10,8 @@ public class ProvaIriaAfectacio {
         // Creem un virus ARN amb les característiques de l'exemple
         VirusARN v = new VirusARN("prova", f,
                 0.5, // pMal (prob de malaltia)
-                2,   // tInc (temps incubació)
-                2,   // tLat (temps latència)
+                3,   // tInc (temps incubació)
+                3,   // tLat (temps latència)
                 0.1, // pMor (prob de mort)
                 4,   // tCon (temps contagi)
                 0.3, // pCon (no afecta a l'exemple)
@@ -26,11 +26,12 @@ public class ProvaIriaAfectacio {
         AfectacioVirusRegio afr = new AfectacioVirusRegio(v, r, 0);
 
         List<Integer> infectats_no_contagiosos = new ArrayList<>();
+        infectats_no_contagiosos.add(200);
         infectats_no_contagiosos.add(100);
         infectats_no_contagiosos.add(90);
+        infectats_no_contagiosos.add(80);
 
         List<Integer> contagiosos = new ArrayList<>();
-        contagiosos.add(80);
         contagiosos.add(90);
         contagiosos.add(100);
         contagiosos.add(111);
@@ -58,19 +59,30 @@ public class ProvaIriaAfectacio {
 
         // Simulem 200 nous contagis (tal com diu l'exemple)
 
-        List<Integer> nous_infectats_no_contagiosos = new ArrayList<>();
-        infectats_no_contagiosos.add(200);
-        infectats_no_contagiosos.add(100);
-        infectats_no_contagiosos.add(90);
+        // Imprimim resultats tal com diu l'exemple
+        System.out.println("== INFECTATS NO CONTAGIOSOS INICIALS ==");
+        System.out.println(afr.dona_infectats_no_contagiosos());
 
-        afr.posar_infectats_prova(nous_infectats_no_contagiosos);
+        System.out.println("== INFECTATS INICIALS ==");
+        System.out.println(afr.dona_contagiosos());
+
+        System.out.println("== MALALTS INICIALS ==");
+        System.out.println(afr.dona_malalts());
+
+        System.out.println("== TOTALS INICIALS ==");
+        System.out.println("Total malalts: " + afr.dona_totalMalalts());
+        System.out.println("Total morts: " + afr.dona_totalMorts());
+        System.out.println("Total infectats: " + afr.dona_totalInfectats());
 
         // Ara avancem un dia
         afr.avançarUnDia();
 
-        // Imprimim resultats tal com diu l'exemple
-        System.out.println("== INFECTATS ==");
+        System.out.println("   ");
+        System.out.println("AVANÇEM UN DIA :)");
+        System.out.println("   ");
 
+        // Imprimim resultats tal com diu l'exemple
+        System.out.println("== INFECTATS NO CONTAGIOSOS ==");
         System.out.println(afr.dona_infectats_no_contagiosos());
 
         System.out.println("== INFECTATS ==");
@@ -86,5 +98,6 @@ public class ProvaIriaAfectacio {
         System.out.println("Total malalts: " + afr.dona_totalMalalts());
         System.out.println("Total morts: " + afr.dona_totalMorts());
         System.out.println("Total infectats: " + afr.dona_totalInfectats());
+
     }
 }
