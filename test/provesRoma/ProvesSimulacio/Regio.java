@@ -674,6 +674,11 @@ public class Regio {
      * Tallem la connexió amb aquesta regió veïna, però no modifiquem la taxa interna ni la resta de connexions.
      */
     public void aplicarConfinamentTouAmb(Regio veina) {
+
+        if (taxaContacteInternOriginal == null) {
+            taxaContacteInternOriginal = taxaContacteIntern;
+        }
+
         // Guardem la taxa original si no l’hem guardat encara
         if (!taxesExternesOriginals.containsKey(veina)) {
             taxesExternesOriginals.put(veina, taxesExternesContacte.get(veina));
