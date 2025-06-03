@@ -610,7 +610,7 @@ public class Regio {
                             int Nous_contagis_V_mes_fort = Inf_comuns;
                             if (Nous_contagis_V_mes_fort > 0) {
                                 AfectacioVirusRegio afectacio_V_mes_fort = afectacions.get(V_mes_fort.nom());
-                                afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
+                                //afectacio_V_mes_fort.afegir_infectats(Nous_contagis_V_mes_fort);
                                 afectacio_feble.restarNousInfectatsAvui(Nous_contagis_V_mes_fort);
                             }
                         }
@@ -648,7 +648,7 @@ public class Regio {
      * Ara bé, és molt important que, abans de fer canvis, guardem les taxes originals per poder-les recuperar després quan desconfinem.
      */
     public void aplicarConfinamentDur(double nova_taxa_interna) {
-        // Pre: Si dur és true, la nova_taxa_interna ha de ser entre 0 i 1.
+        // Pre: la nova_taxa_interna ha de ser entre 0 i 1.
         // Post: Modifiquem les taxes i indiquem que la regió està confinada.
 
         // Primer de tot, molt important que guardem les taxes originals per quan desconfinem. (ho he fet amb un
@@ -674,6 +674,8 @@ public class Regio {
      * Tallem la connexió amb aquesta regió veïna, però no modifiquem la taxa interna ni la resta de connexions.
      */
     public void aplicarConfinamentTouAmb(Regio veina) {
+    // Pre: la regio veina ha d'estar inicialitzada i ha de tenir una taxa de contacte vàlida
+    // Post: Modifiquem les taxes externes a 0, evitant el contacte entre les dues regions.
 
         if (taxaContacteInternOriginal == null) {
             taxaContacteInternOriginal = taxaContacteIntern;
@@ -704,7 +706,7 @@ public class Regio {
         // Ara be, sempre pot haver falles i així, tal i com hem vist a teoria, amb les excepcions podem saber que
         // l'error ha estat aquí.
 
-        if (taxaContacteInternOriginal == null || comptadorConfinamentTou == 0) {//He afegit la condicio del comptador per saber si queden confinaments per resoldre
+        if (taxaContacteInternOriginal == null) {//He afegit la condicio del comptador per saber si queden confinaments per resoldre
             throw new IllegalStateException("No es pot aixecar el confinament perquè no s’han guardat les taxes originals.");
         }
 
