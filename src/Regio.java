@@ -564,12 +564,12 @@ public class Regio {
 
                         // Calculem el nombre d’infectats comuns
                         // Inf_comuns(V,V’,R,D) = (NCD(V,R,D)/R.poblacio(D)) * (NCD(V,R,D)/R.poblacio(D))
-                        double Inf_comuns_decimal = ((double) Contagiosos_A / poblacio_actual_regio) * ((double) Contagiosos_B / poblacio_actual_regio);
+                        double Inf_comuns_decimal = ((double) Contagiosos_A / poblacio_actual_regio) * ((double) Contagiosos_B / poblacio_actual_regio) * poblacio_actual_regio;
                         int Inf_comuns = (int) Math.round(Inf_comuns_decimal);
 
                         // Calculem la probabilitat de mutació per coincidència
                         // PMC(V,V’,R,D) = prob(mutCoinc(V,V’,R,D)) = Inf_comuns(V,V’,R,D) * F.probMutCoinc()
-                        double PMC = Inf_comuns * entry.getKey().probMutacioCoincidencia();
+                        double PMC = (Inf_comuns_decimal/poblacio_actual_regio) * entry.getKey().probMutacioCoincidencia();
 
                         // Generem un valor aleatori a l’interval [0,1)
                         double aleatori = Math.random();
