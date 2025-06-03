@@ -1,0 +1,190 @@
+\doxysection{Referència de la Classe Virus}
+\hypertarget{classVirus}{}\label{classVirus}\index{Virus@{Virus}}
+
+
+Implementem una classe abstracta per definir el comportament general dels virus.  
+
+
+
+
+Diagrama d\textquotesingle{}Herència per a Virus\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classVirus__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVirus_a5cd3ccdcb04cff11f1baed65dcb6d118}{Virus}} (String nom\+\_\+virus, \mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} familia\+\_\+virus, double p\+\_\+mal, int t\+\_\+inc, int t\+\_\+lat, double p\+\_\+mor, int t\+\_\+con, double p\+\_\+con, int t\+\_\+imm)
+\begin{DoxyCompactList}\small\item\em Primer és important fer el constructor de la classe \doxylink{classVirus}{Virus}. \end{DoxyCompactList}\item 
+\Hypertarget{classVirus_ab5a49339e403818742c326bb6f75ac2d}\label{classVirus_ab5a49339e403818742c326bb6f75ac2d} 
+String {\bfseries nom} ()
+\item 
+\Hypertarget{classVirus_ac1f3f92c234f817e303087c5a49a668e}\label{classVirus_ac1f3f92c234f817e303087c5a49a668e} 
+\mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} {\bfseries familia} ()
+\item 
+\Hypertarget{classVirus_a92f1391feb608baea60ebc2d4f86cc60}\label{classVirus_a92f1391feb608baea60ebc2d4f86cc60} 
+double {\bfseries prob\+Desenvolupar\+Malaltia} ()
+\item 
+\Hypertarget{classVirus_a00c2d8c44a6b4d46cb0c021a1cdc7bf5}\label{classVirus_a00c2d8c44a6b4d46cb0c021a1cdc7bf5} 
+int {\bfseries temps\+Incubacio} ()
+\item 
+\Hypertarget{classVirus_a42a3e05650e764adc90ebb379c47a37b}\label{classVirus_a42a3e05650e764adc90ebb379c47a37b} 
+int {\bfseries temps\+Latencia} ()
+\item 
+\Hypertarget{classVirus_ac8f3628bec9885e467ec53a1d5651e4f}\label{classVirus_ac8f3628bec9885e467ec53a1d5651e4f} 
+double {\bfseries taxa\+Mortalitat} ()
+\item 
+\Hypertarget{classVirus_a7b618bd0fd1908a79e0469915675e105}\label{classVirus_a7b618bd0fd1908a79e0469915675e105} 
+int {\bfseries temps\+Contagi} ()
+\item 
+\Hypertarget{classVirus_ad07735867f572d59133a57284aecb55e}\label{classVirus_ad07735867f572d59133a57284aecb55e} 
+double {\bfseries taxa\+Contagi} ()
+\item 
+\Hypertarget{classVirus_a732383057814cf3ebc5ebe736f24c07d}\label{classVirus_a732383057814cf3ebc5ebe736f24c07d} 
+int {\bfseries temps\+Immunitat} ()
+\item 
+\Hypertarget{classVirus_a4dc20cb3d4e3210d10ec451570d97903}\label{classVirus_a4dc20cb3d4e3210d10ec451570d97903} 
+boolean {\bfseries ha\+Mutat} (\mbox{\hyperlink{classVirus}{Virus}} x)
+\item 
+\Hypertarget{classVirus_a9bd30325c67d234d2ed142e4e1963453}\label{classVirus_a9bd30325c67d234d2ed142e4e1963453} 
+int {\bfseries nous\+Contagis} (int infectats\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous contagis, basant-\/se en el nombre actual d\textquotesingle{}infectats i la taxa d\textquotesingle{}infecció. \end{DoxyCompactList}\item 
+\Hypertarget{classVirus_a95e04a80be83589ba6bb7f4274088f4e}\label{classVirus_a95e04a80be83589ba6bb7f4274088f4e} 
+int {\bfseries nous\+Malalts} (int contagiosos\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous malalts, basant-\/se en el nombre actual de contaiosos i la prob de desenvolupar la malaltia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVirus_a35c42ddd9cc2a238f17e16e318a299ef}{temps\+Malaltia}} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps de la malaltia com a\+: T\+\_\+malaltia = T\+\_\+lat + T\+\_\+contagi -\/ T\+\_\+incubacio Això representa el temps entre que la persona es posa malalta fins que deixa d\textquotesingle{}estar malalta (es cura o mor). \end{DoxyCompactList}\item 
+\Hypertarget{classVirus_ad5eafd52f0cbbc72ee3ffdffa14428e4}\label{classVirus_ad5eafd52f0cbbc72ee3ffdffa14428e4} 
+int {\bfseries temps\+Contagi\+Sense\+Sintomes} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps en que és contagios però encara no te sintomas\+: T\+\_\+contagi\+\_\+sense\+\_\+sintomes = T\+\_\+incubacio -\/ T\+\_\+lat. \end{DoxyCompactList}\item 
+abstract \mbox{\hyperlink{classVirus}{Virus}} \mbox{\hyperlink{classVirus_abf022d7abfdd3d61a04502cb87db7ec0}{mutacio}} ()
+\begin{DoxyCompactList}\small\item\em Explicació\+: He afegit dos metodes abstractes a la classe \doxylink{classVirus}{Virus} que son de mutar. \end{DoxyCompactList}\item 
+abstract \mbox{\hyperlink{classVirus}{Virus}} \mbox{\hyperlink{classVirus_ac0b6192f80e043fa72586ba580f565fe}{mutacio}} (\mbox{\hyperlink{classVirus}{Virus}} B)
+\begin{DoxyCompactList}\small\item\em Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. \end{DoxyCompactList}\item 
+abstract boolean \mbox{\hyperlink{classVirus_ad087c47a2bb0b0ac0e9e48a07aef1ec6}{muta}} ()
+\begin{DoxyCompactList}\small\item\em Indica si el virus pot mutar per error de còpia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Implementem una classe abstracta per definir el comportament general dels virus. 
+
+Aquesta classe serveix com a base per a diferents tipus de virus (ADN i ARN). En aquesta hi ha una sèrie de mètodes sense implementar-\/les directament. Una classe abstracta no es pot instanciar directament i només proporciona una estructura que altres classes han d’implementar.
+
+\begin{DoxyAuthor}{Autor}
+Iria Auladell 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versió}
+2025.\+3.\+13 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentació del Constructor i el Destructor}
+\Hypertarget{classVirus_a5cd3ccdcb04cff11f1baed65dcb6d118}\label{classVirus_a5cd3ccdcb04cff11f1baed65dcb6d118} 
+\index{Virus@{Virus}!Virus@{Virus}}
+\index{Virus@{Virus}!Virus@{Virus}}
+\doxysubsubsection{\texorpdfstring{Virus()}{Virus()}}
+{\footnotesize\ttfamily Virus.\+Virus (\begin{DoxyParamCaption}\item[{String}]{nom\+\_\+virus,  }\item[{\mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}}}]{familia\+\_\+virus,  }\item[{double}]{p\+\_\+mal,  }\item[{int}]{t\+\_\+inc,  }\item[{int}]{t\+\_\+lat,  }\item[{double}]{p\+\_\+mor,  }\item[{int}]{t\+\_\+con,  }\item[{double}]{p\+\_\+con,  }\item[{int}]{t\+\_\+imm }\end{DoxyParamCaption})}
+
+
+
+Primer és important fer el constructor de la classe \doxylink{classVirus}{Virus}. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+\_\+virus} & Nom del virus. \\
+\hline
+{\em familia\+\_\+virus} & Família a la qual pertany el virus (de tipus \doxylink{classFamiliaVirus}{Familia\+Virus}). \\
+\hline
+{\em p\+\_\+mal} & Probabilitat que una persona infectada desenvolupi la malaltia. \\
+\hline
+{\em t\+\_\+inc} & Temps d’incubació \\
+\hline
+{\em t\+\_\+lat} & Temps de latència \\
+\hline
+{\em p\+\_\+mor} & Taxa de mortalitat \\
+\hline
+{\em t\+\_\+con} & Durada mitjana del període de contagi \\
+\hline
+{\em p\+\_\+con} & Taxa de contagi \\
+\hline
+{\em t\+\_\+imm} & Durada del període d’immunitat \\
+\hline
+\end{DoxyParams}
+falta validar que estiguin ben posats
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classVirus_ad087c47a2bb0b0ac0e9e48a07aef1ec6}\label{classVirus_ad087c47a2bb0b0ac0e9e48a07aef1ec6} 
+\index{Virus@{Virus}!muta@{muta}}
+\index{muta@{muta}!Virus@{Virus}}
+\doxysubsubsection{\texorpdfstring{muta()}{muta()}}
+{\footnotesize\ttfamily abstract boolean Virus.\+muta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Indica si el virus pot mutar per error de còpia. 
+
+\begin{DoxyReturn}{Retorna}
+Cert si és un virus de tipus ARN (mutable). Fals en cas contrari. 
+\end{DoxyReturn}
+
+
+Reimplementat a \mbox{\hyperlink{classVirusADN_ac244f65da8e99963ca8ac4dcd9816bab}{Virus\+ADN}} i \mbox{\hyperlink{classVirusARN_acab62dfea86ebfc0238937015efeec78}{Virus\+ARN}}.
+
+\Hypertarget{classVirus_abf022d7abfdd3d61a04502cb87db7ec0}\label{classVirus_abf022d7abfdd3d61a04502cb87db7ec0} 
+\index{Virus@{Virus}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!Virus@{Virus}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{classVirus}{Virus}} Virus.\+mutacio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Explicació\+: He afegit dos metodes abstractes a la classe \doxylink{classVirus}{Virus} que son de mutar. 
+
+Aquests, hem fet una sobrecarrega, de manera que si passem per paràmetre un atribut, llavors es fa una, i si en passem dos, es fa un altre. L\textquotesingle{}hem escrit aquí, ja que com se\textquotesingle{}ns ha dit a classe, aquest mètode el podrem fer servir també per saber si el virus és ARN o ADN. Per fer-\/ho, haurem de fer un OVERRIDE posterior dins de cada subclasse, on s\textquotesingle{}implementaran. En el cas dels \doxylink{classVirusARN}{Virus\+ARN}, no passarà res perquè aquest virus SI que muten, mentres que en el cas dels ADN, haurem de fer saltar un error, o alguna cosa per saber que es tracta d\textquotesingle{}un \doxylink{classVirusADN}{Virus\+ADN}. Fem ús d\textquotesingle{}aquest mètode quan hi ha una mutació per error de còpia a un virus . \begin{DoxyReturn}{Retorna}
+un virus de la mateixa família que l\textquotesingle{}original 
+\end{DoxyReturn}
+
+
+Reimplementat a \mbox{\hyperlink{classVirusADN_aaceb9418ae9fbee61124780214c717e9}{Virus\+ADN}} i \mbox{\hyperlink{classVirusARN_a4634c6af539dffd1926501a30017b72c}{Virus\+ARN}}.
+
+\Hypertarget{classVirus_ac0b6192f80e043fa72586ba580f565fe}\label{classVirus_ac0b6192f80e043fa72586ba580f565fe} 
+\index{Virus@{Virus}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!Virus@{Virus}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily abstract \mbox{\hyperlink{classVirus}{Virus}} Virus.\+mutacio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{B }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+
+
+Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. 
+
+El virus de la classe és un virus A, i la persona ja està infectada d\textquotesingle{}aquest virus. 
+\begin{DoxyParams}{Paràmetres}
+{\em B} & Persona infectada de A, s\textquotesingle{}infecta també d\textquotesingle{}aquest virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+C virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d\textquotesingle{}ambdós, o un dels dos virus si no es produeix mutació. 
+\end{DoxyReturn}
+
+
+Reimplementat a \mbox{\hyperlink{classVirusADN_a26444465abf261aa86a15297d14c566d}{Virus\+ADN}} i \mbox{\hyperlink{classVirusARN_a808aaf60ccd75de55aae50915a0777ca}{Virus\+ARN}}.
+
+\Hypertarget{classVirus_a35c42ddd9cc2a238f17e16e318a299ef}\label{classVirus_a35c42ddd9cc2a238f17e16e318a299ef} 
+\index{Virus@{Virus}!tempsMalaltia@{tempsMalaltia}}
+\index{tempsMalaltia@{tempsMalaltia}!Virus@{Virus}}
+\doxysubsubsection{\texorpdfstring{tempsMalaltia()}{tempsMalaltia()}}
+{\footnotesize\ttfamily int Virus.\+temps\+Malaltia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+He fet aquest mètode per a calcular el temps de la malaltia com a\+: T\+\_\+malaltia = T\+\_\+lat + T\+\_\+contagi -\/ T\+\_\+incubacio Això representa el temps entre que la persona es posa malalta fins que deixa d\textquotesingle{}estar malalta (es cura o mor). 
+
+Perquè jo m\textquotesingle{}entengui, basicament és el temps en que està malalta la persona, és a dir, el contagi dura X temps però clar, d\textquotesingle{}aquest temps hi pot haver uns dies on la persona si que contagia però NO te sintomes, ja que ens trobem en una situació on el temps d\textquotesingle{}incubació (temps fins q aparèixen sintomes) és major al temps de latència (temps que passa fins que comença a contagiar). 
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Virus.\+java\end{DoxyCompactItemize}

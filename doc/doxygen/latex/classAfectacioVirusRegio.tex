@@ -1,0 +1,324 @@
+\doxysection{Referència de la Classe Afectacio\+Virus\+Regio}
+\hypertarget{classAfectacioVirusRegio}{}\label{classAfectacioVirusRegio}\index{AfectacioVirusRegio@{AfectacioVirusRegio}}
+
+
+Controla l’evolució d’un virus en una regió concreta dins la simulació.  
+
+
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAfectacioVirusRegio_a8a832c61352c5816f87a95ccf7a85d4a}{Afectacio\+Virus\+Regio}} (\mbox{\hyperlink{classVirus}{Virus}} v, \mbox{\hyperlink{classRegio}{Regio}} r, int numero\+\_\+infectats)
+\begin{DoxyCompactList}\small\item\em Constructor de la classe \doxylink{classAfectacioVirusRegio}{Afectacio\+Virus\+Regio}. \end{DoxyCompactList}\item 
+\Hypertarget{classAfectacioVirusRegio_a0d169fc673b84b5d698bf0c95ab2a90d}\label{classAfectacioVirusRegio_a0d169fc673b84b5d698bf0c95ab2a90d} 
+void {\bfseries avançar\+Un\+Dia} ()
+\begin{DoxyCompactList}\small\item\em Que fa ? Si avancem la simulació un dia, llavors s\textquotesingle{}actualitza l’estat de la infecció en aquesta la regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAfectacioVirusRegio_aae8db82564c1bb0e48b651ac922880bb}{comprovar\+Mutacio\+Error\+Copia}} ()
+\begin{DoxyCompactList}\small\item\em Aquesta funció el que fa és mirar si en el dia d\textquotesingle{}avui, es produeix una mutació del virus que afecta la regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_a680cb8f93f9d7095c13a807c0a4efb23}{nombre\+Contagiosos}} ()
+\begin{DoxyCompactList}\small\item\em Aquesta funció l\textquotesingle{}he fet per poder saber el nombre total de persones que hi ha a la regió i que són contagioses per aquest virus concret. \end{DoxyCompactList}\item 
+\Hypertarget{classAfectacioVirusRegio_aefe45c59819cc80576e393617ae15e57}\label{classAfectacioVirusRegio_aefe45c59819cc80576e393617ae15e57} 
+int {\bfseries nous\+Contagios} ()
+\item 
+\Hypertarget{classAfectacioVirusRegio_aa8e95ad3208d7f5e75cd0bc969f75fc0}\label{classAfectacioVirusRegio_aa8e95ad3208d7f5e75cd0bc969f75fc0} 
+int {\bfseries nombre\+Immunes} ()
+\item 
+\Hypertarget{classAfectacioVirusRegio_a81c9d715067606dcbddaa2a160bcdf26}\label{classAfectacioVirusRegio_a81c9d715067606dcbddaa2a160bcdf26} 
+int {\bfseries nombre\+Infectats\+No\+Contagiosos} ()
+\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_a648b825aebff34652b21ca3320f21436}{nombre\+Malalts}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total de malalts en un dia concret. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_ad21e21bacf426ae4bcdcd6ee45fca185}{noves\+Defuncions}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de defuncions del dia actual. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classAfectacioVirusRegio_a7a63ffcae9dd749ede0437f91c3c6090}{evolucio\+Malalts}} ()
+\begin{DoxyCompactList}\small\item\em Retorna l\textquotesingle{}evolució diària del nombre de malalts. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classAfectacioVirusRegio_aa3bee9ef15cc7feaa5734c858f768cca}{evolucio\+Immunes}} ()
+\begin{DoxyCompactList}\small\item\em Retorna l\textquotesingle{}evolució diària del nombre d\textquotesingle{}immunes. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classAfectacioVirusRegio_adf238fd767a1b3adf7593476f84fbe1f}{evolucio\+Contgiosos}} ()
+\begin{DoxyCompactList}\small\item\em Retorna l\textquotesingle{}evolució diària del nombre de contagiosos. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classAfectacioVirusRegio_aac0b94bb2287073a0b1be59a9910082c}{morts\+Diaries}} ()
+\begin{DoxyCompactList}\small\item\em Retorna l\textquotesingle{}evolució diària de les morts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_adacc6a5b54ed38d77aa0fc07109e339e}{total\+Malalts}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total de malalts al llarg de la malaltia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_a46036cf8e8f0c68530e5ac35ebafe2dc}{total\+Morts}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total de morts al llarg de la malaltia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAfectacioVirusRegio_a578d2540f4bdbd45e72b183fabec8579}{total\+Infectats}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total d\textquotesingle{}infectats al llarg de la malaltia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAfectacioVirusRegio_a1b5fca820e59c5ba68165d8063a20fb0}{restar\+Nous\+Infectats\+Avui}} (int n)
+\begin{DoxyCompactList}\small\item\em Resta un nombre de nous infectats d\textquotesingle{}avui i actualitza el total acumulat. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVirus}{Virus}} \mbox{\hyperlink{classAfectacioVirusRegio_a100579c599c20e2a164664d5f0b842db}{quin\+Virus\+Hi\+Ha}} ()
+\begin{DoxyCompactList}\small\item\em Aquesta funció simplement l\textquotesingle{}hem fet perquè, en una regió, sabem totes les afectacions que té, però en molts casos necessitem saber quin virus està associat a aquesta afectació (la regió ja la sabrem perquè seràn afectacions propies d\textquotesingle{}aquesta). \end{DoxyCompactList}\item 
+\Hypertarget{classAfectacioVirusRegio_ad4da891675bb5e2afe3607aeb6a16c86}\label{classAfectacioVirusRegio_ad4da891675bb5e2afe3607aeb6a16c86} 
+void {\bfseries afegir\+\_\+infectats} (int n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Controla l’evolució d’un virus en una regió concreta dins la simulació. 
+
+Gestiona la infecció en una regió seguint l’evolució temporal del virus. Es tenen en compte\+:
+\begin{DoxyItemize}
+\item Infectats\+: persones que han contret el virus.
+\item Contagiosos\+: infectats que poden transmetre’l.
+\item Malalts\+: infectats que desenvolupen símptomes.
+\item Nous infectats\+: persones contagiades en l’últim dia.
+\item Immunitzats\+: persones recuperades.
+\item Morts\+: persones que han mort per culpa de la malaltia.
+\end{DoxyItemize}
+
+Cada dia s’actualitza l’estat de la regió\+:
+\begin{DoxyItemize}
+\item Es calculen nous contagis segons la taxa de transmissió (P\+\_\+con) i la mobilitat.
+\item Es distribueixen les morts proporcionalment al llarg dels dies de malaltia.
+\item Es mantenen estadístiques acumulades des de l’inici de la simulació.
+\end{DoxyItemize}
+
+La simulació treballa en mode text i permet consultar l’estat actual i l’evolució històrica.
+
+\begin{DoxyAuthor}{Autor}
+Iria Auladell 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versió}
+2025.\+3.\+13 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentació del Constructor i el Destructor}
+\Hypertarget{classAfectacioVirusRegio_a8a832c61352c5816f87a95ccf7a85d4a}\label{classAfectacioVirusRegio_a8a832c61352c5816f87a95ccf7a85d4a} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{AfectacioVirusRegio()}{AfectacioVirusRegio()}}
+{\footnotesize\ttfamily Afectacio\+Virus\+Regio.\+Afectacio\+Virus\+Regio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{v,  }\item[{\mbox{\hyperlink{classRegio}{Regio}}}]{r,  }\item[{int}]{numero\+\_\+infectats }\end{DoxyParamCaption})}
+
+
+
+Constructor de la classe \doxylink{classAfectacioVirusRegio}{Afectacio\+Virus\+Regio}. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em v} & \doxylink{classVirus}{Virus} que afecta la regió. \\
+\hline
+{\em r} & Regió que és infectada per el virus. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classAfectacioVirusRegio_aae8db82564c1bb0e48b651ac922880bb}\label{classAfectacioVirusRegio_aae8db82564c1bb0e48b651ac922880bb} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!comprovarMutacioErrorCopia@{comprovarMutacioErrorCopia}}
+\index{comprovarMutacioErrorCopia@{comprovarMutacioErrorCopia}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{comprovarMutacioErrorCopia()}{comprovarMutacioErrorCopia()}}
+{\footnotesize\ttfamily void Afectacio\+Virus\+Regio.\+comprovar\+Mutacio\+Error\+Copia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció el que fa és mirar si en el dia d\textquotesingle{}avui, es produeix una mutació del virus que afecta la regió. 
+
+Ho fem a partir de la fórmula que ens han donat a l\textquotesingle{}annex. En cas que sí que hi hagi mutació, es calcula el nou virus mutat, i s\textquotesingle{}actualitza l\textquotesingle{}afectació de la regió per aquest nou virus. \Hypertarget{classAfectacioVirusRegio_adf238fd767a1b3adf7593476f84fbe1f}\label{classAfectacioVirusRegio_adf238fd767a1b3adf7593476f84fbe1f} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!evolucioContgiosos@{evolucioContgiosos}}
+\index{evolucioContgiosos@{evolucioContgiosos}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{evolucioContgiosos()}{evolucioContgiosos()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Afectacio\+Virus\+Regio.\+evolucio\+Contgiosos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna l\textquotesingle{}evolució diària del nombre de contagiosos. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista \+\_\+contagiosos ha d\textquotesingle{}estar inicialitzada. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera d\textquotesingle{}evolució dels contagiosos. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de contagiosos per dia. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_aa3bee9ef15cc7feaa5734c858f768cca}\label{classAfectacioVirusRegio_aa3bee9ef15cc7feaa5734c858f768cca} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!evolucioImmunes@{evolucioImmunes}}
+\index{evolucioImmunes@{evolucioImmunes}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{evolucioImmunes()}{evolucioImmunes()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Afectacio\+Virus\+Regio.\+evolucio\+Immunes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna l\textquotesingle{}evolució diària del nombre d\textquotesingle{}immunes. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista \+\_\+immunes ha d\textquotesingle{}estar inicialitzada. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera d\textquotesingle{}evolució dels immunes. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre d\textquotesingle{}immunes per dia. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_a7a63ffcae9dd749ede0437f91c3c6090}\label{classAfectacioVirusRegio_a7a63ffcae9dd749ede0437f91c3c6090} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!evolucioMalalts@{evolucioMalalts}}
+\index{evolucioMalalts@{evolucioMalalts}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{evolucioMalalts()}{evolucioMalalts()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Afectacio\+Virus\+Regio.\+evolucio\+Malalts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna l\textquotesingle{}evolució diària del nombre de malalts. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista \+\_\+malalts ha d\textquotesingle{}estar inicialitzada. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera d\textquotesingle{}evolució dels malalts. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de malalts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_aac0b94bb2287073a0b1be59a9910082c}\label{classAfectacioVirusRegio_aac0b94bb2287073a0b1be59a9910082c} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!mortsDiaries@{mortsDiaries}}
+\index{mortsDiaries@{mortsDiaries}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{mortsDiaries()}{mortsDiaries()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Afectacio\+Virus\+Regio.\+morts\+Diaries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna l\textquotesingle{}evolució diària de les morts. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista morts\+Diaries ha d\textquotesingle{}estar inicialitzada. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera de morts diàries. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de morts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_a680cb8f93f9d7095c13a807c0a4efb23}\label{classAfectacioVirusRegio_a680cb8f93f9d7095c13a807c0a4efb23} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!nombreContagiosos@{nombreContagiosos}}
+\index{nombreContagiosos@{nombreContagiosos}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{nombreContagiosos()}{nombreContagiosos()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+nombre\+Contagiosos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció l\textquotesingle{}he fet per poder saber el nombre total de persones que hi ha a la regió i que són contagioses per aquest virus concret. 
+
+És a dir, com que tenim un histograma de contagiosos (una llista que ens diu quants contagiosos nous hi ha a cada dia de la infecció), el que faig és sumar tots aquests per saber el total de contagiosos actuals. 
+
+Aquesta funció es cridarà des de la classe \doxylink{classRegio}{Regio}, i l\textquotesingle{}he necessitat per poder fer servir les fórmules de contagis interns i externs que hi ha en el formulari. Si és d\textquotesingle{}aquest virus, no cal cridar-\/la, però si per exemple volem els contagiosos d\textquotesingle{}un altre virus de la regió, doncs clar, només la classe regió sap totes les afectacions que hi ha en ella, per tant hem de mirar primer quina afectacio és la que correspon a aquest virus, i després ja determinar a partir d\textquotesingle{}aquesta afectació, el nombre de contagiosos. \Hypertarget{classAfectacioVirusRegio_a648b825aebff34652b21ca3320f21436}\label{classAfectacioVirusRegio_a648b825aebff34652b21ca3320f21436} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!nombreMalalts@{nombreMalalts}}
+\index{nombreMalalts@{nombreMalalts}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{nombreMalalts()}{nombreMalalts()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+nombre\+Malalts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total de malalts en un dia concret. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista \+\_\+malalts ha d\textquotesingle{}estar inicialitzada correctament. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la suma dels valors de la llista \+\_\+malalts. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Nombre total de malalts. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_ad21e21bacf426ae4bcdcd6ee45fca185}\label{classAfectacioVirusRegio_ad21e21bacf426ae4bcdcd6ee45fca185} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!novesDefuncions@{novesDefuncions}}
+\index{novesDefuncions@{novesDefuncions}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{novesDefuncions()}{novesDefuncions()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+noves\+Defuncions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de defuncions del dia actual. 
+
+\begin{DoxyPrecond}{Precondició}
+La llista morts\+Diaries ha d\textquotesingle{}estar inicialitzada correctament. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el valor de morts\+Diaries corresponent al dia actual (posició 0). 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Nombre de defuncions del dia actual. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_a100579c599c20e2a164664d5f0b842db}\label{classAfectacioVirusRegio_a100579c599c20e2a164664d5f0b842db} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!quinVirusHiHa@{quinVirusHiHa}}
+\index{quinVirusHiHa@{quinVirusHiHa}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{quinVirusHiHa()}{quinVirusHiHa()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVirus}{Virus}} Afectacio\+Virus\+Regio.\+quin\+Virus\+Hi\+Ha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció simplement l\textquotesingle{}hem fet perquè, en una regió, sabem totes les afectacions que té, però en molts casos necessitem saber quin virus està associat a aquesta afectació (la regió ja la sabrem perquè seràn afectacions propies d\textquotesingle{}aquesta). 
+
+Per tant, necessitem doncs un mètode que ens retorni el \doxylink{classVirus}{Virus} associat, i així doncs podrem veure quins virus estan presents, quins no, podem fer les fòrmules de la mutació per coincidència... \Hypertarget{classAfectacioVirusRegio_a1b5fca820e59c5ba68165d8063a20fb0}\label{classAfectacioVirusRegio_a1b5fca820e59c5ba68165d8063a20fb0} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!restarNousInfectatsAvui@{restarNousInfectatsAvui}}
+\index{restarNousInfectatsAvui@{restarNousInfectatsAvui}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{restarNousInfectatsAvui()}{restarNousInfectatsAvui()}}
+{\footnotesize\ttfamily void Afectacio\+Virus\+Regio.\+restar\+Nous\+Infectats\+Avui (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Resta un nombre de nous infectats d\textquotesingle{}avui i actualitza el total acumulat. 
+
+Ens assegurem que no quedi negatiu. \Hypertarget{classAfectacioVirusRegio_a578d2540f4bdbd45e72b183fabec8579}\label{classAfectacioVirusRegio_a578d2540f4bdbd45e72b183fabec8579} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!totalInfectats@{totalInfectats}}
+\index{totalInfectats@{totalInfectats}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{totalInfectats()}{totalInfectats()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+total\+Infectats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total d\textquotesingle{}infectats al llarg de la malaltia. 
+
+\begin{DoxyPrecond}{Precondició}
+L\textquotesingle{}atribut total\+Infectats ha d\textquotesingle{}estar inicialitzat. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el valor acumulat de persones infectades. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Total d\textquotesingle{}infectats. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_adacc6a5b54ed38d77aa0fc07109e339e}\label{classAfectacioVirusRegio_adacc6a5b54ed38d77aa0fc07109e339e} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!totalMalalts@{totalMalalts}}
+\index{totalMalalts@{totalMalalts}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{totalMalalts()}{totalMalalts()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+total\+Malalts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total de malalts al llarg de la malaltia. 
+
+\begin{DoxyPrecond}{Precondició}
+L\textquotesingle{}atribut total\+Malalts ha d\textquotesingle{}estar inicialitzat. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el valor acumulat de persones que han estat malaltes. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Total de malalts. 
+\end{DoxyReturn}
+\Hypertarget{classAfectacioVirusRegio_a46036cf8e8f0c68530e5ac35ebafe2dc}\label{classAfectacioVirusRegio_a46036cf8e8f0c68530e5ac35ebafe2dc} 
+\index{AfectacioVirusRegio@{AfectacioVirusRegio}!totalMorts@{totalMorts}}
+\index{totalMorts@{totalMorts}!AfectacioVirusRegio@{AfectacioVirusRegio}}
+\doxysubsubsection{\texorpdfstring{totalMorts()}{totalMorts()}}
+{\footnotesize\ttfamily int Afectacio\+Virus\+Regio.\+total\+Morts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total de morts al llarg de la malaltia. 
+
+\begin{DoxyPrecond}{Precondició}
+L\textquotesingle{}atribut total\+Morts ha d\textquotesingle{}estar inicialitzat. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el valor acumulat de persones mortes. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+Total de morts. 
+\end{DoxyReturn}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Afectacio\+Virus\+Regio.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="Virus" name="Virus">
+<area shape="rect" id="Node000001" title="Implementem una classe abstracta per definir el comportament general dels virus." alt="" coords="73,5,128,31"/>
+<area shape="rect" id="Node000002" href="$classVirusADN.html" title="Representa un virus de tipus ADN, és a dir, virus que muten amb molt poca freqüència (podem considera..." alt="" coords="5,79,89,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,43,58,80,54,77,82,40"/>
+<area shape="rect" id="Node000003" href="$classVirusARN.html" title="Representa un virus de tipus ARN, que pot mutar." alt="" coords="114,79,197,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,40,149,77,144,80,116,43"/>
+</map>

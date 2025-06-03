@@ -1,0 +1,67 @@
+\doxysection{Referència de la Classe Llegir\+Fitxer\+RegionsR}
+\hypertarget{classLlegirFitxerRegionsR}{}\label{classLlegirFitxerRegionsR}\index{LlegirFitxerRegionsR@{LlegirFitxerRegionsR}}
+
+
+Classe principal per a la lectura de fitxers de configuració de regions.  
+
+
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{classRegioLlegida}{Regio\+Llegida}} $>$ \mbox{\hyperlink{classLlegirFitxerRegionsR_a8dd4e43685cabd9f50097094babb670f}{llegir\+Fitxer}} (String path)  throws IOException 
+\begin{DoxyCompactList}\small\item\em Llegeix un fitxer i carrega les dades de les regions. \end{DoxyCompactList}\item 
+Map$<$ String, \mbox{\hyperlink{classRegioLlegida}{Regio\+Llegida}} $>$ \mbox{\hyperlink{classLlegirFitxerRegionsR_a1f55c085164c544e72b02d5edc4acccd}{vector\+Regions\+Llegides}} ()
+\begin{DoxyCompactList}\small\item\em Retorna el mapa de regions carregades. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Classe principal per a la lectura de fitxers de configuració de regions. 
+
+Aquesta classe llegeix i processa fitxers que contenen\+:
+\begin{DoxyItemize}
+\item Dades bàsiques de regions
+\item Connexions i taxes de mobilitat entre regions 
+\end{DoxyItemize}
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classLlegirFitxerRegionsR_a8dd4e43685cabd9f50097094babb670f}\label{classLlegirFitxerRegionsR_a8dd4e43685cabd9f50097094babb670f} 
+\index{LlegirFitxerRegionsR@{LlegirFitxerRegionsR}!llegirFitxer@{llegirFitxer}}
+\index{llegirFitxer@{llegirFitxer}!LlegirFitxerRegionsR@{LlegirFitxerRegionsR}}
+\doxysubsubsection{\texorpdfstring{llegirFitxer()}{llegirFitxer()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classRegioLlegida}{Regio\+Llegida}} $>$ Llegir\+Fitxer\+Regions\+R.\+llegir\+Fitxer (\begin{DoxyParamCaption}\item[{String}]{path }\end{DoxyParamCaption}) throws IOException}
+
+
+
+Llegeix un fitxer i carrega les dades de les regions. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em path} & Camí al fitxer a llegir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista de regions llegides 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Excepcions}
+{\em IOException} & En cas d\textquotesingle{}error de lectura o format incorrecte \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classLlegirFitxerRegionsR_a1f55c085164c544e72b02d5edc4acccd}\label{classLlegirFitxerRegionsR_a1f55c085164c544e72b02d5edc4acccd} 
+\index{LlegirFitxerRegionsR@{LlegirFitxerRegionsR}!vectorRegionsLlegides@{vectorRegionsLlegides}}
+\index{vectorRegionsLlegides@{vectorRegionsLlegides}!LlegirFitxerRegionsR@{LlegirFitxerRegionsR}}
+\doxysubsubsection{\texorpdfstring{vectorRegionsLlegides()}{vectorRegionsLlegides()}}
+{\footnotesize\ttfamily Map$<$ String, \mbox{\hyperlink{classRegioLlegida}{Regio\+Llegida}} $>$ Llegir\+Fitxer\+Regions\+R.\+vector\+Regions\+Llegides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna el mapa de regions carregades. 
+
+\begin{DoxyReturn}{Retorna}
+Mapa amb totes les regions processades 
+\end{DoxyReturn}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{LlegirFitxerRegionsR_8java}{Llegir\+Fitxer\+Regions\+R.\+java}}\end{DoxyCompactItemize}

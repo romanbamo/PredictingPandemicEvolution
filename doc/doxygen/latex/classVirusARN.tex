@@ -1,0 +1,184 @@
+\doxysection{Referència de la Classe Virus\+ARN}
+\hypertarget{classVirusARN}{}\label{classVirusARN}\index{VirusARN@{VirusARN}}
+
+
+Representa un virus de tipus ARN, que pot mutar.  
+
+
+
+
+Diagrama d\textquotesingle{}Herència per a Virus\+ARN\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classVirusARN__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de col·laboració per a Virus\+ARN\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{classVirusARN__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVirusARN_a9b451c936b1da2c4ce2dcde366272c3a}\label{classVirusARN_a9b451c936b1da2c4ce2dcde366272c3a} 
+{\bfseries Virus\+ARN} (String nom\+\_\+virus, \mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} familia\+\_\+virus, double p\+\_\+mal, int t\+\_\+inc, int t\+\_\+lat, double p\+\_\+mor, int t\+\_\+con, double p\+\_\+con, int t\+\_\+imm, double p\+\_\+mut\+EC)
+\item 
+\Hypertarget{classVirusARN_ad282e56fe8a272486b974254d9987a63}\label{classVirusARN_ad282e56fe8a272486b974254d9987a63} 
+double {\bfseries probabilitat\+Mutacio\+Error\+Copia} ()
+\item 
+\Hypertarget{classVirusARN_aa79580ad5260d0d6c9ba8ab8603f28d1}\label{classVirusARN_aa79580ad5260d0d6c9ba8ab8603f28d1} 
+List$<$ \mbox{\hyperlink{classVirusARN}{Virus\+ARN}} $>$ {\bfseries obtenir\+Mutacions} ()
+\item 
+\Hypertarget{classVirusARN_a7a074f566052afe600212441508814d7}\label{classVirusARN_a7a074f566052afe600212441508814d7} 
+boolean {\bfseries pertanyen\+Mateixa\+Familia} (\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} B)
+\item 
+\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} \mbox{\hyperlink{classVirusARN_a4634c6af539dffd1926501a30017b72c}{mutacio}} ()
+\begin{DoxyCompactList}\small\item\em Fem ús d\textquotesingle{}aquest mètode quan hi ha una mutació per error de còpia a un virus ARN. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} \mbox{\hyperlink{classVirusARN_a808aaf60ccd75de55aae50915a0777ca}{mutacio}} (\mbox{\hyperlink{classVirus}{Virus}} B)
+\begin{DoxyCompactList}\small\item\em Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVirusARN_aecf17946fef4d8b3b2d3152e8769d8de}{compare\+To}} (\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} altre\+Virus)
+\begin{DoxyCompactList}\small\item\em Aquí el que fem és fer ús del Compare\+To, però el personalitzem per comparar dos virus segons la seva força. \end{DoxyCompactList}\item 
+\Hypertarget{classVirusARN_aae7f8c8a66fc7543f19b4b8a773380cc}\label{classVirusARN_aae7f8c8a66fc7543f19b4b8a773380cc} 
+\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} {\bfseries Virus\+Mes\+Fort} (\mbox{\hyperlink{classVirusARN}{Virus\+ARN}} B)
+\item 
+boolean \mbox{\hyperlink{classVirusARN_acab62dfea86ebfc0238937015efeec78}{muta}} ()
+\begin{DoxyCompactList}\small\item\em Indica si el virus pot mutar per error de còpia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Mètodes públics inherited from \mbox{\hyperlink{classVirus}{Virus}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVirus_a5cd3ccdcb04cff11f1baed65dcb6d118}{Virus}} (String nom\+\_\+virus, \mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} familia\+\_\+virus, double p\+\_\+mal, int t\+\_\+inc, int t\+\_\+lat, double p\+\_\+mor, int t\+\_\+con, double p\+\_\+con, int t\+\_\+imm)
+\begin{DoxyCompactList}\small\item\em Primer és important fer el constructor de la classe \doxylink{classVirus}{Virus}. \end{DoxyCompactList}\item 
+String {\bfseries nom} ()
+\item 
+\mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} {\bfseries familia} ()
+\item 
+double {\bfseries prob\+Desenvolupar\+Malaltia} ()
+\item 
+int {\bfseries temps\+Incubacio} ()
+\item 
+int {\bfseries temps\+Latencia} ()
+\item 
+double {\bfseries taxa\+Mortalitat} ()
+\item 
+int {\bfseries temps\+Contagi} ()
+\item 
+double {\bfseries taxa\+Contagi} ()
+\item 
+int {\bfseries temps\+Immunitat} ()
+\item 
+boolean {\bfseries ha\+Mutat} (\mbox{\hyperlink{classVirus}{Virus}} x)
+\item 
+int {\bfseries nous\+Contagis} (int infectats\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous contagis, basant-\/se en el nombre actual d\textquotesingle{}infectats i la taxa d\textquotesingle{}infecció. \end{DoxyCompactList}\item 
+int {\bfseries nous\+Malalts} (int contagiosos\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous malalts, basant-\/se en el nombre actual de contaiosos i la prob de desenvolupar la malaltia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVirus_a35c42ddd9cc2a238f17e16e318a299ef}{temps\+Malaltia}} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps de la malaltia com a\+: T\+\_\+malaltia = T\+\_\+lat + T\+\_\+contagi -\/ T\+\_\+incubacio Això representa el temps entre que la persona es posa malalta fins que deixa d\textquotesingle{}estar malalta (es cura o mor). \end{DoxyCompactList}\item 
+int {\bfseries temps\+Contagi\+Sense\+Sintomes} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps en que és contagios però encara no te sintomas\+: T\+\_\+contagi\+\_\+sense\+\_\+sintomes = T\+\_\+incubacio -\/ T\+\_\+lat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Representa un virus de tipus ARN, que pot mutar. 
+
+\begin{DoxyAuthor}{Autor}
+Iria Auladell 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classVirusARN_aecf17946fef4d8b3b2d3152e8769d8de}\label{classVirusARN_aecf17946fef4d8b3b2d3152e8769d8de} 
+\index{VirusARN@{VirusARN}!compareTo@{compareTo}}
+\index{compareTo@{compareTo}!VirusARN@{VirusARN}}
+\doxysubsubsection{\texorpdfstring{compareTo()}{compareTo()}}
+{\footnotesize\ttfamily int Virus\+ARN.\+compare\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirusARN}{Virus\+ARN}}}]{altre\+Virus }\end{DoxyParamCaption})}
+
+
+
+Aquí el que fem és fer ús del Compare\+To, però el personalitzem per comparar dos virus segons la seva força. 
+
+Com ens diu el document, la força dels virus es calcula com (en ordre de prioritat)\+:
+\begin{DoxyEnumerate}
+\item Taxa de contagi (p\+Con) -\/ com més alta, millor.
+\item Probabilitat de desenvolupar la malaltia (p\+Mal) -\/ com més alta, millor.
+\item Taxa de mortalitat (p\+Mor) -\/ com més alta, millor.
+\item Nom del virus (ordre alfabètic).
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em altre\+Virus} & El virus ARN amb el qual compararé el de la classe aquest. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Un valor negatiu si this \texorpdfstring{$<$}{<} altre\+Virus, 0 si són iguals, positiu si this \texorpdfstring{$>$}{>} altre\+Virus 
+\end{DoxyReturn}
+\Hypertarget{classVirusARN_acab62dfea86ebfc0238937015efeec78}\label{classVirusARN_acab62dfea86ebfc0238937015efeec78} 
+\index{VirusARN@{VirusARN}!muta@{muta}}
+\index{muta@{muta}!VirusARN@{VirusARN}}
+\doxysubsubsection{\texorpdfstring{muta()}{muta()}}
+{\footnotesize\ttfamily boolean Virus\+ARN.\+muta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Indica si el virus pot mutar per error de còpia. 
+
+\begin{DoxyReturn}{Retorna}
+Cert si és un virus de tipus ARN (mutable). Fals en cas contrari. 
+\end{DoxyReturn}
+
+
+Reimplementat de \mbox{\hyperlink{classVirus_ad087c47a2bb0b0ac0e9e48a07aef1ec6}{Virus}}.
+
+\Hypertarget{classVirusARN_a4634c6af539dffd1926501a30017b72c}\label{classVirusARN_a4634c6af539dffd1926501a30017b72c} 
+\index{VirusARN@{VirusARN}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!VirusARN@{VirusARN}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVirusARN}{Virus\+ARN}} Virus\+ARN.\+mutacio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fem ús d\textquotesingle{}aquest mètode quan hi ha una mutació per error de còpia a un virus ARN. 
+
+Tenim el propi virus ARN que muta. \begin{DoxyReturn}{Retorna}
+El nou virus ARN amb les seves característiques modificades. 
+\end{DoxyReturn}
+
+
+Reimplementat de \mbox{\hyperlink{classVirus_abf022d7abfdd3d61a04502cb87db7ec0}{Virus}}.
+
+\Hypertarget{classVirusARN_a808aaf60ccd75de55aae50915a0777ca}\label{classVirusARN_a808aaf60ccd75de55aae50915a0777ca} 
+\index{VirusARN@{VirusARN}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!VirusARN@{VirusARN}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVirusARN}{Virus\+ARN}} Virus\+ARN.\+mutacio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{B }\end{DoxyParamCaption})}
+
+
+
+Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. 
+
+Tenim un virus A, del qual la persona ja està infectada d\textquotesingle{}aquest virus. 
+\begin{DoxyParams}{Paràmetres}
+{\em B} & Persona infectada de A, s\textquotesingle{}infecta també d\textquotesingle{}aquest virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+C Un nou virus resultant de la combinació de A i de B, que agafarà característiques dels dos i formarà part de la mateixa familia 
+\end{DoxyReturn}
+
+
+Reimplementat de \mbox{\hyperlink{classVirus_ac0b6192f80e043fa72586ba580f565fe}{Virus}}.
+
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Virus\+ARN.\+java\end{DoxyCompactItemize}

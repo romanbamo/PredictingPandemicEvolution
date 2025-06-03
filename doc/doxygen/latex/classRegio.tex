@@ -1,0 +1,577 @@
+\doxysection{Referència de la Classe Regio}
+\hypertarget{classRegio}{}\label{classRegio}\index{Regio@{Regio}}
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRegio_a24393acc0cfd1c441d89a4f6dada3a3b}{Regio}} (String nom\+\_\+regio, int poblacio\+\_\+reg, double taxa\+\_\+contacte\+\_\+interna)
+\begin{DoxyCompactList}\small\item\em Creem el constructor de la classe \doxylink{classRegio}{Regio}. \end{DoxyCompactList}\item 
+\Hypertarget{classRegio_aa7ad767be94928cff1b4d0ac57fb7210}\label{classRegio_aa7ad767be94928cff1b4d0ac57fb7210} 
+String {\bfseries nom} ()
+\item 
+\Hypertarget{classRegio_a90f140bedad6af0c55e5a712f630976e}\label{classRegio_a90f140bedad6af0c55e5a712f630976e} 
+int {\bfseries poblacio} ()
+\item 
+double \mbox{\hyperlink{classRegio_a83e9cff81b504a0bb28e9a492dc7634c}{taxa\+Interna\+Contacte}} ()
+\begin{DoxyCompactList}\small\item\em Aquí el que fem és tornar la taxa de contacte interna d’aquesta regió. \end{DoxyCompactList}\item 
+\Hypertarget{classRegio_a2364e15a3f96d65d0d0236b71145e45b}\label{classRegio_a2364e15a3f96d65d0d0236b71145e45b} 
+double {\bfseries taxa\+Externa\+Contacte} (\mbox{\hyperlink{classRegio}{Regio}} veina)
+\item 
+void \mbox{\hyperlink{classRegio_a0513c0a1e01ba602b882b7a1d96ade91}{afegir\+Regio\+Veina}} (\mbox{\hyperlink{classRegio}{Regio}} veina, double taxa\+Externa\+Contacte)
+\begin{DoxyCompactList}\small\item\em Aquest mètode l\textquotesingle{}he fet per poder indicar amb quines regions veïnes té contacte aquesta regió. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classRegio}{Regio}} $>$ \mbox{\hyperlink{classRegio_a04ad4ca9003ba4d09cb4858d1496fc2c}{regions\+Veines}} ()
+\begin{DoxyCompactList}\small\item\em Ara el que necessitem és passar-\/li a Afectacio\+Virus\+Regió la llista de regions veïnes per a poder fer les fòrmules que ens ha donat el professor per a poder calcular com evoluciona el virus en la regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_a4f26c4b7acd30bdb2574eefcd41610a8}{afegir\+Nova\+Afectacio}} (\mbox{\hyperlink{classVirus}{Virus}} virus, int infectats\+\_\+inicials)
+\begin{DoxyCompactList}\small\item\em Aquesta funció serveix per afegir una nova afectació a la regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_adb01bcea8702da660cdd77b4a5a4e577}{nombre\+Sans}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Aquesta funció l\textquotesingle{}he fet perquè necessitem saber quantes persones estan sanes respecte a un virus concret en aquesta regió. \end{DoxyCompactList}\item 
+\Hypertarget{classRegio_ad514f842f64ba96a83d9e87e4b7e4348}\label{classRegio_ad514f842f64ba96a83d9e87e4b7e4348} 
+boolean {\bfseries esta\+En\+Confinament} ()
+\item 
+boolean \mbox{\hyperlink{classRegio_a3c795523f98ec61cb57a83a17df315b8}{hi\+Ha\+Confinament\+Amb}} (\mbox{\hyperlink{classRegio}{Regio}} veina)
+\begin{DoxyCompactList}\small\item\em Bàsicament amb aquesta funció podem saber des d\textquotesingle{}una classe, si entre aquesta regió concreta i una regió veïna, hi ha o no confinament. \end{DoxyCompactList}\item 
+\Hypertarget{classRegio_a5a0cee4622c27131312fcf34a1e1d157}\label{classRegio_a5a0cee4622c27131312fcf34a1e1d157} 
+int {\bfseries nombre\+Contagiosos} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Per poder fer les fòrmules, ja que necessitem el nombre de persones contagioses que poden transmetre un virus concret de la regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_a4ab9d00fb0fa966317e9b9b254866339}{nombre\+Infectats}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre total de persones infectades per un virus (contagioses o no). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_a14f5f575eb69ae91910cc5b672c63ecb}{nombre\+Malalts}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de persones malaltes per un virus en aquesta regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_ad0074da98eca8c18413b167d4243dcd9}{nous\+Infectats}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de nous contagis produïts per un virus en aquesta regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_a868bd0ae6b548bc420ed293011c1711a}{noves\+Defuncions}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de noves defuncions causades per un virus en aquesta regió. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRegio_a7f8bb29af9612b5426c83d45848bdca7}{nombre\+Immunes}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de persones immunitzades contra un virus en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classRegio_ab6459f1e204a2e7336be69f0de4efb1a}{evolucio\+Malalts}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució diària del nombre de malalts per un virus concret en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classRegio_aff90e0830498eb48ef840bd5d396c1bd}{evolucio\+Immunes}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució diària del nombre d’immunes per un virus concret en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classRegio_ad1368967cf872858eded5db654c5a98c}{evolucio\+Contagiosos}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució diària del nombre de contagiosos per un virus concret en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classRegio_afe50d1bad6fa6c93d3dac531276f3731}{evolucio\+Morts}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna l’evolució diària del nombre de morts per un virus concret en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ Integer $>$ \mbox{\hyperlink{classRegio_a32b6c19860041c3539aeeaef44c9c1fe}{acumulats\+Totals}} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em Retorna els acumulats totals d’afectació per un virus dins d’aquesta regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_aa54fae875b4fb5791cede54b599835cd}{avancar\+Dia}} ()
+\begin{DoxyCompactList}\small\item\em Avança un dia en la simulació per totes les afectacions de virus dins d’aquesta regió. \end{DoxyCompactList}\item 
+\Hypertarget{classRegio_a0afe86a5e3231b4922808e4dd78b95d9}\label{classRegio_a0afe86a5e3231b4922808e4dd78b95d9} 
+boolean {\bfseries Virus\+Ja\+Esta\+Afectant} (\mbox{\hyperlink{classVirus}{Virus}} virus)
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}utilitzem per a saber si un cert virus ja està contegiant una regió o si encara no i hem de crear una nova afectació. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classRegio_a9f8aee39e0c1d2fe2842fcf3778928a3}{virus\+Presents\+ARegio}} ()
+\begin{DoxyCompactList}\small\item\em Retorna una llista ordenada amb els noms dels virus presents en aquesta regió. \end{DoxyCompactList}\item 
+List$<$ String $>$ \mbox{\hyperlink{classRegio_a4d925ac8f540e485c51e4193ea330cbd}{nom\+Regions\+Veines}} ()
+\begin{DoxyCompactList}\small\item\em Retorna una llista ordenada amb els noms de les regions veines d\textquotesingle{}aquesta regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_abbfb129e56173359d6ec412810b9f303}{persones\+\_\+moren}} (int morts)
+\begin{DoxyCompactList}\small\item\em Aquesta funció és molt important ja que quan moren persones per culpa d\textquotesingle{}algun virus, la població disminueix, per tant hem de canviar aquest número. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{classAfectacioVirusRegio}{Afectacio\+Virus\+Regio}} $>$ \mbox{\hyperlink{classRegio_a1206b7c771aeca69ef4543f7ffb90f76}{Afectacions\+De\+La\+Regio}} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a poder retornar totes les afectacions presents en aquesta regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_a953d40e2979f6bd8f1af41a2be1bd3d4}{comprovar\+Mutacions\+Per\+Coincidencia}} ()
+\begin{DoxyCompactList}\small\item\em Afegeixo informació de que fer aquest mètode per tenir una idea molt més clara. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_a4b2825fc54ba83e29b996b7454c64b55}{aplicar\+Confinament\+Dur}} (double nova\+\_\+taxa\+\_\+interna)
+\begin{DoxyCompactList}\small\item\em Aquesta funció l\textquotesingle{}he fet per aplicar un confinament a la regió. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_a02e884a4f1b4a3f327ee41e8df956ad9}{aplicar\+Confinament\+Tou\+Amb}} (\mbox{\hyperlink{classRegio}{Regio}} veina)
+\begin{DoxyCompactList}\small\item\em Aquesta funció serveix per fer un confinament tou (només amb una veïna concreta). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRegio_a628b7aad69cedcf0c5896376f9538b90}{aixecar\+Confinament}} ()
+\begin{DoxyCompactList}\small\item\em He fet aquesta funció perquè, quan volguem acabar amb el confinament, doncs fem aixecar\+Confinament, és a dir, tornem a posar les taxes que hi havia abans (que com ja he dit les hem guardat). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentació del Constructor i el Destructor}
+\Hypertarget{classRegio_a24393acc0cfd1c441d89a4f6dada3a3b}\label{classRegio_a24393acc0cfd1c441d89a4f6dada3a3b} 
+\index{Regio@{Regio}!Regio@{Regio}}
+\index{Regio@{Regio}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{Regio()}{Regio()}}
+{\footnotesize\ttfamily Regio.\+Regio (\begin{DoxyParamCaption}\item[{String}]{nom\+\_\+regio,  }\item[{int}]{poblacio\+\_\+reg,  }\item[{double}]{taxa\+\_\+contacte\+\_\+interna }\end{DoxyParamCaption})}
+
+
+
+Creem el constructor de la classe \doxylink{classRegio}{Regio}. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em nom\+\_\+regio} & Nom de la regió. \\
+\hline
+{\em poblacio\+\_\+reg} & Població total que té la regió. \\
+\hline
+{\em taxa\+\_\+contacte\+\_\+interna} & Taxa de contacte entre persones dins de la mateixa regió. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classRegio_a32b6c19860041c3539aeeaef44c9c1fe}\label{classRegio_a32b6c19860041c3539aeeaef44c9c1fe} 
+\index{Regio@{Regio}!acumulatsTotals@{acumulatsTotals}}
+\index{acumulatsTotals@{acumulatsTotals}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{acumulatsTotals()}{acumulatsTotals()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Regio.\+acumulats\+Totals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna els acumulats totals d’afectació per un virus dins d’aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El virus ha d’estar present a la regió. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb\+: \mbox{[}total infectats, total malalts, total morts\mbox{]} 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual es volen les dades. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista d’acumulats totals\+: infectats, malalts i morts. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_a1206b7c771aeca69ef4543f7ffb90f76}\label{classRegio_a1206b7c771aeca69ef4543f7ffb90f76} 
+\index{Regio@{Regio}!AfectacionsDeLaRegio@{AfectacionsDeLaRegio}}
+\index{AfectacionsDeLaRegio@{AfectacionsDeLaRegio}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{AfectacionsDeLaRegio()}{AfectacionsDeLaRegio()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classAfectacioVirusRegio}{Afectacio\+Virus\+Regio}} $>$ Regio.\+Afectacions\+De\+La\+Regio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+He fet aquest mètode per a poder retornar totes les afectacions presents en aquesta regió. 
+
+He tingut la necessitat de fer aquest mètode per a poder calcular els nous contagis totals de totes les afectacions, i així poder aplicar la formula de mutació per coincidència. \Hypertarget{classRegio_a4f26c4b7acd30bdb2574eefcd41610a8}\label{classRegio_a4f26c4b7acd30bdb2574eefcd41610a8} 
+\index{Regio@{Regio}!afegirNovaAfectacio@{afegirNovaAfectacio}}
+\index{afegirNovaAfectacio@{afegirNovaAfectacio}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{afegirNovaAfectacio()}{afegirNovaAfectacio()}}
+{\footnotesize\ttfamily void Regio.\+afegir\+Nova\+Afectacio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus,  }\item[{int}]{infectats\+\_\+inicials }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció serveix per afegir una nova afectació a la regió. 
+
+És a dir, quan arriba un nou virus, hem de crear una nova afectació perquè clar, el que volem és tenir control sobre com evoluciona aquest virus en la regió.
+
+El que he fet és basicament crear un objecte de la classre Afectació\+Virus\+Regió (cridant el constructor) i llavors, doncs relacionar el virus amb la regió. I com ja hem comentat en la pròpia classe de Afectacio\+Virus\+Regió, doncs és necessari passar-\/li també el nombre d\textquotesingle{}infectats inicials. Després, per així tenir constància de l\textquotesingle{}evolució de cada virus que te la regió, doncs el que he fet és afegir-\/la a la llista d’afectacions. \Hypertarget{classRegio_a0513c0a1e01ba602b882b7a1d96ade91}\label{classRegio_a0513c0a1e01ba602b882b7a1d96ade91} 
+\index{Regio@{Regio}!afegirRegioVeina@{afegirRegioVeina}}
+\index{afegirRegioVeina@{afegirRegioVeina}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{afegirRegioVeina()}{afegirRegioVeina()}}
+{\footnotesize\ttfamily void Regio.\+afegir\+Regio\+Veina (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRegio}{Regio}}}]{veina,  }\item[{double}]{taxa\+Externa\+Contacte }\end{DoxyParamCaption})}
+
+
+
+Aquest mètode l\textquotesingle{}he fet per poder indicar amb quines regions veïnes té contacte aquesta regió. 
+
+És molt important perquè ho necessitarem després per calcular els contagis externs. A més, la taxa de contacte externa amb aquesta regió pot ser diferent per a cada veïna.
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em veina} & Regió veïna amb la qual es manté contacte. \\
+\hline
+{\em taxa\+Externa\+Contacte} & Taxa de contacte entre aquesta regió i la regió veïna (valor entre 0 i 1). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRegio_a628b7aad69cedcf0c5896376f9538b90}\label{classRegio_a628b7aad69cedcf0c5896376f9538b90} 
+\index{Regio@{Regio}!aixecarConfinament@{aixecarConfinament}}
+\index{aixecarConfinament@{aixecarConfinament}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{aixecarConfinament()}{aixecarConfinament()}}
+{\footnotesize\ttfamily void Regio.\+aixecar\+Confinament (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+He fet aquesta funció perquè, quan volguem acabar amb el confinament, doncs fem aixecar\+Confinament, és a dir, tornem a posar les taxes que hi havia abans (que com ja he dit les hem guardat). 
+
+Per tant aquí, doncs bàsicament hem de tornar a com estava la regió abans del confinament. \Hypertarget{classRegio_a4b2825fc54ba83e29b996b7454c64b55}\label{classRegio_a4b2825fc54ba83e29b996b7454c64b55} 
+\index{Regio@{Regio}!aplicarConfinamentDur@{aplicarConfinamentDur}}
+\index{aplicarConfinamentDur@{aplicarConfinamentDur}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{aplicarConfinamentDur()}{aplicarConfinamentDur()}}
+{\footnotesize\ttfamily void Regio.\+aplicar\+Confinament\+Dur (\begin{DoxyParamCaption}\item[{double}]{nova\+\_\+taxa\+\_\+interna }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció l\textquotesingle{}he fet per aplicar un confinament a la regió. 
+
+Com be està explicat a la pràctica, hi ha dos tipus, un que és el confinament dur, i l\textquotesingle{}altre que és el confinament suau. Si és dur, es redueix la taxa de contacte interna i evitem qualsevol connexio amb les veïnes. Si és suau, només evitem les connexions externes, però la taxa interna la deixem igual. Ara bé, és molt important que, abans de fer canvis, guardem les taxes originals per poder-\/les recuperar després quan desconfinem. \Hypertarget{classRegio_a02e884a4f1b4a3f327ee41e8df956ad9}\label{classRegio_a02e884a4f1b4a3f327ee41e8df956ad9} 
+\index{Regio@{Regio}!aplicarConfinamentTouAmb@{aplicarConfinamentTouAmb}}
+\index{aplicarConfinamentTouAmb@{aplicarConfinamentTouAmb}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{aplicarConfinamentTouAmb()}{aplicarConfinamentTouAmb()}}
+{\footnotesize\ttfamily void Regio.\+aplicar\+Confinament\+Tou\+Amb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRegio}{Regio}}}]{veina }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció serveix per fer un confinament tou (només amb una veïna concreta). 
+
+Tallem la connexió amb aquesta regió veïna, però no modifiquem la taxa interna ni la resta de connexions. \Hypertarget{classRegio_aa54fae875b4fb5791cede54b599835cd}\label{classRegio_aa54fae875b4fb5791cede54b599835cd} 
+\index{Regio@{Regio}!avancarDia@{avancarDia}}
+\index{avancarDia@{avancarDia}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{avancarDia()}{avancarDia()}}
+{\footnotesize\ttfamily void Regio.\+avancar\+Dia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Avança un dia en la simulació per totes les afectacions de virus dins d’aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+L’estructura de dades afectacions ha d’estar inicialitzada amb objectes \doxylink{classAfectacioVirusRegio}{Afectacio\+Virus\+Regio}. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Actualitza totes les afectacions dins d’aquesta regió fent avançar un dia de simulació. 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_a953d40e2979f6bd8f1af41a2be1bd3d4}\label{classRegio_a953d40e2979f6bd8f1af41a2be1bd3d4} 
+\index{Regio@{Regio}!comprovarMutacionsPerCoincidencia@{comprovarMutacionsPerCoincidencia}}
+\index{comprovarMutacionsPerCoincidencia@{comprovarMutacionsPerCoincidencia}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{comprovarMutacionsPerCoincidencia()}{comprovarMutacionsPerCoincidencia()}}
+{\footnotesize\ttfamily void Regio.\+comprovar\+Mutacions\+Per\+Coincidencia (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Afegeixo informació de que fer aquest mètode per tenir una idea molt més clara. 
+
+M\textquotesingle{}he basat totalment en el pseudocodi donat, que estava súper bé. Basicament el que fem és mirar si en aquesta regió es pot produir una mutació per coincidència. Primer de tot agrupem tots els virus ARN per famílies. Un cop tenim agrupats els virus per família, només ens interessen les famílies que tenen dos o més virus en aquesta regió, ja que només en aquests casos es pot produir una mutació per coincidència.
+
+Un cop tenim la família, fem totes les combinacions possibles de parelles (V, V\textquotesingle{}) de virus d’aquesta família. Per a cada parella, calculem si es produeix mutació amb la probabilitat PMC (segons la fórmula). En cas que hi hagi mutació, es crea un nou virus a partir de V i V’, i aquest substitueix un percentatge dels infectats comuns. Res teoria per entendre-\/ho Map.\+Entry$<$\+K, V$>$ -\/-\/\texorpdfstring{$>$}{>} Cada element del mapa és una parella clau-\/valor entry\+Set() retorna totes les parelles clau-\/valor del mapa (com si fos una llista de tuples). I llavors per veure totes i analitzar-\/les, doncs ho fem amb un for.\Hypertarget{classRegio_ad1368967cf872858eded5db654c5a98c}\label{classRegio_ad1368967cf872858eded5db654c5a98c} 
+\index{Regio@{Regio}!evolucioContagiosos@{evolucioContagiosos}}
+\index{evolucioContagiosos@{evolucioContagiosos}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{evolucioContagiosos()}{evolucioContagiosos()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Regio.\+evolucio\+Contagiosos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució diària del nombre de contagiosos per un virus concret en aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera de contagiosos per dia per aquest virus. 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & El virus del qual es vol consultar l’evolució de contagiosos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de contagiosos per dia. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_aff90e0830498eb48ef840bd5d396c1bd}\label{classRegio_aff90e0830498eb48ef840bd5d396c1bd} 
+\index{Regio@{Regio}!evolucioImmunes@{evolucioImmunes}}
+\index{evolucioImmunes@{evolucioImmunes}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{evolucioImmunes()}{evolucioImmunes()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Regio.\+evolucio\+Immunes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució diària del nombre d’immunes per un virus concret en aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera d’immunes per dia per aquest virus. 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & El virus del qual es vol consultar l’evolució d’immunes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre d’immunes per dia. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_ab6459f1e204a2e7336be69f0de4efb1a}\label{classRegio_ab6459f1e204a2e7336be69f0de4efb1a} 
+\index{Regio@{Regio}!evolucioMalalts@{evolucioMalalts}}
+\index{evolucioMalalts@{evolucioMalalts}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{evolucioMalalts()}{evolucioMalalts()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Regio.\+evolucio\+Malalts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució diària del nombre de malalts per un virus concret en aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera de malalts per dia per aquest virus. 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & El virus del qual es vol consultar l’evolució de malalts. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de malalts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_afe50d1bad6fa6c93d3dac531276f3731}\label{classRegio_afe50d1bad6fa6c93d3dac531276f3731} 
+\index{Regio@{Regio}!evolucioMorts@{evolucioMorts}}
+\index{evolucioMorts@{evolucioMorts}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{evolucioMorts()}{evolucioMorts()}}
+{\footnotesize\ttfamily List$<$ Integer $>$ Regio.\+evolucio\+Morts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna l’evolució diària del nombre de morts per un virus concret en aquesta regió. 
+
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna la llista sencera de morts diàries per aquest virus. 
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & El virus del qual es vol consultar l’evolució de defuncions. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Llista amb el nombre de morts per dia. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_a3c795523f98ec61cb57a83a17df315b8}\label{classRegio_a3c795523f98ec61cb57a83a17df315b8} 
+\index{Regio@{Regio}!hiHaConfinamentAmb@{hiHaConfinamentAmb}}
+\index{hiHaConfinamentAmb@{hiHaConfinamentAmb}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{hiHaConfinamentAmb()}{hiHaConfinamentAmb()}}
+{\footnotesize\ttfamily boolean Regio.\+hi\+Ha\+Confinament\+Amb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRegio}{Regio}}}]{veina }\end{DoxyParamCaption})}
+
+
+
+Bàsicament amb aquesta funció podem saber des d\textquotesingle{}una classe, si entre aquesta regió concreta i una regió veïna, hi ha o no confinament. 
+
+És important mirar les dos regions, perquè pot ser que la propi regió no tingui confinament, però si la regió veïna si que en te, serà impossible que la contagi. Per tant, només en el cas de que les dues regions NO tinguin confinament, podrem contagiar o ens podran contagiar. Si una de les dos esta confinada, podem dir que no hi ha contacte. \Hypertarget{classRegio_a7f8bb29af9612b5426c83d45848bdca7}\label{classRegio_a7f8bb29af9612b5426c83d45848bdca7} 
+\index{Regio@{Regio}!nombreImmunes@{nombreImmunes}}
+\index{nombreImmunes@{nombreImmunes}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nombreImmunes()}{nombreImmunes()}}
+{\footnotesize\ttfamily int Regio.\+nombre\+Immunes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de persones immunitzades contra un virus en aquesta regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual volem saber els immunes dins la regió. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de persones immunes a aquest virus dins la regió.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el nombre de persones immunitzades per aquest virus, o 0 si no hi ha afectació.
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_a4ab9d00fb0fa966317e9b9b254866339}\label{classRegio_a4ab9d00fb0fa966317e9b9b254866339} 
+\index{Regio@{Regio}!nombreInfectats@{nombreInfectats}}
+\index{nombreInfectats@{nombreInfectats}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nombreInfectats()}{nombreInfectats()}}
+{\footnotesize\ttfamily int Regio.\+nombre\+Infectats (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre total de persones infectades per un virus (contagioses o no). 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual volem saber els infectats totals dins la regió. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre total d’infectats (contagiosos + no contagiosos) dins la regió.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Si el virus està present a la regió, es retorna el total d\textquotesingle{}infectats. Altrament, retorna 0.
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_a14f5f575eb69ae91910cc5b672c63ecb}\label{classRegio_a14f5f575eb69ae91910cc5b672c63ecb} 
+\index{Regio@{Regio}!nombreMalalts@{nombreMalalts}}
+\index{nombreMalalts@{nombreMalalts}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nombreMalalts()}{nombreMalalts()}}
+{\footnotesize\ttfamily int Regio.\+nombre\+Malalts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de persones malaltes per un virus en aquesta regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual volem saber el nombre de malalts dins la regió. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de persones malaltes per aquest virus dins la regió.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el nombre de persones malaltes per aquest virus, o 0 si no hi ha afectació.
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_adb01bcea8702da660cdd77b4a5a4e577}\label{classRegio_adb01bcea8702da660cdd77b4a5a4e577} 
+\index{Regio@{Regio}!nombreSans@{nombreSans}}
+\index{nombreSans@{nombreSans}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nombreSans()}{nombreSans()}}
+{\footnotesize\ttfamily int Regio.\+nombre\+Sans (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció l\textquotesingle{}he fet perquè necessitem saber quantes persones estan sanes respecte a un virus concret en aquesta regió. 
+
+És a dir, hem de saber quanta gent no te el virus i es pot contegiar (ni infectats, ni contagiosos, ni immunitzats (ja que aquests estan sans però no els tenim en compte ja que no es poden contagiar).
+
+Això és super important perquè ho utilitzarem a les fórmules de contagi intern i també quan calgui saber quanta gent es pot contagiar.
+
+Per tant, el que fem és agafar l\textquotesingle{}afectació que té aquesta regió amb el virus i li restem a la població total de la regió totes les persones que ja han passat per alguna fase de la infecció. \Hypertarget{classRegio_a4d925ac8f540e485c51e4193ea330cbd}\label{classRegio_a4d925ac8f540e485c51e4193ea330cbd} 
+\index{Regio@{Regio}!nomRegionsVeines@{nomRegionsVeines}}
+\index{nomRegionsVeines@{nomRegionsVeines}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nomRegionsVeines()}{nomRegionsVeines()}}
+{\footnotesize\ttfamily List$<$ String $>$ Regio.\+nom\+Regions\+Veines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna una llista ordenada amb els noms de les regions veines d\textquotesingle{}aquesta regió. 
+
+\begin{DoxyAuthor}{Autor}
+Romà Barrera
+\end{DoxyAuthor}
+Tot i existir el mètode regions\+Veines(), és més eficaç aquest mètode per coneixer només el nom de les regions veines. D\textquotesingle{}aquesta manera evitem recorrer el vector de regions en la classe destí i generar dos estructures de dades. Aquest mètode recorre totes les regions veines de la regió i extreu el nom, afegint-\/lo a una llista que retorna.
+
+\begin{DoxyPrecond}{Precondició}
+L\textquotesingle{}atribut \textquotesingle{}regions\+Veines\textquotesingle{} ha d\textquotesingle{}estar inicialitzat i no ser null. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nom de totes les regions veines la regió.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+List$<$\+String$>$ Una llista amb els noms de les regions veines de la regió. 
+\end{DoxyReturn}
+\Hypertarget{classRegio_ad0074da98eca8c18413b167d4243dcd9}\label{classRegio_ad0074da98eca8c18413b167d4243dcd9} 
+\index{Regio@{Regio}!nousInfectats@{nousInfectats}}
+\index{nousInfectats@{nousInfectats}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{nousInfectats()}{nousInfectats()}}
+{\footnotesize\ttfamily int Regio.\+nous\+Infectats (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de nous contagis produïts per un virus en aquesta regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual volem saber els nous contagis dins la regió. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de nous contagis per aquest virus dins la regió.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el nombre de nous contagis per aquest virus, o 0 si no hi ha afectació.
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_a868bd0ae6b548bc420ed293011c1711a}\label{classRegio_a868bd0ae6b548bc420ed293011c1711a} 
+\index{Regio@{Regio}!novesDefuncions@{novesDefuncions}}
+\index{novesDefuncions@{novesDefuncions}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{novesDefuncions()}{novesDefuncions()}}
+{\footnotesize\ttfamily int Regio.\+noves\+Defuncions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{virus }\end{DoxyParamCaption})}
+
+
+
+Retorna el nombre de noves defuncions causades per un virus en aquesta regió. 
+
+
+\begin{DoxyParams}{Paràmetres}
+{\em virus} & \doxylink{classVirus}{Virus} del qual volem saber les noves defuncions dins la regió. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Nombre de noves defuncions per aquest virus dins la regió.
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondició}
+El virus ha de ser un objecte vàlid. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna el nombre de noves defuncions per aquest virus, o 0 si no hi ha afectació.
+\end{DoxyPostcond}
+\begin{DoxyAuthor}{Autor}
+Romà Barrera 
+\end{DoxyAuthor}
+\Hypertarget{classRegio_abbfb129e56173359d6ec412810b9f303}\label{classRegio_abbfb129e56173359d6ec412810b9f303} 
+\index{Regio@{Regio}!persones\_moren@{persones\_moren}}
+\index{persones\_moren@{persones\_moren}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{persones\_moren()}{persones\_moren()}}
+{\footnotesize\ttfamily void Regio.\+persones\+\_\+moren (\begin{DoxyParamCaption}\item[{int}]{morts }\end{DoxyParamCaption})}
+
+
+
+Aquesta funció és molt important ja que quan moren persones per culpa d\textquotesingle{}algun virus, la població disminueix, per tant hem de canviar aquest número. 
+
+És a dir, per cada morts que es produeixen en un dia de cada un dels virus que estan afectant a la regió, hem de restar-\/les al nombre total de persones que té la regió A més, m\textquotesingle{}he assegurat de que la població mai baixi de 0, perquè no ser si és possible, però per evitar que per alguna rao, morin més persones de les que viuen en la regió. \Hypertarget{classRegio_a04ad4ca9003ba4d09cb4858d1496fc2c}\label{classRegio_a04ad4ca9003ba4d09cb4858d1496fc2c} 
+\index{Regio@{Regio}!regionsVeines@{regionsVeines}}
+\index{regionsVeines@{regionsVeines}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{regionsVeines()}{regionsVeines()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{classRegio}{Regio}} $>$ Regio.\+regions\+Veines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ara el que necessitem és passar-\/li a Afectacio\+Virus\+Regió la llista de regions veïnes per a poder fer les fòrmules que ens ha donat el professor per a poder calcular com evoluciona el virus en la regió. 
+
+Per exemple, la útilitzem per a poder calcular els contagis externs (necessitem mirar una a una si aquestes regions tenen el virus i quants contagiosos tenen). \Hypertarget{classRegio_a83e9cff81b504a0bb28e9a492dc7634c}\label{classRegio_a83e9cff81b504a0bb28e9a492dc7634c} 
+\index{Regio@{Regio}!taxaInternaContacte@{taxaInternaContacte}}
+\index{taxaInternaContacte@{taxaInternaContacte}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{taxaInternaContacte()}{taxaInternaContacte()}}
+{\footnotesize\ttfamily double Regio.\+taxa\+Interna\+Contacte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aquí el que fem és tornar la taxa de contacte interna d’aquesta regió. 
+
+És a dir, la probabilitat que dues persones d’aquesta mateixa regió entrin en contacte. Aquesta és pròpia de la regió. \Hypertarget{classRegio_a9f8aee39e0c1d2fe2842fcf3778928a3}\label{classRegio_a9f8aee39e0c1d2fe2842fcf3778928a3} 
+\index{Regio@{Regio}!virusPresentsARegio@{virusPresentsARegio}}
+\index{virusPresentsARegio@{virusPresentsARegio}!Regio@{Regio}}
+\doxysubsubsection{\texorpdfstring{virusPresentsARegio()}{virusPresentsARegio()}}
+{\footnotesize\ttfamily List$<$ String $>$ Regio.\+virus\+Presents\+ARegio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna una llista ordenada amb els noms dels virus presents en aquesta regió. 
+
+\begin{DoxyAuthor}{Autor}
+Romà Barrera Aquest mètode recorre totes les afectacions virals que hi ha a la regió i extreu el nom del virus corresponent, afegint-\/lo a una llista que retorna.
+\end{DoxyAuthor}
+\begin{DoxyPrecond}{Precondició}
+L\textquotesingle{}atribut \textquotesingle{}afectacions\textquotesingle{} ha d\textquotesingle{}estar inicialitzat i no ser null. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondició}
+Retorna una llista amb el nom de tots els virus associats a les afectacions actuals de la regió.
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Retorna}
+List$<$\+String$>$ Una llista amb els noms dels virus que afecten la regió. 
+\end{DoxyReturn}
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Regio.\+java\end{DoxyCompactItemize}

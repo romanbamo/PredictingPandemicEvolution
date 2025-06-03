@@ -1,0 +1,7 @@
+<map id="VirusARN" name="VirusARN">
+<area shape="rect" id="Node000001" title="Representa un virus de tipus ARN, que pot mutar." alt="" coords="65,79,147,104"/>
+<area shape="rect" id="Node000002" href="$classVirus.html" title="Implementem una classe abstracta per definir el comportament general dels virus." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,38,96,77,92,80,53,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="85,5,277,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,42,120,80,116,77,157,38"/>
+</map>

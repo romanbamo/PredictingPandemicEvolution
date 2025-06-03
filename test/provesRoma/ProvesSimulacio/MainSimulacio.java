@@ -33,8 +33,8 @@ public class MainSimulacio {
         System.out.println("\n=== APLICANT CONFINAMENTS ===");
         simulacio.afegirConfinament("metropolitana_nord", 0.2f); // Confinament dur a Barcelona
         simulacio.afegirConfinament("girona", "catalunya_central"); // Confinament tou entre Girona i Barcelona
-        System.out.println("\n=== SIMULANT 10 DIES ===");
-        for (int i = 0; i < 10; i++) {
+        System.out.println("\n=== SIMULANT 5 DIES ===");
+        for (int i = 0; i < 5; i++) {
             simulacio.avancarDia();
             System.out.println("Dia " + (i+1) + " completat");
         }

@@ -1,0 +1,143 @@
+\doxysection{Referència de la Classe Virus\+ADN}
+\hypertarget{classVirusADN}{}\label{classVirusADN}\index{VirusADN@{VirusADN}}
+
+
+Representa un virus de tipus ADN, és a dir, virus que muten amb molt poca freqüència (podem considerar que NO muten).  
+
+
+
+
+Diagrama d\textquotesingle{}Herència per a Virus\+ADN\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{classVirusADN__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de col·laboració per a Virus\+ADN\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{classVirusADN__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Mètodes públics}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVirusADN_aa2f7f630e45555f11fe7eb7d9650406a}\label{classVirusADN_aa2f7f630e45555f11fe7eb7d9650406a} 
+{\bfseries Virus\+ADN} (String nom\+\_\+virus, \mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} familia\+\_\+virus, double p\+\_\+mal, int t\+\_\+inc, int t\+\_\+lat, double p\+\_\+mor, int t\+\_\+con, double p\+\_\+con, int t\+\_\+imm)
+\item 
+\mbox{\hyperlink{classVirusADN}{Virus\+ADN}} \mbox{\hyperlink{classVirusADN_aaceb9418ae9fbee61124780214c717e9}{mutacio}} ()
+\begin{DoxyCompactList}\small\item\em Sobreescrivim el mètode de mutació per als virus ADN. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVirusADN}{Virus\+ADN}} \mbox{\hyperlink{classVirusADN_a26444465abf261aa86a15297d14c566d}{mutacio}} (\mbox{\hyperlink{classVirus}{Virus}} B)
+\begin{DoxyCompactList}\small\item\em Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{classVirusADN_ac244f65da8e99963ca8ac4dcd9816bab}{muta}} ()
+\begin{DoxyCompactList}\small\item\em Indica si el virus pot mutar per error de còpia. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Mètodes públics inherited from \mbox{\hyperlink{classVirus}{Virus}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVirus_a5cd3ccdcb04cff11f1baed65dcb6d118}{Virus}} (String nom\+\_\+virus, \mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} familia\+\_\+virus, double p\+\_\+mal, int t\+\_\+inc, int t\+\_\+lat, double p\+\_\+mor, int t\+\_\+con, double p\+\_\+con, int t\+\_\+imm)
+\begin{DoxyCompactList}\small\item\em Primer és important fer el constructor de la classe \doxylink{classVirus}{Virus}. \end{DoxyCompactList}\item 
+String {\bfseries nom} ()
+\item 
+\mbox{\hyperlink{classFamiliaVirus}{Familia\+Virus}} {\bfseries familia} ()
+\item 
+double {\bfseries prob\+Desenvolupar\+Malaltia} ()
+\item 
+int {\bfseries temps\+Incubacio} ()
+\item 
+int {\bfseries temps\+Latencia} ()
+\item 
+double {\bfseries taxa\+Mortalitat} ()
+\item 
+int {\bfseries temps\+Contagi} ()
+\item 
+double {\bfseries taxa\+Contagi} ()
+\item 
+int {\bfseries temps\+Immunitat} ()
+\item 
+boolean {\bfseries ha\+Mutat} (\mbox{\hyperlink{classVirus}{Virus}} x)
+\item 
+int {\bfseries nous\+Contagis} (int infectats\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous contagis, basant-\/se en el nombre actual d\textquotesingle{}infectats i la taxa d\textquotesingle{}infecció. \end{DoxyCompactList}\item 
+int {\bfseries nous\+Malalts} (int contagiosos\+\_\+actuals)
+\begin{DoxyCompactList}\small\item\em mètode que calcula el nombre esperat de nous malalts, basant-\/se en el nombre actual de contaiosos i la prob de desenvolupar la malaltia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVirus_a35c42ddd9cc2a238f17e16e318a299ef}{temps\+Malaltia}} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps de la malaltia com a\+: T\+\_\+malaltia = T\+\_\+lat + T\+\_\+contagi -\/ T\+\_\+incubacio Això representa el temps entre que la persona es posa malalta fins que deixa d\textquotesingle{}estar malalta (es cura o mor). \end{DoxyCompactList}\item 
+int {\bfseries temps\+Contagi\+Sense\+Sintomes} ()
+\begin{DoxyCompactList}\small\item\em He fet aquest mètode per a calcular el temps en que és contagios però encara no te sintomas\+: T\+\_\+contagi\+\_\+sense\+\_\+sintomes = T\+\_\+incubacio -\/ T\+\_\+lat. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripció Detallada}
+Representa un virus de tipus ADN, és a dir, virus que muten amb molt poca freqüència (podem considerar que NO muten). 
+
+\begin{DoxyAuthor}{Autor}
+Iria Auladell 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Documentació de les Funcions Membre}
+\Hypertarget{classVirusADN_ac244f65da8e99963ca8ac4dcd9816bab}\label{classVirusADN_ac244f65da8e99963ca8ac4dcd9816bab} 
+\index{VirusADN@{VirusADN}!muta@{muta}}
+\index{muta@{muta}!VirusADN@{VirusADN}}
+\doxysubsubsection{\texorpdfstring{muta()}{muta()}}
+{\footnotesize\ttfamily boolean Virus\+ADN.\+muta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Indica si el virus pot mutar per error de còpia. 
+
+\begin{DoxyReturn}{Retorna}
+Cert si és un virus de tipus ARN (mutable). Fals en cas contrari. 
+\end{DoxyReturn}
+
+
+Reimplementat de \mbox{\hyperlink{classVirus_ad087c47a2bb0b0ac0e9e48a07aef1ec6}{Virus}}.
+
+\Hypertarget{classVirusADN_aaceb9418ae9fbee61124780214c717e9}\label{classVirusADN_aaceb9418ae9fbee61124780214c717e9} 
+\index{VirusADN@{VirusADN}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!VirusADN@{VirusADN}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVirusADN}{Virus\+ADN}} Virus\+ADN.\+mutacio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sobreescrivim el mètode de mutació per als virus ADN. 
+
+Com que aquests virus no poden mutar, he pensat que seria bona idea retornar el mateix objecte. Així, com hem dit, complim el LSP, ja que no trenquem la postcondició\+: seguim retornant un \doxylink{classVirus}{Virus}.
+
+Així, si es crida virus.\+mutacio(...), i és un ADN, es podrà seguir amb el codi sense problemes. 
+
+Reimplementat de \mbox{\hyperlink{classVirus_abf022d7abfdd3d61a04502cb87db7ec0}{Virus}}.
+
+\Hypertarget{classVirusADN_a26444465abf261aa86a15297d14c566d}\label{classVirusADN_a26444465abf261aa86a15297d14c566d} 
+\index{VirusADN@{VirusADN}!mutacio@{mutacio}}
+\index{mutacio@{mutacio}!VirusADN@{VirusADN}}
+\doxysubsubsection{\texorpdfstring{mutacio()}{mutacio()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVirusADN}{Virus\+ADN}} Virus\+ADN.\+mutacio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVirus}{Virus}}}]{B }\end{DoxyParamCaption})}
+
+
+
+Fem servir aquest mètode quan hi ha una mutació per coincidència entre dos virus de la mateixa família. 
+
+El virus de la classe és un virus A, i la persona ja està infectada d\textquotesingle{}aquest virus. 
+\begin{DoxyParams}{Paràmetres}
+{\em B} & Persona infectada de A, s\textquotesingle{}infecta també d\textquotesingle{}aquest virus. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+C virus de la mateixa família que A i B. Pot ser un nou virus que combini característiques d\textquotesingle{}ambdós, o un dels dos virus si no es produeix mutació. 
+\end{DoxyReturn}
+
+
+Reimplementat de \mbox{\hyperlink{classVirus_ac0b6192f80e043fa72586ba580f565fe}{Virus}}.
+
+
+
+La documentació d\textquotesingle{}aquesta classe es va generar a partir del següent fitxer\+:\begin{DoxyCompactItemize}
+\item 
+src/Virus\+ADN.\+java\end{DoxyCompactItemize}

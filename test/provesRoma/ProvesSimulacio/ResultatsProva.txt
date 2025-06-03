@@ -1,0 +1,745 @@
+roman@roman-Aspire-V3-571G:~/Documentos/UDG/3rGEB/2nSemestre/ProjectesProgramacio/Projecte/ProvesExecucions/ProvesSimulacio$ java MainSimulacio 
+=== CARREGANT DADES ===
+Carregant regions...
+Regions carregades: 9
+
+Carregant virus...
+Virus carregats: [Covid19, GripA, HepatitisB, SARS-CoV]
+
+Carregant estat inicial...
+catalunya_central
+HepatitisB
+Virus Trobat
+GripA
+Virus Trobat
+metropolitana_nord
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+metropolitana_sud
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+barcelona_ciutat
+GripA
+Virus Trobat
+Covid19
+Virus Trobat
+SARS-CoV
+Virus Trobat
+Estat inicial carregat correctament
+
+=== REGIONS DISPONIBLES ===
+- alt_pirineu_i_aran
+  Regions veïnes: catalunya_central, girona, lleida
+- barcelona_ciutat
+  Virus presents: Covid19, GripA, SARS-CoV
+  Regions veïnes: metropolitana_nord, metropolitana_sud
+- camp_de_tarragona
+  Regions veïnes: catalunya_central, lleida, metropolitana_sud, terres_de_lebre
+- catalunya_central
+  Virus presents: GripA, HepatitisB
+  Regions veïnes: alt_pirineu_i_aran, camp_de_tarragona, girona, lleida, metropolitana_nord, metropolitana_sud
+- girona
+  Regions veïnes: alt_pirineu_i_aran, catalunya_central, metropolitana_nord
+- lleida
+  Regions veïnes: alt_pirineu_i_aran, camp_de_tarragona, catalunya_central, terres_de_lebre
+- metropolitana_nord
+  Virus presents: Covid19, GripA
+  Regions veïnes: barcelona_ciutat, catalunya_central, girona, metropolitana_sud
+- metropolitana_sud
+  Virus presents: Covid19, GripA
+  Regions veïnes: barcelona_ciutat, camp_de_tarragona, catalunya_central, metropolitana_nord
+- terres_de_lebre
+  Regions veïnes: camp_de_tarragona, lleida
+
+=== APLICANT CONFINAMENTS ===
+
+=== SIMULANT 5 DIES ===
+Dia 1 completat
+Dia 2 completat
+Dia 3 completat
+Dia 4 completat
+Dia 5 completat
+
+=== ESTADÍSTIQUES FINALS ===
+
+Regió: alt_pirineu_i_aran
+  Virus: Covid19
+    Infectats totals: 1
+    Malalts actuals: 1
+    Immunes actuals: 0
+    Contagiosos actuals: 1
+    Evolució malalts (últims 5 dies): [0, 1, 0]
+  Virus: Covid19_1
+    Infectats totals: 1
+    Malalts actuals: 1
+    Immunes actuals: 0
+    Contagiosos actuals: 1
+    Evolució malalts (últims 5 dies): [1, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 14
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 14
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_1_1
+    Infectats totals: 35
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 3
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 3
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_2_1
+    Infectats totals: 54
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 6
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 3
+    Malalts actuals: 3
+    Immunes actuals: 0
+    Contagiosos actuals: 3
+    Evolució malalts (últims 5 dies): [3, 0]
+  Virus: Covid19_2_1
+    Infectats totals: 41
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 11
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_2_2
+    Infectats totals: 18
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 6
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 6
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_3_1
+    Infectats totals: 12
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_4
+    Infectats totals: 6
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+
+Regió: barcelona_ciutat
+  Virus: Covid19
+    Infectats totals: 411
+    Malalts actuals: 304
+    Immunes actuals: 0
+    Contagiosos actuals: 411
+    Evolució malalts (últims 5 dies): [0, 0, 79, 225, 0]
+  Virus: Covid19_1
+    Infectats totals: 1134
+    Malalts actuals: 815
+    Immunes actuals: 0
+    Contagiosos actuals: 1134
+    Evolució malalts (últims 5 dies): [0, 815, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 1099
+    Malalts actuals: 950
+    Immunes actuals: 0
+    Contagiosos actuals: 1099
+    Evolució malalts (últims 5 dies): [950, 0]
+  Virus: Covid19_1_1_1
+    Infectats totals: 5083
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 5877
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 5877
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_2_1
+    Infectats totals: 9604
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 5781
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 1483
+    Malalts actuals: 1331
+    Immunes actuals: 0
+    Contagiosos actuals: 1483
+    Evolució malalts (últims 5 dies): [1331, 0]
+  Virus: Covid19_2_1
+    Infectats totals: 1268
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 1268
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_2_2
+    Infectats totals: 6330
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 1502
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 1502
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_3_1
+    Infectats totals: 1280
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_4
+    Infectats totals: 1484
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: GripA
+    Infectats totals: 165
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0, 0, 0, 0]
+  Virus: SARS-CoV
+    Infectats totals: 23
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0, 0, 0, 0]
+
+Regió: camp_de_tarragona
+  Virus: Covid19
+    Infectats totals: 32
+    Malalts actuals: 24
+    Immunes actuals: 0
+    Contagiosos actuals: 32
+    Evolució malalts (últims 5 dies): [0, 0, 24, 0]
+  Virus: Covid19_1
+    Infectats totals: 53
+    Malalts actuals: 38
+    Immunes actuals: 0
+    Contagiosos actuals: 53
+    Evolució malalts (últims 5 dies): [0, 38, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 633
+    Malalts actuals: 347
+    Immunes actuals: 0
+    Contagiosos actuals: 633
+    Evolució malalts (últims 5 dies): [347, 0]
+  Virus: Covid19_1_1_1
+    Infectats totals: 1637
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 569
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 569
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_2_1
+    Infectats totals: 3733
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 570
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 133
+    Malalts actuals: 119
+    Immunes actuals: 0
+    Contagiosos actuals: 133
+    Evolució malalts (últims 5 dies): [119, 0]
+  Virus: Covid19_2_1
+    Infectats totals: 717
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 522
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_2_2
+    Infectats totals: 879
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 143
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 143
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_3_1
+    Infectats totals: 541
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_4
+    Infectats totals: 143
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: HepatitisB
+    Infectats totals: 33
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 11
+    Evolució malalts (últims 5 dies): [0, 0, 0]
+
+Regió: catalunya_central
+  Virus: Covid19
+    Infectats totals: 25
+    Malalts actuals: 19
+    Immunes actuals: 0
+    Contagiosos actuals: 25
+    Evolució malalts (últims 5 dies): [0, 0, 19, 0]
+  Virus: Covid19_1
+    Infectats totals: 22
+    Malalts actuals: 16
+    Immunes actuals: 0
+    Contagiosos actuals: 22
+    Evolució malalts (últims 5 dies): [0, 16, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 225
+    Malalts actuals: 195
+    Immunes actuals: 0
+    Contagiosos actuals: 225
+    Evolució malalts (últims 5 dies): [195, 0]
+  Virus: Covid19_1_1_1
+    Infectats totals: 965
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 315
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 315
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_2_1
+    Infectats totals: 1964
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 323
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 91
+    Malalts actuals: 82
+    Immunes actuals: 0
+    Contagiosos actuals: 91
+    Evolució malalts (últims 5 dies): [82, 0]
+  Virus: Covid19_2_1
+    Infectats totals: 259
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 259
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_2_2
+    Infectats totals: 555
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 101
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 101
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_3_1
+    Infectats totals: 261
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_4
+    Infectats totals: 101
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: GripA
+    Infectats totals: 237
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0, 0, 0, 0]
+  Virus: HepatitisB
+    Infectats totals: 93
+    Malalts actuals: 17
+    Immunes actuals: 0
+    Contagiosos actuals: 52
+    Evolució malalts (últims 5 dies): [17, 0, 0, 0, 0]
+
+Regió: girona
+  Virus: Covid19
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 8
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2_2
+    Infectats totals: 19
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 6
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 6
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_4
+    Infectats totals: 4
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+
+Regió: lleida
+  Virus: Covid19
+    Infectats totals: 8
+    Malalts actuals: 6
+    Immunes actuals: 0
+    Contagiosos actuals: 8
+    Evolució malalts (últims 5 dies): [0, 6, 0]
+  Virus: Covid19_1
+    Infectats totals: 9
+    Malalts actuals: 7
+    Immunes actuals: 0
+    Contagiosos actuals: 9
+    Evolució malalts (últims 5 dies): [7, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 103
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 103
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_1_1
+    Infectats totals: 467
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 37
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 37
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_2_1
+    Infectats totals: 528
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_3
+    Infectats totals: 55
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 24
+    Malalts actuals: 22
+    Immunes actuals: 0
+    Contagiosos actuals: 24
+    Evolució malalts (últims 5 dies): [22, 0]
+  Virus: Covid19_2_1
+    Infectats totals: 421
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 101
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_2_2
+    Infectats totals: 140
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 37
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 37
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_3_1
+    Infectats totals: 118
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_4
+    Infectats totals: 37
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: HepatitisB
+    Infectats totals: 19
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 7
+    Evolució malalts (últims 5 dies): [0, 0, 0]
+
+Regió: metropolitana_nord
+  Virus: Covid19
+    Infectats totals: 148
+    Malalts actuals: 109
+    Immunes actuals: 0
+    Contagiosos actuals: 148
+    Evolució malalts (últims 5 dies): [0, 0, 0, 109, 0]
+  Virus: Covid19_1
+    Infectats totals: 12
+    Malalts actuals: 9
+    Immunes actuals: 0
+    Contagiosos actuals: 12
+    Evolució malalts (últims 5 dies): [0, 9, 0]
+  Virus: Covid19_1_2
+    Infectats totals: 1
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 1
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_3
+    Infectats totals: 1
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 12
+    Malalts actuals: 11
+    Immunes actuals: 0
+    Contagiosos actuals: 12
+    Evolució malalts (últims 5 dies): [11, 0]
+  Virus: Covid19_2_2
+    Infectats totals: 1
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 12
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 12
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_4
+    Infectats totals: 12
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: GripA
+    Infectats totals: 452
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0, 0, 0, 0]
+
+Regió: metropolitana_sud
+  Virus: Covid19
+    Infectats totals: 72
+    Malalts actuals: 53
+    Immunes actuals: 0
+    Contagiosos actuals: 72
+    Evolució malalts (últims 5 dies): [0, 0, 0, 53, 0]
+  Virus: Covid19_1
+    Infectats totals: 611
+    Malalts actuals: 439
+    Immunes actuals: 0
+    Contagiosos actuals: 611
+    Evolució malalts (últims 5 dies): [0, 439, 0]
+  Virus: Covid19_1_1
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_1_1
+    Infectats totals: 1438
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 4445
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 4445
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_3
+    Infectats totals: 4375
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 856
+    Malalts actuals: 768
+    Immunes actuals: 0
+    Contagiosos actuals: 856
+    Evolució malalts (últims 5 dies): [768, 0]
+  Virus: Covid19_2_2
+    Infectats totals: 5208
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 868
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 868
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_4
+    Infectats totals: 859
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: GripA
+    Infectats totals: 365
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0, 0, 0, 0]
+  Virus: HepatitisB
+    Infectats totals: 55
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 16
+    Evolució malalts (últims 5 dies): [0, 0]
+
+Regió: terres_de_lebre
+  Virus: Covid19
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0, 0]
+  Virus: Covid19_1
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_1
+    Infectats totals: 0
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_1_1
+    Infectats totals: 104
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_1_2
+    Infectats totals: 13
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 13
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_1_3
+    Infectats totals: 18
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_2
+    Infectats totals: 6
+    Malalts actuals: 5
+    Immunes actuals: 0
+    Contagiosos actuals: 6
+    Evolució malalts (últims 5 dies): [5, 0]
+  Virus: Covid19_2_2
+    Infectats totals: 51
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+  Virus: Covid19_3
+    Infectats totals: 9
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 9
+    Evolució malalts (últims 5 dies): [0]
+  Virus: Covid19_4
+    Infectats totals: 9
+    Malalts actuals: 0
+    Immunes actuals: 0
+    Contagiosos actuals: 0
+    Evolució malalts (últims 5 dies): []
+
+=== AIXECANT CONFINAMENTS ===
+Confinament dur aixecat
+Confinament tou aixecat
+Simulació completada amb èxit!
+
