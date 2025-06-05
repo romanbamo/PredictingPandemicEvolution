@@ -10,6 +10,12 @@ import java.util.HashMap;
  * - Nombre d'habitants
  * - Taxa de mobilitat interna
  * - Connexions amb regions veïnes
+ *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant nHab >= 0
+ * @invariant 0.0 <= taxaMobInt && taxaMobInt <= 1.0
+ * @invariant veins != null
+ *
  */
 public class RegioLlegida {
     public String nom;             ///< Nom de la regió

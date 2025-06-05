@@ -11,6 +11,19 @@
  *          d'un virus llegit des d'un fitxer.
  *          
  *          És una classe de dades utilitzada per transportar informació entre les capes de l'aplicació.
+ *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant tipus != null && (tipus.equals("ARN") || tipus.equals("ADN"))
+ * @invariant familia != null && !familia.isEmpty()
+ * @invariant 0.0 <= probMalaltia && probMalaltia <= 1.0
+ * @invariant incubacio >= 0
+ * @invariant latencia >= 0
+ * @invariant duradaContagi >= 0
+ * @invariant duradaImmunitat >= 0
+ * @invariant 0.0 <= mortalitat && mortalitat <= 1.0
+ * @invariant 0.0 <= taxaContagi && taxaContagi <= 1.0
+ * @invariant 0.0 <= probMutacioCopia && probMutacioCopia <= 1.0
+ *
  */
 public class VirusLlegit {
     public String nom;                  ///< Nom identificatiu del virus

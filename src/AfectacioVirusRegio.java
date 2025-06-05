@@ -16,6 +16,18 @@
  *
  *  La simulació treballa en mode text i permet consultar l’estat actual i l’evolució històrica.
  *
+ * @invariant virus != null && regio != null
+ * @invariant _infectats_no_contagiosos != null && _contagiosos != null && _malalts != null && _immunes != null && mortsDiaries != null
+ * @invariant !_infectats_no_contagiosos.contains(null) && !_contagiosos.contains(null) && !_malalts.contains(null)
+ *            && !_immunes.contains(null) && !mortsDiaries.contains(null)
+ * @invariant Collections.min(_infectats_no_contagiosos) >= 0 && Collections.min(_contagiosos) >= 0
+ *            && Collections.min(_malalts) >= 0 && Collections.min(_immunes) >= 0 && Collections.min(mortsDiaries) >= 0
+ * @invariant totalMalalts >= 0 && totalMorts >= 0 && totalInfectats >= 0
+ * @invariant totalInfectats >= calcular_total(_infectats_no_contagiosos)
+ * @invariant _malalts.size() == mortsDiaries.size() == virus.tempsMalaltia()
+ * @invariant _contagiosos.size() <= virus.tempsContagi()
+ * @invariant _infectats_no_contagiosos.size() <= virus.tempsLatencia()
+ *
  * @author Iria Auladell
  * @version 2025.3.13
  */

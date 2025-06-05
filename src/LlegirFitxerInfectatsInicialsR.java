@@ -14,6 +14,10 @@ import java.util.*;
  * - L'estat inicial d'infecció de cada regió
  * - Els diferents virus presents a cada regió
  * - El nombre d'infectats inicials per cada virus
+ *
+ * @invariant regions != null
+ * @invariant !regions.containsKey(null) && !regions.containsValue(null)
+ *
  */
 public class LlegirFitxerInfectatsInicialsR {
     private Map<String, EstatInicialLlegit> regions = new HashMap<>(); ///< Mapa de regions amb els seus infectats inicials

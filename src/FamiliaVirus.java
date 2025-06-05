@@ -4,6 +4,9 @@
  * @details Cada virus pertany a una família. Diferents espècies de virus poden pertànyer a una mateixa família,
  * però o tots els que hi ha son NO MUTABLES, o tots son MUTABLES, però no hi ha barreja dels dos grups en les families.
  *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant 0.0 <= pMut2E && pMut2E <= 1.0
+ * @invariant tpcMax >= 0
  *
  * @author Iria Auladell
  * @version 2025.2.18

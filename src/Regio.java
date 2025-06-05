@@ -5,8 +5,31 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Collections;
 
+/**
+ * @class Regio
+ * @brief Representa una àrea geogràfica dins la simulació on es poden estudiar els efectes d’un virus.
+ *
+ * @details Aquesta classe controla una regió amb la seva població, taxes de contacte internes i externes, relacions amb regions veïnes
+ * i l’estat d’afectació vírica. S’encarrega de gestionar l’evolució diària de la infecció per a cada virus que l’afecta,
+ * així com de controlar el confinament i la mobilitat de la població.
+ *
+ * Per cada una de les regions, tenim un control de les afectacions dels diferents virus que hi ha a la regio, i gràcies a aquesta podem calcular
+ * quantes persones estan sanes, contagiades, malaltes, immunes o mortes, i gestiona la propagació mitjançant contactes interns
+ * i externs amb altres regions. A més, pot detectar i aplicar mutacions per coincidència entre virus d’una mateixa família ARN.
+ *
+ * També a partir d'aquesta classe tenim control sobre els confinaments durs i tous, on podem guardar les taxes originals per poder desconfinar correctament,
+ * i controlar els efectes que aquests confinaments tenen sobre la propagació del virus.
+ *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant poblacio >= 0
+ * @invariant taxaContacteIntern >= 0.0 && taxaContacteIntern <= 1.0
+ * @invariant regionsVeines != null && !regionsVeines.contains(null)
+ * @invariant taxesExternesContacte != null && !taxesExternesContacte.containsKey(null) && !taxesExternesContacte.containsValue(null)
+ * @invariant afectacions != null && !afectacions.containsKey(null) && !afectacions.containsValue(null)
+ */
+
+
 public class Regio {
-// F -> MIREIA, VAIG COMENTANT ENMIG DEL TEU CODI !
 
 
 

@@ -12,6 +12,11 @@
  *          
  *          És una classe de dades utilitzada per transportar informació entre les capes de l'aplicació
  *          i per relacionar virus del mateix tipus.
+ *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant 0.0 <= probMutCoincidencia && probMutCoincidencia <= 1.0
+ * @invariant tpcMaximVariacio >= 0
+ *
  */
 public class FamiliaVirusLlegit {
     public String nom;                  ///< Nom identificatiu de la família de virus

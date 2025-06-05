@@ -15,6 +15,11 @@ import java.util.*;
  * @details Aquesta classe llegeix fitxers amb un format específic, identificant les seccions 
  *          de famílies de virus i virus individuals, i emmagatzema aquesta informació en mapes 
  *          per a un accés eficient.
+ *
+ * @invariant families != null && virus != null
+ * @invariant !families.containsKey(null) && !families.containsValue(null)
+ * @invariant !virus.containsKey(null) && !virus.containsValue(null)
+ *
  */
 public class LlegirFitxerVirusR {
     private Map<String, FamiliaVirusLlegit> families = new HashMap<>(); ///< Mapa per emmagatzemar les famílies de virus

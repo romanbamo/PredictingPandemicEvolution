@@ -2,6 +2,11 @@
  * @class VirusADN
  * @brief Representa un virus de tipus ADN, és a dir,
  * virus que muten amb molt poca freqüència (podem considerar que NO muten).
+ *
+ * @invariant muta() == false
+ * @invariant mutacio() == this
+ * @invariant mutacio(B) == this per qualsevol B
+ *
  * @author Iria Auladell
  */
 public class VirusADN extends Virus {

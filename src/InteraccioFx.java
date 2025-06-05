@@ -42,6 +42,13 @@ import java.util.Collections;
  *
  * Gestiona dues finestres principals: una per a la simulació diària i una altra per als acumulats.
  * Permet seleccionar fitxers, configurar confinaments i visualitzar dades epidemiològiques.
+ *
+ * @invariant simulacio != null
+ * @invariant valorRegioDades != null && valorVirusDades != null && valorRegioDadesAcum != null && valorVirusDadesAcum != null && valorRegioConfinament != null
+ * @invariant graficSimulacio != null && graficAcumulats != null
+ * @invariant codiConfinament ∈ {0, 1, 2}
+ * @invariant codiDadaDiaria ∈ {0, 1, 2, 3}
+ *
  */
 public class InteraccioFx extends Application {
     private Simulacio simulacio = new Simulacio();

@@ -6,6 +6,13 @@
  * Una classe abstracta no es pot instanciar directament i només proporciona
  * una estructura que altres classes han d’implementar.
  *
+ * @invariant nom != null && !nom.isEmpty()
+ * @invariant familia != null
+ * @invariant 0.0 <= pMal && pMal <= 1.0
+ * @invariant 0.0 <= pMor && pMor <= 1.0
+ * @invariant 0.0 <= pCon && pCon <= 1.0
+ * @invariant tInc >= 0 && tLat >= 0 && tCon >= 0 && tImm >= 0
+ *
  * @author Iria Auladell
  * @version 2025.3.13
  */

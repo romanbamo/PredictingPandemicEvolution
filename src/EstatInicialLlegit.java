@@ -3,6 +3,10 @@ import java.util.HashMap;
 /**
  * @class EstatInicialLlegit
  * @brief Representa l'estat inicial d'infecció d'una regió per a diferents virus. És una classe de dada temporal.
+ *
+ * @invariant nomRegio != null && !nomRegio.isEmpty()
+ * @invariant virusInicials != null
+ *
  * @author Romà Barrera
  * 
  * Aquesta classe emmagatzema:

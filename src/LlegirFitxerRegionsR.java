@@ -13,6 +13,10 @@ import java.util.*;
  * Aquesta classe llegeix i processa fitxers que contenen:
  * - Dades bàsiques de regions
  * - Connexions i taxes de mobilitat entre regions
+ *
+ * @invariant regions != null
+ * @invariant !regions.containsKey(null) && !regions.containsValue(null)
+ *
  */
 public class LlegirFitxerRegionsR {
     private Map<String, RegioLlegida> regions = new HashMap<>(); ///< Mapa de regions carregades

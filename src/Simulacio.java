@@ -17,6 +17,15 @@ import java.io.IOException;
  * 
  * Aquesta classe permet carregar dades de regions, virus i estats inicials,
  * gestionar confinaments, i obtenir informació sobre l'estat i evolució de les epidèmies.
+ *
+ * @invariant
+ *     El mapa de regions (mapaRegions) conté totes les regions referenciades per les afectacions, confinaments i evolució.
+ *     La llista de noms de regions (nomsRegions) conté exactament els noms clau del mapa mapaRegions.
+ *     La llista de noms de virus (nomsVirus) conté exactament els noms de la llista de virus (llistaVirus).
+ *     El valor de diaSimulacio és sempre ≥ 0 i augmenta en cada crida a avancarDia().
+ *     No hi pot haver cap regió al mapaRegions amb nom null ni cap virus a llistaVirus amb nom null.
+ *
+ *
  */
 
 public class Simulacio{

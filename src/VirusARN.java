@@ -1,6 +1,11 @@
 /**
  * @class VirusARN
  * @brief Representa un virus de tipus ARN, que pot mutar.
+ *
+ * @invariant 0.0 <= pMutEC && pMutEC <= 1.0
+ * @invariant numMutacions >= 0
+ * @invariant mutacions != null && mutacions.size() == numMutacions
+ *
  * @author Iria Auladell
  */
 
