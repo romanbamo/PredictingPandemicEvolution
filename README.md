@@ -1,4 +1,4 @@
-# Pandemic Simulation Engine
+# Pandemic Simulation Application
 
 A Java-based simulation engine designed to model the spread and evolution of infectious diseases across interconnected geographical regions. This project simulates epidemiological dynamics, including viral mutations and the impact of public health interventions.
 
